@@ -1,0 +1,26 @@
+.socials {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  bottom: 2vmin;
+  right: 2vmin;
+}
+
+.socials::before {
+  --socials-height: (var(--fs-400) + 1rem) * 3;
+
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--line-width);
+  height: calc(100vh - var(--socials-height) - 2vmin - 1rem);
+  margin-block: 1rem;
+  background-color: var(--clr-primary-100-5);
+}
+
+.socials > div {
+  font-size: var(--fs-400);
+}

@@ -1,4 +1,28 @@
 .navbar {
   position: absolute;
+  color: var(--clr-primary-100);
+  font-size: var(--fs-400);
+  top: 2vmin;
+  left: 2vmin;
   z-index: 5;
+  width: calc(100% - 2vmin);
+}
+
+.navbar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--clr-primary-100-5);
+  height: var(--line-width);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 4vmin;
+  margin-inline: 1rem;
+  width: calc(100% - var(--fs-400)- 1rem);
+}
+
+@media screen and (width <= 40em) {
+  .navbar::after {
+    display: none;
+  }
 }

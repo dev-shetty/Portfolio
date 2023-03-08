@@ -3,83 +3,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: black;
+  background-color: var(--clr-primary-900);
   isolation: isolate;
 }
 
-.right_half,
-.left_half {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: -1;
-}
-.right_half {
-  background-color: #fccf05;
-  clip-path: polygon(100% 50%, 50% 0, 87% 100%, 0 100%);
-}
-.left_half {
-  background-color: orange;
-  clip-path: polygon(0 0, 100% 0, 0 50%, 67% 100%);
-}
-
 .header {
-  font-size: clamp(1rem, 15vw, 15rem);
+  --spacing: min(1rem, 4vw);
+
+  font-size: var(--fs-header);
   position: relative;
   font-weight: 500;
   text-align: center;
   line-height: 1;
-  letter-spacing: min(1rem, 4vw);
-}
+  /* To give the same spacing before the letter */
+  padding-inline-start: var(--spacing);
+  letter-spacing: var(--spacing);
 
-.header {
-  color: rgba(255, 255, 255, 0.85);
-  filter: drop-shadow(-0.5rem -1px rgba(255, 0, 0, 0.75))
-    drop-shadow(0.5rem 1px rgba(0, 0, 255, 0.75));
+  /* For glitch effect */
+  --glitch-clr-primary: rgba(255, 255, 255, 0.85);
+  --glitch-clr-left: rgba(255, 0, 0, 0.75);
+  --glitch-clr-right: rgba(0, 0, 255, 0.75);
+
+  color: var(--glitch-clr-primary);
+  filter: drop-shadow(-0.5rem -1px var(--glitch-clr-left))
+    drop-shadow(0.5rem 1px var(--glitch-clr-right));
   cursor: pointer;
-}
-
-.header:hover {
   animation: glitch 1s 1 ease-in;
 }
 
 @keyframes glitch {
   50% {
-    filter: drop-shadow(0.75rem 1px rgba(255, 0, 0, 0.75))
-      drop-shadow(-0.75rem -1px rgba(0, 0, 255, 0.75));
+    filter: drop-shadow(0.75rem 1px var(--glitch-clr-left))
+      drop-shadow(-0.75rem -1px var(--glitch-clr-right));
   }
   100% {
-    filter: drop-shadow(-1rem -1px rgba(255, 0, 0, 0.75))
-      drop-shadow(1rem 1px rgba(0, 0, 255, 0.75));
+    filter: drop-shadow(-1rem -1px var(--glitch-clr-left))
+      drop-shadow(1rem 1px var(--glitch-clr-right));
   }
 }
 
-/* .header::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: #fccd04;
-  clip-path: polygon(0 0, 67% 0, 33% 100%, 0% 100%);
-} */
-
-.header > p {
-  /* background: linear-gradient(to left, #fccd04 33%, white 0%); */
-}
-
-/* .header > p:first-child {
-  margin-inline-end: clamp(1rem, 10vw, 15rem);
-}
-
-.header > p:last-child {
-  margin-inline-start: clamp(1rem, 25vw, 10rem);
-} */
-
-/* @media screen and (width >= 60em) {
-  .header > p:first-child {
-    margin-inline-end: clamp(1rem, 25vw, 30rem);
+@media screen and (width <= 50em) {
+  .header {
+    filter: drop-shadow(-0.25rem -1px var(--glitch-clr-left))
+      drop-shadow(0.25rem 1px var(--glitch-clr-right));
   }
-
-  .header > p:last-child {
-    margin-inline-start: clamp(1rem, 25vw, 30rem);
-  }
-} */
+}

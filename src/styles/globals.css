@@ -7,7 +7,32 @@ body,
 #__next {
   height: 100%;
 }
-/* 
-* {
+
+:root {
+  /* Colors */
+  /* --clr-primary-yyy-x here x is the opacity, 5 -> 50% */
+  --clr-primary-100-5: rgba(255, 255, 255, 0.5);
+  --clr-primary-100: rgb(255, 255, 255);
+  --clr-primary-900: rgb(19, 19, 19);
+
+  /* Font Sizes */
+  --fs-header: clamp(1rem, 15vw, 15rem);
+  --fs-400: clamp(1rem, 6vw, 2rem);
+
+  /* Extras */
+  --line-width: 2px;
+}
+
+.debug {
+  outline: 1px solid red;
+}
+
+@media screen and (width <= 50em) {
+  :root {
+    --line-width: 1px;
+  }
+}
+
+/* * {
   outline: 1px solid red;
 } */

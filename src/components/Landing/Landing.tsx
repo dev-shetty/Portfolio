@@ -1,3 +1,4 @@
+import Socials from "@/components/UIComponents/SideBar/Socials"
 import styles from "./Landing.module.css"
 
 function Landing() {
@@ -9,6 +10,7 @@ function Landing() {
         <p>DEVEESH</p>
         <p>SHETTY</p>
       </header>
+      <Socials />
     </div>
   )
 }
