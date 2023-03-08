@@ -11,6 +11,7 @@
   --blob-height: clamp(250px, 25vw, 500px);
   --blob-clr-1: red;
   --blob-clr-2: blue;
+  /* color: ; */
   --blob-rotation-speed: 20s;
 
   position: fixed;
