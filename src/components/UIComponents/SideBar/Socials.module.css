@@ -30,3 +30,9 @@
 .socials > a:hover {
   color: var(--clr-primary-100);
 }
+
+@media screen and (width <= 40em) {
+  .socials::before {
+    display: none;
+  }
+}

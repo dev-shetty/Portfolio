@@ -21,6 +21,8 @@
   --glitch-clr-primary: rgba(255, 255, 255, 0.85);
   --glitch-clr-left: rgba(255, 0, 0, 0.75);
   --glitch-clr-right: rgba(0, 0, 255, 0.75);
+  --glitch-animate-offset-initial: 0.75rem;
+  --glitch-animate-offset-final: 1rem;
 
   color: var(--glitch-clr-primary);
   filter: drop-shadow(-0.5rem -1px var(--glitch-clr-left))
@@ -35,17 +37,28 @@
 
 @keyframes glitch {
   50% {
-    filter: drop-shadow(0.75rem 1px var(--glitch-clr-left))
-      drop-shadow(-0.75rem -1px var(--glitch-clr-right));
+    filter: drop-shadow(
+        var(--glitch-animate-offset-initial) 1px var(--glitch-clr-left)
+      )
+      drop-shadow(
+        calc(var(--glitch-animate-offset-initial) * -1) -1px var(--glitch-clr-right)
+      );
   }
   100% {
-    filter: drop-shadow(-1rem -1px var(--glitch-clr-left))
-      drop-shadow(1rem 1px var(--glitch-clr-right));
+    filter: drop-shadow(
+        calc(var(--glitch-animate-offset-initial) * -1) -1px var(--glitch-clr-left)
+      )
+      drop-shadow(
+        var(--glitch-animate-offset-final) 1px var(--glitch-clr-right)
+      );
   }
 }
 
 @media screen and (width <= 50em) {
   .header {
+    --glitch-animate-offset-initial: 0.25rem;
+    --glitch-animate-offset-final: 0.5rem;
+
     filter: drop-shadow(-0.25rem -1px var(--glitch-clr-left))
       drop-shadow(0.25rem 1px var(--glitch-clr-right));
   }
