@@ -1,17 +1,13 @@
+import useMouseMove from "@/hooks/useMouseMove"
 import { useEffect, useRef, useState } from "react"
 import styles from "./Blob.module.css"
 
 function Blob() {
   const blobRef = useRef<HTMLDivElement>(null)
-  const [position, setPosition] = useState({
-    clientX: 0,
-    clientY: 0,
-  })
+  const { clientX, clientY } = useMouseMove()
 
   useEffect(() => {
-    document.body.onpointermove = (event) => {
-      const { clientX, clientY } = event
-      setPosition({ clientX, clientY })
+    document.body.onpointermove = () => {
       blobRef.current!.animate(
         {
           left: `${clientX}px`,
@@ -20,7 +16,7 @@ function Blob() {
         { duration: 3000, fill: "forwards" }
       )
     }
-  }, [position])
+  }, [clientX, clientY])
 
   return (
     <>

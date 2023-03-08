@@ -6,7 +6,6 @@ html,
 body,
 #__next {
   height: 100%;
-  overflow-x: hidden;
   isolation: isolate;
 }
 
@@ -24,6 +23,8 @@ body {
   /* Normal Colors */
   --clr-primary-100: rgb(255, 255, 255);
   --clr-primary-900: rgb(19, 19, 19);
+  --blob-clr-1: red;
+  --blob-clr-2: blue;
 
   /* Font Sizes */
   --fs-header: clamp(1rem, 15vw, 15rem);
@@ -35,6 +36,18 @@ body {
 
 .debug {
   outline: 1px solid red;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+body::-webkit-scrollbar-track {
+  box-shadow: inset 3px 3px black;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: var(--clr-primary-100-5);
+  border-radius: 100vw;
+  cursor: pointer;
 }
 
 @media screen and (width <= 50em) {

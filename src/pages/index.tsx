@@ -3,6 +3,7 @@ import Landing from "@/components/Landing/Landing"
 import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import styles from "../styles/Landing.module.css"
 import Blob from "@/components/UIComponents/Blob/Blob"
+import Home from "@/components/Home/Home"
 
 export default function LandingPage() {
   return (
@@ -18,6 +19,7 @@ export default function LandingPage() {
         <Navbar />
         <main className={styles.main}>
           <Landing />
+          <Home />
         </main>
       </>
     </>
