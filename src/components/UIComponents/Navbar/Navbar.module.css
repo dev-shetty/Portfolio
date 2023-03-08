@@ -8,6 +8,17 @@
   width: calc(100% - 2vmin);
 }
 
+.bars {
+  color: var(--clr-primary-100-5);
+  transition: color 150ms ease-in-out;
+}
+
+.bars:hover {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--clr-primary-100);
+}
+
 .navbar::after {
   content: "";
   position: absolute;
@@ -18,7 +29,7 @@
   transform: translateY(-50%);
   left: 4vmin;
   margin-inline: 1rem;
-  width: calc(100% - var(--fs-400)- 1rem);
+  width: calc(100% - var(--fs-400) - 2rem);
 }
 
 @media screen and (width <= 40em) {

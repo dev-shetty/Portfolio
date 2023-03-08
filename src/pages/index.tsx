@@ -2,6 +2,7 @@ import Head from "next/head"
 import Landing from "@/components/Landing/Landing"
 import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import styles from "../styles/Landing.module.css"
+import Blob from "@/components/UIComponents/Blob/Blob"
 
 export default function LandingPage() {
   return (
@@ -13,6 +14,7 @@ export default function LandingPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
+        <Blob />
         <Navbar />
         <main className={styles.main}>
           <Landing />

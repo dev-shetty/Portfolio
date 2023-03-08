@@ -3,8 +3,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--clr-primary-900);
-  isolation: isolate;
 }
 
 .header {
@@ -27,8 +25,12 @@
   color: var(--glitch-clr-primary);
   filter: drop-shadow(-0.5rem -1px var(--glitch-clr-left))
     drop-shadow(0.5rem 1px var(--glitch-clr-right));
-  cursor: pointer;
   animation: glitch 1s 1 ease-in;
+}
+
+.header > p::selection {
+  background-color: var(--clr-primary-100-9);
+  color: var(--clr-primary-900);
 }
 
 @keyframes glitch {

@@ -6,12 +6,22 @@ html,
 body,
 #__next {
   height: 100%;
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+body {
+  background-color: var(--clr-primary-900);
 }
 
 :root {
   /* Colors */
+  /* Opacity Colors */
   /* --clr-primary-yyy-x here x is the opacity, 5 -> 50% */
   --clr-primary-100-5: rgba(255, 255, 255, 0.5);
+  --clr-primary-100-9: rgba(255, 255, 255, 0.9);
+
+  /* Normal Colors */
   --clr-primary-100: rgb(255, 255, 255);
   --clr-primary-900: rgb(19, 19, 19);
 

@@ -21,6 +21,12 @@
   background-color: var(--clr-primary-100-5);
 }
 
-.socials > div {
+.socials > a {
   font-size: var(--fs-400);
+  color: var(--clr-primary-100-5);
+  transition: color 150ms ease-in-out;
+}
+
+.socials > a:hover {
+  color: var(--clr-primary-100);
 }
