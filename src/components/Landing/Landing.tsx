@@ -10,10 +10,13 @@ function Landing() {
     document.documentElement.style.setProperty("--blob-clr-2", "blue")
   }
   useEffect(() => {
-    landingRef.current?.addEventListener("mouseenter", onMouseEnter)
+    // To avoid warning since landingRef.current value maybe changed while running cleanup function,
+    // by assigning it to a variable it will have stable reference
+    const landingNode = landingRef.current
+    landingNode?.addEventListener("mouseenter", onMouseEnter)
 
     return () => {
-      landingRef.current?.removeEventListener("mouseenter", onMouseEnter)
+      landingNode?.removeEventListener("mouseenter", onMouseEnter)
     }
   }, [])
   return (
