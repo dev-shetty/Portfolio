@@ -1,4 +1,58 @@
 .container {
+  --columns: 2;
+
   height: 100vh;
   isolation: isolate;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image > div {
+  --bounce-time: 4s;
+  --bounce-distance: 1rem;
+
+  position: relative;
+  border-radius: 50%;
+  box-shadow: 2px 2px 1rem black;
+  transform: translateY(calc(var(--bounce-distance) * -1));
+  animation: bounce var(--bounce-time) infinite ease-in-out;
+}
+.image > div > img {
+  border-radius: inherit;
+}
+
+.image > div::after {
+  --far-shadow-width: 20%; /* this is smaller since it is using left and right for positioning */
+  --close-shadow-width: 10%;
+  --shadow-distance: 10%;
+  --shadow-clr: rgba(0, 0, 0, 0.4);
+
+  content: "";
+  position: absolute;
+  background-color: var(--shadow-clr);
+  filter: blur(5px);
+  border-radius: inherit;
+  height: 1rem;
+  left: var(--far-shadow-width);
+  right: var(--far-shadow-width);
+  bottom: calc(var(--shadow-distance) * -1);
+  animation: shadow var(--bounce-time) infinite ease-in-out;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes shadow {
+  50% {
+    left: var(--close-shadow-width);
+    right: var(--close-shadow-width);
+  }
 }

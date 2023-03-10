@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react"
+import Image from "next/image"
+import ProfileImg from "../../assets/images/Deveesh.jpg"
 import styles from "./Home.module.css"
 function Home() {
   const homeRef = useRef<HTMLDivElement>(null)
@@ -15,8 +17,13 @@ function Home() {
   }, [])
   return (
     <section className={styles.container} ref={homeRef}>
-      <div>
+      <div className={styles.content}>
         <h1></h1>
+      </div>
+      <div className={styles.image}>
+        <div>
+          <Image src={ProfileImg} alt="Deveesh Profile" />
+        </div>
       </div>
     </section>
   )
