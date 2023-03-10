@@ -18,7 +18,22 @@ function Home() {
   return (
     <section className={styles.container} ref={homeRef}>
       <div className={styles.content}>
-        <h1></h1>
+        <div className={styles.details}>
+          <h1>Deveesh Shetty</h1>
+          <div>
+            <p>
+              React Developer, to be Full Stack Developer. Constantly exploring
+              new concepts and ideas in the world of Web Development, building
+              projects daily to enhance my skills and get better bit by bit.
+              Looking forward to contribute to open source and build a
+              community.
+            </p>
+            <p>
+              "2nd year CSE Student, Developer by passion and an Artist by
+              hobby."
+            </p>
+          </div>
+        </div>
       </div>
       <div className={styles.image}>
         <div>
