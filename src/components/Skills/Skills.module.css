@@ -1,0 +1,104 @@
+.container {
+  height: 100%;
+  isolation: isolate;
+  padding: 2rem 1rem;
+  display: grid;
+  grid-template-rows: 20% 80%;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.heading > h2 {
+  font-size: var(--fs-heading);
+}
+.heading > h3 {
+  font-size: var(--fs-300);
+  text-align: center;
+}
+
+.skill_grid {
+  --columns: 5;
+  position: relative;
+  margin: min(5%, 5rem);
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  outline: 1px solid var(--clr-primary-100-9);
+  outline-offset: -2px;
+  /* background: linear-gradient(0deg, black, #444444); */
+}
+
+@keyframes colors {
+  25% {
+    box-shadow: inset 2px 2px green, inset -2px -2px green;
+  }
+  50% {
+    box-shadow: inset 2px 2px blue, inset -2px -2px blue;
+  }
+  75% {
+    box-shadow: inset 2px 2px purple, inset -2px -2px purple;
+  }
+}
+
+/* .skill_grid::after {
+  content: "";
+  position: absolute;
+  background-color: red;
+} */
+
+.languages,
+.libraries {
+  grid-column: span 5;
+}
+
+.tools {
+  grid-column: span 3;
+}
+
+.misc {
+  grid-column: span 2;
+}
+
+.skill_grid > div {
+  outline: 1px solid var(--clr-primary-100-9);
+  outline-offset: 2px;
+  display: flex;
+  padding-inline: 5vmin;
+  gap: 5vmin;
+  align-items: center;
+}
+
+.skill_grid > div > div {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+.skill_grid > div > div > p {
+  transform: translateX(-100%);
+  display: none;
+  transition: transform 500ms ease-in-out;
+}
+
+.skill_grid > div > div > *:not(p) {
+  font-size: var(--fs-400);
+}
+
+.skill_grid > div > div:hover {
+  flex-grow: 1;
+}
+
+.skill_grid > div > div:hover > p {
+  transform: translateX(0);
+  display: flex;
+}
+
+.skill_grid > div > div > p:hover {
+  color: var(--clr-primary-100-5);
+}
