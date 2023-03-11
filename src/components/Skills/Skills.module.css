@@ -67,6 +67,7 @@
   outline: 1px solid var(--clr-primary-100-9);
   outline-offset: 2px;
   display: flex;
+  flex-wrap: wrap;
   padding-inline: 5vmin;
   gap: 5vmin;
   align-items: center;
@@ -101,4 +102,38 @@
 
 .skill_grid > div > div > p:hover {
   color: var(--clr-primary-100-5);
+}
+
+@media screen and (width <= 50em) {
+  .skill_grid {
+    --columns: 6;
+  }
+  .skill_grid > div {
+    gap: 0;
+  }
+
+  .skill_grid > div > div {
+    flex-grow: 1;
+  }
+
+  .skill_grid > div > div > * {
+    margin-inline: auto;
+  }
+
+  .skill_grid > div > div:hover > p {
+    display: none;
+  }
+
+  .languages,
+  .libraries {
+    grid-column: span 6;
+  }
+
+  .tools {
+    grid-column: span 3;
+  }
+
+  .misc {
+    grid-column: span 3;
+  }
 }
