@@ -110,9 +110,42 @@
   padding: min(5%, 2rem);
 }
 
+.scroll_text_container {
+  --scroll-time: 15s;
+  --gap: 1rem;
+  position: relative;
+  display: flex;
+  font-size: 450%;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+}
+
+.scroll_text {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: var(--gap);
+  min-width: 100%;
+  animation: scroll var(--scroll-time) infinite linear;
+}
+
+.scroll_text_container:hover > .scroll_text {
+  animation: scroll reverse calc(var(--scroll-time) - 10s) infinite linear;
+}
+
 @keyframes scroll {
-  to {
-    transform: translateX(-100%);
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll_text {
+    animation: none;
   }
 }
 
@@ -126,5 +159,8 @@
   }
   .content {
     width: 90%;
+  }
+  .scroll_text {
+    display: none;
   }
 }

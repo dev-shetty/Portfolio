@@ -46,15 +46,16 @@ function ProjectPage() {
         <main className={styles.main} ref={mainRef}>
           {projects.map(
             (project, i) =>
-              index === i && <Projects key={project.id} project={project} />
+              // index === i && <Projects key={project.id} project={project} />
+              index === i && (
+                <Projects
+                  key={project.id}
+                  project={project}
+                  index={index}
+                  setIndex={setIndex}
+                />
+              )
           )}
-          {/* <Projects index={index} />
-          <Projects index={index} />
-          <Projects index={index} />
-          <Projects index={index} />
-          <Projects index={index} />
-          <Projects index={index} />
-          <Projects index={index} /> */}
         </main>
       </>
     </>

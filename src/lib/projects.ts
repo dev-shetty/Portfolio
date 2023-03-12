@@ -22,3 +22,5 @@ export const projects = [
     name: "Clouds",
   },
 ]
+
+export const projectsLength = projects.length

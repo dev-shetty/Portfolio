@@ -1,18 +1,32 @@
+import { Dispatch, SetStateAction, useEffect, useRef } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { Icon } from "@iconify/react"
 import ChromaticoMobile from "../../assets/projects/ChromaticoMobile.svg"
+import { projectsLength } from "@/lib/projects"
 import styles from "./Projects.module.css"
 
 type Props = {
+  index: number
+  setIndex: Dispatch<SetStateAction<number>>
   project: {
     id: string
     name: string
   }
 }
 
-function Projects({ project }: Props) {
+function Projects({ project, setIndex, index }: Props) {
   const { name } = project
+
+  function next() {
+    setIndex((prev) => (prev + 1) % projectsLength)
+  }
+
+  function prev() {
+    if (index === 0) setIndex((prev) => (prev = projectsLength - 1))
+    else setIndex((prev) => prev - 1)
+  }
+
   return (
     <AnimatePresence>
       <motion.section
@@ -54,11 +68,11 @@ function Projects({ project }: Props) {
               <button>Go Live</button>
             </div>
             <div className={styles.primary_navigation}>
-              <button data-function="prev">
+              <button data-function="prev" onClick={prev}>
                 <Icon icon="ic:baseline-arrow-left" />
                 <p>Prev</p>
               </button>
-              <button data-function="next">
+              <button data-function="next" onClick={next}>
                 <p>Next</p>
                 <Icon icon="ic:baseline-arrow-right" />
               </button>
@@ -70,7 +84,24 @@ function Projects({ project }: Props) {
             </a>
           </div>
         </div>
-        <div className={styles.scroll_text}></div>
+        <div className={styles.scroll_text_container}>
+          <div className={styles.scroll_text}>
+            <p>{name}</p>
+            <p>&bull;</p>
+            <p>{name}</p>
+            <p>&bull;</p>
+            <p>{name}</p>
+            <p>&bull;</p>
+          </div>
+          <div className={styles.scroll_text}>
+            <p>{name}</p>
+            <p>&bull;</p>
+            <p>{name}</p>
+            <p>&bull;</p>
+            <p>{name}</p>
+            <p>&bull;</p>
+          </div>
+        </div>
       </motion.section>
     </AnimatePresence>
   )

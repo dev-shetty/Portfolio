@@ -1,8 +1,10 @@
 .container {
   height: 1000%;
   position: absolute;
+  overflow-y: auto;
   inset: 0;
 }
+
 .main {
   min-height: 100%;
   isolation: isolate;
@@ -11,9 +13,7 @@
   position: fixed;
   min-width: 100%;
 }
-.main::-webkit-scrollbar {
-  display: none;
-}
+
 .main > section {
   position: absolute;
 }
@@ -25,25 +25,26 @@
   display: none;
 }
 
-.main > section:first-child button[data-function="prev"],
-.main > section:last-child button[data-function="next"] {
-  display: none;
-}
-
-.main > section:first-child div:has(button[data-function="prev"]),
-.main > section:last-child div:has(button[data-function="next"]) {
-  justify-content: center;
-}
-
 @media screen and (width <= 50em) {
   .container {
     height: 100%;
+    display: none;
   }
   .main {
-    position: relative;
     display: grid;
+    grid-auto-columns: 100vw;
+    grid-template-rows: 1fr;
+    max-width: 100vw;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+  }
+  .main::-webkit-scrollbar {
+    display: none;
   }
   .main > section {
-    position: relative;
+    scroll-snap-align: center;
+    grid-row: 1;
+    grid-column: auto;
   }
 }
