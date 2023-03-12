@@ -29,13 +29,23 @@ function Projects() {
           </div>
           <div className={styles.content_navigations}>
             <div>
-              <div>
+              <button className={styles.code_btn}>
                 <Icon icon="ph:code" />
                 <p>Source Code</p>
-              </div>
+              </button>
               <button>Blog</button>
             </div>
             <button>Go Live</button>
+          </div>
+          <div className={styles.primary_navigation}>
+            <button data-function="prev">
+              <Icon icon="ic:baseline-arrow-left" />
+              <p>Prev</p>
+            </button>
+            <button data-function="next">
+              <p>Next</p>
+              <Icon icon="ic:baseline-arrow-right" />
+            </button>
           </div>
         </div>
         <div className={styles.image_container}>

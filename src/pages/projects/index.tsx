@@ -22,9 +22,17 @@ function ProjectPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
-        <Navbar />
+        <div className={styles.nav}>
+          <Navbar />
+        </div>
         <Blob />
         <main className={styles.main}>
+          <Projects />
+          <Projects />
+          <Projects />
+          <Projects />
+          <Projects />
+          <Projects />
           <Projects />
         </main>
       </>
