@@ -1,5 +1,6 @@
 import Projects from "@/components/Projects/Projects"
 import Blob from "@/components/UIComponents/Blob/Blob"
+import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import Head from "next/head"
 import { useEffect } from "react"
 import styles from "../../styles/Projects.module.css"
@@ -21,6 +22,7 @@ function ProjectPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <>
+        <Navbar />
         <Blob />
         <main className={styles.main}>
           <Projects />

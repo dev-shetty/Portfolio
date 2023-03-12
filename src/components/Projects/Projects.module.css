@@ -98,3 +98,18 @@
     transform: translateX(-100%);
   }
 }
+
+@media screen and (width <= 50em) {
+  .projects {
+    --columns: 1;
+  }
+  .image_container {
+    height: 100%;
+  }
+  .content {
+    width: 90%;
+  }
+}
+
+@media screen and (width <= 40em) {
+}

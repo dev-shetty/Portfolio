@@ -33,7 +33,7 @@ function Projects() {
                 <Icon icon="ph:code" />
                 <p>Source Code</p>
               </div>
-              <button>Check Blog</button>
+              <button>Blog</button>
             </div>
             <button>Go Live</button>
           </div>
