@@ -1,0 +1,100 @@
+.container {
+  height: 100%;
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  grid-template-rows: 8fr 1fr;
+}
+
+.projects {
+  --columns: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+.content {
+  place-self: center;
+  padding: min(5%, 2rem);
+  width: 80%;
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content_heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content_heading > h2 {
+  font-size: var(--fs-heading);
+}
+.content_heading > h3 {
+  font-size: var(--fs-350);
+  color: var(--clr-primary-100-9);
+}
+
+.content_paragraph {
+  text-align: justify;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.content_navigations {
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.content_navigations > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content_navigations > div > div {
+  display: flex;
+  align-items: center;
+  gap: 1vmin;
+  cursor: pointer;
+}
+.content_navigations > div > div:hover {
+  color: var(--clr-primary-100-5);
+}
+.content_navigations > div > div > *:first-child {
+  font-size: var(--fs-350);
+}
+
+.content_navigations > div > button {
+  width: 40%;
+}
+.content_navigations button {
+  border-radius: 1vmin;
+  color: var(--clr-primary-100-9);
+  background-color: var(--clr-primary-100-2);
+  padding-block: 1vmin;
+  transition: outline-offset 100ms ease-in-out;
+}
+.content_navigations button:focus,
+.content_navigations button:hover {
+  outline: 1px solid var(--clr-primary-100-5);
+  outline-offset: 4px;
+}
+
+.image_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image_container img {
+  padding: min(5%, 2rem);
+}
+
+@keyframes scroll {
+  to {
+    transform: translateX(-100%);
+  }
+}

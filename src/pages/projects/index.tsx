@@ -1,6 +1,7 @@
+import Projects from "@/components/Projects/Projects"
 import Blob from "@/components/UIComponents/Blob/Blob"
 import Head from "next/head"
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 import styles from "../../styles/Projects.module.css"
 function ProjectPage() {
   useEffect(() => {
@@ -21,7 +22,9 @@ function ProjectPage() {
       </Head>
       <>
         <Blob />
-        <main className={styles.main}>aklsdnasjdb</main>
+        <main className={styles.main}>
+          <Projects />
+        </main>
       </>
     </>
   )
