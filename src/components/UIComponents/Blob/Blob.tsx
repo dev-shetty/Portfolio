@@ -1,5 +1,5 @@
 import useMouseMove from "@/hooks/useMouseMove"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import styles from "./Blob.module.css"
 
 function Blob() {

@@ -1,9 +1,8 @@
 .container {
   height: 100%;
-  isolation: isolate;
   padding: 2rem 1rem;
   display: grid;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 4fr 16fr 1fr;
 }
 
 .heading {
@@ -31,24 +30,6 @@
   outline-offset: -2px;
   /* background: linear-gradient(0deg, black, #444444); */
 }
-
-@keyframes colors {
-  25% {
-    box-shadow: inset 2px 2px green, inset -2px -2px green;
-  }
-  50% {
-    box-shadow: inset 2px 2px blue, inset -2px -2px blue;
-  }
-  75% {
-    box-shadow: inset 2px 2px purple, inset -2px -2px purple;
-  }
-}
-
-/* .skill_grid::after {
-  content: "";
-  position: absolute;
-  background-color: red;
-} */
 
 .languages,
 .libraries {
@@ -102,6 +83,34 @@
 
 .skill_grid > div > div > p:hover {
   color: var(--clr-primary-100-5);
+}
+
+.navigation {
+  margin-right: min(5%, 5rem);
+  margin-left: auto;
+  align-self: center;
+}
+
+.navigation_link {
+  display: flex;
+  align-items: center;
+}
+
+.navigation_link:hover {
+  text-decoration: underline;
+  color: var(--clr-primary-100-5);
+}
+
+@keyframes colors {
+  25% {
+    box-shadow: inset 2px 2px green, inset -2px -2px green;
+  }
+  50% {
+    box-shadow: inset 2px 2px blue, inset -2px -2px blue;
+  }
+  75% {
+    box-shadow: inset 2px 2px purple, inset -2px -2px purple;
+  }
 }
 
 @media screen and (width <= 50em) {

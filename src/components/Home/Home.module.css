@@ -2,7 +2,6 @@
   --columns: 2;
 
   height: 100vh;
-  isolation: isolate;
   display: grid;
   grid-template-columns: repeat(var(--columns), 1fr);
 }

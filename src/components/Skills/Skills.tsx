@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react"
+import Link from "next/link"
 import styles from "./Skills.module.css"
 function Skills() {
   return (
@@ -120,14 +121,6 @@ function Skills() {
         </div>
         <div className={styles.misc}>
           <div>
-            <Icon icon="akar-icons:figma-fill"></Icon>
-            <p>
-              <a href="https://www.figma.com/" target="_blank">
-                Figma
-              </a>
-            </p>
-          </div>
-          <div>
             <Icon icon="akar-icons:vscode-fill"></Icon>
             <p>
               <a href="https://code.visualstudio.com/" target="_blank">
@@ -148,6 +141,14 @@ function Skills() {
             <p>
               <a href="https://vercel.com/" target="_blank">
                 Vercel
+              </a>
+            </p>
+          </div>
+          <div>
+            <Icon icon="akar-icons:figma-fill"></Icon>
+            <p>
+              <a href="https://www.figma.com/" target="_blank">
+                Figma
               </a>
             </p>
           </div>
@@ -202,6 +203,14 @@ function Skills() {
             </p>
           </div>
         </div>
+      </div>
+      <div className={styles.navigation}>
+        <Link href="/projects">
+          <div className={styles.navigation_link}>
+            <p>Projects</p>
+            <Icon icon="ic:baseline-arrow-right"></Icon>
+          </div>
+        </Link>
       </div>
     </section>
   )
