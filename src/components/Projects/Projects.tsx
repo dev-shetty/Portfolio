@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react"
 import ChromaticoMobile from "../../assets/projects/ChromaticoMobile.svg"
 import { projectsLength } from "@/lib/projects"
 import styles from "./Projects.module.css"
+import Link from "next/link"
 
 type Props = {
   index: number
@@ -12,11 +13,27 @@ type Props = {
   project: {
     id: string
     name: string
+    tagline: string
+    sourceCode?: string
+    liveUrl?: string
+    blogUrl?: string
+    descriptionOne: string
+    descriptionTwo: string
+    img: string
   }
 }
 
 function Projects({ project, setIndex, index }: Props) {
-  const { name } = project
+  const {
+    name,
+    tagline,
+    sourceCode,
+    liveUrl,
+    blogUrl,
+    descriptionOne,
+    descriptionTwo,
+    img,
+  } = project
 
   function next() {
     setIndex((prev) => (prev + 1) % projectsLength)
@@ -39,7 +56,7 @@ function Projects({ project, setIndex, index }: Props) {
           <div className={styles.content}>
             <div className={styles.content_heading}>
               <h2>{name}</h2>
-              <h3>A Color Generator </h3>
+              <h3>{tagline}</h3>
             </div>
             <div className={styles.content_paragraph}>
               <p>
@@ -61,11 +78,21 @@ function Projects({ project, setIndex, index }: Props) {
               <div>
                 <button className={styles.code_btn}>
                   <Icon icon="ph:code" />
-                  <p>Source Code</p>
+                  <a href={sourceCode} target="_blank">
+                    <p>Source Code</p>
+                  </a>
                 </button>
-                <button>Blog</button>
+                <button className={styles.blog_btn}>
+                  <a href={blogUrl} target="_blank">
+                    Blog
+                  </a>
+                </button>
               </div>
-              <button>Go Live</button>
+              <button className={styles.live_btn}>
+                <a href={liveUrl} target="_blank">
+                  Go Live
+                </a>
+              </button>
             </div>
             <div className={styles.primary_navigation}>
               <button data-function="prev" onClick={prev}>

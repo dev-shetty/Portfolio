@@ -77,13 +77,28 @@
   border-radius: 1vmin;
   color: var(--clr-primary-100-9);
   background-color: var(--clr-primary-100-2);
-  padding-block: 1vmin;
   transition: outline-offset 100ms ease-in-out;
 }
 .content_navigations button:not(.code_btn):focus,
 .content_navigations button:not(.code_btn):hover {
   outline: 1px solid var(--clr-primary-100-5);
   outline-offset: 4px;
+}
+
+/* If button link doesn't start with http then show disable cursor */
+.blog_btn > a:not([href^="http"]),
+.live_btn > a:not([href^="http"]),
+.code_btn > a:not([href^="http"]) {
+  cursor: not-allowed;
+}
+
+.blog_btn > a,
+.live_btn > a {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-block: 1vmin;
+  border-radius: inherit;
 }
 
 .primary_navigation {
