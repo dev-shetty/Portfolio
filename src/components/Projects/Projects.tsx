@@ -1,11 +1,9 @@
-import { Dispatch, SetStateAction, useEffect, useRef } from "react"
-import Image from "next/image"
+import { Dispatch, SetStateAction } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image, { StaticImageData } from "next/image"
 import { Icon } from "@iconify/react"
-import ChromaticoMobile from "../../assets/projects/ChromaticoMobile.svg"
 import { projectsLength } from "@/lib/projects"
 import styles from "./Projects.module.css"
-import Link from "next/link"
 
 type Props = {
   index: number
@@ -14,12 +12,12 @@ type Props = {
     id: string
     name: string
     tagline: string
-    sourceCode?: string
-    liveUrl?: string
-    blogUrl?: string
+    sourceCode: string | null
+    liveUrl: string | null
+    blogUrl: string | null
     descriptionOne: string
     descriptionTwo: string
-    img: string
+    img: StaticImageData
   }
 }
 
@@ -78,18 +76,18 @@ function Projects({ project, setIndex, index }: Props) {
               <div>
                 <button className={styles.code_btn}>
                   <Icon icon="ph:code" />
-                  <a href={sourceCode} target="_blank">
+                  <a href={sourceCode!} target="_blank">
                     <p>Source Code</p>
                   </a>
                 </button>
                 <button className={styles.blog_btn}>
-                  <a href={blogUrl} target="_blank">
+                  <a href={blogUrl!} target="_blank">
                     Blog
                   </a>
                 </button>
               </div>
               <button className={styles.live_btn}>
-                <a href={liveUrl} target="_blank">
+                <a href={liveUrl!} target="_blank">
                   Go Live
                 </a>
               </button>
@@ -106,8 +104,8 @@ function Projects({ project, setIndex, index }: Props) {
             </div>
           </div>
           <div className={styles.image_container}>
-            <a href="https://chromatico.vercel.app" target="_blank">
-              <Image src={ChromaticoMobile} alt="Chromatico Mobile" />
+            <a href={liveUrl! } target="_blank">
+              <Image src={img} alt="Chromatico Mobile" />
             </a>
           </div>
         </div>

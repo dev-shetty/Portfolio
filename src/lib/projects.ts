@@ -1,4 +1,9 @@
 import { v4 as uuid } from "uuid"
+import ChromaticoMobile from "../assets/projects/ChromaticoMobile.png"
+import ExpenseTrackerMobile from "../assets/projects/ExpenseTrackerMobile.png"
+import RazerPC from "../assets/projects/RazerPC.png"
+import RolexPC from "../assets/projects/RolexPC.png"
+import CloudsPC from "../assets/projects/CloudsPC.png"
 
 export const projects = [
   {
@@ -10,18 +15,7 @@ export const projects = [
     blogUrl: null,
     descriptionOne: "",
     descriptionTwo: "",
-    img: "Chromatico",
-  },
-  {
-    id: uuid(),
-    name: "Expense Tracker",
-    tagline: "Track Your Expenses",
-    sourceCode: "https://github.com/Deveesh-Shetty/Expense-Tracker",
-    liveUrl: null,
-    blogUrl: null,
-    descriptionOne: "",
-    descriptionTwo: "",
-    img: "ExpenseTracker",
+    img: ChromaticoMobile,
   },
   {
     id: uuid(),
@@ -32,7 +26,7 @@ export const projects = [
     blogUrl: null,
     descriptionOne: "",
     descriptionTwo: "",
-    img: "RazerClone",
+    img: RazerPC,
   },
   {
     id: uuid(),
@@ -43,7 +37,18 @@ export const projects = [
     blogUrl: null,
     descriptionOne: "",
     descriptionTwo: "",
-    img: "RolexClone",
+    img: RolexPC,
+  },
+  {
+    id: uuid(),
+    name: "Expense Tracker",
+    tagline: "Track Your Expenses",
+    sourceCode: "https://github.com/Deveesh-Shetty/Expense-Tracker",
+    liveUrl: null,
+    blogUrl: null,
+    descriptionOne: "",
+    descriptionTwo: "",
+    img: ExpenseTrackerMobile,
   },
   {
     id: uuid(),
@@ -54,7 +59,7 @@ export const projects = [
     blogUrl: "",
     descriptionOne: "",
     descriptionTwo: "",
-    img: "Clouds",
+    img: CloudsPC,
   },
 ]
 
