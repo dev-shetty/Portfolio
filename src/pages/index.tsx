@@ -1,10 +1,10 @@
 import Head from "next/head"
 import Landing from "@/components/Landing/Landing"
 import Navbar from "@/components/UIComponents/Navbar/Navbar"
-import styles from "../styles/Landing.module.css"
 import Blob from "@/components/UIComponents/Blob/Blob"
 import Home from "@/components/Home/Home"
 import Skills from "@/components/Skills/Skills"
+import styles from "../styles/Landing.module.css"
 
 export default function LandingPage() {
   return (

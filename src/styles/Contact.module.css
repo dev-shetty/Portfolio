@@ -1,0 +1,23 @@
+.nav > nav {
+  position: fixed;
+}
+.nav > nav::after {
+  content: "";
+  display: none;
+}
+
+.main {
+  --columns: 2;
+
+  min-height: 100%;
+  isolation: isolate;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(var(--columns), 1fr);
+}
+
+@media screen and (width <= 50em) {
+  .main {
+    --columns: 1;
+  }
+}
