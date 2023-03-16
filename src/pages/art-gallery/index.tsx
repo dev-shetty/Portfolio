@@ -2,10 +2,10 @@ import { useEffect } from "react"
 import Head from "next/head"
 import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import Blob from "@/components/UIComponents/Blob/Blob"
-import Contact from "@/components/Contact/Contact"
-import styles from "../../styles/Contact.module.css"
+import styles from "../../styles/ArtGallery.module.css"
+import ArtGallery from "@/components/ArtGallery/ArtGallery"
 
-function ContactPage() {
+function ArtGalleryPage() {
   useEffect(() => {
     document.documentElement.style.setProperty("--blob-clr-1", "hotpink")
     document.documentElement.style.setProperty("--blob-clr-2", "turquoise")
@@ -13,8 +13,11 @@ function ContactPage() {
   return (
     <>
       <Head>
-        <title>Deveesh Shetty - Contact</title>
-        <meta name="description" content="Deveesh Shetty Contact Info" />
+        <title>Deveesh Shetty - Art Gallery</title>
+        <meta
+          name="description"
+          content="Arts - Paintings / Sketches made by Deveesh Shetty"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <>
@@ -23,11 +26,11 @@ function ContactPage() {
           <Navbar />
         </div>
         <main className={styles.main}>
-          <Contact />
+          <ArtGallery />
         </main>
       </>
     </>
   )
 }
 
-export default ContactPage
+export default ArtGalleryPage
