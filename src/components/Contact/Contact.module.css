@@ -1,3 +1,9 @@
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: true;
+}
+
 .card_container {
   display: flex;
   justify-content: center;
@@ -5,14 +11,47 @@
 }
 
 .card {
+  --clr-1: #8360c3;
+  --clr-2: #5890aa;
+  --clr-3: #2ebf91;
+
   display: grid;
   grid-template-rows: 3fr 4fr;
 
+  position: relative;
   width: min(75%, 25rem);
   aspect-ratio: 2 / 3;
-  background-color: var(--clr-primary-100-2);
-  outline: 2px solid var(--clr-primary-100-5);
+  background-color: #131313;
+  outline: 2px solid v ar(--clr-primary-100-5);
   border-radius: 1rem;
+  transform: scale3d(1.01, 1.01, 1.01);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  border-radius: calc(1rem + 0.5rem);
+  background: conic-gradient(
+    from var(--gradient-angle),
+    var(--clr-1),
+    var(--clr-2),
+    var(--clr-3),
+    var(--clr-2),
+    var(--clr-1)
+  );
+  z-index: -1;
+  filter: blur(3rem);
+  animation: rotate-gradient 5s infinite linear;
+}
+
+@keyframes rotate-gradient {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
 }
 
 .card_image {
