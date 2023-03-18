@@ -8,6 +8,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transform-style: preserve-3d;
+  transform: perspective(100rem);
 }
 
 .card {
@@ -24,7 +26,16 @@
   background-color: #131313;
   outline: 2px solid v ar(--clr-primary-100-5);
   border-radius: 1rem;
-  transform: scale3d(1.01, 1.01, 1.01);
+  background-color: var(--clr-1);
+
+  --rx: 0;
+  --ry: 0;
+  --bx: 50%;
+  --by: 80%;
+
+  transform: scale3d(1.01, 1.01, 1.01) rotateX(calc(var(--rx) * 1deg))
+    rotateY(calc(var(--ry) * 1deg));
+  transition: transform 200ms ease-in;
 }
 
 .card::after {
