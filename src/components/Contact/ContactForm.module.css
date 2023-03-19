@@ -1,0 +1,67 @@
+.container {
+  --gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap);
+  align-items: center;
+}
+
+.container > h2 {
+  font-size: var(--fs-heading);
+  color: var(--clr-primary-100-5);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--gap) / 1.5);
+  width: min(30rem, 75%);
+}
+.form > div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--gap) / 4);
+  justify-content: space-between;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  border-radius: 0.4rem;
+  padding: 0.5rem 1rem;
+  color: var(--clr-primary-100);
+  background: var(--clr-primary-100-2);
+}
+
+.form :is(input, textarea, button):focus,
+.form button:hover {
+  outline: 1px solid var(--clr-primary-100-5);
+  outline-offset: 4px;
+  transition: outline-offset 200ms ease-in;
+}
+
+.form textarea {
+  resize: none;
+}
+
+.form button {
+  background-color: var(--clr-primary-100-5);
+  width: fit-content;
+  margin-inline: auto;
+  padding: 0.5rem 2rem;
+  border-radius: 0.4rem;
+  color: var(--clr-primary-900);
+}
+
+@media screen and (width <= 50em) {
+  .container {
+    --gap: 1.5rem;
+  }
+  .form {
+    width: 95%;
+    padding-bottom: 5rem;
+  }
+}

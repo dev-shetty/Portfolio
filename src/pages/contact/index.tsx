@@ -1,11 +1,23 @@
-import { useEffect } from "react"
+import { FormEvent, useEffect, useRef, useState } from "react"
 import Head from "next/head"
 import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import Blob from "@/components/UIComponents/Blob/Blob"
 import Contact from "@/components/Contact/Contact"
+import ContactForm from "@/components/Contact/ContactForm"
 import styles from "../../styles/Contact.module.css"
 
 function ContactPage() {
+  const [details, setDetails] = useState({
+    email: "",
+    name: "",
+    desc: "",
+  })
+
+  function onFormSubmit(e: FormEvent) {
+    e.preventDefault()
+    console.log(details)
+  }
+
   useEffect(() => {
     document.documentElement.style.setProperty("--blob-clr-1", "hotpink")
     document.documentElement.style.setProperty("--blob-clr-2", "turquoise")
@@ -24,6 +36,11 @@ function ContactPage() {
         </div>
         <main className={styles.main}>
           <Contact />
+          <ContactForm
+            onSubmit={onFormSubmit}
+            details={details}
+            setDetails={setDetails}
+          />
         </main>
       </>
     </>
