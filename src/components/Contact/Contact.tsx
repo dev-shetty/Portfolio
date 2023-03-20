@@ -7,7 +7,7 @@ import styles from "./Contact.module.css"
 function Contact() {
   return (
     <div className={styles.card_container}>
-      <Tilt tiltMaxAngleX={5} tiltMaxAngleY={5} gyroscope={true}>
+      <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15} gyroscope={true}>
         <div className={styles.card}>
           <div className={styles.card_image}>
             <Image src={Profile} alt="Deveesh Profile" />
