@@ -1,8 +1,9 @@
-import { Icon } from "@iconify/react"
 import { useState } from "react"
 import Link from "next/link"
 import styles from "./Navbar.module.css"
 import { motion, AnimatePresence } from "framer-motion"
+import Bars from "@/assets/icons/Bars"
+import Close from "@/assets/icons/Close"
 
 function Navbar() {
   const [navbar, setNavbar] = useState(false)
@@ -17,7 +18,7 @@ function Navbar() {
     <>
       <nav className={styles.nav_toggle}>
         <div className={styles.bars} onClick={() => setNavbar(!navbar)}>
-          <Icon icon="heroicons:bars-3" />
+          <Bars />
         </div>
       </nav>
       <AnimatePresence mode="wait" initial={false}>
@@ -32,7 +33,7 @@ function Navbar() {
             transition={{ duration: 0.2, ease: "easeIn" }}
           >
             <div className={styles.bars} onClick={() => setNavbar(!navbar)}>
-              <Icon icon="material-symbols:close" />
+              <Close />
             </div>
             <div>
               <ul className={styles.nav_list}>
