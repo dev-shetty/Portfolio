@@ -55,7 +55,7 @@ export const arts = [
   {
     id: uuid(),
     img: "/sketch/Saibaba.jpg",
-    alt: "Water color painting of Shirdi Sai",
+    alt: "Water color painting of Shirdi Sai Baba",
   },
   {
     id: uuid(),

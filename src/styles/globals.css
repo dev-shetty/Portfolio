@@ -23,6 +23,8 @@ body {
   --clr-primary-100-5: rgba(255, 255, 255, 0.5);
   --clr-primary-100-9: rgba(255, 255, 255, 0.9);
 
+  --clr-primary-900-4: rgba(19, 19, 19, 0.4);
+
   /* Normal Colors */
   --clr-primary-100: rgb(255, 255, 255);
   --clr-primary-900: rgb(19, 19, 19);

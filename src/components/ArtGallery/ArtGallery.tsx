@@ -26,14 +26,15 @@ function ArtGallery() {
         <img src="https://source.unsplash.com/random?nature" alt="" /> */}
 
         {arts.map((art) => (
-          <Image
-            src={art.img}
-            alt={art.alt}
-            key={art.id}
-            width={1000}
-            height={1000}
-            title={art.alt}
-          />
+          <div key={art.id} data-content={art.alt}>
+            <Image
+              src={art.img}
+              alt={art.alt}
+              width={1000}
+              height={1000}
+              title={art.alt}
+            />
+          </div>
         ))}
       </div>
     </section>
