@@ -7,28 +7,11 @@ function ArtGallery() {
     <section className={styles.container}>
       <h1>Art Gallery</h1>
       <div className={styles.art_container}>
-        {/* <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" />
-        <img src="https://source.unsplash.com/random?nature" alt="" /> */}
-
         {arts.map((art) => (
           <div key={art.id} data-content={art.alt}>
             <Image
               src={art.img}
+              priority={art.priority || false}
               alt={art.alt}
               width={1000}
               height={1000}

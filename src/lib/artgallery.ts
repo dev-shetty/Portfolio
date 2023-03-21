@@ -5,6 +5,7 @@ export const arts = [
     id: uuid(),
     img: "/sketch/LalBaugChaRaja.jpg",
     alt: "A pencil portrait of Lal Baug Cha Raja Ganapathi in Maharashtra",
+    priority: true,
   },
   {
     id: uuid(),
