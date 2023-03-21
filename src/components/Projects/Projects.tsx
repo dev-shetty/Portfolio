@@ -57,20 +57,8 @@ function Projects({ project, setIndex, index }: Props) {
               <h3>{tagline}</h3>
             </div>
             <div className={styles.content_paragraph}>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat,
-                dolor iusto atque architecto odio, optio nihil ipsa at aut
-                delectus dolorum saepe. Sequi at expedita praesentium ullam
-                voluptatem velit, fugit ab! Similique odit necessitatibus velit
-                culpa, nulla neque tempore qui voluptate temporibus obcaecati
-                earum sint itaque! Exercitationem odit iste ad?
-              </p>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Voluptate quo dicta eaque, labore placeat odio deleniti,
-                suscipit tenetur itaque assumenda tempore. Vitae, ipsa?
-                Doloribus!
-              </p>
+              <p>{descriptionOne}</p>
+              <p>{descriptionTwo}</p>
             </div>
             <div className={styles.content_navigations}>
               <div>
@@ -104,7 +92,7 @@ function Projects({ project, setIndex, index }: Props) {
             </div>
           </div>
           <div className={styles.image_container}>
-            <a href={liveUrl! } target="_blank">
+            <a href={liveUrl!} target="_blank">
               <Image src={img} alt="Chromatico Mobile" />
             </a>
           </div>

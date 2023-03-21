@@ -1,6 +1,5 @@
 import { arts } from "@/lib/artgallery"
 import Image from "next/image"
-import { useEffect, useRef } from "react"
 import styles from "./ArtGallery.module.css"
 function ArtGallery() {
   return (
