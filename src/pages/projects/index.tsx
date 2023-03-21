@@ -14,8 +14,6 @@ function ProjectPage() {
 
   useEffect(() => {
     const mainHeight = mainRef.current!.clientHeight
-    document.documentElement.style.setProperty("--blob-clr-1", "hotpink")
-    document.documentElement.style.setProperty("--blob-clr-2", "turquoise")
 
     if (window.innerWidth <= 767) return
     containerRef.current!.style.height = `${projects.length * 100}%`

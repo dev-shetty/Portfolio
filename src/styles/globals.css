@@ -28,8 +28,8 @@ body {
   /* Normal Colors */
   --clr-primary-100: rgb(255, 255, 255);
   --clr-primary-900: rgb(19, 19, 19);
-  --blob-clr-1: rgb(255, 0, 0);
-  --blob-clr-2: rgb(0, 0, 255);
+  --blob-clr-1: hotpink;
+  --blob-clr-2: turquoise;
 
   /* Font Sizes */
   --fs-dev: clamp(1rem, 15vw, 15rem);

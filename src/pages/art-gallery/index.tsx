@@ -6,10 +6,6 @@ import styles from "../../styles/ArtGallery.module.css"
 import ArtGallery from "@/components/ArtGallery/ArtGallery"
 
 function ArtGalleryPage() {
-  useEffect(() => {
-    document.documentElement.style.setProperty("--blob-clr-1", "hotpink")
-    document.documentElement.style.setProperty("--blob-clr-2", "turquoise")
-  }, [])
   return (
     <>
       <Head>

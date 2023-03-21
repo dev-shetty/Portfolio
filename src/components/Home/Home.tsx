@@ -3,21 +3,8 @@ import Image from "next/image"
 import ProfileImg from "../../assets/images/Deveesh.jpg"
 import styles from "./Home.module.css"
 function Home() {
-  const homeRef = useRef<HTMLDivElement>(null)
-  function onMouseEnter() {
-    document.documentElement.style.setProperty("--blob-clr-1", "hotpink")
-    document.documentElement.style.setProperty("--blob-clr-2", "turquoise")
-  }
-  useEffect(() => {
-    const homeNode = homeRef.current
-    homeNode?.addEventListener("mouseenter", onMouseEnter)
-
-    return () => {
-      homeNode?.removeEventListener("mouseenter", onMouseEnter)
-    }
-  }, [])
   return (
-    <section className={styles.container} ref={homeRef}>
+    <section className={styles.container}>
       <div className={styles.content}>
         <div className={styles.details}>
           <h1>Deveesh Shetty</h1>

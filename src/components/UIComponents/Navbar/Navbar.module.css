@@ -37,6 +37,7 @@
 }
 
 .navbar {
+  --background-size: 200px;
   position: fixed;
   display: flex;
   align-items: center;
@@ -47,7 +48,7 @@
     var(--clr-primary-100) 15px,
     var(--clr-primary-900) 0
   );
-  background-size: 200px 200px;
+  background-size: var(--background-size) var(--background-size);
   isolation: isolate;
   transition: all 400ms ease-in-out;
 }
@@ -97,21 +98,21 @@
   color: var(--clr-primary-100-5);
 }
 
+.navbar.navbar:has(.nav_list > li:hover) {
+  --background-size: 180px;
+}
+
 .navbar:has(.nav_list > li:nth-child(1):hover) {
   background-position: 0 -50px;
-  background-size: 150px 150px;
 }
 .navbar:has(.nav_list > li:nth-child(2):hover) {
   background-position: 0 -100px;
-  background-size: 150px 150px;
 }
 .navbar:has(.nav_list > li:nth-child(3):hover) {
   background-position: 0 -150px;
-  background-size: 150px 150px;
 }
 .navbar:has(.nav_list > li:nth-child(4):hover) {
   background-position: 0 -200px;
-  background-size: 150px 150px;
 }
 
 .nav_list > li:hover::after {
@@ -129,5 +130,11 @@
 @media screen and (width <= 40em) {
   .nav_toggle::after {
     display: none;
+  }
+  .navbar {
+    --background-size: 150px;
+  }
+  .navbar.navbar:has(.nav_list > li:hover) {
+    --background-size: 150px;
   }
 }

@@ -18,10 +18,6 @@ function ContactPage() {
     console.log(details)
   }
 
-  useEffect(() => {
-    document.documentElement.style.setProperty("--blob-clr-1", "hotpink")
-    document.documentElement.style.setProperty("--blob-clr-2", "turquoise")
-  }, [])
   return (
     <>
       <Head>
