@@ -1,5 +1,6 @@
 import { FormEvent, useEffect, useRef, useState } from "react"
 import Head from "next/head"
+import axios from "axios"
 import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import Blob from "@/components/UIComponents/Blob/Blob"
 import Contact from "@/components/Contact/Contact"
@@ -13,9 +14,14 @@ function ContactPage() {
     desc: "",
   })
 
-  function onFormSubmit(e: FormEvent) {
+  const { email, name, desc } = details
+
+  async function onFormSubmit(e: FormEvent) {
     e.preventDefault()
-    console.log(details)
+    if (!email || !name) return
+    const response = await axios.post("/api/mail", details)
+
+    console.log(response)
   }
 
   return (

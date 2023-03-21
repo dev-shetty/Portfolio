@@ -24,7 +24,7 @@ function ContactForm({ onSubmit, details, setDetails }: Props) {
   return (
     <div className={styles.container}>
       <h2>Contact Me</h2>
-      <form className={styles.form} onSubmit={onSubmit}>
+      <form className={styles.form} method="post" onSubmit={onSubmit}>
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -50,10 +50,10 @@ function ContactForm({ onSubmit, details, setDetails }: Props) {
           />
         </div>
         <div>
-          <label htmlFor="content">Description</label>
+          <label htmlFor="desc">Description</label>
           <textarea
-            name="content"
-            id="content"
+            name="desc"
+            id="desc"
             onChange={onChange}
             placeholder="Your opinion on the website"
             defaultValue={desc}
