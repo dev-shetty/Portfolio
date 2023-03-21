@@ -1,6 +1,5 @@
 .nav > nav {
   position: fixed;
-  width: fit-content;
 }
 .nav > nav::after {
   content: "";
