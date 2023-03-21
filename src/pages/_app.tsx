@@ -5,7 +5,7 @@ import "@/styles/globals.css"
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <NextNProgress color="#40e0d0" />
+      <NextNProgress color="var(--clr-primary-100)" />
       <Component {...pageProps} />
     </>
   )
