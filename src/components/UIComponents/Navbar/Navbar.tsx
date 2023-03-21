@@ -37,16 +37,24 @@ function Navbar() {
             <div>
               <ul className={styles.nav_list}>
                 <li>
-                  <Link href="/">Home</Link>
+                  <Link onClick={() => setNavbar(false)} href="/">
+                    Home
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/projects">Projects</Link>
+                  <Link onClick={() => setNavbar(false)} href="/projects">
+                    Projects
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/art-gallery">Art Gallery</Link>
+                  <Link onClick={() => setNavbar(false)} href="/art-gallery">
+                    Art Gallery
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/contact">Contact</Link>
+                  <Link onClick={() => setNavbar(false)} href="/contact">
+                    Contact
+                  </Link>
                 </li>
               </ul>
             </div>
