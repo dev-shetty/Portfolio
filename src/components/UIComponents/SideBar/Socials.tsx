@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react"
+import { Github, Linkedin, Twitter } from "@/assets/icons/SocialIcons"
 import styles from "./Socials.module.css"
 
 function Socials() {
@@ -6,7 +6,7 @@ function Socials() {
     <aside className={styles.socials}>
       <a href="https://github.com/Deveesh-Shetty" target="_blank">
         <div>
-          <Icon icon="lucide:github" />
+          <Github />
         </div>
       </a>
       <a
@@ -14,12 +14,12 @@ function Socials() {
         target="_blank"
       >
         <div>
-          <Icon icon="lucide:linkedin" />
+          <Linkedin />
         </div>
       </a>
       <a href="https://twitter.com/shettydeveesh" target="_blank">
         <div>
-          <Icon icon="lucide:twitter" />
+          <Twitter />
         </div>
       </a>
     </aside>
