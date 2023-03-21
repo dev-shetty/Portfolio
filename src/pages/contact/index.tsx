@@ -21,11 +21,9 @@ function ContactPage() {
     if (!email || !name) return
     const response = await axios.post("/api/mail", details)
 
-    // if (response.status === 200) console.log("Mail has been sent")
-    // else console.log("There was an error sending the mail")
-
-    // console.log(response)
-  }
+    if (response.status === 200) console.log(response.data)
+    else console.log("There was an error sending the mail")
+    }
 
   return (
     <>

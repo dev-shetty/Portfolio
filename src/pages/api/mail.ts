@@ -22,11 +22,8 @@ oAuth2Client.setCredentials({
 type Data = {
   success: boolean
   message?: string
-  details?: {
-    name: string
-    email: string
-    desc: string
-  }
+  name?: string
+  error?: object
 }
 
 export default function handler(
@@ -48,7 +45,7 @@ export default function handler(
       clientId,
       clientSecret,
       refreshToken,
-      accessToken: accessToken,
+      accessToken,
     },
     secure: true,
   })
@@ -57,18 +54,22 @@ export default function handler(
     from: process.env.EMAIL,
     to: "deveeshshetty@gmail.com",
     subject: `Message from ${name}`,
-    text: desc + " | Sent from: " + email,
-    html: `<div>${desc}</div><p>Sent from:
+    text: desc + " | Sent by: " + email,
+    html: `<div>${desc}</div><p>Sent by:
     ${email}</p>`,
   }
 
   transporter.sendMail(mailData, (error, info) => {
     if (error) {
       console.log(error)
+      res.status(500).json({ success: false, error: error })
     } else {
-      console.log(info)
+      console.log("Mail has been sent successfully")
+      res.status(200).json({
+        success: true,
+        name,
+        message: `${name} your mail has been sent, I will reply you soon :)`,
+      })
     }
   })
-
-  res.status(200).json({ success: true, details: { name, email, desc } })
 }
