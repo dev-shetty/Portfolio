@@ -32,6 +32,7 @@ function ArtGallery() {
             key={art.id}
             width={1000}
             height={1000}
+            title={art.alt}
           />
         ))}
       </div>
