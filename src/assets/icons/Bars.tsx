@@ -10,9 +10,9 @@ function Bars() {
       <path
         fill="none"
         stroke="currentColor"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
       />
     </svg>

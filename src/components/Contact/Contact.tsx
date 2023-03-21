@@ -10,7 +10,7 @@ function Contact() {
       <Tilt tiltMaxAngleX={15} tiltMaxAngleY={15}>
         <div className={styles.card}>
           <div className={styles.card_image}>
-            <Image src={Profile} alt="Deveesh Profile" />
+            <Image src={Profile} alt="Deveesh Profile" priority />
           </div>
           <div className={styles.card_content}>
             <div>

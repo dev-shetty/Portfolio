@@ -24,7 +24,7 @@ function Home() {
       </div>
       <div className={styles.image}>
         <div>
-          <Image src={ProfileImg} alt="Deveesh Profile" />
+          <Image src={ProfileImg} alt="Deveesh Profile" priority />
         </div>
       </div>
     </section>
