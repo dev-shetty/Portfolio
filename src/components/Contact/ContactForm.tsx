@@ -61,7 +61,9 @@ function ContactForm({ onSubmit, details, setDetails }: Props) {
           ></textarea>
         </div>
         <div>
-          <button type="submit">Submit</button>
+          <button type="submit">
+            <p>Submit</p>
+          </button>
         </div>
       </form>
     </div>

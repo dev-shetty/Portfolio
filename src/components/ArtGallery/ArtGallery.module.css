@@ -4,12 +4,20 @@
   height: 100%;
 }
 
-.container > h1 {
+.container > div:has(h1) {
   padding-bottom: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.container > div > h1 {
   font-size: var(--fs-heading);
+}
+.container > div > h2 {
+  font-size: var(--fs-350);
+  text-align: center;
 }
 
 .art_container {
@@ -26,6 +34,7 @@
 .art_container > div {
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .art_container > div > img {
@@ -84,5 +93,13 @@
     --columns: 2;
     grid-template-columns: repeat(var(--columns), 1fr);
     grid-auto-rows: auto;
+  }
+
+  .container > div:has(h1) {
+    padding-block: 1rem;
+  }
+
+  .container > div > h2 {
+    font-size: var(--fs-300);
   }
 }
