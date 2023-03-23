@@ -24,6 +24,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-parallax-tilt": "^1.7.117",
+    "react-toastify": "^9.1.2",
     "typescript": "4.9.5",
     "uuid": "^9.0.0"
   },

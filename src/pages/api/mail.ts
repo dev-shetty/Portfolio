@@ -62,7 +62,7 @@ export default async function handler(
         return res.status(200).json({
           success: true,
           name,
-          message: `${name} your mail has been sent, I will reply you soon :)`,
+          message: `${name} your mail has been sent, I will reach back to you soon`,
         })
       }
     })

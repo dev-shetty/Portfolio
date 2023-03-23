@@ -57,6 +57,10 @@
   color: var(--clr-primary-900);
 }
 
+.toast {
+  position: absolute;
+}
+
 @media screen and (width <= 50em) {
   .container {
     --gap: 1.5rem;
