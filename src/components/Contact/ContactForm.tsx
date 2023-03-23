@@ -1,30 +1,39 @@
-import { ChangeEvent, Dispatch, FormEvent, SetStateAction } from "react"
+import axios from "axios"
+import { FormEvent, useState, ChangeEvent } from "react"
 import styles from "./ContactForm.module.css"
 
-type FormValues = {
-  email: string
-  name: string
-  desc: string
-}
+function ContactForm() {
+  const [details, setDetails] = useState({
+    email: "",
+    name: "",
+    desc: "",
+  })
 
-interface Props {
-  onSubmit: (e: FormEvent) => void
-  details: FormValues
-  setDetails: Dispatch<SetStateAction<FormValues>>
-}
+  async function handleFormSubmit(e: FormEvent) {
+    e.preventDefault()
+    if (!details.email || !details.name) return
+    const response = await axios.post("/api/mail", details)
+    console.table(details)
 
-function ContactForm({ onSubmit, details, setDetails }: Props) {
-  const { email, name, desc } = details
+    if (response.status === 200) {
+      console.log(response.data)
+      setDetails({
+        email: "",
+        name: "",
+        desc: "",
+      })
+    } else console.log("There was an error sending the mail")
+  }
 
   function onChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const detailsCopy = details
-    setDetails({ ...detailsCopy, [e.target.name]: e.target.value })
+    // const detailsCopy = details
+    setDetails({ ...details, [e.target.name]: e.target.value })
   }
 
   return (
     <div className={styles.container}>
       <h2>Contact Me</h2>
-      <form className={styles.form} method="post" onSubmit={onSubmit}>
+      <form className={styles.form} method="post" onSubmit={handleFormSubmit}>
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -33,7 +42,7 @@ function ContactForm({ onSubmit, details, setDetails }: Props) {
             id="email"
             onChange={onChange}
             placeholder="developer@developer.com"
-            defaultValue={email}
+            value={details.email}
             required
           />
         </div>
@@ -45,7 +54,7 @@ function ContactForm({ onSubmit, details, setDetails }: Props) {
             id="name"
             onChange={onChange}
             placeholder="Developer X"
-            defaultValue={name}
+            value={details.name}
             required
           />
         </div>
@@ -56,7 +65,7 @@ function ContactForm({ onSubmit, details, setDetails }: Props) {
             id="desc"
             onChange={onChange}
             placeholder="Your opinion on the website"
-            defaultValue={desc}
+            value={details.desc}
             rows={6}
           ></textarea>
         </div>
