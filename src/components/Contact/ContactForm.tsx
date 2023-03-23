@@ -1,3 +1,4 @@
+import Loading from "@/components/UIComponents/Loading/Loading"
 import axios from "axios"
 import { FormEvent, useState, ChangeEvent } from "react"
 import styles from "./ContactForm.module.css"
@@ -9,25 +10,35 @@ function ContactForm() {
     desc: "",
   })
 
+  const [loading, setLoading] = useState(false)
+
   async function handleFormSubmit(e: FormEvent) {
     e.preventDefault()
+    setLoading(true)
     if (!details.email || !details.name) return
-    const response = await axios.post("/api/mail", details)
-    console.table(details)
+    try {
+      const response = await axios.post("/api/mail", details)
 
-    if (response.status === 200) {
-      console.log(response.data)
-      setDetails({
-        email: "",
-        name: "",
-        desc: "",
-      })
-    } else console.log("There was an error sending the mail")
+      if (response.status === 200) {
+        console.log(response.data)
+        setDetails({
+          email: "",
+          name: "",
+          desc: "",
+        })
+      } else {
+        console.log("There was an error sending the mail")
+      }
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setLoading(false)
+    }
   }
 
   function onChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    // const detailsCopy = details
-    setDetails({ ...details, [e.target.name]: e.target.value })
+    const detailsCopy = details
+    setDetails({ ...detailsCopy, [e.target.name]: e.target.value })
   }
 
   return (
@@ -71,7 +82,7 @@ function ContactForm() {
         </div>
         <div>
           <button type="submit">
-            <p>Submit</p>
+            <div>{loading ? <Loading /> : "Send"}</div>
           </button>
         </div>
       </form>

@@ -48,10 +48,11 @@
 }
 
 .form button {
+  position: relative;
   background-color: var(--clr-primary-100-5);
-  width: fit-content;
+  width: 6rem;
+  height: 2rem;
   margin-inline: auto;
-  padding: 0.5rem 2rem;
   border-radius: 0.4rem;
   color: var(--clr-primary-900);
 }
