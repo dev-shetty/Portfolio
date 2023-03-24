@@ -12,7 +12,7 @@
 }
 
 .bars {
-  font-size: var(--fs-400);
+  font-size: var(--fs-500);
   color: var(--clr-primary-100-5);
   transition: color 150ms ease-in-out;
 }

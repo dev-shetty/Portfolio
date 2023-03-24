@@ -104,7 +104,7 @@ function ContactForm() {
               name="desc"
               id="desc"
               onChange={onChange}
-              placeholder="Your opinion on the website"
+              placeholder="Your thoughts"
               value={details.desc}
               rows={6}
             ></textarea>

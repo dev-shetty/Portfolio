@@ -15,7 +15,6 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* height: 100%; */
 }
 
 .card {
@@ -32,6 +31,7 @@
   background-color: #131313;
   border-radius: 1rem;
   background-color: var(--clr-1);
+  padding-block: 1rem;
 
   transform: scale3d(1, 1, 1);
   transition: transform 200ms ease-in;
@@ -72,8 +72,10 @@
 
 .card_image > img {
   width: 50%;
+  display: block;
   aspect-ratio: 1;
   border-radius: 50%;
+  transition: transform 300ms ease-in-out;
 }
 
 .card_content {
@@ -85,6 +87,7 @@
 
 .card_content > div:has(h2) {
   text-align: center;
+  transition: transform 400ms ease-in-out;
 }
 
 .card_content > div > h2 {
@@ -125,14 +128,53 @@
 
 .socials > div:hover {
   background-color: var(--clr-primary-100-5);
-  outline: 2px solid var(--clr-primary-100-2);
+  outline: 2px solid remvar(--clr-primary-100-2);
+}
+
+@media screen and (width >= 50em) {
+  .socials,
+  .card_content,
+  .card_image {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .card:hover .socials > div,
+  .card:hover .card_content > div,
+  .card:hover .card_image > img {
+    transform: translateZ(2rem);
+  }
+
+  .card:hover .socials > div {
+    box-shadow: 1px 1px 1rem var(--clr-primary-100-5);
+  }
+
+  .card:hover .socials > div:nth-child(2) {
+    transition-delay: 100ms;
+  }
+  .card:hover .socials > div:nth-child(3) {
+    transition-delay: 200ms;
+  }
+  .card:hover .socials > div:last-child {
+    transition-delay: 300ms;
+  }
+
+  .card:hover .card_content > div {
+    filter: drop-shadow(2px 2px 1rem var(--clr-primary-100-5));
+  }
+
+  .card:hover .card_image > img {
+    box-shadow: 1px 1px 1rem var(--clr-primary-100-5);
+  }
 }
 
 @media screen and (width <= 50em) {
   .card {
+    margin-top: 20%;
     width: 90%;
   }
   .card_content {
+    margin-top: 5%;
     font-size: var(--fs-text);
   }
   .card_content > div > h2 {

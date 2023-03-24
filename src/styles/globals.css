@@ -38,6 +38,7 @@ body {
   --fs-300: clamp(1rem, 2vmin, 1.5rem);
   --fs-350: clamp(1.1rem, 2.2vmin, 1.5rem);
   --fs-400: clamp(1rem, 6vw, 2rem);
+  --fs-500: clamp(1.5rem, 8vw, 2rem);
 
   /* Extras */
   --line-width: 2px;

@@ -169,6 +169,7 @@
   .container {
     height: auto;
     min-height: 100%;
+    grid-template-rows: 1fr;
   }
   .projects {
     --columns: 1;
