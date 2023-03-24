@@ -1,6 +1,6 @@
 import { FormEvent, useState, ChangeEvent } from "react"
 import axios from "axios"
-import { ToastContainer, toast } from "react-toastify"
+import { toast } from "react-toastify"
 import Loading from "@/components/UIComponents/Loading/Loading"
 import styles from "./ContactForm.module.css"
 
@@ -15,10 +15,29 @@ function ContactForm() {
 
   async function handleFormSubmit(e: FormEvent) {
     e.preventDefault()
-    setLoading(true)
-    if (!details.email || !details.name) return
+    if (!details.email || !details.name) {
+      toast.error("Fill the email and name fields", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
+      return
+    }
+
     try {
-      const response = await axios.post("/api/mail", details)
+      setLoading(true)
+      const response = await axios("/api/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: details,
+      })
 
       if (response.status === 200) {
         console.log(response.data)
@@ -66,7 +85,6 @@ function ContactForm() {
               onChange={onChange}
               placeholder="developer@developer.com"
               value={details.email}
-              required
             />
           </div>
           <div>
@@ -78,7 +96,6 @@ function ContactForm() {
               onChange={onChange}
               placeholder="Developer X"
               value={details.name}
-              required
             />
           </div>
           <div>
@@ -93,7 +110,7 @@ function ContactForm() {
             ></textarea>
           </div>
           <div>
-            <button type="submit">
+            <button type="submit" disabled={loading}>
               <div>{loading ? <Loading /> : "Send"}</div>
             </button>
           </div>
