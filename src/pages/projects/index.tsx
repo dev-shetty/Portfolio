@@ -32,7 +32,6 @@ function ProjectPage() {
           name="description"
           content="Projects built by Deveesh Shetty showcased in my portfolio site"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <>
         <div className={styles.nav}>

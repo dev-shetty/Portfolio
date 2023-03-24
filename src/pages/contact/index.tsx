@@ -11,7 +11,6 @@ function ContactPage() {
       <Head>
         <title>Deveesh Shetty - Contact</title>
         <meta name="description" content="Deveesh Shetty Contact Info" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <>
         <Blob />
