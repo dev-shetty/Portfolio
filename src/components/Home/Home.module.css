@@ -46,8 +46,25 @@
 
 .content {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.resume {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2%;
+  background-color: var(--clr-primary-100-2);
+  transition: all 200ms ease-in-out;
+  padding: 0.5rem 2rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--clr-primary-100-5);
+}
+
+.resume:hover {
+  background-color: var(--clr-primary-100-5);
 }
 
 .details {
@@ -89,6 +106,9 @@
     align-items: center;
     justify-content: center;
     gap: 3rem;
+  }
+  .resume {
+    margin-top: 2rem;
   }
   .image > div,
   .image > div::after {
