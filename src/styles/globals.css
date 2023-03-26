@@ -28,8 +28,28 @@ body {
   /* Normal Colors */
   --clr-primary-100: rgb(255, 255, 255);
   --clr-primary-900: rgb(19, 19, 19);
-  --blob-clr-1: hotpink;
-  --blob-clr-2: turquoise;
+
+  /* Blob Colors */
+
+  /* Hotpink and Turquoise - Fallback*/
+  --blob-clr-1: #ff69b4;
+  --blob-clr-2: #40e0d0;
+
+  /* Island Green anf White */
+  /* --blob-clr-1: #2bae66; */
+  /* --blob-clr-2: #fcf6f5; */
+
+  /* Royal Purple and Ice Flow */
+  /* --blob-clr-1: #603f83; */
+  /* --blob-clr-2: #c7d3d4; */
+
+  /* Sailor Blue and Mint */
+  /* --blob-clr-1: #00203f; */
+  /* --blob-clr-2: #adefd1; */
+
+  /* Electric Blue Lemonade and Aquamarine */
+  /* --blob-clr-1: #0063b2; */
+  /* --blob-clr-2: #9cc3d5; */
 
   /* Font Sizes */
   --fs-dev: clamp(1rem, 15vw, 15rem);
@@ -61,7 +81,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 :is(p, q, h1, h2, h3, h4, h5, h6)::selection,
-:is(a, label, input, textarea)::selection {
+:is(a, label, input, textarea, button)::selection {
   background-color: var(--clr-primary-100-9);
   color: var(--clr-primary-900);
 }

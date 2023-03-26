@@ -147,7 +147,8 @@
 }
 
 .scroll_text_container:hover > .scroll_text {
-  animation: scroll reverse calc(var(--scroll-time) - 10s) infinite linear;
+  /* animation: scroll reverse calc(var(--scroll-time) - 10s) infinite linear; */
+  animation-play-state: paused;
 }
 
 @keyframes scroll {

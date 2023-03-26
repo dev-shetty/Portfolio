@@ -1,6 +1,5 @@
 import Socials from "@/components/UIComponents/SideBar/Socials"
 import { Icon } from "@iconify/react"
-import { useEffect, useRef } from "react"
 import styles from "./Landing.module.css"
 
 function Landing() {
