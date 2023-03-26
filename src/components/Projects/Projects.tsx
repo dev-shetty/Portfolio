@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, RefObject, SetStateAction, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image, { StaticImageData } from "next/image"
 import { Icon } from "@iconify/react"
@@ -41,6 +41,19 @@ function Projects({ project, setIndex, index }: Props) {
     if (index === 0) setIndex((prev) => (prev = projectsLength - 1))
     else setIndex((prev) => prev - 1)
   }
+
+  function handleToggle(e: KeyboardEvent) {
+    if (e.key === "ArrowLeft") prev()
+    else if (e.key == "ArrowRight") next()
+  }
+
+  useEffect(() => {
+    document.addEventListener("keyup", handleToggle)
+
+    return () => {
+      document.removeEventListener("keyup", handleToggle)
+    }
+  }, [])
 
   return (
     <AnimatePresence>

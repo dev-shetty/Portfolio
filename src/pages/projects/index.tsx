@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useState } from "react"
 import Projects from "@/components/Projects/Projects"
 import Blob from "@/components/UIComponents/Blob/Blob"
 import Navbar from "@/components/UIComponents/Navbar/Navbar"
@@ -8,21 +8,6 @@ import styles from "../../styles/Projects.module.css"
 
 function ProjectPage() {
   const [index, setIndex] = useState(0)
-
-  const mainRef = useRef<HTMLDivElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const mainHeight = mainRef.current!.clientHeight
-
-    if (window.innerWidth <= 767) return
-    containerRef.current!.style.height = `${projects.length * 100}%`
-
-    window.onscroll = () => {
-      const { scrollY } = window
-      setIndex((prev) => (prev = Math.floor(scrollY / mainHeight)))
-    }
-  }, [])
 
   return (
     <>
@@ -38,11 +23,9 @@ function ProjectPage() {
           <Navbar />
         </div>
         <Blob />
-        <div className={styles.container} ref={containerRef}></div>
-        <main className={styles.main} ref={mainRef}>
+        <main className={styles.main}>
           {projects.map(
             (project, i) =>
-              // index === i && <Projects key={project.id} project={project} />
               index === i && (
                 <Projects
                   key={project.id}

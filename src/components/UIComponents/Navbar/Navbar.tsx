@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import styles from "./Navbar.module.css"
 import { motion, AnimatePresence } from "framer-motion"
@@ -13,6 +13,20 @@ function Navbar() {
     animate: { y: 0 },
     end: { y: "-5000%" },
   }
+
+  function exitNavbar(e: KeyboardEvent) {
+    if (e.key === "Escape") {
+      setNavbar(false)
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("keyup", exitNavbar)
+
+    return () => {
+      document.removeEventListener("keyup", exitNavbar)
+    }
+  }, [])
 
   return (
     <>
