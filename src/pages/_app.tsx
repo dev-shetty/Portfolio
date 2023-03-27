@@ -20,7 +20,12 @@ export default function App({ Component, pageProps }: AppProps) {
     )
   }
   useEffect(() => {
+    document.addEventListener("dblclick", generateBlobColors)
     generateBlobColors()
+
+    return () => {
+      document.removeEventListener("dblclick", generateBlobColors)
+    }
   }, [])
   return (
     <>

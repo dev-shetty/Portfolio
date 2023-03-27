@@ -15,8 +15,8 @@ function ContactForm() {
 
   async function handleFormSubmit(e: FormEvent) {
     e.preventDefault()
-    if (!details.email || !details.name) {
-      toast.error("Fill the email and name fields", {
+    if (!details.email || !details.name || !details.desc) {
+      toast.error("Fill all the fields!!", {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -104,7 +104,7 @@ function ContactForm() {
               name="desc"
               id="desc"
               onChange={onChange}
-              placeholder="Your thoughts"
+              placeholder="What's up?"
               value={details.desc}
               rows={6}
             ></textarea>

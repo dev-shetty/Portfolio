@@ -31,10 +31,10 @@ export default async function handler(
       .json({ success: false, message: "The method is not defined" })
   }
 
-  if (!email || !name) {
+  if (!email || !name || !desc) {
     return res
       .status(400)
-      .json({ success: false, message: "Fill both name and email fields" })
+      .json({ success: false, message: "Fill all the fields!!" })
   }
 
   const mailData = {

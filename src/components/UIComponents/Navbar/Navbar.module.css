@@ -48,7 +48,7 @@
   background: radial-gradient(
     circle at 0 0,
     var(--clr-primary-900) 50%,
-    hotpink 0
+    var(--blob-clr-1) 0
   );
   isolation: isolate;
   transition: all 400ms ease-in-out;
