@@ -5,8 +5,21 @@ import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import Head from "next/head"
 import { projects } from "@/lib/projects"
 import styles from "../../styles/Projects.module.css"
+import { ProjectObject } from "@/lib/types"
 
-function ProjectPage() {
+type Props = {
+  projects: [ProjectObject]
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      projects,
+    },
+  }
+}
+
+function ProjectPage({ projects }: Props) {
   const [index, setIndex] = useState(0)
 
   return (

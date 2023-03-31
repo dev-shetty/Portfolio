@@ -1,24 +1,15 @@
-import { Dispatch, RefObject, SetStateAction, useEffect } from "react"
+import { Dispatch, SetStateAction, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import Image, { StaticImageData } from "next/image"
+import Image from "next/image"
 import { Icon } from "@iconify/react"
+import { ProjectObject } from "@/lib/types"
 import { projectsLength } from "@/lib/projects"
 import styles from "./Projects.module.css"
 
 type Props = {
   index: number
   setIndex: Dispatch<SetStateAction<number>>
-  project: {
-    id: string
-    name: string
-    tagline: string
-    sourceCode: string | null
-    liveUrl: string | null
-    blogUrl: string | null
-    descriptionOne: string
-    descriptionTwo: string
-    img: StaticImageData
-  }
+  project: ProjectObject
 }
 
 function Projects({ project, setIndex, index }: Props) {

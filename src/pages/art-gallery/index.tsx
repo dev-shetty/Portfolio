@@ -5,6 +5,12 @@ import Blob from "@/components/UIComponents/Blob/Blob"
 import styles from "../../styles/ArtGallery.module.css"
 import ArtGallery from "@/components/ArtGallery/ArtGallery"
 
+export async function getStaticProps() {
+  return {
+    props: {},
+  }
+}
+
 function ArtGalleryPage() {
   return (
     <>

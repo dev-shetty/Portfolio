@@ -6,6 +6,12 @@ import Home from "@/components/Home/Home"
 import Skills from "@/components/Skills/Skills"
 import styles from "../styles/Landing.module.css"
 
+export async function getStaticProps() {
+  return {
+    props: {},
+  }
+}
+
 export default function LandingPage() {
   return (
     <>
