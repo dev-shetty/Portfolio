@@ -168,7 +168,7 @@
   }
 }
 
-@media screen and (width <= 50em) {
+@media screen and (max-width: 50em) {
   .card {
     margin-top: 20%;
     width: 90%;

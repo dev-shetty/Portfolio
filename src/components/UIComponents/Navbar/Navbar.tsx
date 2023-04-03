@@ -4,9 +4,12 @@ import styles from "./Navbar.module.css"
 import { motion, AnimatePresence } from "framer-motion"
 import Bars from "@/assets/icons/Bars"
 import Close from "@/assets/icons/Close"
+import useScreenResize from "@/hooks/useScreenResize"
 
 function Navbar() {
   const [navbar, setNavbar] = useState(false)
+
+  const { screenWidth } = useScreenResize()
 
   const variants = {
     start: { y: "-100%" },
@@ -32,8 +35,24 @@ function Navbar() {
     <>
       <nav className={styles.nav_toggle}>
         <div className={styles.bars} onClick={() => setNavbar(!navbar)}>
-          <Bars />
+          {screenWidth <= 767 && <Bars />}
         </div>
+        {screenWidth > 767 && (
+          <ul className={styles.nav_list_horizontal}>
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+            <li>
+              <Link href="/projects">Projects</Link>
+            </li>
+            <li>
+              <Link href="/art-gallery">Art Gallery</Link>
+            </li>
+            <li>
+              <Link href="/contact">Contact</Link>
+            </li>
+          </ul>
+        )}
       </nav>
       <AnimatePresence mode="wait" initial={false}>
         {navbar && (

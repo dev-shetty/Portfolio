@@ -166,7 +166,7 @@
   }
 }
 
-@media screen and (width <= 50em) {
+@media screen and (max-width: 50em) {
   .container {
     height: auto;
     min-height: 100%;

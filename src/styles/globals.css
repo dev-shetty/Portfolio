@@ -90,7 +90,7 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid red;
 } */
 
-@media screen and (width <= 50em) {
+@media screen and (max-width: 50em) {
   :root {
     --line-width: 1px;
   }

@@ -10,13 +10,6 @@
 .main > section {
   position: absolute;
 }
-.nav > nav {
-  position: fixed;
-}
-.nav > nav::after {
-  content: "";
-  display: none;
-}
 
 @media screen and (width <= 50em) {
   .container {

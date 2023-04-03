@@ -99,7 +99,7 @@
   }
 }
 
-@media screen and (width <= 50em) {
+@media screen and (max-width: 50em) {
   .container {
     display: flex;
     flex-direction: column-reverse;

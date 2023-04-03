@@ -1,11 +1,3 @@
-.nav > nav {
-  position: fixed;
-}
-.nav > nav::after {
-  content: "";
-  display: none;
-}
-
 .main {
   --columns: 2;
 

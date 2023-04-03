@@ -16,7 +16,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: var(--line-width);
-  height: calc(100vh - var(--socials-height) - 2vmin - 1rem);
+  height: calc(100vh - var(--socials-height) - 2vmin - 3rem);
   margin-block: 1rem;
   background-color: var(--clr-primary-100-5);
 }
