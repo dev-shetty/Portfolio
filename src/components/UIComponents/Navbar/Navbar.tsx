@@ -51,6 +51,9 @@ function Navbar() {
             <li>
               <Link href="/contact">Contact</Link>
             </li>
+            <li>
+              <Link href="/blog">Blog</Link>
+            </li>
           </ul>
         )}
       </nav>
@@ -88,6 +91,11 @@ function Navbar() {
                 <li>
                   <Link onClick={() => setNavbar(false)} href="/contact">
                     Contact
+                  </Link>
+                </li>
+                <li>
+                  <Link onClick={() => setNavbar(false)} href="/blog">
+                    Blog
                   </Link>
                 </li>
               </ul>
