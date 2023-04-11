@@ -23,9 +23,7 @@ function ArtGalleryPage() {
       </Head>
       <>
         <Blob />
-        <div className={styles.nav}>
-          <Navbar />
-        </div>
+        <Navbar />
         <main className={styles.main}>
           <ArtGallery />
         </main>

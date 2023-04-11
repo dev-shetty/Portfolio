@@ -32,9 +32,7 @@ function ProjectPage({ projects }: Props) {
         />
       </Head>
       <>
-        <div className={styles.nav}>
-          <Navbar />
-        </div>
+        <Navbar />
         <Blob />
         <main className={styles.main}>
           {projects.map(

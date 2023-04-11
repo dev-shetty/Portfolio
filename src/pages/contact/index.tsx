@@ -20,9 +20,7 @@ function ContactPage() {
       </Head>
       <>
         <Blob />
-        <div className={styles.nav}>
-          <Navbar />
-        </div>
+        <Navbar />
         <main className={styles.main}>
           <Contact />
           <ContactForm />
