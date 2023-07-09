@@ -2,6 +2,7 @@ import Image from "next/image"
 import styles from "./Achievements.module.css"
 import Startupreneur from "../../assets/images/startupreneur.jpeg"
 import SOSC from "../../assets/images/SOSC.jpeg"
+import ThaniyaTech from "../../assets/images/ThaniyaTech.jpeg"
 
 function Achievements() {
   return (
@@ -21,10 +22,24 @@ function Achievements() {
               <p>Sep 2022 - Jan 2023</p>
             </div>
             <p>
-              Worked on frontend for 2 e-commerce website and built a single
+              Worked on frontend for two e-commerce websites and built a single
               page application. Gained experience in working with a team, how to
               manage the tasks. Built my skills in frontend technologies and
               also gained in depth knowledge of Git and Github.
+            </p>
+          </div>
+        </div>
+        <div className={styles.card}>
+          <Image src={ThaniyaTech} alt="Startupreneur Logo" />
+          <div className={styles.card_body}>
+            <div>
+              <h2 className={styles.card_title}>Technical Trainer</h2>
+              <p>Apr 2023 - June 2023</p>
+            </div>
+            <p>
+              Taught Web Development with React and also basics of Full Stack
+              Application by building projects using MongoDB Atlas and
+              ExpressJS.
             </p>
           </div>
         </div>
