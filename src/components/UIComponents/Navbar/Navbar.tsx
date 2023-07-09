@@ -51,9 +51,9 @@ function Navbar() {
             <li>
               <Link href="/contact">Contact</Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/blog">Blog</Link>
-            </li>
+            </li> */}
           </ul>
         )}
       </nav>
@@ -93,11 +93,11 @@ function Navbar() {
                     Contact
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link onClick={() => setNavbar(false)} href="/blog">
                     Blog
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </motion.nav>
