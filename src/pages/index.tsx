@@ -5,6 +5,7 @@ import Blob from "@/components/UIComponents/Blob/Blob"
 import Home from "@/components/Home/Home"
 import Skills from "@/components/Skills/Skills"
 import styles from "../styles/Landing.module.css"
+import Achievements from "@/components/Achievements/Achievements"
 
 export async function getStaticProps() {
   return {
@@ -25,6 +26,7 @@ export default function LandingPage() {
         <main className={styles.main}>
           <Landing />
           <Home />
+          <Achievements />
           <Skills />
         </main>
       </>
