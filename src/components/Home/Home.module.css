@@ -86,6 +86,35 @@
   gap: 1rem;
 }
 
+.tag_holder {
+  display: flex;
+  justify-content: center;
+  width: max(35rem, 50%);
+  margin: 1rem auto;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 700;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.tag[data-role="sosc"] {
+  background-color: rgba(13, 222, 131, 0.95);
+  border: 2px solid rgb(13, 222, 131);
+}
+
+.tag > img {
+  width: 2.5em;
+  aspect-ratio: 2 / 1;
+}
+
 @keyframes bounce {
   50% {
     transform: translateY(0);

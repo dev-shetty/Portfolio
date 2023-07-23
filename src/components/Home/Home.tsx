@@ -1,5 +1,6 @@
 import Image from "next/image"
 import ProfileImg from "../../assets/images/Deveesh.jpg"
+import SOSC from "../../assets/misc/sosc.png"
 import styles from "./Home.module.css"
 import { Icon } from "@iconify/react"
 function Home() {
@@ -20,6 +21,14 @@ function Home() {
               2nd year CSE Student, Developer by passion and an Artist by hobby.
             </q>
           </div>
+        </div>
+        <div className={styles.tag_holder}>
+          <a href="https://sosc.org.in" target="_blank">
+            <li className={styles.tag} data-role="sosc">
+              <Image src={SOSC} alt="SOSC Logo" />
+              <p>President</p>
+            </li>
+          </a>
         </div>
         <a
           href="Resume.pdf"
