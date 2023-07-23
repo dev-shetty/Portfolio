@@ -57,9 +57,9 @@ function Achievements() {
             <div className={styles.activity_card_body}>
               <p>
                 Sahyadri Open Source Community (SOSC) organized a workshop
-                entitled “Commit to Success” - a workshop detailing Git and
-                GitHub. The workshop was headed by Deveesh Shetty, President of
-                SOSC.
+                entitled &quot;Commit to Success&quot; - a workshop detailing
+                Git and GitHub. The workshop was headed by Deveesh Shetty,
+                President of SOSC.
               </p>
               <p>
                 The event commenced with a short introduction to Git and GitHub
@@ -70,9 +70,9 @@ function Achievements() {
                 open-source.
               </p>
               <p>
-                This event covered topics like, "add-commit-push", working in
-                branches, and to send a pull request and contribute to others
-                project in GitHub.
+                This event covered topics like, &quot;add-commit-push&quot;,
+                working in branches, and to send a pull request and contribute
+                to others project in GitHub.
               </p>
               <p>
                 Checkout the blog about Git and GitHub -{" "}
