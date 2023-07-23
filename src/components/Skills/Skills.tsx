@@ -58,30 +58,12 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="bxl:c-plus-plus"></Icon>
-            <p>
-              <a
-                href="https://www.codecademy.com/learn/learn-c-plus-plus"
-                target="_blank"
-              >{`cout << "C++";`}</a>
-            </p>
-          </div>
-          <div>
             <Icon icon="simple-icons:python"></Icon>
             <p>
               <a
                 href="https://www.python.org/"
                 target="_blank"
               >{`print("Python")`}</a>
-            </p>
-          </div>
-          <div>
-            <Icon icon="simple-icons:java"></Icon>
-            <p>
-              <a
-                href="https://www.codecademy.com/learn/learn-java"
-                target="_blank"
-              >{`System.out.println("Java");`}</a>
             </p>
           </div>
         </div>
