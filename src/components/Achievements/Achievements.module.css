@@ -115,6 +115,7 @@
   }
   .activity_container {
     --columns: 1;
+    padding: 0;
   }
   .activity_card {
     flex-direction: column;

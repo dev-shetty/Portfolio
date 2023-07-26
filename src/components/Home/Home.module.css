@@ -153,4 +153,7 @@
   .details > div {
     gap: 0.75rem;
   }
+  .tag_holder {
+    max-width: 100%;
+  }
 }
