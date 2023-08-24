@@ -2,6 +2,7 @@
   height: 100%;
   display: grid;
   gap: 1rem;
+  overflow: auto;
   grid-template-rows: 8fr 1fr;
 }
 
@@ -123,6 +124,7 @@
 }
 .image_container img {
   padding: min(5%, 2rem);
+  width: 80%;
   filter: drop-shadow(2px 2px 2px var(--clr-primary-100));
 }
 
