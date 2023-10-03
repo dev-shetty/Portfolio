@@ -1,5 +1,5 @@
 import { useState } from "react"
-import Projects from "@/components/Projects/Projects"
+import Projects from "@/components/Projects/Project"
 import Blob from "@/components/UIComponents/Blob/Blob"
 import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import Head from "next/head"
