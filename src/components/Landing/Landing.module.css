@@ -36,7 +36,7 @@ div:has(> .scroll_arrow) {
 .scroll_arrow {
   height: fit-content;
   color: var(--clr-primary-100);
-  font-size: var(--fs-400);
+  font-size: var(--fs-350);
   animation: bounce 3s infinite ease-in-out;
 }
 

@@ -1,6 +1,28 @@
-// import { Icon } from "@iconify/react"
 import Link from "next/link"
 import styles from "./Skills.module.css"
+import {
+  FaAngleRight,
+  FaCss3Alt,
+  FaGit,
+  FaGithub,
+  FaHtml5,
+  FaJsSquare,
+  FaLinux,
+  FaPython,
+  FaReact,
+} from "react-icons/fa"
+import {
+  TbBrandFigma,
+  TbBrandMongodb,
+  TbBrandNextjs,
+  TbBrandNodejs,
+  TbBrandTailwind,
+  TbBrandTypescript,
+  TbBrandVercel,
+  TbBrandVite,
+  TbBrandVscode,
+} from "react-icons/tb"
+import { SiExpress } from "react-icons/si"
 function Skills() {
   return (
     <section className={styles.container}>
@@ -13,7 +35,7 @@ function Skills() {
       <div className={styles.skill_grid}>
         <div className={styles.languages}>
           <div>
-            {/* <Icon icon="simple-icons:javascript"></Icon> */}
+            <FaJsSquare />
             <p>
               <a
                 href="https://www.javascript.com/"
@@ -22,7 +44,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="akar-icons:typescript-fill"></Icon> */}
+            <TbBrandTypescript />
             <p>
               <a
                 href="https://www.typescriptlang.org/"
@@ -31,7 +53,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="simple-icons:html5"></Icon> */}
+            <FaHtml5 />
             <p>
               <a
                 href="https://www.w3schools.com/html/"
@@ -40,7 +62,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="simple-icons:css3"></Icon> */}
+            <FaCss3Alt />
             <p>
               <a
                 href="https://www.w3schools.com/css/"
@@ -49,7 +71,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="simple-icons:c"></Icon> */}
+            <span>C</span>
             <p>
               <a
                 href="https://www.learn-c.org/"
@@ -58,7 +80,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="simple-icons:python"></Icon> */}
+            <FaPython />
             <p>
               <a
                 href="https://www.python.org/"
@@ -69,7 +91,7 @@ function Skills() {
         </div>
         <div className={styles.tools}>
           <div>
-            {/* <Icon icon="codicon:terminal-linux"></Icon> */}
+            <FaLinux />
             <p>
               <a href="https://www.linux.org/" target="_blank">
                 Linux
@@ -77,7 +99,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="mdi:git"></Icon> */}
+            <FaGit />
             <p>
               <a href="https://git-scm.com/" target="_blank">
                 Git
@@ -85,7 +107,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="octicon:mark-github-16"></Icon> */}
+            <FaGithub />
             <p>
               <a href="https://github.com/" target="_blank">
                 Github
@@ -93,7 +115,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="bxl:mongodb"></Icon> */}
+            <TbBrandMongodb />
             <p>
               <a href="https://www.mongodb.com/" target="_blank">
                 MongoDB
@@ -103,7 +125,7 @@ function Skills() {
         </div>
         <div className={styles.misc}>
           <div>
-            {/* <Icon icon="akar-icons:vscode-fill"></Icon> */}
+            <TbBrandVscode />
             <p>
               <a href="https://code.visualstudio.com/" target="_blank">
                 Visual Studio Code
@@ -111,15 +133,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="simple-icons:netlify"></Icon> */}
-            <p>
-              <a href="https://www.netlify.com/" target="_blank">
-                Netlify
-              </a>
-            </p>
-          </div>
-          <div>
-            {/* <Icon icon="simple-icons:vercel"></Icon> */}
+            <TbBrandVercel />
             <p>
               <a href="https://vercel.com/" target="_blank">
                 Vercel
@@ -127,7 +141,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="akar-icons:figma-fill"></Icon> */}
+            <TbBrandFigma />
             <p>
               <a href="https://www.figma.com/" target="_blank">
                 Figma
@@ -137,7 +151,7 @@ function Skills() {
         </div>
         <div className={styles.libraries}>
           <div>
-            {/* <Icon icon="carbon:logo-react"></Icon> */}
+            <FaReact />
             <p>
               <a href="https://reactjs.org/" target="_blank">
                 ReactJS
@@ -145,7 +159,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="teenyicons:nextjs-solid"></Icon> */}
+            <TbBrandNextjs />
             <p>
               <a href="https://nextjs.org/" target="_blank">
                 NextJS
@@ -153,7 +167,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="simple-icons:vite"></Icon> */}
+            <TbBrandVite />
             <p>
               <a href="https://vitejs.dev/" target="_blank">
                 ViteJS
@@ -161,7 +175,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="mdi:tailwind"></Icon> */}
+            <TbBrandTailwind />
             <p>
               <a href="https://tailwindcss.com/" target="_blank">
                 TailwindCSS
@@ -169,7 +183,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="akar-icons:node-fill"></Icon> */}
+            <TbBrandNodejs />
             <p>
               <a href="https://nodejs.org/en/" target="_blank">
                 NodeJS
@@ -177,7 +191,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            {/* <Icon icon="skill-icons:expressjs-light"></Icon> */}
+            <SiExpress />
             <p>
               <a href="https://expressjs.com/" target="_blank">
                 ExpressJS
@@ -190,7 +204,7 @@ function Skills() {
         <Link href="/projects">
           <div className={styles.navigation_link}>
             <p>Projects</p>
-            {/* <Icon icon="ic:baseline-arrow-right"></Icon> */}
+            <FaAngleRight />
           </div>
         </Link>
       </div>
