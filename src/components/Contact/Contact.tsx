@@ -1,8 +1,8 @@
-// import { Icon } from "@iconify/react"
 // import Tilt from "react-parallax-tilt"
 import Image from "next/image"
 import Profile from "../../assets/images/Deveesh.jpg"
 import styles from "./Contact.module.css"
+import { FaGithub, FaLinkedin, FaTwitter, FaDev } from "react-icons/fa"
 
 function Contact() {
   return (
@@ -20,7 +20,7 @@ function Contact() {
           <div className={styles.socials}>
             <div>
               <a href="https://github.com/Deveesh-Shetty" target="_blank">
-                {/* <Icon icon="carbon:logo-github" /> */}
+                <FaGithub />
                 <p>Deveesh-Shetty</p>
               </a>
             </div>
@@ -29,19 +29,19 @@ function Contact() {
                 href="https://www.linkedin.com/in/deveesh-shetty-908539214"
                 target="_blank"
               >
-                {/* <Icon icon="carbon:logo-linkedin" /> */}
+                <FaLinkedin />
                 <p>Deveesh Shetty</p>
               </a>
             </div>
             <div>
               <a href="https://twitter.com/shettydeveesh" target="_blank">
-                {/* <Icon icon="carbon:logo-twitter" /> */}
+                <FaTwitter />
                 <p>@ShettyDeveesh</p>
               </a>
             </div>
             <div>
               <a href="https://dev.to/deveeshshetty1209" target="_blank">
-                {/* <Icon icon="skill-icons:devto-light" /> */}
+                <FaDev />
                 <p>@devshetty</p>
               </a>
             </div>

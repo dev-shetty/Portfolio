@@ -1,6 +1,6 @@
 import Socials from "@/components/UIComponents/SideBar/Socials"
-// import { Icon } from "@iconify/react"
 import styles from "./Landing.module.css"
+import { FaAngleDoubleDown } from "react-icons/fa"
 
 function Landing() {
   return (
@@ -11,7 +11,7 @@ function Landing() {
       </header>
       <div>
         <div className={styles.scroll_arrow}>
-          {/* <Icon icon="ic:baseline-keyboard-double-arrow-down" /> */}
+          <FaAngleDoubleDown />
         </div>
       </div>
       <Socials />
