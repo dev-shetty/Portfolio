@@ -1,5 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next"
+import { NextApiResponse } from "next"
 import nodemailer from "nodemailer"
 
 type Data = {
@@ -19,17 +19,8 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  const { email, name, desc } = req.body
-
-  if (req.method !== "POST") {
-    return res
-      .status(404)
-      .json({ success: false, message: "The method is not defined" })
-  }
+export async function POST(req: Request, res: NextApiResponse<Data>) {
+  const { email, name, desc } = await req.json()
 
   if (!email || !name || !desc) {
     return res
