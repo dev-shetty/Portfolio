@@ -1,4 +1,3 @@
-import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import Blob from "@/components/UIComponents/Blob/Blob"
 import styles from "../../styles/ArtGallery.module.css"
 import ArtGallery from "@/components/ArtGallery/ArtGallery"
@@ -12,8 +11,7 @@ export const metadata: Metadata = {
 function ArtGalleryPage() {
   return (
     <>
-      <Blob />
-      <Navbar />
+      {/* <Blob /> */}
       <main className={styles.main}>
         <ArtGallery />
       </main>

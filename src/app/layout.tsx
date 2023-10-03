@@ -2,6 +2,7 @@ import { Metadata } from "next"
 // import NextNProgress from "nextjs-progressbar"
 // import { ToastContainer } from "react-toastify"
 import "@/styles/globals.css"
+import Navbar from "@/components/navbar"
 
 export const metadata: Metadata = {
   title: "Deveesh Shetty",
@@ -15,9 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-slate-900">
         {/* <NextNProgress color="var(--clr-primary-100)" /> */}
-        {children}
+        <Navbar />
+        <div className="container mx-auto md:">{children}</div>
         {/* <ToastContainer /> */}
       </body>
     </html>

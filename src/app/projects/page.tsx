@@ -1,6 +1,5 @@
 import Projects from "@/components/Projects/Projects"
 import Blob from "@/components/UIComponents/Blob/Blob"
-import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
 function ProjectPage() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <Blob />
       <Projects />
     </>

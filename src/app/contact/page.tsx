@@ -1,4 +1,3 @@
-import Navbar from "@/components/UIComponents/Navbar/Navbar"
 import Blob from "@/components/UIComponents/Blob/Blob"
 import Contact from "@/components/Contact/Contact"
 import ContactForm from "@/components/Contact/ContactForm"
@@ -13,8 +12,7 @@ export const metadata: Metadata = {
 function ContactPage() {
   return (
     <>
-      <Blob />
-      <Navbar />
+      {/* <Blob /> */}
       <main className={styles.main}>
         <Contact />
         <ContactForm />
