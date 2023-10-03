@@ -1,6 +1,6 @@
 "use client"
 
-import styles from "@styles/Projects.module.css"
+import styles from "@/styles/Projects.module.css"
 import { useState } from "react"
 import { projects } from "@/lib/projects"
 import Project from "@/components/Projects/Project"

@@ -2,7 +2,7 @@ import Image from "next/image"
 import ProfileImg from "../../assets/images/Deveesh.jpg"
 import SOSC from "../../assets/misc/sosc.png"
 import styles from "./Home.module.css"
-import { Icon } from "@iconify/react"
+// import { Icon } from "@iconify/react"
 function Home() {
   return (
     <section className={styles.container}>
@@ -36,9 +36,7 @@ function Home() {
           className={styles.resume}
         >
           <button>Resume</button>
-          <p>
-            <Icon icon="material-symbols:download" />
-          </p>
+          <p>{/* <Icon icon="material-symbols:download" /> */}</p>
         </a>
       </div>
       <div className={styles.image}>

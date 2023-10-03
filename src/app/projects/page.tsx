@@ -1,7 +1,6 @@
 import Projects from "@/components/Projects/Projects"
 import Blob from "@/components/UIComponents/Blob/Blob"
 import Navbar from "@/components/UIComponents/Navbar/Navbar"
-import Head from "next/head"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {

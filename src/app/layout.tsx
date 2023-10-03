@@ -1,6 +1,6 @@
 import { Metadata } from "next"
-import NextNProgress from "nextjs-progressbar"
-import { ToastContainer } from "react-toastify"
+// import NextNProgress from "nextjs-progressbar"
+// import { ToastContainer } from "react-toastify"
 import "@/styles/globals.css"
 
 export const metadata: Metadata = {
@@ -9,8 +9,6 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-  // Layouts must accept a children prop.
-  // This will be populated with nested layouts or pages
   children,
 }: {
   children: React.ReactNode
@@ -18,9 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NextNProgress color="var(--clr-primary-100)" />
+        {/* <NextNProgress color="var(--clr-primary-100)" /> */}
         {children}
-        <ToastContainer />
+        {/* <ToastContainer /> */}
       </body>
     </html>
   )
