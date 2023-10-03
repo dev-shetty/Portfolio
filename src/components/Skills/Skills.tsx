@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react"
+// import { Icon } from "@iconify/react"
 import Link from "next/link"
 import styles from "./Skills.module.css"
 function Skills() {
@@ -13,7 +13,7 @@ function Skills() {
       <div className={styles.skill_grid}>
         <div className={styles.languages}>
           <div>
-            <Icon icon="simple-icons:javascript"></Icon>
+            {/* <Icon icon="simple-icons:javascript"></Icon> */}
             <p>
               <a
                 href="https://www.javascript.com/"
@@ -22,7 +22,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="akar-icons:typescript-fill"></Icon>
+            {/* <Icon icon="akar-icons:typescript-fill"></Icon> */}
             <p>
               <a
                 href="https://www.typescriptlang.org/"
@@ -31,7 +31,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="simple-icons:html5"></Icon>
+            {/* <Icon icon="simple-icons:html5"></Icon> */}
             <p>
               <a
                 href="https://www.w3schools.com/html/"
@@ -40,7 +40,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="simple-icons:css3"></Icon>
+            {/* <Icon icon="simple-icons:css3"></Icon> */}
             <p>
               <a
                 href="https://www.w3schools.com/css/"
@@ -49,7 +49,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="simple-icons:c"></Icon>
+            {/* <Icon icon="simple-icons:c"></Icon> */}
             <p>
               <a
                 href="https://www.learn-c.org/"
@@ -58,7 +58,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="simple-icons:python"></Icon>
+            {/* <Icon icon="simple-icons:python"></Icon> */}
             <p>
               <a
                 href="https://www.python.org/"
@@ -69,7 +69,7 @@ function Skills() {
         </div>
         <div className={styles.tools}>
           <div>
-            <Icon icon="codicon:terminal-linux"></Icon>
+            {/* <Icon icon="codicon:terminal-linux"></Icon> */}
             <p>
               <a href="https://www.linux.org/" target="_blank">
                 Linux
@@ -77,7 +77,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="mdi:git"></Icon>
+            {/* <Icon icon="mdi:git"></Icon> */}
             <p>
               <a href="https://git-scm.com/" target="_blank">
                 Git
@@ -85,7 +85,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="octicon:mark-github-16"></Icon>
+            {/* <Icon icon="octicon:mark-github-16"></Icon> */}
             <p>
               <a href="https://github.com/" target="_blank">
                 Github
@@ -93,7 +93,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="bxl:mongodb"></Icon>
+            {/* <Icon icon="bxl:mongodb"></Icon> */}
             <p>
               <a href="https://www.mongodb.com/" target="_blank">
                 MongoDB
@@ -103,7 +103,7 @@ function Skills() {
         </div>
         <div className={styles.misc}>
           <div>
-            <Icon icon="akar-icons:vscode-fill"></Icon>
+            {/* <Icon icon="akar-icons:vscode-fill"></Icon> */}
             <p>
               <a href="https://code.visualstudio.com/" target="_blank">
                 Visual Studio Code
@@ -111,7 +111,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="simple-icons:netlify"></Icon>
+            {/* <Icon icon="simple-icons:netlify"></Icon> */}
             <p>
               <a href="https://www.netlify.com/" target="_blank">
                 Netlify
@@ -119,7 +119,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="simple-icons:vercel"></Icon>
+            {/* <Icon icon="simple-icons:vercel"></Icon> */}
             <p>
               <a href="https://vercel.com/" target="_blank">
                 Vercel
@@ -127,7 +127,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="akar-icons:figma-fill"></Icon>
+            {/* <Icon icon="akar-icons:figma-fill"></Icon> */}
             <p>
               <a href="https://www.figma.com/" target="_blank">
                 Figma
@@ -137,7 +137,7 @@ function Skills() {
         </div>
         <div className={styles.libraries}>
           <div>
-            <Icon icon="carbon:logo-react"></Icon>
+            {/* <Icon icon="carbon:logo-react"></Icon> */}
             <p>
               <a href="https://reactjs.org/" target="_blank">
                 ReactJS
@@ -145,7 +145,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="teenyicons:nextjs-solid"></Icon>
+            {/* <Icon icon="teenyicons:nextjs-solid"></Icon> */}
             <p>
               <a href="https://nextjs.org/" target="_blank">
                 NextJS
@@ -153,7 +153,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="simple-icons:vite"></Icon>
+            {/* <Icon icon="simple-icons:vite"></Icon> */}
             <p>
               <a href="https://vitejs.dev/" target="_blank">
                 ViteJS
@@ -161,7 +161,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="mdi:tailwind"></Icon>
+            {/* <Icon icon="mdi:tailwind"></Icon> */}
             <p>
               <a href="https://tailwindcss.com/" target="_blank">
                 TailwindCSS
@@ -169,7 +169,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="akar-icons:node-fill"></Icon>
+            {/* <Icon icon="akar-icons:node-fill"></Icon> */}
             <p>
               <a href="https://nodejs.org/en/" target="_blank">
                 NodeJS
@@ -177,7 +177,7 @@ function Skills() {
             </p>
           </div>
           <div>
-            <Icon icon="skill-icons:expressjs-light"></Icon>
+            {/* <Icon icon="skill-icons:expressjs-light"></Icon> */}
             <p>
               <a href="https://expressjs.com/" target="_blank">
                 ExpressJS
@@ -190,7 +190,7 @@ function Skills() {
         <Link href="/projects">
           <div className={styles.navigation_link}>
             <p>Projects</p>
-            <Icon icon="ic:baseline-arrow-right"></Icon>
+            {/* <Icon icon="ic:baseline-arrow-right"></Icon> */}
           </div>
         </Link>
       </div>

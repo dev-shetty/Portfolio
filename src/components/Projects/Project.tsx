@@ -1,7 +1,9 @@
+"use client"
+
 import { Dispatch, SetStateAction, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Icon } from "@iconify/react"
+// import { Icon } from "@iconify/react"
 import { ProjectObject } from "@/lib/types"
 import { projectsLength } from "@/lib/projects"
 import styles from "./Projects.module.css"
@@ -67,7 +69,7 @@ function Project({ project, setIndex, index }: Props) {
             <div className={styles.content_navigations}>
               <div>
                 <button className={styles.code_btn}>
-                  <Icon icon="ph:code" />
+                  {/* <Icon icon="ph:code" /> */}
                   <a href={sourceCode!} target="_blank">
                     <p>Source Code</p>
                   </a>
@@ -86,12 +88,12 @@ function Project({ project, setIndex, index }: Props) {
             </div>
             <div className={styles.primary_navigation}>
               <button data-function="prev" onClick={prev}>
-                <Icon icon="ic:baseline-arrow-left" />
+                {/* <Icon icon="ic:baseline-arrow-left" /> */}
                 <p>Prev</p>
               </button>
               <button data-function="next" onClick={next}>
                 <p>Next</p>
-                <Icon icon="ic:baseline-arrow-right" />
+                {/* <Icon icon="ic:baseline-arrow-right" /> */}
               </button>
             </div>
           </div>

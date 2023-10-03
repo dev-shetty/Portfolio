@@ -1,5 +1,5 @@
 import Socials from "@/components/UIComponents/SideBar/Socials"
-import { Icon } from "@iconify/react"
+// import { Icon } from "@iconify/react"
 import styles from "./Landing.module.css"
 
 function Landing() {
@@ -11,7 +11,7 @@ function Landing() {
       </header>
       <div>
         <div className={styles.scroll_arrow}>
-          <Icon icon="ic:baseline-keyboard-double-arrow-down" />
+          {/* <Icon icon="ic:baseline-keyboard-double-arrow-down" /> */}
         </div>
       </div>
       <Socials />

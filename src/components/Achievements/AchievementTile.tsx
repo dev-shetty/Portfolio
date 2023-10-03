@@ -1,3 +1,5 @@
+"use client"
+
 import Image, { StaticImageData } from "next/image"
 import styles from "./Achievements.module.css"
 

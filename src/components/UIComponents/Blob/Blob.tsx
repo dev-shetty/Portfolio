@@ -1,3 +1,5 @@
+"use client"
+
 import useMouseMove from "@/hooks/useMouseMove"
 import { useEffect, useRef } from "react"
 import styles from "./Blob.module.css"
