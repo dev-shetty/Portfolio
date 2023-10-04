@@ -10,33 +10,20 @@ function Navbar() {
             DevShetty
           </Link>
         </div>
-        <ul className="flex items-center gap-2 justify-end">
-          {/* Desktop and Tablet View */}
+        <ul className="flex items-center gap-2 justify-end text-sm">
           <Link
             href="/art-gallery"
-            className="hidden md:block px-4 py-1 bg-slate-800 rounded-md w-30 text-center hover:bg-slate-700 transition-colors"
+            className="px-4 py-1 bg-slate-800 rounded-md w-12 md:w-32 text-center hover:bg-slate-700 transition-colors"
           >
-            Art Gallery
+            <FaPalette className="md:hidden" />
+            <span className="hidden md:block">Art Gallery</span>
           </Link>
           <Link
             href="/contact"
-            className="hidden md:block px-4 py-1 bg-slate-800 rounded-md w-30 text-center hover:bg-slate-700 transition-colors"
+            className="px-4 py-1 bg-slate-800 rounded-md w-12 md:w-32 text-center hover:bg-slate-700 transition-colors"
           >
-            Get in touch
-          </Link>
-
-          {/* Mobile View */}
-          <Link
-            href="/art-gallery"
-            className="md:hidden px-4 py-2 bg-slate-800 rounded-md w-12 text-center hover:bg-slate-700 transition-colors"
-          >
-            <FaPalette />
-          </Link>
-          <Link
-            href="/contact"
-            className="md:hidden px-4 py-2 bg-slate-800 rounded-md w-12 text-center hover:bg-slate-700 transition-colors"
-          >
-            <FaEnvelope />
+            <FaEnvelope className="md:hidden" />
+            <span className="hidden md:block">Get in touch</span>
           </Link>
         </ul>
       </div>
