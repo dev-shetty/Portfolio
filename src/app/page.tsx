@@ -1,17 +1,16 @@
 import Home from "@/components/home"
-import Skills from "@/components/Skills/Skills"
-import styles from "../styles/Landing.module.css"
 import Achievements from "@/components/Achievements/Achievements"
+import TechStack from "@/components/tech-stack"
 
 export default function LandingPage() {
   return (
     <>
       {/* <Blob /> */}
-      <main className={styles.main}>
+      <main className="container px-4">
         {/* <Landing /> */}
         <Home />
-        <Achievements />
-        <Skills />
+        <TechStack />
+        {/* <Achievements /> */}
       </main>
     </>
   )
