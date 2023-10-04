@@ -1,58 +1,61 @@
 import {
-  FaCss3Alt,
-  FaGit,
   FaGithub,
-  FaHtml5,
   FaJsSquare,
   FaLinux,
   FaPython,
-  FaReact,
-  FaDownload,
   FaLinkedin,
   FaTwitter,
 } from "react-icons/fa"
-
 import {
+  TbBrandCss3,
   TbBrandFigma,
+  TbBrandGit,
+  TbBrandHtml5,
   TbBrandMongodb,
   TbBrandNextjs,
   TbBrandNodejs,
+  TbBrandReact,
   TbBrandTailwind,
   TbBrandTypescript,
   TbBrandVercel,
   TbBrandVite,
   TbBrandVscode,
+  TbCode,
+  TbDownload,
+  TbExternalLink,
 } from "react-icons/tb"
 import { SiExpress } from "react-icons/si"
 
 export const icons = {
   // Font Awesome Icons
-  CSS: FaCss3Alt,
-  Git: FaGit,
   GitHub: FaGithub,
-  HTML: FaHtml5,
   JavaScript: FaJsSquare,
   Linux: FaLinux,
   Python: FaPython,
-  React: FaReact,
 
   // Socials
   LinkedIn: FaLinkedin,
   Twitter: FaTwitter,
 
-  // Others
-  Download: FaDownload,
-
   // Tabler Icons
+  CSS: TbBrandCss3,
   Figma: TbBrandFigma,
+  Git: TbBrandGit,
+  HTML: TbBrandHtml5,
   MongoDB: TbBrandMongodb,
   NextJs: TbBrandNextjs,
   NodeJs: TbBrandNodejs,
+  React: TbBrandReact,
   Tailwind: TbBrandTailwind,
   TypeScript: TbBrandTypescript,
   Vercel: TbBrandVercel,
   Vite: TbBrandVite,
   VSCode: TbBrandVscode,
+
+  // Others
+  Download: TbDownload,
+  Visit: TbExternalLink,
+  SourceCode: TbCode,
 
   // Simple Icons
   Express: SiExpress,
