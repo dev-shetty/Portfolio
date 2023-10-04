@@ -1,7 +1,8 @@
 import Image from "next/image"
 import ProfileImg from "@/assets/images/Deveesh.jpg"
-import { FaDownload, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa"
 import Link from "next/link"
+import { icons as Icon } from "@/lib/icons"
+
 function Home() {
   return (
     <section className="flex flex-col-reverse xl:flex-row items-center gap-16 py-8">
@@ -26,16 +27,16 @@ function Home() {
         <div className="flex items-center justify-between gap-4">
           <div className="flex gap-4 text-xl md:text-2xl">
             <Link href="https://github.com/Deveesh-Shetty" target="_blank">
-              <FaGithub />
+              <Icon.GitHub />
             </Link>
             <Link
               href="https://www.linkedin.com/in/deveesh-shetty-908539214"
               target="_blank"
             >
-              <FaLinkedin />
+              <Icon.LinkedIn />
             </Link>
             <Link href="https://twitter.com/shettydeveesh" target="_blank">
-              <FaTwitter />
+              <Icon.Twitter />
             </Link>
           </div>
           <a
@@ -44,7 +45,7 @@ function Home() {
             className="flex items-center gap-2 w-max px-4 py-2 bg-slate-800 rounded-md text-center hover:bg-slate-700 transition-colors"
           >
             <button>Resume</button>
-            <FaDownload />
+            <Icon.Download />
           </a>
         </div>
       </div>
