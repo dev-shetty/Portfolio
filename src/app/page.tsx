@@ -1,8 +1,8 @@
 import Home from "@/components/home"
-import Achievements from "@/components/Achievements/Achievements"
 import TechStack from "@/components/tech-stack"
 import Projects from "@/components/projects"
 import Experience from "@/components/experience"
+import Talks from "@/components/talks"
 
 export type SearchParamsType = { [key: string]: string | string[] | undefined }
 type HomePageProps = {
@@ -19,7 +19,7 @@ export default function HomePage({ searchParams }: HomePageProps) {
         <TechStack />
         <Projects params={searchParams} />
         <Experience />
-        {/* <Achievements /> */}
+        <Talks />
       </main>
     </>
   )
