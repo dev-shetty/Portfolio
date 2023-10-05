@@ -26,7 +26,7 @@ function Projects({ params }: ProjectProps) {
       <div className="grid gap-6">
         {projects.map(
           (project, index) =>
-            index <= LIMIT - 1 && (
+            index < LIMIT && (
               <div
                 className="flex flex-col-reverse lg:grid lg:grid-cols-4 items-center pb-2 border-b border-b-slate-800"
                 key={project.id}
