@@ -20,7 +20,10 @@ export default function Achievements({ params }: AchievementProps) {
         {achievements.map(
           (achievement, index) =>
             index < LIMIT && (
-              <div className="flex flex-col border-b pb-2 last:border-b-0 last:pb-0 border-b-slate-800">
+              <div
+                className="flex flex-col border-b pb-2 last:border-b-0 last:pb-0 border-b-slate-800"
+                key={achievement.id}
+              >
                 <div className="flex flex-col">
                   <p className="text-2xl font-bold">
                     {achievement.position} &#8226; {achievement.competition}
@@ -28,7 +31,10 @@ export default function Achievements({ params }: AchievementProps) {
                   <div className="flex flex-wrap gap-1 mt-1 mb-4">
                     {/* <p>Team: </p> */}
                     {achievement.teamMembers.map((member) => (
-                      <p className="outline outline-1 outline-slate-700 bg-slate-700 px-2 rounded-md">
+                      <p
+                        className="outline outline-1 outline-slate-700 bg-slate-700 px-2 rounded-md"
+                        key={member}
+                      >
                         {member}
                       </p>
                     ))}

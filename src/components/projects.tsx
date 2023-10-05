@@ -38,7 +38,10 @@ function Projects({ params }: ProjectProps) {
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {project.labels.map((label) => (
-                      <p className="outline outline-1 px-2 py-1 rounded-md bg-slate-800 hover:bg-slate-700 cursor-pointer transition-colors">
+                      <p
+                        className="outline outline-1 px-2 py-1 rounded-md bg-slate-800 hover:bg-slate-700 cursor-pointer transition-colors"
+                        key={label}
+                      >
                         {label}
                       </p>
                     ))}
