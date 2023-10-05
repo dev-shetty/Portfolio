@@ -1,4 +1,4 @@
-import ArtGallery from "@/components/ArtGallery/art-gallery"
+import ArtGallery from "@/components/art-gallery/art-gallery"
 
 function ArtGalleryPage() {
   return (
