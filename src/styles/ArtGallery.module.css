@@ -1,8 +1,0 @@
-.main {
-  --columns: 2;
-
-  min-height: 100%;
-  place-items: center;
-  display: grid;
-  isolation: isolate;
-}
