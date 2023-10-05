@@ -5,8 +5,8 @@ import { experiences } from "@/lib/experiences"
 
 export default function Experience() {
   return (
-    <section>
-      <h2 className="my-12 text-2xl md:text-3xl border-b border-b-slate-700 pb-2 mb-4">
+    <section className="my-12">
+      <h2 className="text-2xl md:text-3xl border-b border-b-slate-700 pb-2 mb-4">
         Experience
       </h2>
       <div className="grid lg:grid-cols-2 gap-2">

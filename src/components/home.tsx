@@ -5,7 +5,7 @@ import { icons as Icon } from "@/lib/icons"
 
 function Home() {
   return (
-    <section className="flex flex-col-reverse xl:flex-row items-center gap-16 py-8">
+    <main className="flex flex-col-reverse xl:flex-row items-center gap-16 py-8">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <h1 className="text-4xl md:text-5xl border-b pb-2 mb-2 border-b-slate-700">
@@ -57,7 +57,7 @@ function Home() {
           priority
         />
       </div>
-    </section>
+    </main>
   )
 }
 
