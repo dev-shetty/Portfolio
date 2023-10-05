@@ -19,8 +19,8 @@ function Projects({ params }: ProjectProps) {
       : Number(params["show-projects"]) || 3
 
   return (
-    <section>
-      <h2 className="my-8 text-2xl md:text-3xl border-b border-b-slate-700 pb-2 mb-4">
+    <section className="my-8">
+      <h2 className="text-2xl md:text-3xl border-b border-b-slate-700 pb-2 mb-4">
         Projects
       </h2>
       <div className="grid gap-6">
