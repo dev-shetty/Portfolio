@@ -55,7 +55,7 @@ export async function POST(req: Request) {
             JSON.stringify({
               success: true,
               name,
-              message: `${name} your mail has been sent.   Thank You :)`,
+              message: `${name} your mail has been sent. Thank You :)`,
             }),
             {
               status: 200,
@@ -68,7 +68,7 @@ export async function POST(req: Request) {
       JSON.stringify({
         success: true,
         name,
-        message: `${name} your mail has been sent.   Thank You :)`,
+        message: `${name} your mail has been sent. Thank You :)`,
       }),
       {
         status: 200,
