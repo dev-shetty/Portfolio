@@ -3,7 +3,12 @@ import Achievements from "@/components/Achievements/Achievements"
 import TechStack from "@/components/tech-stack"
 import Projects from "@/components/projects"
 
-export default function LandingPage() {
+export type SearchParamsType = { [key: string]: string | string[] | undefined }
+type HomePageProps = {
+  searchParams: SearchParamsType
+}
+
+export default function HomePage({ searchParams }: HomePageProps) {
   return (
     <>
       {/* <Blob /> */}
@@ -11,7 +16,7 @@ export default function LandingPage() {
         {/* <Landing /> */}
         <Home />
         <TechStack />
-        <Projects />
+        <Projects params={searchParams} />
         {/* <Achievements /> */}
       </main>
     </>
