@@ -1,13 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { NextApiResponse } from "next"
+import { NextResponse } from "next/server"
 import nodemailer from "nodemailer"
-
-type Data = {
-  success: boolean
-  message?: string
-  name?: string
-  error?: any
-}
 
 const { EMAIL, RECEIPIENT_EMAIL, PASSWORD } = process.env
 
@@ -23,7 +16,15 @@ export async function POST(req: Request) {
   const { email, name, desc } = await req.json()
 
   if (!email || !name || !desc) {
-    return Response.json({ success: false, message: "Fill all the fields!!" })
+    return new NextResponse(
+      JSON.stringify({
+        success: false,
+        error: "Please fill all the fields",
+      }),
+      {
+        status: 400,
+      }
+    )
   }
 
   const mailData = {
@@ -41,25 +42,42 @@ export async function POST(req: Request) {
         if (error) {
           console.log(error)
           reject(error)
-          return Response.json({ success: false, error: error })
+          return new NextResponse(
+            JSON.stringify({ success: false, error: error }),
+            {
+              status: 500,
+            }
+          )
         } else {
           console.log("Mail has been sent successfully")
           resolve(true)
-          return Response.json({
-            success: true,
-            name,
-            message: `${name} your mail has been sent.   Thank You :)`,
-          })
+          return new NextResponse(
+            JSON.stringify({
+              success: true,
+              name,
+              message: `${name} your mail has been sent.   Thank You :)`,
+            }),
+            {
+              status: 200,
+            }
+          )
         }
       })
     })
-    return Response.json({
-      success: true,
-      name,
-      message: `${name} your mail has been sent.   Thank You :)`,
-    })
+    return new NextResponse(
+      JSON.stringify({
+        success: true,
+        name,
+        message: `${name} your mail has been sent.   Thank You :)`,
+      }),
+      {
+        status: 200,
+      }
+    )
   } catch (error) {
     console.log(error)
-    return Response.json({ success: false, error: error })
+    return new NextResponse(JSON.stringify({ success: false, error: error }), {
+      status: 500,
+    })
   }
 }
