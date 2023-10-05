@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-#__next {
-  height: 100%;
-  isolation: isolate;
-}
-
-body {
-  background-color: var(--clr-primary-900);
-  color: var(--clr-primary-100);
-  font-size: var(--fs-text);
-}
-
 :root {
   /* Colors */
   /* Opacity Colors */
