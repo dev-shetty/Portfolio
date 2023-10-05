@@ -7,7 +7,7 @@ export default function LandingPage() {
   return (
     <>
       {/* <Blob /> */}
-      <main className="container">
+      <main className="py-24">
         {/* <Landing /> */}
         <Home />
         <TechStack />

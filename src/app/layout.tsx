@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className="bg-slate-900">
         {/* <NextNProgress color="var(--clr-primary-100)" /> */}
         <Navbar />
-        <div className="container mx-auto py-24 lg:px-48 md:px-24 px-8 text-base">
+        <div className="container mx-auto lg:px-48 md:px-24 px-8 text-base">
           {children}
         </div>
         {/* <ToastContainer /> */}
