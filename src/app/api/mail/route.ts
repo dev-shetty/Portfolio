@@ -19,13 +19,11 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-export async function POST(req: Request, res: NextApiResponse<Data>) {
+export async function POST(req: Request) {
   const { email, name, desc } = await req.json()
 
   if (!email || !name || !desc) {
-    return res
-      .status(400)
-      .json({ success: false, message: "Fill all the fields!!" })
+    return Response.json({ success: false, message: "Fill all the fields!!" })
   }
 
   const mailData = {
@@ -43,11 +41,11 @@ export async function POST(req: Request, res: NextApiResponse<Data>) {
         if (error) {
           console.log(error)
           reject(error)
-          return res.status(500).json({ success: false, error: error })
+          return Response.json({ success: false, error: error })
         } else {
           console.log("Mail has been sent successfully")
           resolve(true)
-          return res.status(200).json({
+          return Response.json({
             success: true,
             name,
             message: `${name} your mail has been sent.   Thank You :)`,
@@ -55,8 +53,13 @@ export async function POST(req: Request, res: NextApiResponse<Data>) {
         }
       })
     })
+    return Response.json({
+      success: true,
+      name,
+      message: `${name} your mail has been sent.   Thank You :)`,
+    })
   } catch (error) {
     console.log(error)
-    return res.status(500).json({ success: false, error: error })
+    return Response.json({ success: false, error: error })
   }
 }
