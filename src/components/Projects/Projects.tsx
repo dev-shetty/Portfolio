@@ -2,7 +2,7 @@
 
 import styles from "@/styles/Projects.module.css"
 import { useState } from "react"
-import { projects } from "@/lib/projects"
+import { projectsOG } from "@/lib/projects"
 import Project from "@/components/Projects/Project"
 
 export default function Projects() {
@@ -10,7 +10,7 @@ export default function Projects() {
 
   return (
     <main className={styles.main}>
-      {projects.map(
+      {projectsOG.map(
         (project, i) =>
           index === i && (
             <Project
