@@ -34,7 +34,7 @@ function ContactForm() {
         data: details,
       })
 
-      if (response.status === 200) {
+      if (response.data.success) {
         console.log(response.data)
         setDetails({
           email: "",
