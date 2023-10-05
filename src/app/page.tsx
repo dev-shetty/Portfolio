@@ -12,13 +12,13 @@ type HomePageProps = {
 
 export default function HomePage({ searchParams }: HomePageProps) {
   return (
-    <div className="container mx-auto lg:px-48 md:px-24 px-8">
+    <main className="container mx-auto lg:px-48 md:px-24 px-8">
       <Home />
       <TechStack />
       <Projects params={searchParams} />
       <Experience />
       <Talks />
       <Achievements params={searchParams} />
-    </div>
+    </main>
   )
 }
