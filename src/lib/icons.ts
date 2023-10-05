@@ -5,6 +5,7 @@ import {
   FaPython,
   FaLinkedin,
   FaTwitter,
+  FaDev,
 } from "react-icons/fa"
 import {
   TbBrandCss3,
@@ -23,6 +24,7 @@ import {
   TbCode,
   TbDownload,
   TbExternalLink,
+  TbX,
 } from "react-icons/tb"
 import { SiExpress } from "react-icons/si"
 
@@ -36,6 +38,7 @@ export const icons = {
   // Socials
   LinkedIn: FaLinkedin,
   Twitter: FaTwitter,
+  DevTo: FaDev,
 
   // Tabler Icons
   CSS: TbBrandCss3,
@@ -56,6 +59,7 @@ export const icons = {
   Download: TbDownload,
   Visit: TbExternalLink,
   SourceCode: TbCode,
+  Close: TbX,
 
   // Simple Icons
   Express: SiExpress,

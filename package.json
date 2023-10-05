@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-toast": "^1.1.5",
     "axios": "^1.3.4",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
     "eslint": "8.35.0",
     "eslint-config-next": "^13.5.4",
     "framer-motion": "^10.2.4",
@@ -23,6 +26,7 @@
     "react-icons": "^4.11.0",
     "react-parallax-tilt": "^1.7.117",
     "react-toastify": "^9.1.2",
+    "tailwind-merge": "^1.14.0",
     "typescript": "4.9.5",
     "uuid": "^9.0.0",
     "vercel": "^28.18.1"
