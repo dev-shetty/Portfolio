@@ -25,7 +25,7 @@ export default function Achievements({ params }: AchievementProps) {
                   <p className="text-2xl font-bold">
                     {achievement.position} &#8226; {achievement.competition}
                   </p>
-                  <div className="flex gap-1 mt-1 mb-4">
+                  <div className="flex flex-wrap gap-1 mt-1 mb-4">
                     {/* <p>Team: </p> */}
                     {achievement.teamMembers.map((member) => (
                       <p className="outline outline-1 outline-slate-700 bg-slate-700 px-2 rounded-md">
