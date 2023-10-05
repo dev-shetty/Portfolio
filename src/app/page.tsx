@@ -7,7 +7,7 @@ export default function LandingPage() {
   return (
     <>
       {/* <Blob /> */}
-      <main className="container md:nppx-4">
+      <main className="container">
         {/* <Landing /> */}
         <Home />
         <TechStack />
