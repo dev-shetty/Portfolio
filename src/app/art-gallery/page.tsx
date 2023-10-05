@@ -1,21 +1,16 @@
-import Blob from "@/components/UIComponents/Blob/Blob"
-import styles from "../../styles/ArtGallery.module.css"
-import ArtGallery from "@/components/ArtGallery/ArtGallery"
-import { Metadata } from "next"
-
-export const metadata: Metadata = {
-  title: "Deveesh Shetty - Art Gallery",
-  description: "Arts - Paintings / Sketches made by Deveesh Shetty",
-}
+import ArtGallery from "@/components/ArtGallery/art-gallery"
 
 function ArtGalleryPage() {
   return (
-    <>
-      {/* <Blob /> */}
-      <main className={styles.main}>
-        <ArtGallery />
-      </main>
-    </>
+    <div>
+      <div className="container mx-auto text-center border-b mb-4 pb-2 border-b-slate-700">
+        <h1 className="text-4xl md:text-5xl">Art Gallery</h1>
+        <h2 className="text-lg md:text-xl font-light">
+          I may be a developer, but I also have a creative side as an artist.
+        </h2>
+      </div>
+      <ArtGallery />
+    </div>
   )
 }
 

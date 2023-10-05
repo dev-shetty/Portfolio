@@ -12,7 +12,7 @@ type HomePageProps = {
 
 export default function HomePage({ searchParams }: HomePageProps) {
   return (
-    <div className="py-24">
+    <div className="container mx-auto lg:px-48 md:px-24 px-8">
       <Home />
       <TechStack />
       <Projects params={searchParams} />

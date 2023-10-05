@@ -1,25 +1,3 @@
-.container {
-  padding: 3rem 1rem;
-  width: 100%;
-  height: 100%;
-}
-
-.container > div:has(h1) {
-  padding-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.container > div > h1 {
-  font-size: var(--fs-heading);
-}
-.container > div > h2 {
-  font-size: var(--fs-350);
-  text-align: center;
-}
-
 .art_container {
   display: grid;
   width: 100%;
@@ -29,21 +7,6 @@
   grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
   grid-auto-rows: 22.5em; /* size for implicit rows */
   grid-auto-flow: dense; /*fills the blank spaces*/
-}
-
-.art_container > div {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.art_container > div > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  scale: 1.1;
-  transition: scale 500ms ease-in-out;
 }
 
 .art_container > div::after {
