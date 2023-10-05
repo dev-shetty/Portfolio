@@ -12,17 +12,13 @@ type HomePageProps = {
 
 export default function HomePage({ searchParams }: HomePageProps) {
   return (
-    <>
-      {/* <Blob /> */}
-      <div className="py-24">
-        {/* <Landing /> */}
-        <Home />
-        <TechStack />
-        <Projects params={searchParams} />
-        <Experience />
-        <Talks />
-        <Achievements params={searchParams} />
-      </div>
-    </>
+    <div className="py-24">
+      <Home />
+      <TechStack />
+      <Projects params={searchParams} />
+      <Experience />
+      <Talks />
+      <Achievements params={searchParams} />
+    </div>
   )
 }
