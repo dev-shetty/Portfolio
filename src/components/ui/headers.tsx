@@ -35,7 +35,7 @@ export function H2({ children, className, ...props }: HeadingProps) {
 
 export function H3({ children, className, ...props }: HeadingProps) {
   return (
-    <h3 className={cn("text-2xl", className)} {...props}>
+    <h3 className={cn("text-xl md:text-2xl", className)} {...props}>
       {children}
     </h3>
   )
