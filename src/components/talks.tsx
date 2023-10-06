@@ -10,7 +10,7 @@ export default function Talks() {
       <div className="grid gap-4">
         {talks.map((talk) => (
           <div
-            className="flex flex-col border-b pb-2 last:border-b-0 last:pb-0 border-b-slate-800"
+            className="flex flex-col border-b pb-2 last-of-type:border-b-0 last-of-type:pb-0 border-b-slate-800"
             key={talk.id}
           >
             <div className="flex flex-col">

@@ -28,7 +28,7 @@ function Projects({ params }: ProjectProps) {
           (project, index) =>
             index < LIMIT && (
               <div
-                className="flex flex-col-reverse lg:grid lg:grid-cols-4 items-center pb-2 border-b border-b-slate-800"
+                className="flex flex-col-reverse lg:grid lg:grid-cols-4 items-center pb-2 border-b last-of-type:border-b-0 last-of-type:pb-0 border-b-slate-800"
                 key={project.id}
               >
                 <div className="flex flex-col gap-4 col-span-3 mt-4 lg:mt-0 lg:pr-8">
