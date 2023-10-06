@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/config"
 export const metadata: Metadata = {
   title: {
     default: "Deveesh Shetty",
-    template: `%s - ${siteConfig.name}`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: ["Deveesh Shetty", "Frontend Developer", "React", "Next.js"],
