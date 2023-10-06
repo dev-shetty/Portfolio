@@ -3,7 +3,7 @@ export const siteConfig = {
   description:
     "Portfolio Site of Deveesh Shetty, a Frontend Developer showcasing his projects and experiences",
   url: "https://deveesh.vercel.app",
-  ogImage: "https://placetile.vercel.app/og.jpg",
+  ogImage: "https://deveesh.vercel.app/og.jpg",
   socials: {
     twitter: "https://twitter.com/ShettyDeveesh",
     github: "https://github.com/Deveesh-Shetty/Porfolio",
