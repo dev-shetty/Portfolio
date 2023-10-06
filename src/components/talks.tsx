@@ -1,13 +1,12 @@
 import Link from "next/link"
 import { icons as Icon } from "@/lib/icons"
 import { talks } from "@/lib/talks"
+import { H2, H3 } from "@/components/ui/headers"
 
 export default function Talks() {
   return (
     <section className="my-12">
-      <h2 className="text-2xl md:text-3xl border-b border-b-slate-700 pb-2 mb-4">
-        Talks and Workshops
-      </h2>
+      <H2>Talks and Workshops</H2>
       <div className="grid gap-4">
         {talks.map((talk) => (
           <div
@@ -15,7 +14,7 @@ export default function Talks() {
             key={talk.id}
           >
             <div className="flex flex-col">
-              <p className="text-2xl font-bold">{talk.title}</p>
+              <H3>{talk.title}</H3>
               <p>
                 {talk.description}{" "}
                 <Link href={talk.blog} target="_blank" className="underline">

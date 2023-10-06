@@ -4,6 +4,7 @@ import { FormEvent, useState, ChangeEvent } from "react"
 import axios from "axios"
 import { useToast } from "@/hooks/use-toast"
 import Loading from "@/components/ui/loading/loading"
+import { H1 } from "@/components/ui/headers"
 
 function ContactForm() {
   const [details, setDetails] = useState({
@@ -69,9 +70,7 @@ function ContactForm() {
 
   return (
     <div className="flex flex-col gap-8 w-4/5 mx-auto">
-      <h1 className="text-3xl md:text-5xl border-b border-b-slate-700 mb-4 pb-2">
-        Contact Me
-      </h1>
+      <H1>Contact Me</H1>
       <form
         className="flex flex-col w-full gap-4 justify-between"
         method="post"

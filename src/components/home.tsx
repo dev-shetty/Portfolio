@@ -2,15 +2,14 @@ import Image from "next/image"
 import ProfileImg from "@/assets/images/Deveesh.jpg"
 import Link from "next/link"
 import { icons as Icon } from "@/lib/icons"
+import { H1 } from "@/components/ui/headers"
 
 function Home() {
   return (
     <main className="flex flex-col-reverse xl:flex-row items-center gap-16 py-8">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
-          <h1 className="text-4xl md:text-5xl border-b pb-2 mb-2 border-b-slate-700">
-            Deveesh Shetty
-          </h1>
+          <H1>Deveesh Shetty</H1>
           <div className="flex flex-col gap-4">
             <p>
               I am a Frontend Developer working with modern frontend libraries

@@ -1,4 +1,5 @@
 import { SearchParamsType } from "@/app/page"
+import { H2, H3 } from "@/components/ui/headers"
 import { achievements } from "@/lib/achievements"
 import Link from "next/link"
 
@@ -13,9 +14,7 @@ export default function Achievements({ params }: AchievementProps) {
       : Number(params["show-achievements"]) || 3
   return (
     <section className="my-12">
-      <h2 className="text-2xl md:text-3xl border-b border-b-slate-700 pb-2 mb-4">
-        Achievements
-      </h2>
+      <H2>Achievements</H2>
       <div className="grid gap-4">
         {achievements.map(
           (achievement, index) =>
@@ -25,11 +24,10 @@ export default function Achievements({ params }: AchievementProps) {
                 key={achievement.id}
               >
                 <div className="flex flex-col">
-                  <p className="text-2xl font-bold">
+                  <H3>
                     {achievement.position} &#8226; {achievement.competition}
-                  </p>
+                  </H3>
                   <div className="flex flex-wrap gap-1 mt-1 mb-4">
-                    {/* <p>Team: </p> */}
                     {achievement.teamMembers.map((member) => (
                       <p
                         className="outline outline-1 outline-slate-700 bg-slate-700 px-2 rounded-md"

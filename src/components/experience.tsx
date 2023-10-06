@@ -2,13 +2,12 @@ import Image from "next/image"
 import Link from "next/link"
 import { icons as Icon } from "@/lib/icons"
 import { experiences } from "@/lib/experiences"
+import { H2, H3 } from "@/components/ui/headers"
 
 export default function Experience() {
   return (
     <section className="my-12">
-      <h2 className="text-2xl md:text-3xl border-b border-b-slate-700 pb-2 mb-4">
-        Experience
-      </h2>
+      <H2>Experience</H2>
       <div className="grid lg:grid-cols-2 gap-2">
         {experiences.map((experience) => (
           <div key={experience.id} className="grid grid-cols-5 gap-4">
@@ -22,7 +21,7 @@ export default function Experience() {
               />
             </div>
             <div className="col-span-3 md:col-span-4 flex flex-col">
-              <p className="text-xl font-bold">{experience.title}</p>
+              <H3 className="text-xl font-bold">{experience.title}</H3>
               <div className="flex flex-col">
                 <Link
                   href={experience.organization.url}
