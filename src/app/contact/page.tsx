@@ -3,7 +3,7 @@ import ContactForm from "@/components/contact/contact-form"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Deveesh Shetty | Contact",
+  title: "Contact",
   description:
     "Contact me via socials or send me an email by filling the form!",
 }

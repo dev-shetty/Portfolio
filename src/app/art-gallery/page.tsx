@@ -3,7 +3,7 @@ import { H1 } from "@/components/ui/headers"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Deveesh Shetty | Art Gallery",
+  title: "Art Gallery",
   description:
     "I may be a developer, but I also have a creative side as an artist. Checkout my artworks here.",
 }
