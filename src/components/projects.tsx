@@ -4,6 +4,7 @@ import Link from "next/link"
 import { projects } from "@/lib/projects"
 import { SearchParamsType } from "@/app/page"
 import { H2, H3 } from "@/components/ui/headers"
+import Button from "@/components/ui/button"
 
 type ProjectProps = {
   params: SearchParamsType
@@ -74,18 +75,17 @@ function Projects({ params }: ProjectProps) {
               </div>
             )
         )}
-        <div className="mx-auto">
+        <Button className="mx-auto py-2 w-fit md:w-fit px-16" asChild>
           <Link
             href={`?${new URLSearchParams({
               "show-projects":
                 LIMIT >= projects.length ? "3" : projects.length.toString(),
             })}`}
-            className="px-12 outline outline-1 outline-slate-700 py-2 bg-slate-800 rounded-md text-center hover:bg-slate-700 transition-colors"
             scroll={false}
           >
             {LIMIT >= projects.length ? "View Less" : "View More"}
           </Link>
-        </div>
+        </Button>
       </div>
     </section>
   )

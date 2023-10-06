@@ -1,5 +1,6 @@
 import Link from "next/link"
-import { FaEnvelope, FaPalette } from "react-icons/fa"
+import { icons as Icon } from "@/lib/icons"
+import Button from "@/components/ui/button"
 
 function Navbar() {
   return (
@@ -11,20 +12,21 @@ function Navbar() {
           </Link>
         </div>
         <ul className="flex items-center gap-2 justify-end text-sm">
-          <Link
-            href="/art-gallery"
-            className="px-4 py-1 bg-slate-800 rounded-md w-12 md:w-32 text-center hover:bg-slate-700 transition-colors"
-          >
-            <FaPalette className="md:hidden" />
-            <span className="hidden md:block">Art Gallery</span>
-          </Link>
-          <Link
-            href="/contact"
-            className="px-4 py-1 bg-slate-800 rounded-md w-12 md:w-32 text-center hover:bg-slate-700 transition-colors"
-          >
-            <FaEnvelope className="md:hidden" />
-            <span className="hidden md:block">Get in touch</span>
-          </Link>
+          <Button asChild>
+            <Link href="/art-gallery">
+              <Icon.Palette className="md:hidden" />
+              <span className="hidden md:block">Art Gallery</span>
+            </Link>
+          </Button>
+          <Button asChild>
+            <Link
+              href="/contact"
+              className="px-4 py-1 bg-slate-800 rounded-md w-12 md:w-32 text-center hover:bg-slate-700 transition-colors"
+            >
+              <Icon.Envelope className="md:hidden" />
+              <span className="hidden md:block">Get in touch</span>
+            </Link>
+          </Button>
         </ul>
       </div>
     </nav>

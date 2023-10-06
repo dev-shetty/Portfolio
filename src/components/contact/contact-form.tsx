@@ -5,6 +5,7 @@ import axios from "axios"
 import { useToast } from "@/hooks/use-toast"
 import Loading from "@/components/ui/loading/loading"
 import { H1 } from "@/components/ui/headers"
+import Button from "@/components/ui/button"
 
 function ContactForm() {
   const [details, setDetails] = useState({
@@ -113,13 +114,9 @@ function ContactForm() {
           ></textarea>
         </div>
         <div className="mx-auto mt-2">
-          <button
-            type="submit"
-            disabled={loading}
-            className="relative w-32 outline outline-1 outline-slate-700 h-10 bg-slate-800 rounded-md text-center hover:bg-slate-700 transition-colors"
-          >
-            <div>{loading ? <Loading /> : "Send"}</div>
-          </button>
+          <Button type="submit" disabled={loading} className="relative h-10">
+            <span>{loading ? <Loading /> : "Send"}</span>
+          </Button>
         </div>
       </form>
     </div>

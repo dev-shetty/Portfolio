@@ -20,7 +20,7 @@
   align-items: center;
   padding-inline: 5%;
   text-align: center;
-  font-size: var(--fs-350);
+  font-size: 1.25rem;
   color: var(--clr-primary-100);
   transition: opacity 500ms ease-in-out;
 }
@@ -63,6 +63,6 @@
   }
 
   .container > div > h2 {
-    font-size: var(--fs-300);
+    font-size: 1.25rem;
   }
 }

@@ -59,13 +59,14 @@
     box-shadow: 1px 1px 1rem var(--clr-primary-100-5);
   }
 
-  .card:hover .socials > div:nth-child(2) {
+  /* The dealy shouldn't be there when I hover the icons directly */
+  .card:hover .socials:not(:hover) > div:nth-child(2) {
     transition-delay: 100ms;
   }
-  .card:hover .socials > div:nth-child(3) {
+  .card:hover .socials:not(:hover) > div:nth-child(3) {
     transition-delay: 200ms;
   }
-  .card:hover .socials > div:last-child {
+  .card:hover .socials:not(:hover) > div:last-child {
     transition-delay: 300ms;
   }
 

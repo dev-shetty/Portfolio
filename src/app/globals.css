@@ -15,40 +15,6 @@
   /* Normal Colors */
   --clr-primary-100: rgb(255, 255, 255);
   --clr-primary-900: rgb(19, 19, 19);
-
-  /* Blob Colors */
-
-  /* Hotpink and Turquoise - Fallback*/
-  --blob-clr-1: #ff69b4;
-  --blob-clr-2: #40e0d0;
-
-  /* Island Green anf White */
-  /* --blob-clr-1: #2bae66; */
-  /* --blob-clr-2: #fcf6f5; */
-
-  /* Royal Purple and Ice Flow */
-  /* --blob-clr-1: #603f83; */
-  /* --blob-clr-2: #c7d3d4; */
-
-  /* Sailor Blue and Mint */
-  /* --blob-clr-1: #00203f; */
-  /* --blob-clr-2: #adefd1; */
-
-  /* Electric Blue Lemonade and Aquamarine */
-  /* --blob-clr-1: #0063b2; */
-  /* --blob-clr-2: #9cc3d5; */
-
-  /* Font Sizes */
-  --fs-dev: clamp(1rem, 15vw, 15rem);
-  --fs-text: clamp(0.9rem, 1.8vmin, 1.5rem);
-  --fs-heading: clamp(1.4rem, 7vw, 3rem);
-  --fs-300: clamp(1rem, 2vmin, 1.5rem);
-  --fs-350: clamp(1.1rem, 2.2vmin, 1.5rem);
-  --fs-400: clamp(1rem, 6vw, 2rem);
-  --fs-500: clamp(1.5rem, 8vw, 2rem);
-
-  /* Extras */
-  --line-width: 2px;
 }
 
 .debug {
@@ -77,9 +43,3 @@ body::-webkit-scrollbar-thumb {
   outline: 1px solid red;
   background: rgba(50, 205, 50, 0.285);
 } */
-
-@media screen and (max-width: 50em) {
-  :root {
-    --line-width: 1px;
-  }
-}
