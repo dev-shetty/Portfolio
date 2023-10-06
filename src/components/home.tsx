@@ -26,16 +26,25 @@ function Home() {
         </div>
         <div className="flex items-center justify-between gap-4">
           <div className="flex gap-4 text-xl md:text-2xl">
-            <Link href="https://github.com/Deveesh-Shetty" target="_blank">
+            <Link
+              href="https://github.com/Deveesh-Shetty"
+              target="_blank"
+              className="hover:text-slate-300 transition-colors"
+            >
               <Icon.GitHub />
             </Link>
             <Link
               href="https://www.linkedin.com/in/deveesh-shetty-908539214"
               target="_blank"
+              className="hover:text-slate-300 transition-colors"
             >
               <Icon.LinkedIn />
             </Link>
-            <Link href="https://twitter.com/shettydeveesh" target="_blank">
+            <Link
+              href="https://twitter.com/shettydeveesh"
+              target="_blank"
+              className="hover:text-slate-300 transition-colors"
+            >
               <Icon.Twitter />
             </Link>
           </div>
