@@ -24,6 +24,8 @@ import {
   TbCode,
   TbDownload,
   TbExternalLink,
+  TbMail,
+  TbPalette,
   TbX,
 } from "react-icons/tb"
 import { SiExpress } from "react-icons/si"
@@ -60,6 +62,8 @@ export const icons = {
   Visit: TbExternalLink,
   SourceCode: TbCode,
   Close: TbX,
+  Palette: TbPalette,
+  Envelope: TbMail,
 
   // Simple Icons
   Express: SiExpress,

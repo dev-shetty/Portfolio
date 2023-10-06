@@ -14,7 +14,7 @@ function Contact() {
           <Image
             src={Profile}
             alt="Deveesh Profile"
-            className="block aspect-square rounded-full transition-all duration-500"
+            className="block aspect-square rounded-full transition-all duration-300"
             priority
           />
         </div>
@@ -29,7 +29,7 @@ function Contact() {
           <div
             className={`${styles.socials} flex justify-center items-center h-full w-4/5 gap-2`}
           >
-            <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-500 hover:text-slate-800 text-xl">
+            <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl">
               <Link
                 href="https://github.com/Deveesh-Shetty"
                 target="_blank"
@@ -38,7 +38,7 @@ function Contact() {
                 <Icon.GitHub />
               </Link>
             </div>
-            <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-500 hover:text-slate-800 text-xl">
+            <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl">
               <Link
                 href="https://www.linkedin.com/in/deveesh-shetty-908539214"
                 target="_blank"
@@ -47,7 +47,7 @@ function Contact() {
                 <Icon.LinkedIn />
               </Link>
             </div>
-            <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-500 hover:text-slate-800 text-xl">
+            <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl">
               <Link
                 href="https://twitter.com/shettydeveesh"
                 target="_blank"
@@ -56,7 +56,7 @@ function Contact() {
                 <Icon.Twitter />
               </Link>
             </div>
-            <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-500 hover:text-slate-800 text-xl">
+            <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl">
               <Link
                 href="https://dev.to/devshetty"
                 target="_blank"

@@ -3,6 +3,7 @@ import ProfileImg from "@/assets/images/Deveesh.jpg"
 import Link from "next/link"
 import { icons as Icon } from "@/lib/icons"
 import { H1 } from "@/components/ui/headers"
+import Button from "@/components/ui/button"
 
 function Home() {
   return (
@@ -38,14 +39,16 @@ function Home() {
               <Icon.Twitter />
             </Link>
           </div>
-          <a
-            href="Resume.pdf"
-            download="Deveesh Resume.pdf"
-            className="flex items-center gap-2 w-max px-4 py-2 bg-slate-800 rounded-md text-center hover:bg-slate-700 transition-colors"
-          >
-            <button>Resume</button>
-            <Icon.Download />
-          </a>
+          <Button className="w-full py-2" asChild>
+            <Link
+              href="Resume.pdf"
+              download="Deveesh Resume.pdf"
+              // className="flex items-center gap-2 w-max px-4 py-2 bg-slate-800 rounded-md text-center hover:bg-slate-700 transition-colors"
+            >
+              <span>Resume</span>
+              <Icon.Download />
+            </Link>
+          </Button>
         </div>
       </div>
       <div className="rounded-full">

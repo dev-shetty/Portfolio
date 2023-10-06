@@ -1,4 +1,5 @@
 import { SearchParamsType } from "@/app/page"
+import Button from "@/components/ui/button"
 import { H2, H3 } from "@/components/ui/headers"
 import { achievements } from "@/lib/achievements"
 import Link from "next/link"
@@ -47,7 +48,7 @@ export default function Achievements({ params }: AchievementProps) {
               </div>
             )
         )}
-        <div className="mx-auto">
+        <Button className="mx-auto py-2 w-fit md:w-fit px-16" asChild>
           <Link
             href={`?${new URLSearchParams({
               "show-achievements":
@@ -55,12 +56,11 @@ export default function Achievements({ params }: AchievementProps) {
                   ? "3"
                   : achievements.length.toString(),
             })}`}
-            className="px-12 outline outline-1 outline-slate-700 py-2 bg-slate-800 rounded-md text-center hover:bg-slate-700 transition-colors"
             scroll={false}
           >
             {LIMIT >= achievements.length ? "View Less" : "View More"}
           </Link>
-        </div>
+        </Button>
       </div>
     </section>
   )
