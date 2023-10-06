@@ -3,6 +3,7 @@ import Profile from "@/assets/images/Deveesh.jpg"
 import styles from "./contact.module.css"
 import { icons as Icon } from "@/lib/icons"
 import Link from "next/link"
+import { siteConfig } from "@/lib/config"
 
 function Contact() {
   return (
@@ -31,7 +32,7 @@ function Contact() {
           >
             <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl">
               <Link
-                href="https://github.com/Deveesh-Shetty"
+                href={siteConfig.socials.github}
                 target="_blank"
                 className="flex gap-4 items-center"
               >
@@ -40,7 +41,7 @@ function Contact() {
             </div>
             <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl">
               <Link
-                href="https://www.linkedin.com/in/deveesh-shetty-908539214"
+                href={siteConfig.socials.linkedin}
                 target="_blank"
                 className="flex gap-4 items-center"
               >
@@ -49,7 +50,7 @@ function Contact() {
             </div>
             <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl">
               <Link
-                href="https://twitter.com/shettydeveesh"
+                href={siteConfig.socials.twitter}
                 target="_blank"
                 className="flex gap-4 items-center"
               >
@@ -58,7 +59,7 @@ function Contact() {
             </div>
             <div className="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl">
               <Link
-                href="https://dev.to/devshetty"
+                href={siteConfig.socials.devTo}
                 target="_blank"
                 className="flex gap-4 items-center"
               >

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { icons as Icon } from "@/lib/icons"
 import { H1 } from "@/components/ui/headers"
 import Button from "@/components/ui/button"
+import { siteConfig } from "@/lib/config"
 
 function Home() {
   return (
@@ -27,21 +28,21 @@ function Home() {
         <div className="flex items-center justify-between gap-4">
           <div className="flex gap-4 text-xl md:text-2xl">
             <Link
-              href="https://github.com/Deveesh-Shetty"
+              href={siteConfig.socials.github}
               target="_blank"
               className="hover:text-slate-300 transition-colors"
             >
               <Icon.GitHub />
             </Link>
             <Link
-              href="https://www.linkedin.com/in/deveesh-shetty-908539214"
+              href={siteConfig.socials.linkedin}
               target="_blank"
               className="hover:text-slate-300 transition-colors"
             >
               <Icon.LinkedIn />
             </Link>
             <Link
-              href="https://twitter.com/shettydeveesh"
+              href={siteConfig.socials.twitter}
               target="_blank"
               className="hover:text-slate-300 transition-colors"
             >
@@ -49,11 +50,7 @@ function Home() {
             </Link>
           </div>
           <Button className="w-full py-2" asChild>
-            <Link
-              href="Resume.pdf"
-              download="Deveesh Resume.pdf"
-              // className="flex items-center gap-2 w-max px-4 py-2 bg-slate-800 rounded-md text-center hover:bg-slate-700 transition-colors"
-            >
+            <Link href="Resume.pdf" download="Deveesh Resume.pdf">
               <span>Resume</span>
               <Icon.Download />
             </Link>

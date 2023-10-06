@@ -4,7 +4,8 @@ import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Deveesh Shetty | Contact",
-  description: "Deveesh Shetty Contact Info",
+  description:
+    "Contact me via socials or send me an email by filling the form!",
 }
 
 function ContactPage() {
