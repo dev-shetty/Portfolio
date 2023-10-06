@@ -3,6 +3,7 @@ import { icons as Icon } from "@/lib/icons"
 import Link from "next/link"
 import { projects } from "@/lib/projects"
 import { SearchParamsType } from "@/app/page"
+import { H2, H3 } from "@/components/ui/headers"
 
 type ProjectProps = {
   params: SearchParamsType
@@ -20,9 +21,7 @@ function Projects({ params }: ProjectProps) {
 
   return (
     <section className="my-8">
-      <h2 className="text-2xl md:text-3xl border-b border-b-slate-700 pb-2 mb-4">
-        Projects
-      </h2>
+      <H2>Projects</H2>
       <div className="grid gap-6">
         {projects.map(
           (project, index) =>
@@ -32,8 +31,8 @@ function Projects({ params }: ProjectProps) {
                 key={project.id}
               >
                 <div className="flex flex-col gap-4 col-span-3 mt-4 lg:mt-0 lg:pr-8">
-                  <div className="flex flex-col gap-2">
-                    <p className="text-xl">{project.name}</p>
+                  <div className="flex flex-col gap-1">
+                    <H3>{project.name}</H3>
                     <p>{project.description}</p>
                   </div>
                   <div className="flex flex-wrap gap-2">
