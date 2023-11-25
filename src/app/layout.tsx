@@ -10,8 +10,13 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  keywords: ["Deveesh Shetty", "Frontend Developer", "React", "Next.js"],
-  creator: "Deveesh-Shetty",
+  keywords: [
+    "Deveesh Shetty",
+    "Frontend Developer",
+    "MERN Stack Developer",
+    "Deveesh",
+  ],
+  creator: "dev-shetty",
   openGraph: {
     type: "website",
     locale: "en_US",

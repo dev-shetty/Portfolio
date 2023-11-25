@@ -6,7 +6,7 @@ export const siteConfig = {
   ogImage: "https://deveesh.vercel.app/og.jpg",
   socials: {
     twitter: "https://twitter.com/ShettyDeveesh",
-    github: "https://github.com/Deveesh-Shetty/Porfolio",
+    github: "https://github.com/dev-shetty/Porfolio",
     linkedin: "https://www.linkedin.com/in/deveesh-shetty-908539214/",
     devTo: "https://dev.to/devshetty",
   },

@@ -8,7 +8,7 @@ export const projects = [
     image: "/projects/chromatico.png",
     labels: ["React.js", "TypeScript", "TailwindCSS"],
     date: "March 2023",
-    sourceCode: "https://github.com/Deveesh-Shetty/Chromatico",
+    sourceCode: "https://github.com/dev-shetty/Chromatico",
     liveUrl: "https://chromatico.vercel.app/",
   },
   {
@@ -19,7 +19,7 @@ export const projects = [
     image: "/projects/rudraksh.jpg",
     labels: ["Next.js", "TypeScript", "TailwindCSS", "API"],
     date: "August 2023",
-    sourceCode: "https://github.com/Deveesh-Shetty/Rudraksh",
+    sourceCode: "https://github.com/dev-shetty/Rudraksh",
     liveUrl: "https://rudraksh.vercel.app/",
   },
   {
@@ -30,7 +30,7 @@ export const projects = [
     image: "/projects/tiles.jpg",
     labels: ["Typescript", "Next.js", "Express.js", "MongoDB", "Sockets"],
     date: "September 2023",
-    sourceCode: "https://github.com/Deveesh-Shetty/tiles",
+    sourceCode: "https://github.com/dev-shetty/tiles",
     liveUrl: "https://placetile.vercel.app/",
   },
   {
@@ -41,7 +41,7 @@ export const projects = [
     image: "/projects/razer-clone.png",
     labels: ["Typescript", "React.js", "TailwindCSS"],
     date: "February 2023",
-    sourceCode: "https://github.com/Deveesh-Shetty/Razer-Clone",
+    sourceCode: "https://github.com/dev-shetty/Razer-Clone",
     liveUrl: "https://razer-clone-iota.vercel.app",
   },
   {
@@ -51,7 +51,7 @@ export const projects = [
     image: "/projects/rolex-clone.png",
     labels: ["Typescript", "React.js", "TailwindCSS"],
     date: "February 2023",
-    sourceCode: "https://github.com/Deveesh-Shetty/Rolex-Clone",
+    sourceCode: "https://github.com/dev-shetty/Rolex-Clone",
     liveUrl: "https://rolex-clone.vercel.app/",
   },
   {
@@ -62,7 +62,7 @@ export const projects = [
     image: "/projects/expense-tracker.jpeg",
     labels: ["Javascript", "React.js", "TailwindCSS", "Express.js", "MongoDB"],
     date: "December 2022",
-    sourceCode: "https://github.com/Deveesh-Shetty/Expense-Tracker",
+    sourceCode: "https://github.com/dev-shetty/Expense-Tracker",
     liveUrl: null,
   },
   {
@@ -73,7 +73,7 @@ export const projects = [
     image: "/projects/clouds.png",
     labels: ["Javascript", "React.js", "CSS"],
     date: "December 2022",
-    sourceCode: "https://github.com/Deveesh-Shetty/Clouds",
+    sourceCode: "https://github.com/dev-shetty/Clouds",
     liveUrl: "https://cs-clouds.netlify.app",
   },
   {
@@ -84,7 +84,7 @@ export const projects = [
     image: "/projects/api-forever.png",
     labels: ["Javascript", "React.js", "CSS", "API"],
     date: "August 2022",
-    sourceCode: "https://github.com/Deveesh-Shetty/API-Forever",
+    sourceCode: "https://github.com/dev-shetty/API-Forever",
     liveUrl: "https://api-forever.netlify.app",
   },
 ].sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
