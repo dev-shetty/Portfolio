@@ -6,8 +6,9 @@ type Position =
   | "3rd Place"
   | "Finalist"
   | "Participant"
+  | "Project Pitching"
 
-type Achievements = {
+type Achievement = {
   id: string
   competition: string
   position: Position
@@ -17,7 +18,27 @@ type Achievements = {
   organizer: string
 }
 
-export const achievements: Achievements[] = [
+export const achievements: Achievement[] = [
+  {
+    id: uuid(),
+    competition: "Roolathon 2023",
+    position: "1st Place",
+    description:
+      "Developed and proposed idea for providing financial education for underserved people using Web and App.",
+    date: "December 2023",
+    teamMembers: ["Srujan Rai", "Akkil MG", "Zeliq Zayyan"],
+    organizer: "GDSC - Srinvias Institute of Technology",
+  },
+  {
+    id: uuid(),
+    competition: "API Day Coastal Karnataka",
+    position: "Project Pitching",
+    description:
+      "Pitched the idea of a Rudraksh to about 400+ participants, and received positive feedback.",
+    date: "November 2023",
+    teamMembers: ["Srujan Rai", "Sannidhi Kaje"],
+    organizer: "National Institute of Technology, Karnataka",
+  },
   {
     id: uuid(),
     competition: "Smart India Internal Hackathon",

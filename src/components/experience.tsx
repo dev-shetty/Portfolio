@@ -1,14 +1,14 @@
+import { H2, H3 } from "@/components/ui/headers"
+import { experiences } from "@/lib/experiences"
+import { icons as Icon } from "@/lib/icons"
 import Image from "next/image"
 import Link from "next/link"
-import { icons as Icon } from "@/lib/icons"
-import { experiences } from "@/lib/experiences"
-import { H2, H3 } from "@/components/ui/headers"
 
 export default function Experience() {
   return (
     <section className="my-12">
       <H2>Experience</H2>
-      <div className="grid lg:grid-cols-2 gap-2">
+      <div className="grid lg:grid-cols-2 gap-4">
         {experiences.map((experience) => (
           <div key={experience.id} className="grid grid-cols-5 gap-4">
             <div className="col-span-2 md:col-span-1 relative w-full aspect-square">

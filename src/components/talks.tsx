@@ -1,7 +1,7 @@
-import Link from "next/link"
+import { H2, H3 } from "@/components/ui/headers"
 import { icons as Icon } from "@/lib/icons"
 import { talks } from "@/lib/talks"
-import { H2, H3 } from "@/components/ui/headers"
+import Link from "next/link"
 
 export default function Talks() {
   return (
@@ -17,15 +17,27 @@ export default function Talks() {
               <H3>{talk.title}</H3>
               <p>
                 {talk.description}{" "}
-                <Link href={talk.blog} target="_blank" className="underline">
-                  Read more <Icon.Visit className="inline" />
-                </Link>
+                {talk.blog !== null && (
+                  <Link href={talk.blog} target="_blank" className="underline">
+                    Read more <Icon.Visit className="inline" />
+                  </Link>
+                )}
               </p>
             </div>
-            <div className="flex gap-2">
-              <p>{talk.organizer}</p>
+            <div className="flex gap-2 mt-1">
+              <p className="font-bold">{talk.organizer}</p>
               <p>&#8226;</p>
               <p className="text-slate-300">{talk.date}</p>
+              <p>&#8226;</p>
+              {talk.video !== null && (
+                <Link
+                  href={talk.video}
+                  target="_blank"
+                  className="flex items-center gap-1 hover:text-slate-200"
+                >
+                  <Icon.YouTube /> YouTube
+                </Link>
+              )}
             </div>
           </div>
         ))}

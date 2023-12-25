@@ -2,6 +2,28 @@ import { v4 as uuid } from "uuid"
 export const projects = [
   {
     id: uuid(),
+    name: "Finvest",
+    description:
+      "Web application for providing financial education to underserved poeple, built for Roolathon 2023",
+    image: "/projects/finvest.png",
+    labels: ["Next.js", "TypeScript", "TailwindCSS"],
+    date: "October 2023",
+    sourceCode: "https://github.com/so-sc/Finvest-Roolathon",
+    liveUrl: "https://finvest-rudra.vercel.app/",
+  },
+  {
+    id: uuid(),
+    name: "Sankalp",
+    description:
+      "Event registration portal and dashboard, for all the events conducted by SOSC.",
+    image: "/projects/sankalp.png",
+    labels: ["Next.js", "TypeScript", "TailwindCSS", "MERN"],
+    date: "October 2023",
+    sourceCode: "https://github.com/so-sc/Sankalp",
+    liveUrl: "https://sankalp.sosc.org.in/",
+  },
+  {
+    id: uuid(),
     name: "Chromatico",
     description:
       "A color generator website that will help you find a good color combination for your upcoming projects or designs.",

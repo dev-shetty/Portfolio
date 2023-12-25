@@ -1,12 +1,14 @@
 import {
+  FaDev,
   FaGithub,
   FaJsSquare,
+  FaLinkedin,
   FaLinux,
   FaPython,
-  FaLinkedin,
   FaTwitter,
-  FaDev,
+  FaYoutube,
 } from "react-icons/fa"
+import { SiExpress } from "react-icons/si"
 import {
   TbBrandCss3,
   TbBrandFigma,
@@ -28,7 +30,6 @@ import {
   TbPalette,
   TbX,
 } from "react-icons/tb"
-import { SiExpress } from "react-icons/si"
 
 export const icons = {
   // Font Awesome Icons
@@ -41,6 +42,7 @@ export const icons = {
   LinkedIn: FaLinkedin,
   Twitter: FaTwitter,
   DevTo: FaDev,
+  YouTube: FaYoutube,
 
   // Tabler Icons
   CSS: TbBrandCss3,
