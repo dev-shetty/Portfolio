@@ -7,6 +7,7 @@ type Position =
   | "Finalist"
   | "Participant"
   | "Project Pitching"
+  | "Idea Pitching"
 
 type Achievement = {
   id: string
@@ -34,10 +35,20 @@ export const achievements: Achievement[] = [
     competition: "API Day Coastal Karnataka",
     position: "Project Pitching",
     description:
-      "Pitched the idea of a Rudraksh to about 400+ participants, and received positive feedback.",
+      "Pitched our project Rudraksh to about 400+ participants, and received positive feedback.",
     date: "November 2023",
     teamMembers: ["Srujan Rai", "Sannidhi Kaje"],
     organizer: "National Institute of Technology, Karnataka",
+  },
+  {
+    id: uuid(),
+    competition: "Techzooka 2023",
+    position: "Idea Pitching",
+    description:
+      "Pitched the idea for AI based learning assistant, for efficient learning experience by different kinds of learners.",
+    date: "November 2023",
+    teamMembers: ["Varshaa Shetty"],
+    organizer: "Infosys, Mangalore",
   },
   {
     id: uuid(),
