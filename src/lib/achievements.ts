@@ -8,6 +8,7 @@ type Position =
   | "Participant"
   | "Project Pitching"
   | "Idea Pitching"
+  | "Track Winners"
 
 type Achievement = {
   id: string
@@ -20,6 +21,26 @@ type Achievement = {
 }
 
 export const achievements: Achievement[] = [
+  {
+    id: uuid(),
+    competition: "Devhacks 5.0",
+    position: "Track Winners",
+    description:
+      "Developed a collaborative savings platform using blockchain to decentralize transactions.",
+    date: "February 2024",
+    teamMembers: ["Akkil MG", "Srajan Kumar", "Srujan Rai", "Zeliq Zayyan"],
+    organizer: "IIT Dharwad",
+  },
+  {
+    id: uuid(),
+    competition: "Echelon 2024",
+    position: "2nd Place",
+    description:
+      "Pitched the idea for ResQ phone for children and oldage people, competed against MBA students.",
+    date: "January 2024",
+    teamMembers: ["Chinmaya Vittal V", "Tejas GK"],
+    organizer: "Shreedevi Institute of Technology",
+  },
   {
     id: uuid(),
     competition: "Roolathon 2023",

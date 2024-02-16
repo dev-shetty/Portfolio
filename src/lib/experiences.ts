@@ -10,7 +10,7 @@ export const experiences = [
       logo: "/experiences/niveus.jpeg",
     },
     startDate: "Nov 2023",
-    endDate: null,
+    endDate: "Feb 2024",
   },
   {
     id: uuid(),

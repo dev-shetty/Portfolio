@@ -4,12 +4,12 @@ export const projects = [
     id: uuid(),
     name: "Finvest",
     description:
-      "Web application for providing financial education to underserved poeple, built for Roolathon 2023",
+      "Web application for providing financial education, and mutual savings using Pots",
     image: "/projects/finvest.png",
     labels: ["Next.js", "TypeScript", "TailwindCSS"],
-    date: "October 2023",
-    sourceCode: "https://github.com/so-sc/Finvest-Roolathon",
-    liveUrl: "https://finvest-rudra.vercel.app/",
+    date: "February 2024",
+    sourceCode: "https://github.com/dev-shetty/rudra-parsec",
+    liveUrl: null,
   },
   {
     id: uuid(),
