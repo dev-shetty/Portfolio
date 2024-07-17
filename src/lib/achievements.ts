@@ -23,6 +23,16 @@ type Achievement = {
 export const achievements: Achievement[] = [
   {
     id: uuid(),
+    competition: "CIDECode - CID Hackathon",
+    position: "Finalist",
+    description:
+      "Developed a solution for crawling onion sites, extracting data and correlating with clear net",
+    date: "February 2024",
+    teamMembers: ["Rishab Budale", "Akkil MG", "Sushruth Rao"],
+    organizer: "PES University, Bengaluru",
+  },
+  {
+    id: uuid(),
     competition: "Devhacks 5.0",
     position: "Track Winners",
     description:

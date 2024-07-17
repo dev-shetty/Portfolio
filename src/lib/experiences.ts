@@ -20,7 +20,7 @@ export const experiences = [
       url: "https://sosc.org.in/",
       logo: "/experiences/sosc.jpeg",
     },
-    startDate: "Jun 2022",
+    startDate: "Jun 2023",
     endDate: null,
   },
   {
@@ -56,4 +56,26 @@ export const experiences = [
     startDate: "Apr 2023",
     endDate: "Jun 2023",
   },
-]
+  {
+    id: uuid(),
+    title: "Technical Team Lead",
+    organization: {
+      name: "IEEE Mangalore Subsection",
+      url: "https://ieee.org/",
+      logo: "/experiences/ieee.png",
+    },
+    startDate: "Mar 2024",
+    endDate: null,
+  },
+  {
+    id: uuid(),
+    title: "Core Team - FOSS Mangalore",
+    organization: {
+      name: "FOSS United",
+      url: "https://fossunited.org/",
+      logo: "/experiences/foss.svg",
+    },
+    startDate: "Apr 2024",
+    endDate: null,
+  },
+].sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate))

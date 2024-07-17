@@ -40,4 +40,14 @@ export const talks: Talk[] = [
     video:
       "https://www.youtube.com/live/84TgdSg4bVY?si=T1uLhzBhfqaN_i_t&t=7419",
   },
+  {
+    id: uuid(),
+    title: "Branching with Git ",
+    organizer: "Department of CSE and SOSC",
+    description:
+      "A hands-on workshop on Git and GitHub for juniors as an peer to peer initiative by CSE Department.",
+    date: "7 June, 2024",
+    blog: null,
+    video: null,
+  },
 ]

@@ -28,15 +28,17 @@ export default function Talks() {
               <p className="font-bold">{talk.organizer}</p>
               <p>&#8226;</p>
               <p className="text-slate-300">{talk.date}</p>
-              <p>&#8226;</p>
               {talk.video !== null && (
-                <Link
-                  href={talk.video}
-                  target="_blank"
-                  className="flex items-center gap-1 hover:text-slate-200"
-                >
-                  <Icon.YouTube /> YouTube
-                </Link>
+                <>
+                  <p>&#8226;</p>
+                  <Link
+                    href={talk.video}
+                    target="_blank"
+                    className="flex items-center gap-1 hover:text-slate-200"
+                  >
+                    <Icon.YouTube /> YouTube
+                  </Link>
+                </>
               )}
             </div>
           </div>
