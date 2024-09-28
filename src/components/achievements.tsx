@@ -14,7 +14,7 @@ export default function Achievements({ params }: AchievementProps) {
       ? 3
       : Number(params["show-achievements"]) || 3
   return (
-    <section className="my-12">
+    <section className="my-16">
       <H2>Achievements</H2>
       <div className="grid gap-4">
         {achievements.map(

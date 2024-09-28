@@ -78,4 +78,15 @@ export const experiences = [
     startDate: "Apr 2024",
     endDate: null,
   },
+  {
+    id: uuid(),
+    title: "Frontend Engineer Intern",
+    organization: {
+      name: "Levels.fyi",
+      url: "https://www.levels.fyi/",
+      logo: "/experiences/levels.svg",
+    },
+    startDate: "Sep 2024",
+    endDate: null,
+  },
 ].sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate))

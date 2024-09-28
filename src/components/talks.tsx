@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export default function Talks() {
   return (
-    <section className="my-12">
+    <section className="my-16">
       <H2>Talks and Workshops</H2>
       <div className="grid gap-4">
         {talks.map((talk) => (

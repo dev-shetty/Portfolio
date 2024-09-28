@@ -6,7 +6,7 @@ import Link from "next/link"
 
 export default function Experience() {
   return (
-    <section className="my-12">
+    <section className="my-16">
       <H2>Experience</H2>
       <div className="grid lg:grid-cols-2 gap-4">
         {experiences.map((experience) => (

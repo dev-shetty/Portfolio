@@ -1,14 +1,14 @@
-import Image from "next/image"
 import ProfileImg from "@/assets/images/Deveesh.jpg"
-import Link from "next/link"
-import { icons as Icon } from "@/lib/icons"
-import { H1 } from "@/components/ui/headers"
 import Button from "@/components/ui/button"
+import { H1 } from "@/components/ui/headers"
 import { siteConfig } from "@/lib/config"
+import { icons as Icon } from "@/lib/icons"
+import Image from "next/image"
+import Link from "next/link"
 
 function Home() {
   return (
-    <main className="flex flex-col-reverse xl:flex-row items-center gap-16 py-8">
+    <main className="flex flex-col-reverse xl:flex-row items-center gap-16 my-16">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <H1>Deveesh Shetty</H1>

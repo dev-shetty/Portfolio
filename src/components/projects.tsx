@@ -1,10 +1,10 @@
-import Image from "next/image"
-import { icons as Icon } from "@/lib/icons"
-import Link from "next/link"
-import { projects } from "@/lib/projects"
 import { SearchParamsType } from "@/app/page"
-import { H2, H3 } from "@/components/ui/headers"
 import Button from "@/components/ui/button"
+import { H2, H3 } from "@/components/ui/headers"
+import { icons as Icon } from "@/lib/icons"
+import { projects } from "@/lib/projects"
+import Image from "next/image"
+import Link from "next/link"
 
 type ProjectProps = {
   params: SearchParamsType
@@ -21,7 +21,7 @@ function Projects({ params }: ProjectProps) {
       : Number(params["show-projects"]) || 3
 
   return (
-    <section className="my-8">
+    <section className="my-16">
       <H2>Projects</H2>
       <div className="grid gap-6">
         {projects.map(
