@@ -1,0 +1,30 @@
+---
+import { icons } from "@/lib/icons"
+import { Icon } from "astro-icon/components"
+import Button from "@/components/ui/button"
+---
+
+<nav
+  class="fixed backdrop-blur-md z-50 flex w-full items-center py-4 px-8 border-b border-b-slate-800"
+>
+  <div class="container mx-auto flex items-center justify-between">
+    <div>
+      <a href="/" class="text-xl hover:text-slate-200"> DevShetty </a>
+    </div>
+    <ul class="flex items-center gap-4 justify-end text-sm">
+      <Button client:load asChild>
+        <a href="/art-gallery" class="flex items-center gap-2">
+          <Icon name={icons.Palette} />
+        </a>
+      </Button>
+      <Button client:load asChild>
+        <a
+          href="/contact"
+          class="flex items-center gap-2 px-4 py-1 bg-slate-800 rounded-md w-12 md:w-fit text-center hover:bg-slate-700 transition-colors"
+        >
+          <Icon name={icons.Envelope} />
+        </a>
+      </Button>
+    </ul>
+  </div>
+</nav>

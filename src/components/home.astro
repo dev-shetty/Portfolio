@@ -1,0 +1,70 @@
+---
+import Button from "@/components/ui/button"
+import H1 from "@/components/ui/typography/H1.astro"
+import { siteConfig } from "@/lib/config"
+import { icons } from "@/lib/icons"
+import { Icon } from "astro-icon/components"
+import Image from "astro/components/Image.astro"
+---
+
+<main class="flex flex-col-reverse xl:flex-row items-center gap-16 my-16">
+  <div class="flex flex-col gap-8">
+    <div class="flex flex-col gap-4">
+      <H1>Deveesh Shetty</H1>
+      <div class="flex flex-col gap-4">
+        <p>
+          Frontend Developer messing around with modern frontend libraries and
+          frameworks. I love exploring new technologies, playing around with
+          them. Developer by passion and artist by hobby.
+        </p>
+        <p>Software Engineer at Levels.fyi. Working remotely 🏖️</p>
+      </div>
+    </div>
+    <div class="flex items-center justify-between gap-4">
+      <div class="flex gap-4 text-xl md:text-2xl">
+        <a
+          href={siteConfig.socials.github}
+          target="_blank"
+          class="hover:text-slate-300 transition-colors"
+        >
+          <Icon name={icons.GitHub} />
+        </a>
+        <a
+          href={siteConfig.socials.linkedin}
+          target="_blank"
+          class="hover:text-slate-300 transition-colors"
+        >
+          <Icon name={icons.LinkedIn} />
+        </a>
+        <a
+          href={siteConfig.socials.twitter}
+          target="_blank"
+          class="hover:text-slate-300 transition-colors"
+        >
+          <Icon name={icons.Twitter} />
+        </a>
+      </div>
+      <a
+        href="Resume.pdf"
+        download="Deveesh Resume.pdf"
+        class="flex items-center cursor-pointer gap-2"
+      >
+        <Button client:load className="w-full cursor-pointer py-2">
+          <span>Resume</span>
+          <Icon name={icons.Download} />
+        </Button>
+      </a>
+    </div>
+  </div>
+  <div class="rounded-full">
+    <Image
+      src="/profile.png"
+      alt="Deveesh Profile"
+      class="rounded-md"
+      inferSize
+      width={1000}
+      height={1000}
+      priority
+    />
+  </div>
+</main>

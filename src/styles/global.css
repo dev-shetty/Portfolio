@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   /* Colors */
@@ -45,5 +43,5 @@ body::-webkit-scrollbar-thumb {
 } */
 
 /* * {
-  @apply outline outline-1 outline-slate-700;
+  @apply outline outline-slate-700;
 } */

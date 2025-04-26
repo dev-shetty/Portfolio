@@ -1,28 +1,32 @@
-"use client"
-
-import { FormEvent, useState, ChangeEvent } from "react"
+import {
+  type FormEvent,
+  useState,
+  type ChangeEvent,
+  useEffect,
+  useRef,
+} from "react"
 import axios from "axios"
 import { useToast } from "@/hooks/use-toast"
 import Loading from "@/components/ui/loading/loading"
-import { H1 } from "@/components/ui/headers"
 import Button from "@/components/ui/button"
 
 function ContactForm() {
-  const [details, setDetails] = useState({
-    email: "",
-    name: "",
-    desc: "",
-  })
   const [loading, setLoading] = useState(false)
-
+  const formRef = useRef<HTMLFormElement>(null)
   const { toast } = useToast()
 
   async function handleFormSubmit(e: FormEvent) {
     e.preventDefault()
-    if (!details.email || !details.name || !details.desc) {
+    const formData = new FormData(e.target as HTMLFormElement)
+    const email = formData.get("email")
+    const name = formData.get("name")
+    const message = formData.get("message")
+
+    if (!email || !name || !message) {
       return toast({
         variant: "destructive",
         title: "Please fill the fields",
+        duration: 5000,
       })
     }
 
@@ -30,96 +34,80 @@ function ContactForm() {
       setLoading(true)
       const response = await axios("/api/mail", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: details,
+        data: formData,
       })
 
       if (response.data.success) {
-        console.log(response.data)
-        setDetails({
-          email: "",
-          name: "",
-          desc: "",
-        })
         toast({
           variant: "success",
-          title: "Your mail has been sent! I will reply back soon ✨",
+          title: "Received your mail, I will reply back soon ✨",
+          duration: 5000,
         })
+        console.log("[SUCCESS] Mail sent by: ", email)
+        formRef.current?.reset()
       } else {
+        console.log("[ERROR] Send Mail API Response: ", response.data)
         return toast({
           variant: "destructive",
           title: "Sorry, couldn't send the mail",
+          duration: 5000,
         })
       }
     } catch (error) {
-      console.log(error)
+      console.log("[ERROR] Send Mail API: ", error)
       return toast({
         variant: "destructive",
         title: "Sorry, couldn't send the mail",
+        duration: 5000,
       })
     } finally {
       setLoading(false)
     }
   }
 
-  function onChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const detailsCopy = details
-    setDetails({ ...detailsCopy, [e.target.name]: e.target.value })
-  }
-
   return (
-    <div className="flex flex-col gap-8 w-4/5 mx-auto">
-      <H1>Contact Me</H1>
-      <form
-        className="flex flex-col w-full gap-4 justify-between"
-        method="post"
-        onSubmit={handleFormSubmit}
-      >
-        <div className="flex flex-col gap-1 justify-between">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            onChange={onChange}
-            className="bg-slate-800 rounded-md p-2 outline-slate-700"
-            placeholder="developer@developer.com"
-            value={details.email}
-          />
-        </div>
-        <div className="flex flex-col gap-1 justify-between">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            onChange={onChange}
-            className="bg-slate-800 rounded-md p-2 outline-slate-700"
-            placeholder="Developer X"
-            value={details.name}
-          />
-        </div>
-        <div className="flex flex-col gap-1 justify-between">
-          <label htmlFor="desc">Description</label>
-          <textarea
-            name="desc"
-            id="desc"
-            onChange={onChange}
-            placeholder="What's up?"
-            className="bg-slate-800 rounded-md p-2 outline-slate-700 resize-none"
-            value={details.desc}
-            rows={6}
-          ></textarea>
-        </div>
-        <div className="mx-auto mt-2">
-          <Button type="submit" disabled={loading} className="relative h-10">
-            <span>{loading ? <Loading /> : "Send"}</span>
-          </Button>
-        </div>
-      </form>
-    </div>
+    <form
+      className="flex flex-col w-full gap-4 justify-between"
+      method="post"
+      ref={formRef}
+      onSubmit={handleFormSubmit}
+    >
+      <div className="flex flex-col gap-1 justify-between">
+        <label htmlFor="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          className="bg-slate-800 rounded-md p-2 outline-slate-700"
+          placeholder="developer@developer.com"
+        />
+      </div>
+      <div className="flex flex-col gap-1 justify-between">
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          className="bg-slate-800 rounded-md p-2 outline-slate-700"
+          placeholder="Developer X"
+        />
+      </div>
+      <div className="flex flex-col gap-1 justify-between">
+        <label htmlFor="message">Message</label>
+        <textarea
+          name="message"
+          id="message"
+          placeholder="What's up?"
+          className="bg-slate-800 rounded-md p-2 outline-slate-700 resize-none"
+          rows={6}
+        ></textarea>
+      </div>
+      <div className="mx-auto mt-2">
+        <Button type="submit" disabled={loading} className="relative h-10">
+          <span>{loading ? <Loading /> : "Send"}</span>
+        </Button>
+      </div>
+    </form>
   )
 }
 

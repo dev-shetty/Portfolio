@@ -1,8 +1,8 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { NextResponse } from "next/server"
+export const prerender = false
+import type { APIRoute } from "astro"
 import nodemailer from "nodemailer"
 
-const { EMAIL, RECEIPIENT_EMAIL, PASSWORD } = process.env
+const { EMAIL, RECEIPIENT_EMAIL, PASSWORD } = import.meta.env
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -12,11 +12,14 @@ const transporter = nodemailer.createTransport({
   },
 })
 
-export async function POST(req: Request) {
-  const { email, name, desc } = await req.json()
+export const POST: APIRoute = async ({ request }) => {
+  const data = await request.formData()
+  const email = data.get("email")
+  const name = data.get("name")
+  const message = data.get("message")
 
-  if (!email || !name || !desc) {
-    return new NextResponse(
+  if (!email || !name || !message) {
+    return new Response(
       JSON.stringify({
         success: false,
         error: "Please fill all the fields",
@@ -31,8 +34,8 @@ export async function POST(req: Request) {
     from: EMAIL,
     to: RECEIPIENT_EMAIL,
     subject: `Message from ${name}`,
-    text: desc + " | Sent by: " + email,
-    html: `<div>${desc}</div><p>Sent by:
+    text: message + " | Sent by: " + email,
+    html: `<div>${message}</div><p>Sent by:
     ${email}</p>`,
   }
 
@@ -42,16 +45,16 @@ export async function POST(req: Request) {
         if (error) {
           console.log(error)
           reject(error)
-          return new NextResponse(
+          return new Response(
             JSON.stringify({ success: false, error: error }),
             {
               status: 500,
             }
           )
         } else {
-          console.log("Mail has been sent successfully")
+          console.log("Mail has been sent successfully from: ", email)
           resolve(true)
-          return new NextResponse(
+          return new Response(
             JSON.stringify({
               success: true,
               name,
@@ -64,7 +67,7 @@ export async function POST(req: Request) {
         }
       })
     })
-    return new NextResponse(
+    return new Response(
       JSON.stringify({
         success: true,
         name,
@@ -76,7 +79,7 @@ export async function POST(req: Request) {
     )
   } catch (error) {
     console.log(error)
-    return new NextResponse(JSON.stringify({ success: false, error: error }), {
+    return new Response(JSON.stringify({ success: false, error: error }), {
       status: 500,
     })
   }
