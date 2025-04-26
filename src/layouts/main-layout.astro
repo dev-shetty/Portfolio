@@ -1,0 +1,71 @@
+---
+import Analytics from "@vercel/analytics/astro"
+import { siteConfig } from "../config/site"
+import Navbar from "@/components/navbar.astro"
+import { Toaster } from "@/components/ui/toaster"
+import "../styles/global.css"
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Deveesh Shetty</title>
+    <meta name="description" content={siteConfig.description} />
+    <meta
+      name="keywords"
+      content="Deveesh Shetty, Frontend Developer, MERN Stack Developer, Deveesh"
+    />
+    <meta name="creator" content="dev-shetty" />
+    <meta name="author" content="Deveesh Shetty" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content={siteConfig.url} />
+    <meta property="og:title" content={siteConfig.name} />
+    <meta property="og:description" content={siteConfig.description} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:image" content={siteConfig.ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={siteConfig.name} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteConfig.name} />
+    <meta name="twitter:description" content={siteConfig.description} />
+    <meta name="twitter:url" content={siteConfig.url} />
+    <meta name="twitter:image" content={siteConfig.ogImage} />
+    <meta name="twitter:creator" content="@ShettyDeveesh" />
+
+    <meta
+      name="theme-color"
+      content="white"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="black"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <slot name="head" />
+
+    <Analytics />
+  </head>
+  <body class="bg-slate-900 text-slate-50">
+    <Navbar />
+    <div class="py-24 text-base">
+      <slot />
+    </div>
+    <Toaster client:idle />
+  </body>
+</html>

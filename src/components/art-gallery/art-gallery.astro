@@ -1,0 +1,30 @@
+---
+import { arts } from "@/lib/artgallery"
+import Image from "astro/components/Image.astro"
+import styles from "./art-gallery.module.css"
+---
+
+<section class="px-4">
+  <div class={styles.art_container}>
+    {
+      arts.map((art) => (
+        <div
+          data-content={art.alt}
+          class="relative overflow-hidden cursor-pointer"
+        >
+          <Image
+            src={art.img}
+            alt={art.alt}
+            inferSize
+            title={art.alt}
+            sizes="100%"
+            fit="cover"
+            width={1000}
+            height={1000}
+            class="w-full h-full object-cover object-top transition-all duration-500 scale-110"
+          />
+        </div>
+      ))
+    }
+  </div>
+</section>

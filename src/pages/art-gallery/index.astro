@@ -1,0 +1,27 @@
+---
+import ArtGallery from "@/components/art-gallery/art-gallery.astro"
+import H1 from "@/components/ui/typography/H1.astro"
+import H2 from "@/components/ui/typography/H2.astro"
+import MainLayout from "@/layouts/main-layout.astro"
+---
+
+<MainLayout>
+  <Fragment slot="head">
+    <title>Art Gallery</title>
+    <meta
+      name="description"
+      content="I may be a developer, but I also have a creative side as an artist. Checkout my artworks here."
+    />
+  </Fragment>
+  <main class="container mx-auto lg:px-48 md:px-24 px-8">
+    <div
+      class="container mx-auto text-center border-b mb-4 pb-2 border-b-slate-700"
+    >
+      <H1 className="border-b-0">Art Gallery</H1>
+      <H2 className="text-lg md:text-xl font-light">
+        I may be a developer, but I also have a creative side as an artist.
+      </H2>
+    </div>
+    <ArtGallery />
+  </main>
+</MainLayout>

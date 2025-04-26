@@ -1,0 +1,80 @@
+---
+import Image from "astro/components/Image.astro"
+import Profile from "@/assets/images/Deveesh.jpg"
+import styles from "./contact.module.css"
+import { icons } from "@/lib/icons"
+import { siteConfig } from "@/lib/config"
+import { Icon } from "astro-icon/components"
+---
+
+<div class="flex items-center justify-center">
+  <div
+    class={`${styles.card} text-sm sm:text-base grid grid-cols-1 w-4/5 px-2 xl:w-3/5 py-8 rounded-xl`}
+  >
+    <div class="relative mx-auto w-1/2">
+      <Image
+        src={Profile}
+        alt="Deveesh Profile"
+        class="block aspect-square rounded-full transition-all duration-300"
+        priority
+      />
+    </div>
+    <div class="flex flex-col items-center w-full gap-4">
+      <div class="mt-4 text-center transition-all">
+        <p class="text-xl md:text-2xl transition-all">Deveesh Shetty</p>
+        <p>deveeshshetty@gmail.com</p>
+        <p class="my-2">
+          Frontend Developer | President SOSC | Open Source Enthusiast
+        </p>
+      </div>
+      <div
+        class={`${styles.socials} flex justify-center items-center h-full w-4/5 gap-2`}
+      >
+        <div
+          class="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl"
+        >
+          <a
+            href={siteConfig.socials.github}
+            target="_blank"
+            class="flex gap-4 items-center"
+          >
+            <Icon name={icons.GitHub} />
+          </a>
+        </div>
+        <div
+          class="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl"
+        >
+          <a
+            href={siteConfig.socials.linkedin}
+            target="_blank"
+            class="flex gap-4 items-center"
+          >
+            <Icon name={icons.LinkedIn} />
+          </a>
+        </div>
+        <div
+          class="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl"
+        >
+          <a
+            href={siteConfig.socials.twitter}
+            target="_blank"
+            class="flex gap-4 items-center"
+          >
+            <Icon name={icons.Twitter} />
+          </a>
+        </div>
+        <div
+          class="flex w-4/5 h-12 items-center border border-white rounded-xl cursor-pointer justify-center hover:bg-slate-200 transition-all duration-300 hover:text-slate-800 text-xl"
+        >
+          <a
+            href={siteConfig.socials.devTo}
+            target="_blank"
+            class="flex gap-4 items-center"
+          >
+            <Icon name={icons.DevTo} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

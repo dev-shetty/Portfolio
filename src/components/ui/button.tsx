@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from "react"
+import React, { type ButtonHTMLAttributes } from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cn } from "@/lib/helpers"
 

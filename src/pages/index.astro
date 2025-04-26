@@ -1,0 +1,27 @@
+---
+import MainLayout from "../layouts/main-layout.astro"
+import Home from "@/components/home.astro"
+import TechStack from "@/components/tech-stack.astro"
+import Projects from "@/components/projects.astro"
+import Experience from "@/components/experience.astro"
+import Talks from "@/components/talks.astro"
+import Achievements from "@/components/achievements.astro"
+
+export type SearchParamsType = { [key: string]: string | string[] | undefined }
+type HomePageProps = {
+  searchParams: SearchParamsType
+}
+
+const showAchievements = Astro.url.searchParams.get("show-achievements")
+---
+
+<MainLayout>
+  <main class="container mx-auto lg:px-48 md:px-24 px-8">
+    <Home />
+    <TechStack />
+    <Projects />
+    <Experience />
+    <Talks />
+    <Achievements showAchievements={Number(showAchievements)} />
+  </main>
+</MainLayout>
