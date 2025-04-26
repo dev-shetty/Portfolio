@@ -1,4 +1,10 @@
-import { type FormEvent, useState, type ChangeEvent, useEffect } from "react"
+import {
+  type FormEvent,
+  useState,
+  type ChangeEvent,
+  useEffect,
+  useRef,
+} from "react"
 import axios from "axios"
 import { useToast } from "@/hooks/use-toast"
 import Loading from "@/components/ui/loading/loading"
@@ -6,7 +12,7 @@ import Button from "@/components/ui/button"
 
 function ContactForm() {
   const [loading, setLoading] = useState(false)
-
+  const formRef = useRef<HTMLFormElement>(null)
   const { toast } = useToast()
 
   async function handleFormSubmit(e: FormEvent) {
@@ -38,9 +44,7 @@ function ContactForm() {
           duration: 5000,
         })
         console.log("[SUCCESS] Mail sent by: ", email)
-        formData.delete("email")
-        formData.delete("name")
-        formData.delete("message")
+        formRef.current?.reset()
       } else {
         console.log("[ERROR] Send Mail API Response: ", response.data)
         return toast({
@@ -65,6 +69,7 @@ function ContactForm() {
     <form
       className="flex flex-col w-full gap-4 justify-between"
       method="post"
+      ref={formRef}
       onSubmit={handleFormSubmit}
     >
       <div className="flex flex-col gap-1 justify-between">
