@@ -1,6 +1,5 @@
 ---
 import Image from "astro/components/Image.astro"
-import Profile from "@/assets/images/Deveesh.jpg"
 import styles from "./contact.module.css"
 import { icons } from "@/lib/icons"
 import { siteConfig } from "@/lib/config"
@@ -13,9 +12,12 @@ import { Icon } from "astro-icon/components"
   >
     <div class="relative mx-auto w-1/2">
       <Image
-        src={Profile}
+        src="/profile.png"
         alt="Deveesh Profile"
         class="block aspect-square rounded-full transition-all duration-300"
+        width={1000}
+        height={1000}
+        inferSize
         priority
       />
     </div>
