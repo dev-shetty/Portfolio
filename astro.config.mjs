@@ -5,6 +5,8 @@ import icon from "astro-icon"
 
 import react from "@astrojs/react"
 
+import vercel from "@astrojs/vercel"
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -21,4 +23,10 @@ export default defineConfig({
       },
     }),
   ],
+  output: "server",
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
 })
