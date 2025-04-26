@@ -1,5 +1,4 @@
 ---
-import ProfileImg from "@/assets/images/Deveesh.jpg"
 import Button from "@/components/ui/button"
 import H1 from "@/components/ui/typography/H1.astro"
 import { siteConfig } from "@/lib/config"
@@ -14,14 +13,11 @@ import Image from "astro/components/Image.astro"
       <H1>Deveesh Shetty</H1>
       <div class="flex flex-col gap-4">
         <p>
-          I am a Frontend Developer working with modern frontend libraries and
-          frameworks, including React and Next.js. Skilled in translating design
-          into responsive and interactive web interfaces.
+          Frontend Developer messing around with modern frontend libraries and
+          frameworks. I love exploring new technologies, playing around with
+          them. Developer by passion and artist by hobby.
         </p>
-        <p>
-          I love exploring new technologies, mess around with them, and build
-          applications for fun. Developer by passion and artist by hobby.
-        </p>
+        <p>Software Engineer Levels.fyi. Working remotely 🏖️</p>
       </div>
     </div>
     <div class="flex items-center justify-between gap-4">
@@ -48,19 +44,27 @@ import Image from "astro/components/Image.astro"
           <Icon name={icons.Twitter} />
         </a>
       </div>
-      <Button client:load className="w-full py-2" asChild>
-        <a
-          href="Resume.pdf"
-          download="Deveesh Resume.pdf"
-          class="flex items-center gap-2"
-        >
+      <a
+        href="Resume.pdf"
+        download="Deveesh Resume.pdf"
+        class="flex items-center cursor-pointer gap-2"
+      >
+        <Button client:load className="w-full cursor-pointer py-2">
           <span>Resume</span>
           <Icon name={icons.Download} />
-        </a>
-      </Button>
+        </Button>
+      </a>
     </div>
   </div>
   <div class="rounded-full">
-    <Image src={ProfileImg} alt="Deveesh Profile" class="rounded-md" priority />
+    <Image
+      src="/profile.png"
+      alt="Deveesh Profile"
+      class="rounded-md"
+      inferSize
+      width={1000}
+      height={1000}
+      priority
+    />
   </div>
 </main>
