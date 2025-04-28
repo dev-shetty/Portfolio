@@ -1,56 +1,72 @@
 ---
 import Button from "@/components/ui/button"
-import H2 from "@/components/ui/typography/H2.astro"
-import H3 from "@/components/ui/typography/H3.astro"
 import { icons } from "@/lib/icons"
 import { projects } from "@/lib/projects"
 import Image from "astro/components/Image.astro"
 import { Icon } from "astro-icon/components"
+import Container from "@/components/ui/sections/container.astro"
+import Card from "@/components/ui/sections/card.astro"
 
 const INITIAL_LIMIT = 3
 ---
 
-<section class="my-16">
-  <H2>Projects</H2>
-  <div class="grid gap-6">
+<Container title="Projects">
+  <Fragment slot="right-button">
+    <Button
+      client:load
+      className="py-1 whitespace-nowrap bg-transparent border-none w-fit cursor-pointer"
+      id="toggleProjects"
+    >
+      <span data-projects-button-text>View More</span>
+      <Icon
+        name={icons.ArrowDown}
+        data-projects-angle-icon
+        size="16"
+        class="transition-all duration-300"
+      />
+    </Button>
+  </Fragment>
+  <Fragment slot="vertical-grid">
     {
       projects.map((project, index) => (
         <div
           class:list={[
-            "flex flex-col-reverse lg:grid lg:grid-cols-4 items-center pb-2 border-b last-of-type:border-b-0 last-of-type:pb-0 border-b-gray-800",
+            "grid md:grid-cols-[4fr_1fr]",
             { hidden: index >= INITIAL_LIMIT },
           ]}
           data-project
         >
-          <div class="flex flex-col gap-4 col-span-3 mt-4 lg:mt-0 lg:pr-8">
-            <div class="flex flex-col gap-1">
-              <H3>{project.name}</H3>
-              <p>{project.description}</p>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              {project.labels.map((label) => (
-                <p class="outline px-2 py-1 rounded-md bg-gray-800 hover:bg-gray-700 cursor-pointer transition-colors">
-                  {label}
-                </p>
-              ))}
-            </div>
-            <div class="mt-2 lg:mt-0 flex justify-between">
-              <p class="text-gray-300">{project.date}</p>
-              <div class="flex gap-2 text-xl">
-                <a href={project.sourceCode} target="_blank">
-                  <Icon name={icons.SourceCode} />
-                </a>
-                {project.liveUrl && (
-                  <a href={project.liveUrl} target="_blank">
-                    <Icon name={icons.Visit} />
+          <Card tags={project.labels}>
+            <Fragment slot="title">{project.name}</Fragment>
+            <Fragment slot="description">{project.description}</Fragment>
+            <Fragment slot="custom-footer">
+              <div class="flex justify-between mr-8 mt-2">
+                <span>{project.date}</span>
+                <div class="flex items-center gap-2 text-lg">
+                  <a
+                    href={project.sourceCode}
+                    target="_blank"
+                    class="hover:text-gray-300 transition-colors"
+                  >
+                    <Icon name={icons.SourceCode} />
                   </a>
-                )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      class="hover:text-gray-300 transition-colors"
+                    >
+                      <Icon name={icons.Visit} />
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-          </div>
+            </Fragment>
+            <Fragment slot="location" />
+          </Card>
           <a
             href={project.liveUrl ?? project.sourceCode}
-            class="relative w-full aspect-video lg:border-2 border-gray-700 rounded-xl"
+            class="relative w-11/12 aspect-video lg:border-2 border-gray-700 rounded-xl hover:border-gray-600 transition-colors"
           >
             <Image
               src={project.image}
@@ -66,18 +82,15 @@ const INITIAL_LIMIT = 3
         </div>
       ))
     }
-    <Button
-      client:load
-      className="mx-auto py-2 w-fit md:w-fit px-16 cursor-pointer"
-      id="toggleProjects"
-    >
-      View More
-    </Button>
-  </div>
-</section>
+  </Fragment>
+</Container>
+
 <script>
   const toggleButton = document.getElementById("toggleProjects")
+  const buttonText = document.querySelector("[data-projects-button-text]")
   const projects = document.querySelectorAll("[data-project]")
+  const angleIcon = document.querySelector("[data-projects-angle-icon]")
+
   const INITIAL_LIMIT = 3
   let isExpanded = false
 
@@ -90,8 +103,9 @@ const INITIAL_LIMIT = 3
       }
     })
 
-    if (toggleButton) {
-      toggleButton.textContent = isExpanded ? "View Less" : "View More"
+    if (buttonText && angleIcon) {
+      buttonText.textContent = isExpanded ? "View Less" : "View More"
+      angleIcon.classList.toggle("-rotate-180")
     }
   })
 </script>

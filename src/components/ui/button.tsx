@@ -18,7 +18,7 @@ export default function Button({
   return (
     <Comp
       className={cn(
-        "flex items-center justify-center gap-2 px-4 py-1 bg-gray-800 rounded-md w-12 md:w-32 text-center hover:bg-gray-700 transition-colors",
+        "flex items-center text-gray-200 justify-center gap-2 px-4 py-1 bg-gray-700 border-2 border-gray-700 rounded-md w-12 md:w-32 text-center hover:border-gray-600 hover:text-gray-50 transition-colors",
         className
       )}
       {...props}
