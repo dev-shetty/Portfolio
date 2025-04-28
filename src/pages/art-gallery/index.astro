@@ -3,6 +3,7 @@ import ArtGallery from "@/components/art-gallery/art-gallery.astro"
 import H1 from "@/components/ui/typography/H1.astro"
 import H2 from "@/components/ui/typography/H2.astro"
 import MainLayout from "@/layouts/main-layout.astro"
+import { Image } from "astro:assets"
 ---
 
 <MainLayout>
@@ -13,14 +14,22 @@ import MainLayout from "@/layouts/main-layout.astro"
       content="I may be a developer, but I also have a creative side as an artist. Checkout my artworks here."
     />
   </Fragment>
-  <main class="container mx-auto lg:px-48 md:px-24 px-8">
+  <main class="x-auto lg:px-48 md:px-24 px-8">
     <div
-      class="container mx-auto text-center border-b mb-4 pb-2 border-b-gray-700"
+      class="flex flex-col items-center text-center justify-center gap-4 mx-auto border-b mb-4 pb-2 border-b-gray-700"
     >
-      <H1 className="border-b-0">Art Gallery</H1>
-      <H2 className="text-lg md:text-xl font-light">
-        I may be a developer, but I also have a creative side as an artist.
-      </H2>
+      <Image
+        src="/illustrations/artist.png"
+        alt="Deveesh Shetty"
+        width={256}
+        height={256}
+      />
+      <div class="flex flex-col items-center justify-center">
+        <H1 className="border-b-0">Art Gallery</H1>
+        <H2 className="text-lg md:text-xl font-light border-b-0">
+          I may be a developer, but I also have a creative side as an artist.
+        </H2>
+      </div>
     </div>
     <ArtGallery />
   </main>
