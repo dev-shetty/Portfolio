@@ -7,7 +7,7 @@ import styles from "./art-gallery.module.css"
 <section class="px-4">
   <div class={styles.art_container}>
     {
-      arts.map((art) => (
+      arts.map((art, index) => (
         <div
           data-content={art.alt}
           class="relative overflow-hidden cursor-pointer"
@@ -21,7 +21,8 @@ import styles from "./art-gallery.module.css"
             fit="cover"
             width={1000}
             height={1000}
-            class="w-full h-full object-cover object-top transition-all duration-500 scale-110"
+            class="w-full h-full bg-gray-800 object-cover object-top transition-all duration-500 scale-110"
+            loading={index < 8 ? "eager" : "lazy"}
           />
         </div>
       ))
