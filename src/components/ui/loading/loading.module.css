@@ -6,7 +6,7 @@
   gap: 0.3rem;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: trangray(-50%, -50%);
 }
 
 .loading > span {

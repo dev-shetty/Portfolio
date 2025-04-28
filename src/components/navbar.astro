@@ -2,14 +2,18 @@
 import { icons } from "@/lib/icons"
 import { Icon } from "astro-icon/components"
 import Button from "@/components/ui/button"
+import { Image } from "astro:assets"
+import { siteConfig } from "@/config/site"
 ---
 
 <nav
-  class="fixed backdrop-blur-md z-50 flex w-full items-center py-4 px-8 border-b border-b-slate-800"
+  class="fixed backdrop-blur-md z-50 flex w-full items-center py-4 px-8 border-b border-b-gray-800"
 >
   <div class="container mx-auto flex items-center justify-between">
     <div>
-      <a href="/" class="text-xl hover:text-slate-200"> DevShetty </a>
+      <a href="/" class="text-xl hover:text-gray-200">
+        <Image src={siteConfig.logo} alt="" width={36} height={36} />
+      </a>
     </div>
     <ul class="flex items-center gap-4 justify-end text-sm">
       <Button client:load asChild>
@@ -20,7 +24,7 @@ import Button from "@/components/ui/button"
       <Button client:load asChild>
         <a
           href="/contact"
-          class="flex items-center gap-2 px-4 py-1 bg-slate-800 rounded-md w-12 md:w-fit text-center hover:bg-slate-700 transition-colors"
+          class="flex items-center gap-2 px-4 py-1 bg-gray-800 rounded-md w-12 md:w-fit text-center hover:bg-gray-700 transition-colors"
         >
           <Icon name={icons.Envelope} />
         </a>

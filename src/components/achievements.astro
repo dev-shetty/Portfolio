@@ -14,7 +14,7 @@ const INITIAL_LIMIT = 3
       achievements.map((achievement, index) => (
         <div
           class:list={[
-            "flex flex-col border-b pb-2 last-of-type:border-b-0 last-of-type:pb-0 border-b-slate-800",
+            "flex flex-col border-b pb-2 last-of-type:border-b-0 last-of-type:pb-0 border-b-gray-800",
             { hidden: index >= INITIAL_LIMIT },
           ]}
           data-achievement
@@ -25,7 +25,7 @@ const INITIAL_LIMIT = 3
             </H3>
             <div class="flex flex-wrap gap-1 mt-1 mb-4">
               {achievement.teamMembers.map((member) => (
-                <p class="outline outline-slate-700 bg-slate-700 px-2 rounded-md">
+                <p class="outline outline-gray-700 bg-gray-700 px-2 rounded-md">
                   {member}
                 </p>
               ))}
@@ -34,7 +34,7 @@ const INITIAL_LIMIT = 3
           </div>
           <div class="flex flex-col mt-2">
             <p>{achievement.organizer}</p>
-            <p class="text-slate-300">{achievement.date}</p>
+            <p class="text-gray-300">{achievement.date}</p>
           </div>
         </div>
       ))

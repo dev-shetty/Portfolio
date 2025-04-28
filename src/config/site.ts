@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "Deveesh Shetty",
+  logo: "/panda.png",
   description:
     "I'm a Frontend Developer and a geek who loves to code and build things.",
   url: "https://dev.shetty.dev",
