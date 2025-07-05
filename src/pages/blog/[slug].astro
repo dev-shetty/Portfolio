@@ -3,7 +3,9 @@ import BlogPost from "@/layouts/blog-post.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection("blog", ({ data }) => {
+    return import.meta.env.DEV || !data.draft;
+  });
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -25,6 +27,8 @@ const { Content } = await post.render();
   tags={post.data.tags}
   coverImage={post.data.coverImage}
   slug={post.slug}
+  originalPost={post.data.originalPost}
+  series={post.data.series}
 >
   <Content />
 </BlogPost>

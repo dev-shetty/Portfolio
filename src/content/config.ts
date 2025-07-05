@@ -7,6 +7,18 @@ export const blogSchema = z.object({
   tags: z.array(z.string()),
   coverImage: z.string(),
   draft: z.boolean().optional().default(false),
+  originalPost: z
+    .object({
+      url: z.string().url(),
+      platform: z.string(),
+    })
+    .optional(),
+  series: z
+    .object({
+      name: z.string(),
+      order: z.number(),
+    })
+    .optional(),
 });
 
 export type BlogFrontmatter = z.infer<typeof blogSchema>;

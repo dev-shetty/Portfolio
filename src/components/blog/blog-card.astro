@@ -2,6 +2,7 @@
 import Card from "@/components/ui/sections/card.astro";
 import { formatDate } from "@/lib/helpers";
 import { cn } from "@/lib/helpers";
+import { Icon } from "astro-icon/components";
 
 export interface Props {
   title: string;
@@ -11,6 +12,10 @@ export interface Props {
   slug: string;
   coverImage: string;
   featured?: boolean;
+  originalPost?: {
+    url: string;
+    platform: string;
+  };
 }
 
 const {
@@ -21,6 +26,7 @@ const {
   slug,
   coverImage,
   featured = false,
+  originalPost,
 } = Astro.props;
 const truncateByWords = (str: string, maxLength: number) => {
   if (str.length <= maxLength) return str;
@@ -62,7 +68,7 @@ const truncatedDescription = truncateByWords(description, featured ? 300 : 200);
       >
         {title}
       </h2>
-      <div class="flex items-center gap-2 text-sm">
+      <div class="flex flex-wrap items-center gap-2 text-sm">
         <span class="text-gray-400">{formatDate(date)}</span>
         <span class="text-gray-400">•</span>
         {

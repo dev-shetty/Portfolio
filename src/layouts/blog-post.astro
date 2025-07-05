@@ -3,8 +3,29 @@ import MainLayout from "./main-layout.astro";
 import { formatDate } from "@/lib/helpers";
 import H1 from "@/components/ui/typography/H1.astro";
 import { Icon } from "astro-icon/components";
+import SeriesList from "../components/blog/series-list";
+import { getCollection } from "astro:content";
 
-const { title, description, date, tags, coverImage, slug } = Astro.props;
+const {
+  title,
+  description,
+  date,
+  tags,
+  coverImage,
+  slug,
+  originalPost,
+  series,
+} = Astro.props;
+
+// Get all posts in the same series
+let seriesPosts = [];
+if (series) {
+  const allPosts = await getCollection("blog");
+  seriesPosts = allPosts
+    .filter((post) => post.data.series?.name === series.name)
+    .sort((a, b) => a.data.series.order - b.data.series.order);
+}
+
 ---
 
 <MainLayout
@@ -23,6 +44,14 @@ const { title, description, date, tags, coverImage, slug } = Astro.props;
       />
       Back to Blogs
     </a>
+
+    {seriesPosts.length > 1 && (
+      <div class="my-8 p-4 bg-gray-900/50 rounded-lg">
+        <h3 class="text-lg font-medium mb-4">Series: {series.name}</h3>
+        <SeriesList client:load posts={seriesPosts} currentSlug={slug} />
+      </div>
+    )}
+
     <header class="space-y-8">
       {
         coverImage && (
@@ -56,5 +85,21 @@ const { title, description, date, tags, coverImage, slug } = Astro.props;
     <div class="prose prose-invert max-w-none mt-12">
       <slot />
     </div>
+
+    {
+      originalPost && (
+        <div class="mt-12 pt-8 border-t border-gray-700">
+          <a
+            href={originalPost.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-blue-400 hover:text-blue-300"
+          >
+            <span>Originally posted on {originalPost.platform}</span>
+            <Icon name="lucide:external-link" class="w-4 h-4" />
+          </a>
+        </div>
+      )
+    }
   </article>
 </MainLayout>
