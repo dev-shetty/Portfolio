@@ -1,0 +1,128 @@
+---
+title: "Beyond console.log in JavaScript"
+description: "A guide exploring JavaScript console methods beyond console.log(), including table(), error(), warn(), and time() for better debugging and code analysis."
+date: 2023-09-19
+tags: ["JavaScript", "Web Dev", "Debugging"]
+coverImage: ""
+originalPost:
+  url: "https://dev.to/devshetty/beyond-consolelog-in-javascript-267f"
+  platform: "Dev.to"
+series:
+  name: "JavaScript for Nerds"
+  order: 1
+---
+
+You may have only used `console.log()` in JavaScript, but you can do many more things with the **console** object.
+
+## console.table()
+
+If you have an object and want a clear view of it instead of having those ugly braces in the console you can use `console.table()`
+
+```js
+const obj = {
+  name: "John",
+  age: 30,
+  city: "New York",
+  country: "USA",
+};
+console.table(obj);
+```
+
+![console.table output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2f45zqqoytph781kyak4.png)
+
+## console.error()
+
+You will get a cool-looking (yeah 🙂) red color message for the instances where you want to make the stress on the bug more realistic.
+
+```js
+console.error("Why is this rendering twice");
+```
+
+![console.error output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kc0wuhxl6gvkq0ds3pba.png)
+
+## console.warn()
+
+Similar to error but a little less stressful, you can mostly use this as a warning to yourself.
+
+```js
+console.warn("Fix this in the next release!");
+```
+
+![console.warn output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1c9en7hutb2nulv0j3ta.png)
+
+## console.time()
+
+You can get the computation time easily by using `console.time()`, which starts the timer, and `console.timeEnd()` which ends it to compute the time taken by your code.
+You can pass a label inside the `time()` function which makes the timer unique, so you can have as many number of timers in your program.
+
+```js
+console.time("Time");
+let count = 0;
+for (let i = 0; i < 100000; i++) {
+  count += 1;
+}
+console.timeEnd("Time");
+```
+
+![console.time output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wb5i47dpx70f88raqaf9.png)
+
+That's it for this blog... There are many more methods available, if you are interested you can check it out at [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/API/console).
+
+**Deveesh Shetty**
+[Github](https://github.com/Deveesh-Shetty) | [Twitter](https://twitter.com/shettydeveesh)
+
+You may have only used `console.log()` in JavaScript, but you can do many more things with the **console** object.
+
+## console.table()
+
+If you have an object and want a clear view of it instead of having those ugly braces in the console you can use `console.table()`
+
+```js
+const obj = {
+  name: "John",
+  age: 30,
+  city: "New York",
+  country: "USA",
+};
+console.table(obj);
+```
+
+![console.table output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2f45zqqoytph781kyak4.png)
+
+## console.error()
+
+You will get a cool-looking (yeah 🙂) red color message for the instances where you want to make the stress on the bug more realistic.
+
+```js
+console.error("Why is this rendering twice");
+```
+
+![console.error output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kc0wuhxl6gvkq0ds3pba.png)
+
+## console.warn()
+
+Similar to error but a little less stressful, you can mostly use this as a warning to yourself.
+
+```js
+console.warn("Fix this in the next release!");
+```
+
+![console.warn output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1c9en7hutb2nulv0j3ta.png)
+
+## console.time()
+
+You can get the computation time easily by using `console.time()`, which starts the timer, and `console.timeEnd()` which ends it to compute the time taken by your code.
+You can pass a label inside the `time()` function which makes the timer unique, so you can have as many number of timers in your program.
+
+```js
+console.time("Time");
+let count = 0;
+for (let i = 0; i < 100000; i++) {
+  count += 1;
+}
+console.timeEnd("Time");
+```
+
+![console.time output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wb5i47dpx70f88raqaf9.png)
+
+That's it for this blog... There are many more methods available, if you are interested you can check it out at [MDN Docs](https://developer.mozilla.org/en-US/docs/Web/API/console).

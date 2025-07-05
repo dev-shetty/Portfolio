@@ -1,0 +1,104 @@
+---
+title: "Why should I cherry-pick?"
+description: "Explaining Git cherry-pick command with real-world examples, showing how to move commits between branches and fix accidental commits in wrong branches."
+date: 2025-02-10
+tags: ["Git", "GitHub", "Version Control"]
+coverImage: "https://images.unsplash.com/photo-1626829622490-43c7d7c80ac8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+originalPost:
+  url: "https://dev.to/devshetty/why-should-i-cherry-pick-3onl"
+  platform: "Dev.to"
+series:
+  name: "Git and GitHub Series"
+  order: 5
+---
+
+Even I had this question, in my mind it was another feature that I would never use. But well I was wrong, I use it quite often.
+
+Let's understand it with a real-case scenario.
+
+### Ever accidentally commited to a wrong branch, and wanted to revert?
+
+Well, you could have done it the old fashion way of undoing the commit, changing branch and commiting again. But this will be a mess when you are down multiple commits.
+
+### But there is a better way to do it.
+
+**Step 1:** Realise you commited in `master` instead of `my-feature` branch.
+
+**Step 2:** Copy the hash of the commits you want in the other branch. Run this where you committed your changes, ie. `master` branch here.
+
+Note: If you need multiple commits, either you can copy all the hashes, or if they are consecutive commits, you only need to copy the first mistaken commit hash and the last commit hash.
+
+```bash
+git log --oneline
+```
+
+---
+
+**Step 3:** Switch to the `my-feature` branch
+
+```bash
+git checkout my-feature
+```
+
+Add `-b` flag if you are creating a new branch. Read more about branches [here](https://dev.to/devshetty/learn-about-branching-in-git-bm3).
+
+---
+
+**Step 4:** If you have
+
+- (i) One commit
+
+```bash
+git cherry-pick <hash>
+```
+
+- (ii) Multiple commits
+
+```bash
+git cherry-pick <hash1> <hash2> <hash3>
+```
+
+- (iii) Consecutive range of commits
+
+```bash
+git cherry-pick <first-hash>..<last-hash>
+```
+
+Congratulation, you will have those commits in `my-feature` branch. 🎉
+
+---
+
+**Step 5:** (Optional) Delete commits from `master` branch.
+
+```bash
+git checkout master
+git reset --hard HEAD~N
+```
+
+Where N is the number of commits, only do this when the commits are consecutive, and on tip of the branch. This works for our situation.
+
+Or you can also use interactive rebase to drop specific commits
+
+```bash
+git rebase -i <commit-hash>
+```
+
+---
+
+### Bonus
+
+- You can use `-n` flag to apply changes without commiting in the new branch
+- Use `-x` file to retain reference of the original commit which was cherry-picked.
+  It shows up like this
+  ![Cherry pick original reference](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/98xj5wmpg0omgvtqbblx.png)
+
+That's it. As simple as it is.
+
+It has saved me a lot of time when I accidentally commit changes to the main branch or a wrong feature branch (yeah, I don't delete local branches after they are merged);
+
+Git cherry-picking can also be used for, selecting specific features from a branch, reordering commits, and much more left to your creativity.
+
+Thank you for reading through the blog, its been quite a while (11 months to be exact) since I wrote my last blog. Working on increasing the regularity of blog posts.
+
+Credits:
+Cover Image - [Unsplash](https://unsplash.com/photos/person-holding-red-and-green-fruit-in-green-and-white-basket-uEit-8uQdPU)

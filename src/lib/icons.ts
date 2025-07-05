@@ -34,4 +34,5 @@ export const icons: Record<string, string> = {
   Express: "simple-icons:express",
 
   ArrowDown: "fa:angle-down",
+  Star: "fa:star",
 };

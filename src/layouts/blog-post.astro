@@ -29,9 +29,14 @@ if (series) {
 ---
 
 <MainLayout
-  title={`${title} | Blog | Deveesh Shetty`}
+  title={`${title} | Deveesh Shetty`}
   description={description}
   ogImage={coverImage}
+  article={{
+    publishedTime: date,
+    tags: tags,
+    series: series?.name
+  }}
 >
   <article class="max-w-3xl mx-auto my-16">
     <a

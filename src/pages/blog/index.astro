@@ -1,27 +1,27 @@
 ---
+import { getCollection } from "astro:content";
 import MainLayout from "@/layouts/main-layout.astro";
 import BlogCard from "@/components/blog/blog-card.astro";
 import H1 from "@/components/ui/typography/H1.astro";
-import { getCollection } from "astro:content";
 
-const posts = await getCollection("blog", ({ data }) => {
-  return import.meta.env.DEV || !data.draft;
+const posts = await getCollection("blog");
+
+// Sort by date and featured status
+const sortedPosts = posts.sort((a, b) => {
+  if (a.data.isFeatured && !b.data.isFeatured) return -1;
+  if (!a.data.isFeatured && b.data.isFeatured) return 1;
+  return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
 });
-
-// Sort posts by date
-const sortedPosts = posts.sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
 
 const [featuredPost, ...remainingPosts] = sortedPosts;
 ---
 
 <MainLayout
   title="Blog | Deveesh Shetty"
-  description="Thoughts, learnings and experiences shared through my blog posts"
+  description="Articles about web development, programming, and technology."
 >
   <main class="container mx-auto lg:px-48 md:px-24 px-8 my-16">
-    <div class="flex flex-col pb-4">
+    <div class="flex flex-col pb-4 mb-4">
       <H1 className="border-b-0">Blog</H1>
       <p class="text-gray-400 text-lg">
         Sharing my thoughts, learnings and experiences through writing.
@@ -30,7 +30,7 @@ const [featuredPost, ...remainingPosts] = sortedPosts;
 
     {
       featuredPost && (
-        <div class="my-8">
+        <div >
           <BlogCard
             title={featuredPost.data.title}
             description={featuredPost.data.description}
@@ -38,7 +38,8 @@ const [featuredPost, ...remainingPosts] = sortedPosts;
             tags={featuredPost.data.tags}
             slug={featuredPost.slug}
             coverImage={featuredPost.data.coverImage}
-            featured={true}
+            isFeatured={featuredPost.data.isFeatured}
+            redirect={featuredPost.data.redirect}
             originalPost={featuredPost.data.originalPost}
           />
         </div>
@@ -55,7 +56,8 @@ const [featuredPost, ...remainingPosts] = sortedPosts;
             tags={post.data.tags}
             slug={post.slug}
             coverImage={post.data.coverImage}
-            featured={false}
+            isFeatured={post.data.isFeatured}
+            redirect={post.data.redirect}
             originalPost={post.data.originalPost}
           />
         ))
