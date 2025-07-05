@@ -12,6 +12,8 @@ const posts = await getCollection("blog", ({ data }) => {
 const sortedPosts = posts.sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime()
 );
+
+const [featuredPost, ...remainingPosts] = sortedPosts;
 ---
 
 <MainLayout
@@ -26,9 +28,25 @@ const sortedPosts = posts.sort(
       </p>
     </div>
 
+    {
+      featuredPost && (
+        <div class="my-8">
+          <BlogCard
+            title={featuredPost.data.title}
+            description={featuredPost.data.description}
+            date={featuredPost.data.date}
+            tags={featuredPost.data.tags}
+            slug={featuredPost.slug}
+            coverImage={featuredPost.data.coverImage}
+            featured={true}
+          />
+        </div>
+      )
+    }
+
     <div class="grid gap-8 xl:gap-4 my-4">
       {
-        sortedPosts.map((post) => (
+        remainingPosts.map((post) => (
           <BlogCard
             title={post.data.title}
             description={post.data.description}
@@ -36,6 +54,7 @@ const sortedPosts = posts.sort(
             tags={post.data.tags}
             slug={post.slug}
             coverImage={post.data.coverImage}
+            featured={false}
           />
         ))
       }

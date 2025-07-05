@@ -1,10 +1,6 @@
 ---
-import MainLayout from "@/layouts/main-layout.astro";
+import BlogPost from "@/layouts/blog-post.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
-import H1 from "@/components/ui/typography/H1.astro";
-import { formatDate } from "@/lib/helpers";
-import { Icon } from "astro-icon/components";
-import { icons } from "@/lib/icons";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -22,53 +18,16 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<MainLayout
-  title={`${post.data.title} | Blog | Deveesh Shetty`}
+<BlogPost
+  title={post.data.title}
   description={post.data.description}
-  ogImage={post.data.coverImage}
+  date={post.data.date}
+  tags={post.data.tags}
+  coverImage={post.data.coverImage}
+  slug={post.slug}
 >
-  <article class="container mx-auto lg:px-48 md:px-24 px-8 my-16">
-    <div class="max-w-4xl mx-auto">
-      <a
-        href="/blog"
-        class="inline-flex items-center gap-2 text-zinc-400 hover:text-zinc-200 mb-8 group transition-colors"
-      >
-        <Icon
-          name="lucide:arrow-left"
-          class="w-4 h-4 transition-transform group-hover:-translate-x-1"
-        />
-        Back to Blog
-      </a>
-
-      <header class="mb-12">
-        <div
-          class="flex flex-wrap items-center gap-2 text-sm text-zinc-400 mb-6"
-        >
-          <time datetime={post.data.date.toISOString()}
-            >{formatDate(post.data.date)}</time
-          >
-          <span>•</span>
-          <div class="flex flex-wrap gap-2">
-            {
-              post.data.tags.map((tag: string) => (
-                <span class="bg-[#23262f] hover:bg-zinc-800 px-3 py-1 rounded-lg">
-                  {tag}
-                </span>
-              ))
-            }
-          </div>
-        </div>
-        <H1 className="!mb-6 !text-4xl md:!text-5xl !leading-tight"
-          >{post.data.title}</H1
-        >
-      </header>
-
-      <div class="prose prose-zinc prose-lg max-w-none dark:prose-invert">
-        <Content />
-      </div>
-    </div>
-  </article>
-</MainLayout>
+  <Content />
+</BlogPost>
 
 <style is:global>
   .prose {

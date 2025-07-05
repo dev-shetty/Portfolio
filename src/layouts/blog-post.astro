@@ -2,8 +2,9 @@
 import MainLayout from "./main-layout.astro";
 import { formatDate } from "@/lib/helpers";
 import H1 from "@/components/ui/typography/H1.astro";
+import { Icon } from "astro-icon/components";
 
-const { title, description, date, tags, coverImage } = Astro.props;
+const { title, description, date, tags, coverImage, slug } = Astro.props;
 ---
 
 <MainLayout
@@ -12,17 +13,34 @@ const { title, description, date, tags, coverImage } = Astro.props;
   ogImage={coverImage}
 >
   <article class="max-w-3xl mx-auto my-16">
-    <header class="space-y-8">
-      <img
-        src={coverImage}
-        alt={title}
-        class="w-full aspect-video object-cover rounded-lg outline outline-gray-700"
+    <a
+      href="/blog"
+      class="inline-flex items-center gap-2 text-gray-400 hover:text-gray-200 mb-8 group transition-colors"
+    >
+      <Icon
+        name="lucide:arrow-left"
+        class="w-4 h-4 transition-transform group-hover:-translate-x-1"
       />
+      Back to Blogs
+    </a>
+    <header class="space-y-8">
+      {
+        coverImage && (
+          <img
+            src={coverImage}
+            alt={title}
+            class="w-full aspect-video object-cover rounded-lg outline outline-gray-700"
+            transition:name={`blog-image-${slug}`}
+          />
+        )
+      }
       <div class="space-y-4">
-        <H1>{title}</H1>
+        <H1 transition:name={`blog-title-${slug}`} className="leading-tight"
+          >{title}</H1
+        >
         <div class="flex flex-wrap items-center gap-4 text-gray-400">
           <time datetime={date?.toISOString()}>{formatDate(date)}</time>
-          <div class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-2 mt-2">
             {
               tags?.map((tag: string) => (
                 <span class="bg-[#23262f] hover:bg-gray-800 px-3 py-1 rounded-lg text-sm">
@@ -32,7 +50,6 @@ const { title, description, date, tags, coverImage } = Astro.props;
             }
           </div>
         </div>
-        <p class="text-xl text-gray-300">{description}</p>
       </div>
     </header>
 

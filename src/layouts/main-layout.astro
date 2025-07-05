@@ -3,6 +3,7 @@ import Analytics from "@vercel/analytics/astro";
 import { siteConfig } from "../config/site";
 import Navbar from "@/components/navbar.astro";
 import { Toaster } from "@/components/ui/toaster";
+import { ViewTransitions } from "astro:transitions";
 import "../styles/global.css";
 import Footer from "@/components/ui/sections/footer.astro";
 ---
@@ -14,6 +15,7 @@ import Footer from "@/components/ui/sections/footer.astro";
     <link rel="icon" type="image/svg+xml" href={siteConfig.logo} />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <ViewTransitions />
 
     <title>Deveesh Shetty</title>
     <meta name="description" content={siteConfig.description} />

@@ -1,6 +1,7 @@
 ---
 import Card from "@/components/ui/sections/card.astro";
 import { formatDate } from "@/lib/helpers";
+import { cn } from "@/lib/helpers";
 
 export interface Props {
   title: string;
@@ -9,26 +10,78 @@ export interface Props {
   tags: string[];
   slug: string;
   coverImage: string;
+  featured?: boolean;
 }
 
-const { title, description, date, tags, slug, coverImage } = Astro.props;
+const {
+  title,
+  description,
+  date,
+  tags,
+  slug,
+  coverImage,
+  featured = false,
+} = Astro.props;
+const truncateByWords = (str: string, maxLength: number) => {
+  if (str.length <= maxLength) return str;
+  const words = str.slice(0, maxLength).split(" ");
+  words.pop(); // Remove last partial word
+  return words.join(" ") + "...";
+};
+const truncatedDescription = truncateByWords(description, featured ? 300 : 200);
 ---
 
 <a
   href={`/blog/${slug}`}
-  class="block transition-transform hover:-translate-y-0.5 border-t border-gray-700 pt-4"
+  class={cn(
+    "block transition-transform hover:-translate-y-0.5 border-t border-gray-700 pt-8",
+    !featured && "md:flex md:gap-6 items-center"
+  )}
 >
-  <Card className="h-full" tags={tags}>
-    <img
-      src={coverImage}
-      alt={title}
-      class="w-full aspect-video object-cover rounded-lg mb-6"
-      loading="lazy"
-    />
-    <h2 slot="title" class="text-xl font-bold line-clamp-2">{title}</h2>
-    <p slot="subtitle" class="text-gray-400 text-sm">{formatDate(date)}</p>
-    <p slot="description" class="line-clamp-3 text-gray-300 mt-2">
-      {description}
+  {
+    coverImage && (
+      <div class={cn("mb-6", !featured && "md:w-1/3 md:mb-0")}>
+        <img
+          src={coverImage}
+          alt={title}
+          class="w-full aspect-video object-cover rounded-lg"
+          loading="lazy"
+          transition:name={`blog-image-${slug}`}
+        />
+      </div>
+    )
+  }
+  <Card className={cn("h-full", !featured && "md:w-2/3")}>
+    <div slot="title">
+      <h2
+        class={cn(
+          "font-bold line-clamp-2 mb-2",
+          featured ? "text-2xl md:text-3xl" : "text-xl"
+        )}
+        transition:name={`blog-title-${slug}`}
+      >
+        {title}
+      </h2>
+      <div class="flex items-center gap-2 text-sm">
+        <span class="text-gray-400">{formatDate(date)}</span>
+        <span class="text-gray-400">•</span>
+        {
+          tags.map((tag) => (
+            <span class="bg-gray-800 text-gray-300 px-2 py-0.5 rounded">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+    <p
+      slot="description"
+      class={cn(
+        "text-gray-400 mt-2",
+        featured ? "text-base line-clamp-3" : "text-sm line-clamp-2"
+      )}
+    >
+      {truncatedDescription}
     </p>
   </Card>
 </a>
