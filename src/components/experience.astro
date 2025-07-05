@@ -1,16 +1,16 @@
 ---
 import Card from "@/components/ui/sections/card.astro";
 import Container from "@/components/ui/sections/container.astro";
-import { experiences } from "@/lib/experiences";
+import { workExperiences, communityExperiences } from "@/lib/experiences";
 import { icons } from "@/lib/icons";
 import { Icon } from "astro-icon/components";
 import Image from "astro/components/Image.astro";
 ---
 
-<Container title="Experience">
+<Container title="Work Experience">
   <Fragment slot="two-column">
     {
-      experiences.map((experience) => (
+      workExperiences.map((experience) => (
         <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_4fr] items-center pt-4 pb-2 gap-4">
           <div class="flex items-center justify-center relative w-full aspect-square">
             <Image
@@ -26,16 +26,19 @@ import Image from "astro/components/Image.astro";
           <Card className="pt-0">
             <Fragment slot="title">{experience.title}</Fragment>
             <Fragment slot="description">
-              <a
-                href={experience.organization.url}
-                target="_blank"
-                class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
-              >
-                <span>
-                  {experience.organization.name}{" "}
-                  <Icon name={icons.Visit} class="inline" />
-                </span>
-              </a>
+              <div class="space-y-2">
+                <a
+                  href={experience.organization.url}
+                  target="_blank"
+                  class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
+                >
+                  <span>
+                    {experience.organization.name}{" "}
+                    <Icon name={icons.Visit} class="inline" />
+                  </span>
+                </a>
+                <p class="text-gray-400 text-sm">{experience.description}</p>
+              </div>
             </Fragment>
             <Fragment slot="location">
               {experience.startDate} - {experience.endDate ?? "present"}
@@ -45,5 +48,47 @@ import Image from "astro/components/Image.astro";
       ))
     }
   </Fragment>
-  <p class="mb-20"></p>
+</Container>
+
+<Container title="Community Experience">
+  <Fragment slot="two-column">
+    {
+      communityExperiences.map((experience) => (
+        <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_4fr] items-center pt-4 pb-2 gap-4">
+          <div class="flex items-center justify-center relative w-full aspect-square">
+            <Image
+              src={experience.organization.logo}
+              alt={`${experience.organization.name} Logo`}
+              class="block"
+              sizes="100%"
+              inferSize
+              width={1000}
+              height={1000}
+            />
+          </div>
+          <Card className="pt-0">
+            <Fragment slot="title">{experience.title}</Fragment>
+            <Fragment slot="description">
+              <div class="space-y-2">
+                <a
+                  href={experience.organization.url}
+                  target="_blank"
+                  class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
+                >
+                  <span>
+                    {experience.organization.name}{" "}
+                    <Icon name={icons.Visit} class="inline" />
+                  </span>
+                </a>
+                <p class="text-gray-400 text-sm">{experience.description}</p>
+              </div>
+            </Fragment>
+            <Fragment slot="location">
+              {experience.startDate} - {experience.endDate ?? "present"}
+            </Fragment>
+          </Card>
+        </div>
+      ))
+    }
+  </Fragment>
 </Container>

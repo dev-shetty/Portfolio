@@ -1,9 +1,42 @@
-import { v4 as uuid } from "uuid"
+import { v4 as uuid } from "uuid";
 
-export const experiences = [
+type ExperienceType = "work" | "community";
+
+interface Experience {
+  id: string;
+  title: string;
+  type: ExperienceType;
+  description?: string;
+  organization: {
+    name: string;
+    url: string;
+    logo: string;
+  };
+  startDate: string;
+  endDate: string | null;
+}
+
+const experiences: Experience[] = [
+  {
+    id: uuid(),
+    title: "Software Engineering Intern",
+    type: "work" as const,
+    description:
+      "Working on building and improving the Levels.fyi platform, focusing on frontend development with Next.js and TypeScript.",
+    organization: {
+      name: "Levels.fyi",
+      url: "https://www.levels.fyi/",
+      logo: "/experiences/levels.png",
+    },
+    startDate: "Sep 2024",
+    endDate: null,
+  },
   {
     id: uuid(),
     title: "Technical Intern",
+    type: "work" as const,
+    description:
+      "Worked on developing and maintaining cloud-native applications using AWS services and Kubernetes.",
     organization: {
       name: "Niveus Solutions",
       url: "https://niveussolutions.com/",
@@ -14,29 +47,10 @@ export const experiences = [
   },
   {
     id: uuid(),
-    title: "President",
-    organization: {
-      name: "Sahyadri Open Source Community (SOSC)",
-      url: "https://sosc.org.in/",
-      logo: "/experiences/sosc.jpeg",
-    },
-    startDate: "Jun 2023",
-    endDate: "Oct 2024",
-  },
-  {
-    id: uuid(),
-    title: "Postman Student Leader",
-    organization: {
-      name: "Postman",
-      url: "https://postman.com/",
-      logo: "/experiences/postman.png",
-    },
-    startDate: "Oct 2022",
-    endDate: "Oct 2023",
-  },
-  {
-    id: uuid(),
     title: "Full Stack Developer Intern",
+    type: "work" as const,
+    description:
+      "Developed full-stack applications using React, Node.js, and MongoDB. Implemented key features and improved user experience.",
     organization: {
       name: "The Startupreneur",
       url: "https://thestartupreneur.co/",
@@ -48,6 +62,9 @@ export const experiences = [
   {
     id: uuid(),
     title: "Technical Trainer",
+    type: "work" as const,
+    description:
+      "Conducted technical training sessions on web development technologies for college students.",
     organization: {
       name: "Thaniya Technologies",
       url: "https://thaniyatech.com/",
@@ -58,7 +75,24 @@ export const experiences = [
   },
   {
     id: uuid(),
+    title: "President",
+    type: "community" as const,
+    description:
+      "Leading the largest open-source community in Mangalore, organizing events, workshops, and hackathons to promote open source.",
+    organization: {
+      name: "Sahyadri Open Source Community (SOSC)",
+      url: "https://sosc.org.in/",
+      logo: "/experiences/sosc.jpeg",
+    },
+    startDate: "Jun 2023",
+    endDate: "Oct 2024",
+  },
+  {
+    id: uuid(),
     title: "Technical Team Lead",
+    type: "community" as const,
+    description:
+      "Leading technical initiatives and organizing events for IEEE student members in the Mangalore region.",
     organization: {
       name: "IEEE Mangalore Subsection",
       url: "https://ieee.org/",
@@ -70,6 +104,9 @@ export const experiences = [
   {
     id: uuid(),
     title: "Core Team - FOSS Mangalore",
+    type: "community" as const,
+    description:
+      "Organizing and conducting events to promote Free and Open Source Software in Mangalore.",
     organization: {
       name: "FOSS United",
       url: "https://fossunited.org/",
@@ -80,13 +117,23 @@ export const experiences = [
   },
   {
     id: uuid(),
-    title: "Software Engineering Intern",
+    title: "Postman Student Leader",
+    type: "community" as const,
+    description:
+      "Conducted workshops and training sessions on API development and testing using Postman.",
     organization: {
-      name: "Levels.fyi",
-      url: "https://www.levels.fyi/",
-      logo: "/experiences/levels.png",
+      name: "Postman",
+      url: "https://postman.com/",
+      logo: "/experiences/postman.png",
     },
-    startDate: "Sep 2024",
-    endDate: null,
+    startDate: "Oct 2022",
+    endDate: "Oct 2023",
   },
-].sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate))
+].sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate));
+
+export const workExperiences = experiences.filter((exp) => exp.type === "work");
+export const communityExperiences = experiences.filter(
+  (exp) => exp.type === "community"
+);
+
+export { experiences };

@@ -1,14 +1,14 @@
-import { v4 as uuid } from "uuid"
+import { v4 as uuid } from "uuid";
 
 type Talk = {
-  id: string
-  title: string
-  organizer: string
-  description: string
-  date: string
-  blog: string | null
-  video: string | null
-}
+  id: string;
+  title: string;
+  organizer: string;
+  description: string;
+  date: string;
+  blog: string | null;
+  video: string | null;
+};
 
 export const talks: Talk[] = [
   {
@@ -42,7 +42,7 @@ export const talks: Talk[] = [
   },
   {
     id: uuid(),
-    title: "Branching with Git ",
+    title: "Branching with Git",
     organizer: "Department of CSE and SOSC",
     description:
       "A hands-on workshop on Git and GitHub for juniors as an peer to peer initiative by CSE Department.",
@@ -50,4 +50,14 @@ export const talks: Talk[] = [
     blog: null,
     video: null,
   },
-]
+  {
+    id: uuid(),
+    title: "Inside the Server, Outside the Browser",
+    organizer: "TechMang, UniCourt",
+    description:
+      "Web rendering paradigms is like cooking, making it easy to understand CSR, SSR, SSG, ISR, and PPR.",
+    date: "1 Feb, 2025",
+    blog: null,
+    video: null,
+  },
+];

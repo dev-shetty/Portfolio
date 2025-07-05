@@ -1,47 +1,91 @@
 ---
-import Card from "@/components/ui/sections/card.astro"
-import Container from "@/components/ui/sections/container.astro"
-import H3 from "@/components/ui/typography/H3.astro"
-import { icons } from "@/lib/icons"
-import { talks } from "@/lib/talks"
-import { Icon } from "astro-icon/components"
+import Button from "@/components/ui/button";
+import Card from "@/components/ui/sections/card.astro";
+import Container from "@/components/ui/sections/container.astro";
+import { icons } from "@/lib/icons";
+import { talks } from "@/lib/talks";
+import { Icon } from "astro-icon/components";
+
+const INITIAL_LIMIT = 3;
 ---
 
 <Container title="Talks and Workshops">
+  <Fragment slot="right-button">
+    <Button
+      client:load
+      className="py-1 whitespace-nowrap bg-transparent border-none w-fit cursor-pointer"
+      id="toggleTalks"
+    >
+      <span data-talks-button-text>View More</span>
+      <Icon
+        name={icons.ArrowDown}
+        data-talks-angle-icon
+        size="16"
+        class="transition-all duration-300"
+      />
+    </Button>
+  </Fragment>
   <Fragment slot="vertical-grid">
     {
-      talks.map((talk) => (
-        <Card>
-          <Fragment slot="title">{talk.title}</Fragment>
-          <Fragment slot="description">
-            {talk.description}{" "}
-            {talk.blog !== null && (
-              <a href={talk.blog} target="_blank" class="underline">
-                Read more <Icon name={icons.Visit} class="inline" />
-              </a>
-            )}
-          </Fragment>
-          <Fragment slot="custom-footer">
-            <div class="flex gap-2">
-              <p class="font-bold">{talk.organizer}</p>
-              <p>&#8226;</p>
-              <p>{talk.date}</p>
-              {talk.video !== null && (
-                <>
-                  <p>&#8226;</p>
-                  <a
-                    href={talk.video}
-                    target="_blank"
-                    class="flex items-center gap-1 hover:text-gray-200"
-                  >
-                    <Icon name={icons.YouTube} /> YouTube
-                  </a>
-                </>
+      talks.map((talk, index) => (
+        <div class:list={[{ hidden: index >= INITIAL_LIMIT }]} data-talks>
+          <Card>
+            <Fragment slot="title">{talk.title}</Fragment>
+            <Fragment slot="description">
+              {talk.description}{" "}
+              {talk.blog !== null && (
+                <a href={talk.blog} target="_blank" class="underline">
+                  Read more <Icon name={icons.Visit} class="inline" />
+                </a>
               )}
-            </div>
-          </Fragment>
-        </Card>
+            </Fragment>
+            <Fragment slot="custom-footer">
+              <div class="flex gap-2">
+                <p class="font-bold">{talk.organizer}</p>
+                <p>&#8226;</p>
+                <p>{talk.date}</p>
+                {talk.video !== null && (
+                  <>
+                    <p>&#8226;</p>
+                    <a
+                      href={talk.video}
+                      target="_blank"
+                      class="flex items-center gap-1 hover:text-gray-200"
+                    >
+                      <Icon name={icons.YouTube} /> YouTube
+                    </a>
+                  </>
+                )}
+              </div>
+            </Fragment>
+          </Card>
+        </div>
       ))
     }
   </Fragment>
 </Container>
+
+<script>
+  const toggleButton = document.getElementById("toggleTalks");
+  const buttonText = document.querySelector("[data-talks-button-text]");
+  const talks = document.querySelectorAll("[data-talks]");
+  const angleIcon = document.querySelector("[data-talks-angle-icon]");
+
+  const INITIAL_LIMIT = 3;
+  let isExpanded = false;
+
+  toggleButton?.addEventListener("click", () => {
+    isExpanded = !isExpanded;
+
+    talks.forEach((talk, index) => {
+      if (index >= INITIAL_LIMIT) {
+        talk.classList.toggle("hidden");
+      }
+    });
+
+    if (buttonText && angleIcon) {
+      buttonText.textContent = isExpanded ? "View Less" : "View More";
+      angleIcon.classList.toggle("-rotate-180");
+    }
+  });
+</script>
