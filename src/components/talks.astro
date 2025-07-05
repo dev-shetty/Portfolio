@@ -1,47 +1,47 @@
 ---
-import H2 from "@/components/ui/typography/H2.astro"
+import Card from "@/components/ui/sections/card.astro"
+import Container from "@/components/ui/sections/container.astro"
 import H3 from "@/components/ui/typography/H3.astro"
 import { icons } from "@/lib/icons"
 import { talks } from "@/lib/talks"
 import { Icon } from "astro-icon/components"
 ---
 
-<section class="my-16">
-  <H2>Talks and Workshops</H2>
-  <div class="grid gap-4">
+<Container title="Talks and Workshops">
+  <Fragment slot="vertical-grid">
     {
       talks.map((talk) => (
-        <div class="flex flex-col border-b pb-2 last-of-type:border-b-0 last-of-type:pb-0 border-b-slate-800">
-          <div class="flex flex-col">
-            <H3>{talk.title}</H3>
-            <p>
-              {talk.description}{" "}
-              {talk.blog !== null && (
-                <a href={talk.blog} target="_blank" class="underline">
-                  Read more <Icon name={icons.Visit} class="inline" />
-                </a>
-              )}
-            </p>
-          </div>
-          <div class="flex gap-2 mt-1">
-            <p class="font-bold">{talk.organizer}</p>
-            <p>&#8226;</p>
-            <p class="text-slate-300">{talk.date}</p>
-            {talk.video !== null && (
-              <>
-                <p>&#8226;</p>
-                <a
-                  href={talk.video}
-                  target="_blank"
-                  class="flex items-center gap-1 hover:text-slate-200"
-                >
-                  <Icon name={icons.YouTube} /> YouTube
-                </a>
-              </>
+        <Card>
+          <Fragment slot="title">{talk.title}</Fragment>
+          <Fragment slot="description">
+            {talk.description}{" "}
+            {talk.blog !== null && (
+              <a href={talk.blog} target="_blank" class="underline">
+                Read more <Icon name={icons.Visit} class="inline" />
+              </a>
             )}
-          </div>
-        </div>
+          </Fragment>
+          <Fragment slot="custom-footer">
+            <div class="flex gap-2">
+              <p class="font-bold">{talk.organizer}</p>
+              <p>&#8226;</p>
+              <p>{talk.date}</p>
+              {talk.video !== null && (
+                <>
+                  <p>&#8226;</p>
+                  <a
+                    href={talk.video}
+                    target="_blank"
+                    class="flex items-center gap-1 hover:text-gray-200"
+                  >
+                    <Icon name={icons.YouTube} /> YouTube
+                  </a>
+                </>
+              )}
+            </div>
+          </Fragment>
+        </Card>
       ))
     }
-  </div>
-</section>
+  </Fragment>
+</Container>

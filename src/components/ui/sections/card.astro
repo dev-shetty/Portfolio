@@ -1,0 +1,60 @@
+---
+import H3 from "@/components/ui/typography/H3.astro"
+import { cn } from "@/lib/helpers"
+
+type Element = HTMLElement | string
+
+export interface Props {
+  tags?: Element[]
+  className?: string
+}
+const { tags, className } = Astro.props
+---
+
+<div
+  class={cn(
+    "flex flex-col border-b py-4 pb-2 last-of-type:border-b-0 last-of-type:pb-0 border-b-gray-800",
+    className
+  )}
+>
+  <div class="flex flex-col">
+    <H3><slot name="title" /></H3>
+    <p>
+      <slot name="subtitle" />
+    </p>
+  </div>
+  <p>
+    <slot name="description" />
+  </p>
+
+  {
+    tags && tags.length > 0 && (
+      <div class="flex flex-wrap gap-1 mt-2">
+        {tags.map((tag) => (
+          <span class="bg-[#23262f] hover:bg-gray-800 text-gray-400 rounded px-3 py-1 text-sm">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    Astro.slots["custom-footer"] && (
+      <div class="mt-2 text-sm text-gray-400">
+        <slot name="custom-footer" />
+      </div>
+    )
+  }
+
+  <div class="mt-2 flex flex-col">
+    <div class="text-sm text-gray-400">
+      <slot name="location" />
+    </div>
+    <div class="text-sm text-gray-400">
+      <div class="text-sm text-gray-400">
+        <slot name="date" />
+      </div>
+    </div>
+  </div>
+</div>

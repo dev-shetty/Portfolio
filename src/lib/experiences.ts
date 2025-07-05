@@ -21,7 +21,7 @@ export const experiences = [
       logo: "/experiences/sosc.jpeg",
     },
     startDate: "Jun 2023",
-    endDate: null,
+    endDate: "Oct 2024",
   },
   {
     id: uuid(),
@@ -32,7 +32,7 @@ export const experiences = [
       logo: "/experiences/postman.png",
     },
     startDate: "Oct 2022",
-    endDate: null,
+    endDate: "Oct 2023",
   },
   {
     id: uuid(),
@@ -65,7 +65,7 @@ export const experiences = [
       logo: "/experiences/ieee.png",
     },
     startDate: "Mar 2024",
-    endDate: null,
+    endDate: "Dec 2024",
   },
   {
     id: uuid(),
@@ -80,13 +80,13 @@ export const experiences = [
   },
   {
     id: uuid(),
-    title: "Frontend Engineer Intern",
+    title: "Software Engineering Intern",
     organization: {
       name: "Levels.fyi",
       url: "https://www.levels.fyi/",
-      logo: "/experiences/levels.svg",
+      logo: "/experiences/levels.png",
     },
     startDate: "Sep 2024",
     endDate: null,
   },
-].sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate))
+].sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate))

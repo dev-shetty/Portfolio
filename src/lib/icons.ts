@@ -7,7 +7,7 @@ export const icons /*: { [key: string]: IconifyIconName } */ = {
   LinkedIn: "fa:linkedin",
   Twitter: "fa:twitter",
   DevTo: "lineicons:dev",
-  YouTube: "fa:youtube",
+  YouTube: "lineicons:youtube",
 
   CSS: "tabler:brand-css3",
   Figma: "tabler:brand-figma",
@@ -31,4 +31,6 @@ export const icons /*: { [key: string]: IconifyIconName } */ = {
   Envelope: "tabler:mail",
 
   Express: "simple-icons:express",
+
+  ArrowDown: "fa:angle-down",
 }

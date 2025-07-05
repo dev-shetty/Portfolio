@@ -52,7 +52,7 @@
   .card:hover .socials > div,
   .card:hover > div > div > p,
   .card:hover img {
-    transform: translateZ(1rem);
+    transform: trangrayZ(1rem);
   }
 
   .card:hover .socials > div {

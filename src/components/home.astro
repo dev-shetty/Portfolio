@@ -7,7 +7,7 @@ import { Icon } from "astro-icon/components"
 import Image from "astro/components/Image.astro"
 ---
 
-<main class="flex flex-col-reverse xl:flex-row items-center gap-16 my-16">
+<section class="flex flex-col-reverse xl:flex-row items-center gap-16 my-16">
   <div class="flex flex-col gap-8">
     <div class="flex flex-col gap-4">
       <H1>Deveesh Shetty</H1>
@@ -17,7 +17,10 @@ import Image from "astro/components/Image.astro"
           frameworks. I love exploring new technologies, playing around with
           them. Developer by passion and artist by hobby.
         </p>
-        <p>Software Engineer at Levels.fyi. Working remotely 🏖️</p>
+        <div>
+          <p class="flex items-center gap-2">Software Engineer at Levels.fyi</p>
+          <p>Working remotely 🏖️</p>
+        </div>
       </div>
     </div>
     <div class="flex items-center justify-between gap-4">
@@ -25,21 +28,21 @@ import Image from "astro/components/Image.astro"
         <a
           href={siteConfig.socials.github}
           target="_blank"
-          class="hover:text-slate-300 transition-colors"
+          class="hover:text-gray-300 transition-colors"
         >
           <Icon name={icons.GitHub} />
         </a>
         <a
           href={siteConfig.socials.linkedin}
           target="_blank"
-          class="hover:text-slate-300 transition-colors"
+          class="hover:text-gray-300 transition-colors"
         >
           <Icon name={icons.LinkedIn} />
         </a>
         <a
           href={siteConfig.socials.twitter}
           target="_blank"
-          class="hover:text-slate-300 transition-colors"
+          class="hover:text-gray-300 transition-colors"
         >
           <Icon name={icons.Twitter} />
         </a>
@@ -65,6 +68,7 @@ import Image from "astro/components/Image.astro"
       width={1000}
       height={1000}
       priority
+      loading="eager"
     />
   </div>
-</main>
+</section>

@@ -1,57 +1,55 @@
 ---
 import Button from "@/components/ui/button"
-import H2 from "@/components/ui/typography/H2.astro"
+import Card from "@/components/ui/sections/card.astro"
+import Container from "@/components/ui/sections/container.astro"
 import H3 from "@/components/ui/typography/H3.astro"
 import { achievements } from "@/lib/achievements"
+import { icons } from "@/lib/icons"
+import { Icon } from "astro-icon/components"
 
 const INITIAL_LIMIT = 3
 ---
 
-<section class="my-16">
-  <H2>Achievements</H2>
-  <div class="grid gap-4">
+<Container title="Achievements">
+  <Fragment slot="right-button">
+    <Button
+      client:load
+      className="py-1 whitespace-nowrap bg-transparent border-none w-fit cursor-pointer"
+      id="toggleAchievements"
+    >
+      <span data-achievements-button-text>View More</span>
+      <Icon
+        name={icons.ArrowDown}
+        data-achievements-angle-icon
+        size="16"
+        class="transition-all duration-300"
+      />
+    </Button>
+  </Fragment>
+  <Fragment slot="vertical-grid">
     {
       achievements.map((achievement, index) => (
-        <div
-          class:list={[
-            "flex flex-col border-b pb-2 last-of-type:border-b-0 last-of-type:pb-0 border-b-slate-800",
-            { hidden: index >= INITIAL_LIMIT },
-          ]}
-          data-achievement
-        >
-          <div class="flex flex-col">
-            <H3>
+        <div class:list={[{ hidden: index >= INITIAL_LIMIT }]} data-achievement>
+          <Card>
+            <Fragment slot="title">
               {achievement.position} &#8226; {achievement.competition}
-            </H3>
-            <div class="flex flex-wrap gap-1 mt-1 mb-4">
-              {achievement.teamMembers.map((member) => (
-                <p class="outline outline-slate-700 bg-slate-700 px-2 rounded-md">
-                  {member}
-                </p>
-              ))}
-            </div>
-            <p>{achievement.description}</p>
-          </div>
-          <div class="flex flex-col mt-2">
-            <p>{achievement.organizer}</p>
-            <p class="text-slate-300">{achievement.date}</p>
-          </div>
+            </Fragment>
+            <Fragment slot="description">{achievement.description}</Fragment>
+            <Fragment slot="location">{achievement.organizer}</Fragment>
+            <Fragment slot="date">{achievement.date}</Fragment>
+          </Card>
         </div>
       ))
     }
-    <Button
-      client:load
-      className="mx-auto py-2 w-fit md:w-fit px-16 cursor-pointer"
-      id="toggleAchievements"
-    >
-      View More
-    </Button>
-  </div>
-</section>
+  </Fragment>
+</Container>
 
 <script>
   const toggleButton = document.getElementById("toggleAchievements")
+  const buttonText = document.querySelector("[data-achievements-button-text]")
   const achievements = document.querySelectorAll("[data-achievement]")
+  const angleIcon = document.querySelector("[data-achievements-angle-icon]")
+
   const INITIAL_LIMIT = 3
   let isExpanded = false
 
@@ -64,8 +62,9 @@ const INITIAL_LIMIT = 3
       }
     })
 
-    if (toggleButton) {
-      toggleButton.textContent = isExpanded ? "View Less" : "View More"
+    if (buttonText && angleIcon) {
+      buttonText.textContent = isExpanded ? "View Less" : "View More"
+      angleIcon.classList.toggle("-rotate-180")
     }
   })
 </script>

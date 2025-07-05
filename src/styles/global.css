@@ -15,8 +15,26 @@
   --clr-primary-900: rgb(19, 19, 19);
 }
 
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Variable.ttf") format("truetype");
+}
+
 .debug {
   outline: 1px solid red;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: "Satoshi", "Segoe UI", "Poppins", sans-serif;
+  font-style: normal;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  background-color: hsl(221.4 30% 8%);
+  scrollbar-gutter: stable;
 }
 
 body::-webkit-scrollbar {
@@ -43,5 +61,5 @@ body::-webkit-scrollbar-thumb {
 } */
 
 /* * {
-  @apply outline outline-slate-700;
+  @apply outline outline-gray-700;
 } */

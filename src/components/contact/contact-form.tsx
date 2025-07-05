@@ -78,7 +78,7 @@ function ContactForm() {
           type="email"
           name="email"
           id="email"
-          className="bg-slate-800 rounded-md p-2 outline-slate-700"
+          className="bg-gray-800 rounded-md p-2 outline-gray-700"
           placeholder="developer@developer.com"
         />
       </div>
@@ -88,7 +88,7 @@ function ContactForm() {
           type="text"
           name="name"
           id="name"
-          className="bg-slate-800 rounded-md p-2 outline-slate-700"
+          className="bg-gray-800 rounded-md p-2 outline-gray-700"
           placeholder="Developer X"
         />
       </div>
@@ -98,7 +98,7 @@ function ContactForm() {
           name="message"
           id="message"
           placeholder="What's up?"
-          className="bg-slate-800 rounded-md p-2 outline-slate-700 resize-none"
+          className="bg-gray-800 rounded-md p-2 outline-gray-700 resize-none"
           rows={6}
         ></textarea>
       </div>
