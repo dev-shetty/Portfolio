@@ -12,6 +12,8 @@ series:
   order: 4
 ---
 
+import CodeBlock from "@/components/blog/code-block.astro";
+
 In this blog we will be seeing how to contribute to Open Source Projects by creating your very first Pull Request as a beginner, and trust me it is going to be very easy.
 
 NOTE: I value your time so, if you want to skip to the fun part and avoid theory, click [here](#hands-on-contribution).\_
@@ -88,9 +90,7 @@ You will see a interface like this
 - Now, open a terminal in the desired place where you would like to have the folder. It can be D Drive, Desktop, your choice.
 - Next in the terminal type this command to clone the repository:
 
-```bash
-git clone <copied-url>
-```
+<CodeBlock language="bash" code={`git clone <copied-url>`} />
 
 **Note:** Replace `<copied-url>` with the url you copied in the previous step, without the brackets `<>`.
 
@@ -102,9 +102,7 @@ It is always a good practice to create a new branch and do the changes there, wh
 
 - Create and switch to a new branch by using this command:
 
-```bash
-git checkout -b <your-name>
-```
+<CodeBlock language="bash" code={`git checkout -b <your-name>`} />
 
 **Note:** Replace `<your-name>` with your name, for instance I will name it "deveesh", you are free to name the branch whatever you like! You can learn more about [branching and it's importance] (https://dev.to/devshetty/learn-about-branching-in-git-bm3)
 
@@ -114,34 +112,29 @@ git checkout -b <your-name>
 
 - Add description about yourself in that file, in my case I will add a small description about myself. Be as creative as you want ✨
 
-```md
-# Deveesh Shetty
+<CodeBlock
+  language="markdown"
+  code={`# Deveesh Shetty
 
 - President, SOSC
 - Passionate Frontend Developer
 - Open Source enthusiast.
-- 2nd Year CSE Student at Sahyadri
-```
+- 2nd Year CSE Student at Sahyadri`}
+  />
 
 You know the drill next! add, commit and push the changes.
 
 - Add the changes
 
-```bash
-git add .
-```
+<CodeBlock language="bash" code={`git add .`} />
 
 - Commit them with a good commit message like
 
-```bash
-git commit -m "adds deveesh's profile"
-```
+<CodeBlock language="bash" code={`git commit -m "adds deveesh's profile"`} />
 
 - Push them to the branch in your local repository, in my case the branch is `deveesh`
 
-```
-git push origin deveesh
-```
+<CodeBlock language="bash" code={`git push origin deveesh`} />
 
 **Note:** Replace deveesh with the branch name which you gave in the previous steps!
 

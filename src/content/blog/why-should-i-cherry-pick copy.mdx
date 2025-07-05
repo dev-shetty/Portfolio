@@ -12,6 +12,8 @@ series:
   order: 5
 ---
 
+import CodeBlock from "@/components/blog/code-block.astro";
+
 Even I had this question, in my mind it was another feature that I would never use. But well I was wrong, I use it quite often.
 
 Let's understand it with a real-case scenario.
@@ -28,17 +30,13 @@ Well, you could have done it the old fashion way of undoing the commit, changing
 
 Note: If you need multiple commits, either you can copy all the hashes, or if they are consecutive commits, you only need to copy the first mistaken commit hash and the last commit hash.
 
-```bash
-git log --oneline
-```
+<CodeBlock language="bash" code={`git log --oneline`} />
 
 ---
 
 **Step 3:** Switch to the `my-feature` branch
 
-```bash
-git checkout my-feature
-```
+<CodeBlock language="bash" code={`git checkout my-feature`} />
 
 Add `-b` flag if you are creating a new branch. Read more about branches [here](https://dev.to/devshetty/learn-about-branching-in-git-bm3).
 
@@ -48,21 +46,15 @@ Add `-b` flag if you are creating a new branch. Read more about branches [here](
 
 - (i) One commit
 
-```bash
-git cherry-pick <hash>
-```
+<CodeBlock language="bash" code={`git cherry-pick <hash>`} />
 
 - (ii) Multiple commits
 
-```bash
-git cherry-pick <hash1> <hash2> <hash3>
-```
+<CodeBlock language="bash" code={`git cherry-pick <hash1> <hash2> <hash3>`} />
 
 - (iii) Consecutive range of commits
 
-```bash
-git cherry-pick <first-hash>..<last-hash>
-```
+<CodeBlock language="bash" code={`git cherry-pick <first-hash>..<last-hash>`} />
 
 Congratulation, you will have those commits in `my-feature` branch. 🎉
 
@@ -70,18 +62,17 @@ Congratulation, you will have those commits in `my-feature` branch. 🎉
 
 **Step 5:** (Optional) Delete commits from `master` branch.
 
-```bash
-git checkout master
-git reset --hard HEAD~N
-```
+<CodeBlock
+  language="bash"
+  code={`git checkout master
+git reset --hard HEAD~N`}
+/>
 
 Where N is the number of commits, only do this when the commits are consecutive, and on tip of the branch. This works for our situation.
 
 Or you can also use interactive rebase to drop specific commits
 
-```bash
-git rebase -i <commit-hash>
-```
+<CodeBlock language="bash" code={`git rebase -i <commit-hash>`} />
 
 ---
 

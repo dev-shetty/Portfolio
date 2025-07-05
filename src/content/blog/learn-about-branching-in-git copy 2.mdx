@@ -12,12 +12,14 @@ series:
   order: 2
 ---
 
+import CodeBlock from "@/components/blog/code-block.astro";
+
 Branching in Git is a very important and one of the core concepts in version control. It is a game-changer, trust me on that :)
 
 ## What is Branching?
 
-Let's begin with a simple analogy. Imagine yourself as a skilled artist who loves to paint landscapes of nature, Picture yourself sitting in a serene place working on your masterpiece, already half-way through its creation and you encounter a situation where you feel the need to try a new shade for the painting to experiment with colours. Would you risk making the changes directly on the canvas? Of course not! Instead, you would want to freely try out the new colours in a separate piece of paper. If you like the chosen shades, you’ll add it confidently to your actual painting.
-But, if you weren’t satisfied, then you can simply discard the separate piece of paper and save time to protect the painting from a blunder.
+Let's begin with a simple analogy. Imagine yourself as a skilled artist who loves to paint landscapes of nature, Picture yourself sitting in a serene place working on your masterpiece, already half-way through its creation and you encounter a situation where you feel the need to try a new shade for the painting to experiment with colours. Would you risk making the changes directly on the canvas? Of course not! Instead, you would want to freely try out the new colours in a separate piece of paper. If you like the chosen shades, you'll add it confidently to your actual painting.
+But, if you weren't satisfied, then you can simply discard the separate piece of paper and save time to protect the painting from a blunder.
 
 So, Branching in Git does the similar thing. If you are working on a project and wish to experiment with new code or implement a new feature, you can simply create a new branch and work on it. If you are satisfied, `merge` it to the original branch otherwise you can discard it leaving the original code base untouched.
 
@@ -33,29 +35,21 @@ A branch is a timeline in which you work and commit code changes.
 
 - `master` or `main` branch is the main timeline in which you'll be working, the changes made to this branch will reflect in production. (Optional) You can rename this branch as well by using:
 
-```bash
-git branch -M <new-name>
-```
+<CodeBlock language="bash" code={`git branch -M <new-name>`} />
 
 - Then you can create other branches where you will be implementing features, testing out code, and much more by using the following command:
 
-```bash
-git branch <branch-name>
-```
+<CodeBlock language="bash" code={`git branch <branch-name>`} />
 
 Now switch to the new branch by using:
 
-```bash
-git checkout <branch-name>
-```
+<CodeBlock language="bash" code={`git checkout <branch-name>`} />
 
 Replace `<branch-name>` with a name which reflects the purpose of the branch for eg. `feat-dashboard` which means I am using this branch to create a new Dashboard Feature.
 
 **Pro-tip:** You can create a new branch and switch to it in just one command:
 
-```bash
-git checkout -b <branch-name>
-```
+<CodeBlock language="bash" code={`git checkout -b <branch-name>`} />
 
 Here, `-b` flag creates a new branch with the specified name if the branch doesn't already exist.
 
@@ -63,41 +57,35 @@ Here, `-b` flag creates a new branch with the specified name if the branch doesn
 
 Before continuing with branching commands, ensure that you have some content in the `main` or `master` branch, if it is empty, then add a file called `Readme.md` and add some text in that for instance:
 
-```md
-# My name is Deveesh Shetty
-```
+<CodeBlock language="markdown" code={`# My name is Deveesh Shetty`} />
 
 Next, "commit and add" the file by using the following command:
 
-```bash
-git add .
-git commit -m "Adds my Readme File"
-```
+<CodeBlock
+  language="bash"
+  code={`git add .
+git commit -m "Adds my Readme File"`}
+/>
 
 Create a new `feature` branch and switch into it by running the command:
 
-```bash
-git checkout -b feature
-```
+<CodeBlock language="bash" code={`git checkout -b feature`} />
 
 Now, you are in the `feature` branch. Add a file in the new branch called `Feature.md` and open it and add some content in it:
 
-```md
-# Hello from feature branch
-```
+<CodeBlock language="markdown" code={`# Hello from feature branch`} />
 
 You know next, "add and commit" the files by using the following commands:
 
-```bash
-git add .
-git commit -m "Adds a Feature File"
-```
+<CodeBlock
+  language="bash"
+  code={`git add .
+git commit -m "Adds a Feature File"`}
+/>
 
 Check the commit history by running:
 
-```bash
-git log --oneline
-```
+<CodeBlock language="bash" code={`git log --oneline`} />
 
 You shall see an output similar to:
 

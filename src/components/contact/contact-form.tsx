@@ -103,7 +103,11 @@ function ContactForm() {
         ></textarea>
       </div>
       <div className="mx-auto mt-2">
-        <Button type="submit" disabled={loading} className="relative h-10">
+        <Button
+          type="submit"
+          disabled={loading}
+          className="relative w-fit h-10"
+        >
           <span>{loading ? <Loading /> : "Send"}</span>
         </Button>
       </div>

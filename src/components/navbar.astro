@@ -7,9 +7,11 @@ import { siteConfig } from "@/config/site";
 ---
 
 <nav
-  class="fixed backdrop-blur-sm z-50 flex w-full items-center py-4 px-8 border-b border-b-gray-800 shadow-[0_0_120px_80px_rgba(0,0,0,0.1)] shadow-gray-700/10"
+  class="fixed backdrop-blur-sm z-50 flex w-full items-center py-4 border-b border-b-gray-800 shadow-[0_0_120px_80px_rgba(0,0,0,0.1)] shadow-gray-700/10"
 >
-  <div class="container mx-auto flex items-center justify-between">
+  <div
+    class="container mx-auto lg:px-48 md:px-24 px-8 flex items-center justify-between"
+  >
     <div>
       <a href="/" class="text-xl hover:text-gray-200">
         <Image src={siteConfig.logo} alt="" width={36} height={36} />

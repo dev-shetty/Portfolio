@@ -25,7 +25,6 @@ if (series) {
     .filter((post) => post.data.series?.name === series.name)
     .sort((a, b) => a.data.series.order - b.data.series.order);
 }
-
 ---
 
 <MainLayout
@@ -35,13 +34,13 @@ if (series) {
   article={{
     publishedTime: date,
     tags: tags,
-    series: series?.name
+    series: series?.name,
   }}
 >
-  <article class="max-w-3xl mx-auto my-16">
+  <article class="max-w-3xl mx-auto md:my-16 px-6">
     <a
       href="/blog"
-      class="inline-flex items-center gap-2 text-gray-400 hover:text-gray-200 mb-8 group transition-colors"
+      class="inline-flex items-center gap-2 text-gray-400 hover:text-gray-200 md:mb-8 group transition-colors"
     >
       <Icon
         name="lucide:arrow-left"
@@ -50,12 +49,14 @@ if (series) {
       Back to Blogs
     </a>
 
-    {seriesPosts.length > 1 && (
-      <div class="my-8 p-4 bg-gray-900/50 rounded-lg">
-        <h3 class="text-lg font-medium mb-4">{series.name}</h3>
-        <SeriesList client:load posts={seriesPosts} currentSlug={slug} />
-      </div>
-    )}
+    {
+      seriesPosts.length > 1 && (
+        <div class="my-8 p-4 bg-gray-900/50 rounded-lg">
+          <h3 class="text-lg font-medium mb-4">{series.name}</h3>
+          <SeriesList client:load posts={seriesPosts} currentSlug={slug} />
+        </div>
+      )
+    }
 
     <header class="space-y-8">
       {

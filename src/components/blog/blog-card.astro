@@ -38,7 +38,10 @@ const truncateByWords = (str: string, maxLength: number) => {
   words.pop();
   return words.join(" ") + "...";
 };
-const truncatedDescription = truncateByWords(description, isFeatured ? 250 : 200);
+const truncatedDescription = truncateByWords(
+  description,
+  isFeatured ? 250 : 200
+);
 
 const href = redirect || `/blog/${slug}`;
 const target = redirect ? "_blank" : "_self";
@@ -48,37 +51,49 @@ const target = redirect ? "_blank" : "_self";
   href={href}
   target={target}
   class={cn(
-    "block transition-transform hover:-translate-y-0.5 border-t border-gray-700 pt-4",
-    isFeatured ? "md:grid md:grid-cols-2 md:gap-8 bg-gradient-to-br from-gray-900/80 to-gray-900/40 p-6 rounded-xl mb-8 relative border border-gray-800/50" : "md:flex md:gap-6 items-center first:border-t-0"
+    "flex flex-col md:flex-row transition-transform hover:-translate-y-0.5 border-t border-gray-700 pt-4",
+    isFeatured
+      ? "md:grid md:grid-cols-2 md:gap-8 bg-gradient-to-br from-gray-900/80 to-gray-900/40 p-6 rounded-xl mb-8 relative border border-gray-800/50"
+      : "md:flex md:gap-6 items-center first:border-t-0 flex-col-reverse"
   )}
 >
-{isFeatured && (
-  <div class="absolute -top-3 -left-3 bg-gradient-to-br from-amber-400 to-amber-600 p-2 rounded-full shadow-lg">
-    <Icon name={icons.Star} class="w-4 h-4 text-gray-900" />
-  </div>
-)}
-{
-  coverImage && isFeatured && (
-    <div class="mb-6 md:mb-0">
-      <img
-        src={coverImage.startsWith("http") ? coverImage : `/projects/${coverImage}`}
-        alt={title}
-        class="w-full aspect-video object-cover rounded-lg shadow-lg ring-1 ring-gray-800/60"
-        loading="lazy"
-        transition:name={`blog-image-${slug}`}
-      />
-    </div>
-  )
-}
-  <Card className={cn(
-    "h-full border-b-0", 
-    isFeatured ? "bg-transparent shadow-none border-none" : "md:w-2/3"
-  )}>
+  {
+    isFeatured && (
+      <div class="absolute -top-3 -left-3 bg-gradient-to-br from-amber-400 to-amber-600 p-2 rounded-full shadow-lg">
+        <Icon name={icons.Star} class="w-4 h-4 text-gray-900" />
+      </div>
+    )
+  }
+  {
+    coverImage && isFeatured && (
+      <div class="mb-6 md:mb-0">
+        <img
+          src={
+            coverImage.startsWith("http")
+              ? coverImage
+              : `/projects/${coverImage}`
+          }
+          alt={title}
+          class="w-full aspect-video object-cover rounded-lg shadow-lg ring-1 ring-gray-800/60"
+          loading="lazy"
+          transition:name={`blog-image-${slug}`}
+        />
+      </div>
+    )
+  }
+  <Card
+    className={cn(
+      "h-full border-b-0",
+      isFeatured ? "bg-transparent shadow-none border-none" : "md:w-2/3"
+    )}
+  >
     <div slot="title">
       <h2
         class={cn(
           "font-bold line-clamp-2 mb-2",
-          isFeatured ? "text-xl md:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-300" : "text-xl"
+          isFeatured
+            ? "text-xl md:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-300"
+            : "text-xl"
         )}
         transition:name={`blog-title-${slug}`}
       >
@@ -89,10 +104,14 @@ const target = redirect ? "_blank" : "_self";
         <span class="text-gray-400">•</span>
         {
           tags.map((tag) => (
-            <span class={cn(
-              "px-2 py-0.5 rounded",
-              isFeatured ? "bg-gray-800/60 text-gray-200 backdrop-blur-sm" : "bg-gray-800 text-gray-300"
-            )}>
+            <span
+              class={cn(
+                "px-2 py-0.5 rounded",
+                isFeatured
+                  ? "bg-gray-800/60 text-gray-200 backdrop-blur-sm"
+                  : "bg-gray-800 text-gray-300"
+              )}
+            >
               {tag}
             </span>
           ))
@@ -103,7 +122,9 @@ const target = redirect ? "_blank" : "_self";
       slot="description"
       class={cn(
         "mt-2",
-        isFeatured ? "text-base line-clamp-2 text-gray-300" : "text-sm line-clamp-2 text-gray-400"
+        isFeatured
+          ? "text-base line-clamp-2 text-gray-300"
+          : "text-sm line-clamp-2 text-gray-400"
       )}
     >
       {truncatedDescription}
@@ -113,7 +134,11 @@ const target = redirect ? "_blank" : "_self";
     coverImage && !isFeatured && (
       <div class={cn("mb-6", !isFeatured && "md:w-1/3 md:mb-0")}>
         <img
-          src={coverImage.startsWith("http") ? coverImage : `/projects/${coverImage}`}
+          src={
+            coverImage.startsWith("http")
+              ? coverImage
+              : `/projects/${coverImage}`
+          }
           alt={title}
           class="w-full aspect-video object-cover rounded-lg"
           loading="lazy"

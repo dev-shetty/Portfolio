@@ -4,6 +4,7 @@ import BlogCard from "@/components/blog/blog-card.astro";
 import Container from "@/components/ui/sections/container.astro";
 import { icons } from "@/lib/icons";
 import { Icon } from "astro-icon/components";
+
 const posts = await getCollection("blog");
 const featuredPosts = posts
   .filter((post) => post.data.isFeatured)
@@ -16,21 +17,21 @@ const featuredPosts = posts
 <Container title="Featured Articles">
   <Fragment slot="right-button">
     <a
-      class="py-1 whitespace-nowrap bg-transparent border-none w-fit cursor-pointer flex items-center gap-2"
+      class="py-0.5 px-3 rounded-lg hover:bg-gray-800/60 whitespace-nowrap w-fit cursor-pointer flex items-center gap-2 transition-all duration-300"
       href="/blog"
     >
-      <span>Read More</span>
+      <span class="text-sm md:text-base">Read More</span>
       <Icon
         name={icons.ArrowRight}
         size="16"
-        class="transition-all duration-300"
+        class="transition-transform group-hover:translate-x-1"
       />
     </a>
   </Fragment>
   <div class="mt-6">
     {
       featuredPosts.length > 0 && (
-        <div class="space-y-8">
+        <div class="grid gap-6 sm:gap-8">
           {featuredPosts.map((post) => (
             <BlogCard
               title={post.data.title}
