@@ -6,6 +6,8 @@ tags: ["Git", "GitHub", "Version Control"]
 coverImage: "/blog/sample-cover.jpg"
 ---
 
+import CodeBlock from "@/components/blog/code-block.astro";
+
 Git Git Git... Git is all we hear people talking about these days. Now, you want to know what it is, so you are in the right place 😉.
 
 In this blog you will learn what Git is, why should you be using Git, and how you can start pushing your code to GitHub using Git. And the good part? you won't be needing any prior knowledge for this.
@@ -29,33 +31,31 @@ Okay, that is all theory, let's start with the commands that you need to get sta
 
 Now to check whether your machine has Git installed, run the following command
 
-```bash
-git --version
-```
+<CodeBlock language="bash" code="git --version" />
 
 If you are getting a output with some numbers for eg. `git version 2.41.0` (number may not be the same), then you are all ready to go 🥳.
 
 Now you have Git installed in your machine. But, Git doesn't know you. So now, you need to tell your name and email to Git by executing the following commands.
 
-```bash
-git config --global user.email "<your-email>"
-git config --global user.name "<your-name>"
-```
+<CodeBlock
+  language="bash"
+  code={`git config --global user.email "<your-email>"
+git config --global user.name "<your-name>"`}
+/>
 
 eg.:
 
-```bash
-git config --global user.email "example@gmail.com"
-git config --global user.name "John Doe"
-```
+<CodeBlock
+  language="bash"
+  code={`git config --global user.email "example@gmail.com"
+git config --global user.name "John Doe"`}
+/>
 
 **P.S. Preferred to put your GitHub Email ID**
 
 Now to check whether your details are added correctly, execute you should be getting your entered details as the output.
 
-```bash
-git config --list
-```
+<CodeBlock language="bash" code="git config --list" />
 
 If the output is too big scroll down using `Arrow-down` key there you will find your name and email.
 
@@ -67,9 +67,7 @@ Now, Fasten your seat belts and let's get started with Git Commands 🚀
 
 - First things first, whenever you start a new project, in that folder you have to initialise a local repository.
 
-```bash
-git init
-```
+<CodeBlock language="bash" code="git init" />
 
 You should get a message saying **Initialised empty git repository**. And also a new hidden file should be formed called `.git` which git uses to keep track of that folder.
 
@@ -91,33 +89,25 @@ These are the commands you will be using most of the times while working on your
 
 In the folder create a new file called as `Readme.md` and write something inside it for eg.
 
-```
-# Hello! My Name is Deveesh Shetty
-```
+<CodeBlock language="markdown" code="# Hello! My Name is Deveesh Shetty" />
 
 P.S. `.md` means a markdown file which is like a text file but with extra features. Like here `#` represents `<h1>` tag from HTML
 
 Git doesn't know that you have created a new file, so you can do it by adding the file to the staging area by using the command
 
-```bash
-git add <file-name>
-```
+<CodeBlock language="bash" code="git add <file-name>" />
 
 Here in my case replace the `<file-name>` with `Readme.md`
 
 **Pro-tip**: You can replace the file name with `.` (a period) to add all the untracked and modified files in that folder to the staging area.
 
-```bash
-git add .
-```
+<CodeBlock language="bash" code="git add ." />
 
 #### Removing files from Staging area
 
 Now your files are in the staging area. But you want to remove some files from the staging area which are not ready yet, you can simply do it by using the following command
 
-```bash
-git reset <file-name>
-```
+<CodeBlock language="bash" code="git reset <file-name>" />
 
 #### Creating a Commit
 
@@ -125,23 +115,20 @@ Commit or in simple terms a checkpoint is where you save the past history of you
 
 Once, you have staged all the changes, creating a commit is quite simple by doing
 
-```bash
-git commit -m "Message describing the changes u made"
-```
+<CodeBlock
+  language="bash"
+  code={`git commit -m "Message describing the changes u made"`}
+/>
 
 **Pro-tip**: The message you write while committing should give a brief idea about what changes are made while the committing the code.
 
 For example in my case it is:
 
-```bash
-git commit -m "Adds Readme File"
-```
+<CodeBlock language="bash" code={`git commit -m "Adds Readme File"`} />
 
 Now you have created a checkpoint for your code which u can see by running the following command
 
-```bash
-git log
-```
+<CodeBlock language="bash" code="git log" />
 
 This command will give you all the commits you made with the `Author` of the commit, `Time` when the commit was made, and also a unique ID called `Commit Hash` with the `Commit Message`.
 
@@ -149,9 +136,7 @@ The logs will be ordered in descending order, meaning the most recent commit wil
 
 If you just want to see the flow of recent commits with no extra information about author and time, you can use the following command to achieve it.
 
-```bash
-git log --oneline
-```
+<CodeBlock language="bash" code="git log --oneline" />
 
 Also you may, have noticed something like `(HEAD -> master)` or `(HEAD -> main)`. Here `HEAD` means the current commit in which you are, in our case it is the **most recent commit** and `main` and `master` means the default branch name. Don't worry about branches right now, it is covered in the later parts of the blog :)
 
@@ -159,9 +144,7 @@ Also you may, have noticed something like `(HEAD -> master)` or `(HEAD -> main)`
 
 You can try using this command after each process where it will tell you what is the current status of the files in your project
 
-```bash
-git status
-```
+<CodeBlock language="bash" code="git status" />
 
 or to get everything in brief add the `-s` flag after it.
 
@@ -201,41 +184,37 @@ You can copy and paste those commands to your terminal and it should `push` your
 
 But, I won't let you just copy paste, let's see what each command is doing in here
 
-```bash
-git remote add origin https://github.com/Deveesh-Shetty/Learn-Git.git
-```
+<CodeBlock
+  language="bash"
+  code="git remote add origin https://github.com/Deveesh-Shetty/Learn-Git.git"
+/>
 
 **In your case the URL will be different**
 What this command does is, it is telling git to add a remote repository named `origin` and the path of the repository is mentioned in the url
 
 You can check your remote repository by running
 
-```bash
-git remote -v
-```
+<CodeBlock language="bash" code="git remote -v" />
 
 It should list the remote repository(s)
 
 Next command, this is used to make sure that the branch name in the git repository is same as that of GitHub by renaming the branch name, so there won't be any difficulties in later stage.
 
-```bash
-git branch -M master
-```
+<CodeBlock language="bash" code="git branch -M master" />
 
 **Note:** In your PC the command may have `main` instead of `master` it is totally fine, it is based on the branch name which is mentioned in GitHub. So don't change it.
 Also to note, the above two steps is required only once only while creating a new repository.
 
 Finally, we are pushing the code by running
 
-```bash
-git push -u origin master
-```
+<CodeBlock language="bash" code="git push -u origin master" />
 
 If I break it down it will look like this
 
-```bash
-git push -u <remote-repo-name> <branch-name>
-```
+<CodeBlock
+  language="bash"
+  code="git push -u <remote-repo-name> <branch-name>"
+/>
 
 - We are telling git to push the code to the remote repository which we added ie `origin` and to the branch called `master` or in your case it maybe `main`.
 
@@ -249,21 +228,18 @@ This is the basic process of how you can add your code to GitHub, and let the wo
 
 - Whenever you do some changes to your code, `add` it to the staging area.
 
-```bash
-git add .
-```
+<CodeBlock language="bash" code="git add ." />
 
 - Then when everything looks good, and you are ready to save your process as a checkpoint, `commit` the code.
 
-```bash
-git commit -m "what-this-commit-adds/improves"
-```
+<CodeBlock
+  language="bash"
+  code={`git commit -m "what-this-commit-adds/improves"`}
+/>
 
 - Then once you are confident enough to show to code to others `push` it to GitHub
 
-```bash
-git push origin <branch-name>
-```
+<CodeBlock language="bash" code={`git push origin <branch-name>`} />
 
 `<branch-name>` can be `master` or `main`
 
