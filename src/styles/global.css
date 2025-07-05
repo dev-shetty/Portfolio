@@ -24,12 +24,17 @@
   outline: 1px solid red;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: "Satoshi", "Segoe UI", "Poppins", sans-serif;
   font-style: normal;
   font-optical-sizing: auto;
   font-weight: 400;
   background-color: hsl(221.4 30% 8%);
+  scrollbar-gutter: stable;
 }
 
 body::-webkit-scrollbar {

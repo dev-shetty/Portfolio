@@ -1,10 +1,10 @@
 ---
-import Card from "@/components/ui/sections/card.astro"
-import Container from "@/components/ui/sections/container.astro"
-import { experiences } from "@/lib/experiences"
-import { icons } from "@/lib/icons"
-import { Icon } from "astro-icon/components"
-import Image from "astro/components/Image.astro"
+import Card from "@/components/ui/sections/card.astro";
+import Container from "@/components/ui/sections/container.astro";
+import { experiences } from "@/lib/experiences";
+import { icons } from "@/lib/icons";
+import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
 ---
 
 <Container title="Experience">
@@ -23,7 +23,7 @@ import Image from "astro/components/Image.astro"
               height={1000}
             />
           </div>
-          <Card>
+          <Card className="pt-0">
             <Fragment slot="title">{experience.title}</Fragment>
             <Fragment slot="description">
               <a
