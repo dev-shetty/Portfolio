@@ -1,45 +1,43 @@
 ---
-import Container from "@/components/ui/sections/container.astro"
-import { icons } from "@/lib/icons"
-import { Icon } from "astro-icon/components"
+import Container from "@/components/ui/sections/container.astro";
+import { icons } from "@/lib/icons";
+import { Icon } from "astro-icon/components";
 ---
 
 <Container title="Tech Stack">
-  <div class="grid grid-cols-5 outline outline-gray-700 text-xl md:text-2xl">
-    <div
-      class="col-span-5 flex flex-wrap py-8 gap-8 outline -outline-offset-4 outline-gray-700 px-4 items-center"
-    >
-      <Icon name={icons.JavaScript} />
-      <Icon name={icons.TypeScript} />
-      <Icon name={icons.HTML} />
-      <Icon name={icons.CSS} />
-      <span>C</span>
-      <Icon name={icons.Python} />
-    </div>
-    <div
-      class="col-span-5 md:col-span-3 flex flex-wrap py-8 gap-8 outline -outline-offset-4 outline-gray-700 px-4 items-center"
-    >
-      <Icon name={icons.Linux} />
-      <Icon name={icons.Git} />
-      <Icon name={icons.GitHub} />
-      <Icon name={icons.MongoDB} />
-    </div>
-    <div
-      class="col-span-5 md:col-span-2 flex flex-wrap py-8 gap-8 outline -outline-offset-4 outline-gray-700 px-4 items-center"
-    >
-      <Icon name={icons.VSCode} />
-      <Icon name={icons.Vercel} />
-      <Icon name={icons.Figma} />
-    </div>
-    <div
-      class="col-span-5 flex flex-wrap py-8 gap-8 outline -outline-offset-4 outline-gray-700 px-4 items-center"
-    >
-      <Icon name={icons.React} />
-      <Icon name={icons.NextJs} />
-      <Icon name={icons.Vite} />
-      <Icon name={icons.Tailwind} />
-      <Icon name={icons.NodeJs} />
-      <Icon name={icons.Express} />
-    </div>
+  <div class="space-y-3">
+    <p class="flex items-center gap-2">
+      I write <a
+        href="https://www.typescriptlang.org/docs/"
+        target="_blank"
+        class="transition-colors"
+        ><Icon
+          name={icons.TypeScript}
+          size={28}
+          title="TypeScript"
+          class="hover:text-zinc-200 transition-colors"
+        /></a
+      > with
+      <span class="flex items-center gap-2">
+        <a
+          href="https://nextjs.org/docs"
+          target="_blank"
+          class="hover:text-zinc-200 transition-colors"
+          ><Icon name={icons.NextJs} size={28} title="Next.js" /></a
+        >
+        <a
+          href="https://tailwindcss.com/docs"
+          target="_blank"
+          class="hover:text-zinc-200 transition-colors"
+          ><Icon name={icons.Tailwind} size={28} title="Tailwind" /></a
+        >
+        <a
+          href="https://react.dev/reference/react"
+          target="_blank"
+          class="hover:text-zinc-200 transition-colors"
+          ><Icon name={icons.React} size={28} title="React" /></a
+        >
+      </span>
+    </p>
   </div>
 </Container>

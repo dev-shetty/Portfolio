@@ -1,9 +1,10 @@
 ---
-import Analytics from "@vercel/analytics/astro"
-import { siteConfig } from "../config/site"
-import Navbar from "@/components/navbar.astro"
-import { Toaster } from "@/components/ui/toaster"
-import "../styles/global.css"
+import Analytics from "@vercel/analytics/astro";
+import { siteConfig } from "../config/site";
+import Navbar from "@/components/navbar.astro";
+import { Toaster } from "@/components/ui/toaster";
+import "../styles/global.css";
+import Footer from "@/components/ui/sections/footer.astro";
 ---
 
 <html lang="en">
@@ -66,6 +67,7 @@ import "../styles/global.css"
     <div class="py-24">
       <slot />
     </div>
-    <Toaster client:idle />
+    <Footer />
+    <Toaster client:load />
   </body>
 </html>

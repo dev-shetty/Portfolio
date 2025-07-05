@@ -1,0 +1,32 @@
+---
+import { Icon } from "astro-icon/components";
+import { icons } from "@/lib/icons";
+---
+
+<footer class="mt-20 border-t border-zinc-800 py-6">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-sm text-zinc-400">
+        © {new Date().getFullYear()} Deveesh Shetty. All rights reserved.
+      </div>
+      <div class="flex items-center gap-2 text-sm text-zinc-400">
+        Built with
+        <a
+          href="https://astro.build"
+          target="_blank"
+          class="hover:text-white transition-colors"
+        >
+          <Icon name={icons.Astro} size={20} title="Astro" />
+        </a>
+        and hosted on
+        <a
+          href="https://vercel.com"
+          target="_blank"
+          class="hover:text-white transition-colors"
+        >
+          <Icon name={icons.Vercel} size={20} title="Vercel" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,6 +1,6 @@
-export const icons /*: { [key: string]: IconifyIconName } */ = {
+export const icons: Record<string, string> = {
   GitHub: "fa:github",
-  JavaScript: "lineicons:javascript",
+  JavaScript: "simple-icons:javascript",
   Linux: "fa:linux",
   Python: "lineicons:python",
 
@@ -18,10 +18,11 @@ export const icons /*: { [key: string]: IconifyIconName } */ = {
   NodeJs: "tabler:brand-nodejs",
   React: "tabler:brand-react",
   Tailwind: "tabler:brand-tailwind",
-  TypeScript: "tabler:brand-typescript",
-  Vercel: "tabler:brand-vercel",
+  TypeScript: "lineicons:typescript",
+  Vercel: "lineicons:vercel",
   Vite: "tabler:brand-vite",
   VSCode: "tabler:brand-vscode",
+  Astro: "simple-icons:astro",
 
   Download: "tabler:download",
   Visit: "tabler:external-link",
@@ -33,4 +34,4 @@ export const icons /*: { [key: string]: IconifyIconName } */ = {
   Express: "simple-icons:express",
 
   ArrowDown: "fa:angle-down",
-}
+};

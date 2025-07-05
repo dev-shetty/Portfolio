@@ -1,10 +1,10 @@
 ---
-import Button from "@/components/ui/button"
-import H1 from "@/components/ui/typography/H1.astro"
-import { siteConfig } from "@/lib/config"
-import { icons } from "@/lib/icons"
-import { Icon } from "astro-icon/components"
-import Image from "astro/components/Image.astro"
+import Button from "@/components/ui/button";
+import H1 from "@/components/ui/typography/H1.astro";
+import { siteConfig } from "@/lib/config";
+import { icons } from "@/lib/icons";
+import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
 ---
 
 <section class="flex flex-col-reverse xl:flex-row items-center gap-16 my-16">
@@ -30,21 +30,21 @@ import Image from "astro/components/Image.astro"
           target="_blank"
           class="hover:text-gray-300 transition-colors"
         >
-          <Icon name={icons.GitHub} />
+          <Icon name={icons.GitHub} size={20} />
         </a>
         <a
           href={siteConfig.socials.linkedin}
           target="_blank"
           class="hover:text-gray-300 transition-colors"
         >
-          <Icon name={icons.LinkedIn} />
+          <Icon name={icons.LinkedIn} size={20} />
         </a>
         <a
           href={siteConfig.socials.twitter}
           target="_blank"
           class="hover:text-gray-300 transition-colors"
         >
-          <Icon name={icons.Twitter} />
+          <Icon name={icons.Twitter} size={20} />
         </a>
       </div>
       <a
@@ -63,7 +63,7 @@ import Image from "astro/components/Image.astro"
     <Image
       src="/profile.png"
       alt="Deveesh Profile"
-      class="rounded-md"
+      class="rounded-lg outline-1 outline-gray-700"
       inferSize
       width={1000}
       height={1000}
