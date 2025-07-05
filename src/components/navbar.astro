@@ -17,16 +17,13 @@ import { siteConfig } from "@/config/site";
     </div>
     <ul class="flex items-center gap-4 justify-end text-lg">
       <Button client:load asChild>
-        <a href="/art-gallery" class="flex items-center gap-2">
-          <Icon name={icons.Palette} />
+        <a href="/blog" class="flex items-center gap-2">
+          <Icon name={icons.Blog} />
         </a>
       </Button>
       <Button client:load asChild>
-        <a
-          href="/contact"
-          class="flex items-center gap-2 px-4 py-1 bg-gray-800 rounded-md w-12 md:w-fit text-center hover:bg-gray-700 transition-colors"
-        >
-          <Icon name={icons.Envelope} />
+        <a href="/art-gallery" class="flex items-center gap-2">
+          <Icon name={icons.Palette} />
         </a>
       </Button>
     </ul>

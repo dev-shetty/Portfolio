@@ -10,4 +10,10 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/deveesh-shetty/",
     devTo: "https://dev.to/devshetty",
   },
-}
+  handles: {
+    twitter: "@ShettyDeveesh",
+    github: "@dev-shetty",
+    linkedin: "deveesh-shetty",
+    devTo: "@devshetty",
+  },
+};

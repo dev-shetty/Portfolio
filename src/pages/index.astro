@@ -6,6 +6,7 @@ import Projects from "@/components/projects.astro"
 import Experience from "@/components/experience.astro"
 import Talks from "@/components/talks.astro"
 import Achievements from "@/components/achievements.astro"
+import Contact from "@/components/contact.astro"
 
 export type SearchParamsType = { [key: string]: string | string[] | undefined }
 type HomePageProps = {
@@ -23,5 +24,6 @@ const showAchievements = Astro.url.searchParams.get("show-achievements")
     <Experience />
     <Talks />
     <Achievements showAchievements={Number(showAchievements)} />
+    <Contact />
   </main>
 </MainLayout>

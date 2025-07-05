@@ -1,0 +1,51 @@
+---
+import H2 from "@/components/ui/typography/H2.astro";
+import { siteConfig } from "@/lib/config";
+import { icons } from "@/lib/icons";
+import { Icon } from "astro-icon/components";
+import ContactForm from "@/components/contact/contact-form";
+---
+
+<section class="my-16 py-16 bg-gradient-to-br from-gray-900/80 to-gray-900/40 rounded-2xl border border-gray-800/50">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <H2>Let's Connect!</H2>
+      <p class="text-gray-400 mt-4">Got a project in mind? Want to collaborate? Or just want to say hi?</p>
+      <p class="text-gray-400">Drop me a message and I'll get back to you as soon as possible!</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <div class="p-3 bg-gray-800 rounded-lg">
+            <Icon name={icons.Envelope} size={24} class="text-gray-200" />
+          </div>
+          <div>
+            <h3 class="font-medium">Email</h3>
+            <p class="text-gray-400">deveeshshetty@gmail.com</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="p-3 bg-gray-800 rounded-lg">
+            <Icon name={icons.GitHub} size={24} class="text-gray-200" />
+          </div>
+          <div>
+            <h3 class="font-medium">GitHub</h3>
+            <a href={siteConfig.socials.github} target="_blank" class="text-gray-400 hover:text-gray-300">@Deveesh-Shetty</a>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="p-3 bg-gray-800 rounded-lg">
+            <Icon name={icons.LinkedIn} size={24} class="text-gray-200" />
+          </div>
+          <div>
+            <h3 class="font-medium">LinkedIn</h3>
+            <a href={siteConfig.socials.linkedin} target="_blank" class="text-gray-400 hover:text-gray-300">@deveesh-shetty</a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
+        <ContactForm client:load />
+      </div>
+    </div>
+  </div>
+</section> 

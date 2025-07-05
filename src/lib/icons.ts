@@ -30,6 +30,8 @@ export const icons: Record<string, string> = {
   Close: "tabler:x",
   Palette: "tabler:palette",
   Envelope: "tabler:mail",
+  Blog: "tabler:article",
+  Mail: "tabler:mail",
 
   Express: "simple-icons:express",
 
