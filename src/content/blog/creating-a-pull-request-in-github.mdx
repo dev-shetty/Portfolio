@@ -1,0 +1,163 @@
+---
+title: " Creating a Pull Request in GitHub"
+description: "A step-by-step guide teaching beginners how to contribute to open-source projects by creating pull requests on GitHub, with practical examples and visual instructions."
+date: 2023-09-07
+tags: ["Git", "GitHub", "Version Control", "Open Source"]
+coverImage: ""
+originalPost:
+  url: "https://dev.to/devshetty/guide-to-creating-a-pull-request-in-github-2ef2"
+  platform: "Dev.to"
+series:
+  name: "Git and GitHub Series"
+  order: 4
+---
+
+In this blog we will be seeing how to contribute to Open Source Projects by creating your very first Pull Request as a beginner, and trust me it is going to be very easy.
+
+NOTE: I value your time so, if you want to skip to the fun part and avoid theory, click [here](#hands-on-contribution).\_
+
+Before getting started, if you don't know about Git commands, I have covered it in my blog post about [Git and GitHub Basics](https://dev.to/devshetty/git-and-github-for-beginners-the-basics-d3n)
+
+## Introduction
+
+To contribute to open-source projects you have to follow a certain steps, you can't directly push a commit to others' repository. For that you have to make the changes in your local (forked) repository then send a Pull Request which has the changes, which when accepted will reflect the changes to the original repository.
+
+Didn't understand what I mean? Don't worry, because it was difficult for me too to understand it in the first glance. So let me break it down step by step which will help you understand it much better.
+
+## The cycle of contributing
+
+![Sending a PR](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wvor2gsoz07gzfxj8v9l.png)
+
+**Remote Repository**: The repository (repo) to which you want to contribute to, which is owned and maintained by other person or organisation.
+
+**Fork**: You are creating a copy of the remote repo to your own GitHub account, where you can do changes without affecting the original (remote) repo. Forked repo can also be called as Local repo.
+
+**Clone**: You clone the content of the repo from the remote/local repo to your machine, where you can open it in your desired text-editor or IDE.
+
+**Push**: You are updating (pushing) the changes made in your PC to the repo.
+
+**Pull**: You are updating the code in your PC by importing (pulling) content from the repo.
+
+**Pull Request**: The changes you made in the fork are limited to your account, to reflect it in the remote repository you send a Pull Request (PR) to request the author to pull the changes from your local repo to the remote repo. We will be talking about it in detail in upcoming sections.
+
+When you want to `contribute` to a open-source project,
+
+- You first `fork` the repo to your account.
+- Then `clone` the forked repo onto your PC.
+- Open the cloned folder in your desired text-editor.
+- Create a `branch` and switch to it.
+- Do the needful changes and `add` those changes to staging area.
+- Once you are confident with the changes `commit` it with a good message.
+- Then `push` it to your local (forked) repo.
+- Once everything is all set, send a `Pull Request` using the "Compare and Pull Request" button, mention what are the changes and improvement your PR is doing and Create the PR.
+
+Yes as simple as it is!!
+
+Next, the maintainers of the open-source repo will review it, if they need any changes they will mention it in comments. If everything goes alright, they will `merge` the Pull Request. Which means your contribution is live in the remote repo. Congratulations 🥳!
+
+That's all theory, the real fun is in hands-on let's dive into it and contribute to an actual repository on GitHub.
+I will be using [Commit-to-Success](https://github.com/Deveesh-Shetty/Commit-to-Success) repo, which I created for my Git and GitHub session, here you can add a file about yourself. You are free to contribute to any repo (but, I would love to see your PRs in my repo 😄)
+
+## Hands on Contribution
+
+Gather all the knowledge which I mentioned above and let's apply it here!
+
+- First let's go to [Commit-to-Success](https://github.com/Deveesh-Shetty/Commit-to-Success) repository.
+
+You will see a interface like this
+![Commit to Success Repo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/18a3x49dnovd7e2wwlkh.png)
+
+- Next, fork the repo by clicking the `Fork` button on top-right
+
+![Fork Button](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v1dwg31w4bw37u17pkbn.png)
+
+- You will be redirected to a page, where you can keep everything as default and press **Create Fork**
+
+![Fork confirmation](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0h4x0g4jl5ce436a8kxh.png)
+
+**Note:** Choose your GitHub profile in the **Owner** section.
+
+- It will take a few seconds, and you will be redirected to your `forked` repo.
+
+**Tip:** You can identify the forked repo by seeing the URL it will be `your-username/Commit-to-Success`, while that of the remote repo is `Deveesh-Shetty/Commit-to-Success`
+
+- Next, press green color `code` button in your forked repo and at the top-right and copy the https url given below
+
+![Green color code button to clone](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tqg1lkupm0kim69plbj2.png) **Note:** The URL will be different in your case.
+
+- Now, open a terminal in the desired place where you would like to have the folder. It can be D Drive, Desktop, your choice.
+- Next in the terminal type this command to clone the repository:
+
+```bash
+git clone <copied-url>
+```
+
+**Note:** Replace `<copied-url>` with the url you copied in the previous step, without the brackets `<>`.
+
+- It will take a few seconds, and you will see a new folder named `Commit-to-Success` got created. Now open that folder in your desired text-editor. I will be using VS-Code.
+
+- The setup is done! Congratulations on making it till here! Now, Let's get coding (in our case, adding our readme file).
+
+It is always a good practice to create a new branch and do the changes there, while working on others' repo. So we will follow it!
+
+- Create and switch to a new branch by using this command:
+
+```bash
+git checkout -b <your-name>
+```
+
+**Note:** Replace `<your-name>` with your name, for instance I will name it "deveesh", you are free to name the branch whatever you like! You can learn more about [branching and it's importance] (https://dev.to/devshetty/learn-about-branching-in-git-bm3)
+
+- Now we are in the `deveesh` branch, let's create a new file with your name for me it is `Deveesh.md`.
+
+**Note:** `md` means [markdown](https://www.markdownguide.org/cheat-sheet/) file.
+
+- Add description about yourself in that file, in my case I will add a small description about myself. Be as creative as you want ✨
+
+```md
+# Deveesh Shetty
+
+- President, SOSC
+- Passionate Frontend Developer
+- Open Source enthusiast.
+- 2nd Year CSE Student at Sahyadri
+```
+
+You know the drill next! add, commit and push the changes.
+
+- Add the changes
+
+```bash
+git add .
+```
+
+- Commit them with a good commit message like
+
+```bash
+git commit -m "adds deveesh's profile"
+```
+
+- Push them to the branch in your local repository, in my case the branch is `deveesh`
+
+```
+git push origin deveesh
+```
+
+**Note:** Replace deveesh with the branch name which you gave in the previous steps!
+
+- Now, If you go back to your forked repo, you will see a alert message like this, in there click **Compare and Pull Request**
+
+![Compare and Pull Request Alert](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/s3q4e1zlgttg70zyexsy.png)
+
+- Now you will be redirected to "Open a Pull Request" page, fill in the title and description of the Pull Request and press **Create a Pull Request**
+
+![Open a Pull Request Page](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9a436h3a7sffsra6668w.png)
+
+Hurray! You have created your (first) Pull Request. Congratulations 🥳
+
+Now, the reviewer (in this case, I) will review the changes and merge the Pull Request to the main remote repository.
+
+That is the process of contributing to an open-source project in GitHub. It may seem difficult at beginning, but it becomes easier as you progress. Thank you for sticking till the end and completing the Pull Request! That's it for this blog. Hope to
+meet you soon, with my another blog 👀
+
+If you liked the blog, like and share so more people can benefit from the knowledge. Stuck at a step? Feel free to reach out to me! Also, would love to hear your opinions in comments down below 😄.

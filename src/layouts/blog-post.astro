@@ -47,7 +47,7 @@ if (series) {
 
     {seriesPosts.length > 1 && (
       <div class="my-8 p-4 bg-gray-900/50 rounded-lg">
-        <h3 class="text-lg font-medium mb-4">Series: {series.name}</h3>
+        <h3 class="text-lg font-medium mb-4">{series.name}</h3>
         <SeriesList client:load posts={seriesPosts} currentSlug={slug} />
       </div>
     )}
@@ -67,9 +67,10 @@ if (series) {
         <H1 transition:name={`blog-title-${slug}`} className="leading-tight"
           >{title}</H1
         >
-        <div class="flex flex-wrap items-center gap-4 text-gray-400">
+        <div class="flex flex-wrap items-center gap-4 text-gray-400 mt-4">
           <time datetime={date?.toISOString()}>{formatDate(date)}</time>
-          <div class="flex flex-wrap gap-2 mt-2">
+          <span class="text-gray-400">•</span>
+          <div class="flex flex-wrap gap-2">
             {
               tags?.map((tag: string) => (
                 <span class="bg-[#23262f] hover:bg-gray-800 px-3 py-1 rounded-lg text-sm">
