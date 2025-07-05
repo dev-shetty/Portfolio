@@ -1,0 +1,51 @@
+---
+import { getCollection } from "astro:content";
+import BlogCard from "@/components/blog/blog-card.astro";
+import Container from "@/components/ui/sections/container.astro";
+import { icons } from "@/lib/icons";
+import { Icon } from "astro-icon/components";
+const posts = await getCollection("blog");
+const featuredPosts = posts
+  .filter((post) => post.data.isFeatured)
+  .sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  )
+  .slice(0, 3);
+---
+
+<Container title="Featured Articles">
+  <Fragment slot="right-button">
+    <a
+      class="py-1 whitespace-nowrap bg-transparent border-none w-fit cursor-pointer flex items-center gap-2"
+      href="/blog"
+    >
+      <span>Read More</span>
+      <Icon
+        name={icons.ArrowRight}
+        size="16"
+        class="transition-all duration-300"
+      />
+    </a>
+  </Fragment>
+  <div class="mt-6">
+    {
+      featuredPosts.length > 0 && (
+        <div class="space-y-8">
+          {featuredPosts.map((post) => (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              date={post.data.date}
+              tags={post.data.tags}
+              slug={post.slug}
+              coverImage={post.data.coverImage}
+              isFeatured={post.data.isFeatured}
+              redirect={post.data.redirect}
+              originalPost={post.data.originalPost}
+            />
+          ))}
+        </div>
+      )
+    }
+  </div>
+</Container>

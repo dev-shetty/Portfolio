@@ -11,7 +11,7 @@ import Image from "astro/components/Image.astro";
   <Fragment slot="two-column">
     {
       workExperiences.map((experience) => (
-        <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_4fr] items-center pt-4 pb-2 gap-4">
+        <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_4fr] items-start pt-4 pb-2 gap-4">
           <div class="flex items-center justify-center relative w-full aspect-square">
             <Image
               src={experience.organization.logo}
@@ -32,7 +32,7 @@ import Image from "astro/components/Image.astro";
                   target="_blank"
                   class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
                 >
-                  <span>
+                  <span class="flex items-center gap-1">
                     {experience.organization.name}{" "}
                     <Icon name={icons.Visit} class="inline" />
                   </span>
@@ -54,7 +54,7 @@ import Image from "astro/components/Image.astro";
   <Fragment slot="two-column">
     {
       communityExperiences.map((experience) => (
-        <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_4fr] items-center pt-4 pb-2 gap-4">
+        <div class="grid grid-cols-[1fr_2fr] md:grid-cols-[1fr_4fr] items-start pt-4 pb-2 gap-4">
           <div class="flex items-center justify-center relative w-full aspect-square">
             <Image
               src={experience.organization.logo}
@@ -75,7 +75,7 @@ import Image from "astro/components/Image.astro";
                   target="_blank"
                   class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
                 >
-                  <span>
+                  <span class="flex items-center gap-1">
                     {experience.organization.name}{" "}
                     <Icon name={icons.Visit} class="inline" />
                   </span>
