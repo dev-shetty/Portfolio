@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-type ExperienceType = "work" | "community";
+type ExperienceType = "work" | "community" | "education";
 
 interface Experience {
   id: string;
@@ -19,6 +19,20 @@ interface Experience {
 const experiences: Experience[] = [
   {
     id: uuid(),
+    title: "Software Engineer",
+    type: "work" as const,
+    description:
+      "Working on building and improving the Levels.fyi platform, focusing on frontend development with Next.js and TypeScript.",
+    organization: {
+      name: "Levels.fyi",
+      url: "https://www.levels.fyi/",
+      logo: "/experiences/levels-square.png",
+    },
+    startDate: "Jun 2025",
+    endDate: null,
+  },
+  {
+    id: uuid(),
     title: "Software Engineering Intern",
     type: "work" as const,
     description:
@@ -26,10 +40,10 @@ const experiences: Experience[] = [
     organization: {
       name: "Levels.fyi",
       url: "https://www.levels.fyi/",
-      logo: "/experiences/levels.png",
+      logo: "/experiences/levels-square.png",
     },
     startDate: "Sep 2024",
-    endDate: null,
+    endDate: "Jun 2025",
   },
   {
     id: uuid(),
@@ -78,7 +92,7 @@ const experiences: Experience[] = [
     title: "President",
     type: "community" as const,
     description:
-      "Leading the largest open-source community in Mangalore, organizing events, workshops, and hackathons to promote open source.",
+      "Lead open-source community at Sahyadri, organizing events, workshops, and hackathons to promote open source.",
     organization: {
       name: "Sahyadri Open Source Community (SOSC)",
       url: "https://sosc.org.in/",
@@ -92,7 +106,7 @@ const experiences: Experience[] = [
     title: "Technical Team Lead",
     type: "community" as const,
     description:
-      "Leading technical initiatives and organizing events for IEEE student members in the Mangalore region.",
+      "Lead technical initiatives and organizing events for IEEE student members in the Mangalore region.",
     organization: {
       name: "IEEE Mangalore Subsection",
       url: "https://ieee.org/",
@@ -129,11 +143,27 @@ const experiences: Experience[] = [
     startDate: "Oct 2022",
     endDate: "Oct 2023",
   },
+  {
+    id: uuid(),
+    title: "B.E in Computer Science",
+    type: "education" as const,
+    description: "Bachelor's degree in Computer Science and Engineering",
+    organization: {
+      name: "Sahyadri College of Engineering and Management",
+      url: "https://sahyadri.edu.in/",
+      logo: "/experiences/sahyadri.png",
+    },
+    startDate: "Jun 2021",
+    endDate: "Jun 2025",
+  },
 ].sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate));
 
 export const workExperiences = experiences.filter((exp) => exp.type === "work");
 export const communityExperiences = experiences.filter(
   (exp) => exp.type === "community"
+);
+export const educationExperiences = experiences.filter(
+  (exp) => exp.type === "education"
 );
 
 export { experiences };
