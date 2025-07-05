@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/markdoc": "^0.15.0",
+    "@astrojs/mdx": "^4.3.0",
     "@astrojs/react": "^4.2.5",
     "@astrojs/vercel": "^8.1.4",
     "@iconify-json/fa": "^1.2.1",
@@ -35,6 +37,8 @@
     "vercel": "^41.6.2"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.55",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^20.8.2",
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^19.1.2",

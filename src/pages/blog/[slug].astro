@@ -1,0 +1,165 @@
+---
+import MainLayout from "@/layouts/main-layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import H1 from "@/components/ui/typography/H1.astro";
+import { formatDate } from "@/lib/helpers";
+import { Icon } from "astro-icon/components";
+import { icons } from "@/lib/icons";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<MainLayout
+  title={`${post.data.title} | Blog | Deveesh Shetty`}
+  description={post.data.description}
+  ogImage={post.data.coverImage}
+>
+  <article class="container mx-auto lg:px-48 md:px-24 px-8 my-16">
+    <div class="max-w-4xl mx-auto">
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 text-zinc-400 hover:text-zinc-200 mb-8 group transition-colors"
+      >
+        <Icon
+          name="lucide:arrow-left"
+          class="w-4 h-4 transition-transform group-hover:-translate-x-1"
+        />
+        Back to Blog
+      </a>
+
+      <header class="mb-12">
+        <div
+          class="flex flex-wrap items-center gap-2 text-sm text-zinc-400 mb-6"
+        >
+          <time datetime={post.data.date.toISOString()}
+            >{formatDate(post.data.date)}</time
+          >
+          <span>•</span>
+          <div class="flex flex-wrap gap-2">
+            {
+              post.data.tags.map((tag: string) => (
+                <span class="bg-[#23262f] hover:bg-zinc-800 px-3 py-1 rounded-lg">
+                  {tag}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+        <H1 className="!mb-6 !text-4xl md:!text-5xl !leading-tight"
+          >{post.data.title}</H1
+        >
+      </header>
+
+      <div class="prose prose-zinc prose-lg max-w-none dark:prose-invert">
+        <Content />
+      </div>
+    </div>
+  </article>
+</MainLayout>
+
+<style is:global>
+  .prose {
+    --tw-prose-body: #a1a1aa;
+    --tw-prose-headings: #ffffff;
+    --tw-prose-lead: #a1a1aa;
+    --tw-prose-links: #60a5fa;
+    --tw-prose-bold: #ffffff;
+    --tw-prose-counters: #71717a;
+    --tw-prose-bullets: #71717a;
+    --tw-prose-hr: #3f3f46;
+    --tw-prose-quotes: #a1a1aa;
+    --tw-prose-quote-borders: #3f3f46;
+    --tw-prose-captions: #71717a;
+    --tw-prose-code: #a1a1aa;
+    --tw-prose-pre-code: #a1a1aa;
+    --tw-prose-pre-bg: #23262f;
+    --tw-prose-th-borders: #3f3f46;
+    --tw-prose-td-borders: #3f3f46;
+  }
+
+  .prose :where(h2, h3, h4) {
+    margin-top: 2.5em;
+    margin-bottom: 1em;
+  }
+
+  .prose :where(p, ul, ol) {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    line-height: 1.75;
+  }
+
+  .prose ul {
+    list-style-type: disc;
+    list-style-position: outside;
+  }
+
+  .prose ol {
+    list-style-type: decimal;
+    list-style-position: outside;
+  }
+
+  .prose pre {
+    background-color: #23262f !important;
+    border-radius: 0.5rem;
+    padding: 1.25em 1.5em;
+    margin: 1.5em 0;
+  }
+
+  .prose code {
+    background-color: #23262f;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-weight: 400;
+  }
+
+  .prose pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .prose blockquote {
+    font-style: italic;
+    border-left-width: 0.25rem;
+    margin: 1.5em 0;
+    padding-left: 1.5em;
+  }
+
+  .prose blockquote p {
+    margin: 0.75em 0;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.5em;
+  }
+
+  .prose li {
+    margin: 0.5em 0;
+    padding-left: 0.5em;
+  }
+
+  .prose img {
+    border-radius: 0.5rem;
+    margin: 2em 0;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.3);
+    border: 1px solid #3f3f46;
+  }
+
+  .prose li::marker {
+    color: #71717a;
+  }
+</style>

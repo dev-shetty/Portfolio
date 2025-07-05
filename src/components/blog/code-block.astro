@@ -1,0 +1,20 @@
+---
+export interface Props {
+  language?: string;
+  title?: string;
+}
+
+const { language, title } = Astro.props;
+---
+
+<div class="relative my-8">
+  {
+    title && (
+      <div class="absolute top-0 right-0 px-4 py-2 rounded-tr bg-[#23262f] text-sm text-gray-400">
+        {title}
+      </div>
+    )
+  }
+  <pre
+    class={`language-${language || "text"} rounded-lg !mt-0 ${title ? "!pt-12" : ""}`}><slot /></pre>
+</div>

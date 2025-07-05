@@ -1,0 +1,34 @@
+---
+import Card from "@/components/ui/sections/card.astro";
+import { formatDate } from "@/lib/helpers";
+
+export interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags: string[];
+  slug: string;
+  coverImage: string;
+}
+
+const { title, description, date, tags, slug, coverImage } = Astro.props;
+---
+
+<a
+  href={`/blog/${slug}`}
+  class="block transition-transform hover:-translate-y-0.5 border-t border-gray-700 pt-4"
+>
+  <Card className="h-full" tags={tags}>
+    <img
+      src={coverImage}
+      alt={title}
+      class="w-full aspect-video object-cover rounded-lg mb-6"
+      loading="lazy"
+    />
+    <h2 slot="title" class="text-xl font-bold line-clamp-2">{title}</h2>
+    <p slot="subtitle" class="text-gray-400 text-sm">{formatDate(date)}</p>
+    <p slot="description" class="line-clamp-3 text-gray-300 mt-2">
+      {description}
+    </p>
+  </Card>
+</a>

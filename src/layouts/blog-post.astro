@@ -1,0 +1,43 @@
+---
+import MainLayout from "./main-layout.astro";
+import { formatDate } from "@/lib/helpers";
+import H1 from "@/components/ui/typography/H1.astro";
+
+const { title, description, date, tags, coverImage } = Astro.props;
+---
+
+<MainLayout
+  title={`${title} | Blog | Deveesh Shetty`}
+  description={description}
+  ogImage={coverImage}
+>
+  <article class="max-w-3xl mx-auto my-16">
+    <header class="space-y-8">
+      <img
+        src={coverImage}
+        alt={title}
+        class="w-full aspect-video object-cover rounded-lg outline outline-gray-700"
+      />
+      <div class="space-y-4">
+        <H1>{title}</H1>
+        <div class="flex flex-wrap items-center gap-4 text-gray-400">
+          <time datetime={date?.toISOString()}>{formatDate(date)}</time>
+          <div class="flex flex-wrap gap-2">
+            {
+              tags?.map((tag: string) => (
+                <span class="bg-[#23262f] hover:bg-gray-800 px-3 py-1 rounded-lg text-sm">
+                  {tag}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+        <p class="text-xl text-gray-300">{description}</p>
+      </div>
+    </header>
+
+    <div class="prose prose-invert max-w-none mt-12">
+      <slot />
+    </div>
+  </article>
+</MainLayout>

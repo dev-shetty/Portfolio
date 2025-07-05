@@ -1,0 +1,44 @@
+---
+import MainLayout from "@/layouts/main-layout.astro";
+import BlogCard from "@/components/blog/blog-card.astro";
+import H1 from "@/components/ui/typography/H1.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog", ({ data }) => {
+  return import.meta.env.DEV || !data.draft;
+});
+
+// Sort posts by date
+const sortedPosts = posts.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<MainLayout
+  title="Blog | Deveesh Shetty"
+  description="Thoughts, learnings and experiences shared through my blog posts"
+>
+  <main class="container mx-auto lg:px-48 md:px-24 px-8 my-16">
+    <div class="flex flex-col pb-4">
+      <H1 className="border-b-0">Blog</H1>
+      <p class="text-gray-400 text-lg">
+        Sharing my thoughts, learnings and experiences through writing.
+      </p>
+    </div>
+
+    <div class="grid gap-8 xl:gap-4 my-4">
+      {
+        sortedPosts.map((post) => (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.date}
+            tags={post.data.tags}
+            slug={post.slug}
+            coverImage={post.data.coverImage}
+          />
+        ))
+      }
+    </div>
+  </main>
+</MainLayout>

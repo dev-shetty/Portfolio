@@ -1,11 +1,12 @@
 // @ts-check
-import tailwindcss from "@tailwindcss/vite"
-import { defineConfig } from "astro/config"
-import icon from "astro-icon"
+import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
+import icon from "astro-icon";
+import mdx from "@astrojs/mdx";
+import react from "@astrojs/react";
+import markdoc from "@astrojs/markdoc";
 
-import react from "@astrojs/react"
-
-import vercel from "@astrojs/vercel"
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,12 +15,17 @@ export default defineConfig({
   },
 
   integrations: [
+    mdx({
+      syntaxHighlight: "prism",
+      remarkPlugins: [],
+      rehypePlugins: [],
+    }),
+    markdoc(),
     react(),
     icon({
       include: {
-        fa: ["*"],
-        tabler: ["*"],
-        simpleIcons: ["*"],
+        mdi: ["*"],
+        "simple-icons": ["*"],
       },
     }),
   ],
@@ -29,4 +35,10 @@ export default defineConfig({
       enabled: true,
     },
   }),
-})
+  markdown: {
+    shikiConfig: {
+      theme: "dracula",
+      wrap: true,
+    },
+  },
+});
