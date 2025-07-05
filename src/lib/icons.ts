@@ -5,7 +5,7 @@ export const icons: Record<string, string> = {
   Python: "lineicons:python",
 
   LinkedIn: "fa:linkedin",
-  Twitter: "fa:twitter",
+  Twitter: "fa6-brands:x-twitter",
   DevTo: "lineicons:dev",
   YouTube: "lineicons:youtube",
 

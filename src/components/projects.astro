@@ -1,13 +1,13 @@
 ---
-import Button from "@/components/ui/button"
-import { icons } from "@/lib/icons"
-import { projects } from "@/lib/projects"
-import Image from "astro/components/Image.astro"
-import { Icon } from "astro-icon/components"
-import Container from "@/components/ui/sections/container.astro"
-import Card from "@/components/ui/sections/card.astro"
+import Button from "@/components/ui/button";
+import { icons } from "@/lib/icons";
+import { projects } from "@/lib/projects";
+import Image from "astro/components/Image.astro";
+import { Icon } from "astro-icon/components";
+import Container from "@/components/ui/sections/container.astro";
+import Card from "@/components/ui/sections/card.astro";
 
-const INITIAL_LIMIT = 3
+const INITIAL_LIMIT = 3;
 ---
 
 <Container title="Projects">
@@ -71,7 +71,7 @@ const INITIAL_LIMIT = 3
             <Image
               src={project.image}
               alt={project.name}
-              class="block rounded-xl lg:p-1"
+              class="block rounded-xl lg:p-1 aspect-video"
               sizes="100%"
               fit="cover"
               width={1000}
@@ -86,26 +86,26 @@ const INITIAL_LIMIT = 3
 </Container>
 
 <script>
-  const toggleButton = document.getElementById("toggleProjects")
-  const buttonText = document.querySelector("[data-projects-button-text]")
-  const projects = document.querySelectorAll("[data-project]")
-  const angleIcon = document.querySelector("[data-projects-angle-icon]")
+  const toggleButton = document.getElementById("toggleProjects");
+  const buttonText = document.querySelector("[data-projects-button-text]");
+  const projects = document.querySelectorAll("[data-project]");
+  const angleIcon = document.querySelector("[data-projects-angle-icon]");
 
-  const INITIAL_LIMIT = 3
-  let isExpanded = false
+  const INITIAL_LIMIT = 3;
+  let isExpanded = false;
 
   toggleButton?.addEventListener("click", () => {
-    isExpanded = !isExpanded
+    isExpanded = !isExpanded;
 
     projects.forEach((project, index) => {
       if (index >= INITIAL_LIMIT) {
-        project.classList.toggle("hidden")
+        project.classList.toggle("hidden");
       }
-    })
+    });
 
     if (buttonText && angleIcon) {
-      buttonText.textContent = isExpanded ? "View Less" : "View More"
-      angleIcon.classList.toggle("-rotate-180")
+      buttonText.textContent = isExpanded ? "View Less" : "View More";
+      angleIcon.classList.toggle("-rotate-180");
     }
-  })
+  });
 </script>

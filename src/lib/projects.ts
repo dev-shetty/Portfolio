@@ -1,15 +1,25 @@
-import { v4 as uuid } from "uuid"
+import { v4 as uuid } from "uuid";
 export const projects = [
   {
     id: uuid(),
-    name: "Finvest",
+    name: "Subreddit Finder",
+    description: "Always find the best subreddit for your query",
+    image: "/projects/subreddit-finder.png",
+    labels: ["Next.js", "TypeScript", "TailwindCSS", "Gemini 2.0 Flash"],
+    date: "March 2025",
+    sourceCode: "https://github.com/dev-shetty/subreddit-finder",
+    liveUrl: "https://subreddit-finder.shetty.me/",
+  },
+  {
+    id: uuid(),
+    name: "Tatva - Know your Geography",
     description:
-      "Web application for providing financial education, and mutual savings using Pots",
-    image: "/projects/finvest.png",
+      "Explore countries interactively with real-time search and rich visuals. Built this for levels.fyi",
+    image: "/projects/tatva.png",
     labels: ["Next.js", "TypeScript", "TailwindCSS"],
-    date: "February 2024",
-    sourceCode: "https://github.com/dev-shetty/rudra-parsec",
-    liveUrl: null,
+    date: "August 2024",
+    sourceCode: "https://github.com/dev-shetty/tatva",
+    liveUrl: "https://tatva-country.vercel.app/",
   },
   {
     id: uuid(),
@@ -24,14 +34,35 @@ export const projects = [
   },
   {
     id: uuid(),
-    name: "Chromatico",
+    name: "Finvest",
     description:
-      "A color generator website that will help you find a good color combination for your upcoming projects or designs.",
-    image: "/projects/chromatico.png",
-    labels: ["React.js", "TypeScript", "TailwindCSS"],
-    date: "March 2023",
-    sourceCode: "https://github.com/dev-shetty/Chromatico",
-    liveUrl: "https://chromatico.vercel.app/",
+      "Web application for providing financial education, and mutual savings using Pots",
+    image: "/projects/finvest.png",
+    labels: ["Next.js", "TypeScript", "TailwindCSS"],
+    date: "February 2024",
+    sourceCode: "https://github.com/dev-shetty/rudra-parsec",
+    liveUrl: null,
+  },
+  {
+    id: uuid(),
+    name: "ORIME - Bus Tracking",
+    description:
+      "Built a real-time bus tracking system for school children using React Native and Nestjs as College Project",
+    image: "/projects/orime.png",
+    labels: ["Nestjs", "React Native", "TypeScript", "PostgreSQL"],
+    date: "December 2024",
+    sourceCode: "https://github.com/dev-shetty/bus-tracking-system",
+  },
+  {
+    id: uuid(),
+    name: "Tiles",
+    description:
+      "A real-time collaboration platform that enables users to collaboratively place and interact with tiles on a shared canvas.",
+    image: "/projects/tiles.jpg",
+    labels: ["Typescript", "Next.js", "Express.js", "MongoDB", "Sockets"],
+    date: "September 2023",
+    sourceCode: "https://github.com/dev-shetty/tiles",
+    liveUrl: "https://placetile.vercel.app/",
   },
   {
     id: uuid(),
@@ -46,14 +77,14 @@ export const projects = [
   },
   {
     id: uuid(),
-    name: "Tiles",
+    name: "Chromatico",
     description:
-      "A real-time collaboration platform that enables users to collaboratively place and interact with tiles on a shared canvas.",
-    image: "/projects/tiles.jpg",
-    labels: ["Typescript", "Next.js", "Express.js", "MongoDB", "Sockets"],
-    date: "September 2023",
-    sourceCode: "https://github.com/dev-shetty/tiles",
-    liveUrl: "https://placetile.vercel.app/",
+      "A color generator website that will help you find a good color combination for your upcoming projects or designs.",
+    image: "/projects/chromatico.png",
+    labels: ["React.js", "TypeScript", "TailwindCSS"],
+    date: "March 2023",
+    sourceCode: "https://github.com/dev-shetty/Chromatico",
+    liveUrl: "https://chromatico.vercel.app/",
   },
   {
     id: uuid(),
@@ -109,5 +140,4 @@ export const projects = [
     sourceCode: "https://github.com/dev-shetty/API-Forever",
     liveUrl: "https://api-forever.netlify.app",
   },
-].sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
-// Sort in descending order based on the recent project
+];
