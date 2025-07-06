@@ -51,9 +51,9 @@ const target = redirect ? "_blank" : "_self";
   href={href}
   target={target}
   class={cn(
-    "flex flex-col md:flex-row transition-transform hover:-translate-y-0.5 border-t border-gray-700 pt-4",
+    "flex flex-col md:flex-row transition-all hover:bg-gray-900/20 border-t border-gray-700 pt-4",
     isFeatured
-      ? "md:grid md:grid-cols-2 md:gap-8 bg-gradient-to-br from-gray-900/80 to-gray-900/40 p-6 rounded-xl mb-8 relative border border-gray-800/50"
+      ? "md:grid md:grid-cols-2 md:gap-8 bg-gradient-to-br from-gray-900/80 to-gray-900/40 p-6 rounded-xl mb-8 relative border border-gray-800/50 hover:border-gray-700/80"
       : "md:flex md:gap-6 items-center first:border-t-0 flex-col-reverse"
   )}
 >
