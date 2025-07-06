@@ -89,6 +89,20 @@ const experiences: Experience[] = [
   },
   {
     id: uuid(),
+    title: "Member",
+    type: "community" as const,
+    description:
+      "Member of the Sahyadri Open Source Community (SOSC), volunteering for events and workshops.",
+    organization: {
+      name: "Sahyadri Open Source Community (SOSC)",
+      url: "https://sosc.org.in/members/",
+      logo: "/experiences/sosc.jpeg",
+    },
+    startDate: "Jan 2023",
+    endDate: "Jun 2023",
+  },
+  {
+    id: uuid(),
     title: "President",
     type: "community" as const,
     description:

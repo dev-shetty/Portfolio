@@ -20,9 +20,15 @@ const TOTAL_YEARS = PRESENT_DATE.getFullYear() - START_DATE.getFullYear() + 1;
 const PRESENT_OFFSET =
   ((TOTAL_YEARS - (12 - PRESENT_DATE.getMonth()) / 12) / TOTAL_YEARS) * 100;
 const COLORS = {
-  work: "bg-orange-400/40 hover:bg-orange-300/40",
-  education: "bg-teal-400/40 hover:bg-teal-300/40",
-  community: "bg-green-400/40 hover:bg-green-300/40",
+  work: "bg-orange-400/40",
+  education: "bg-teal-400/40",
+  community: "bg-green-400/40",
+} as const;
+
+const HOVER_COLORS = {
+  work: "hover:bg-orange-300/40",
+  education: "hover:bg-teal-300/40",
+  community: "hover:bg-green-300/40",
 } as const;
 
 function getYearOffset(start: string) {
@@ -62,6 +68,49 @@ const workExperiencesByCompany = workExperiences.reduce(
     {
       organization: (typeof workExperiences)[0]["organization"];
       experiences: typeof workExperiences;
+    }
+  >
+);
+
+// Group experiences by organization for all sections
+const communityExperiencesByOrg = communityExperiences.reduce(
+  (acc, exp) => {
+    const key = exp.organization.name;
+    if (!acc[key]) {
+      acc[key] = {
+        organization: exp.organization,
+        experiences: [],
+      };
+    }
+    acc[key].experiences.push(exp);
+    return acc;
+  },
+  {} as Record<
+    string,
+    {
+      organization: (typeof communityExperiences)[0]["organization"];
+      experiences: typeof communityExperiences;
+    }
+  >
+);
+
+const educationExperiencesByOrg = educationExperiences.reduce(
+  (acc, exp) => {
+    const key = exp.organization.name;
+    if (!acc[key]) {
+      acc[key] = {
+        organization: exp.organization,
+        experiences: [],
+      };
+    }
+    acc[key].experiences.push(exp);
+    return acc;
+  },
+  {} as Record<
+    string,
+    {
+      organization: (typeof educationExperiences)[0]["organization"];
+      experiences: typeof educationExperiences;
     }
   >
 );
@@ -134,6 +183,43 @@ const hoverCardStyles = `
   .hover-card img.loaded {
     opacity: 1;
   }
+
+  /* Vertical timeline in hover card */
+  .role-timeline {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .role-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgb(55 65 81);
+  }
+
+  .role-timeline-item {
+    position: relative;
+    padding-bottom: 16px;
+  }
+
+  .role-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgb(55 65 81);
+    border: 2px solid rgb(17 24 39);
+  }
+
+  .role-timeline-item:last-child {
+    padding-bottom: 0;
+  }
 `;
 ---
 
@@ -159,84 +245,113 @@ const hoverCardStyles = `
     <div class="space-y-6">
       {
         Object.values(workExperiencesByCompany).map(
-          ({ organization, experiences }) => (
-            <div class="grid grid-cols-[60px_1fr] gap-4">
-            <a href={organization.url} target="_blank">
-              <div class="flex items-center justify-center">
-                <Image
-                  src={organization.logo}
-                  alt={`${organization.name} Logo`}
-                  class="w-8 h-8 rounded-full"
-                  width={32}
-                  height={32}
-                />
-              </div>
-              </a>
-              <div class="space-y-6">
-                {experiences
-                  .sort(
-                    (a, b) =>
-                      new Date(b.startDate).getTime() -
-                      new Date(a.startDate).getTime()
-                  )
-                  .map((experience) => {
-                    const startOffset = getYearOffset(experience.startDate);
-                    const duration = getDuration(
-                      experience.startDate,
-                      experience.endDate
-                    );
-                    const isOngoing = !experience.endDate;
+          ({ organization, experiences }) => {
+            // Sort experiences by start date, most recent first
+            const sortedExperiences = experiences.sort(
+              (a, b) =>
+                new Date(b.startDate).getTime() -
+                new Date(a.startDate).getTime()
+            );
 
-                    return (
-                      <div class="relative h-8">
-                        <div
-                          class={`experience-bar absolute h-6 rounded-full transition-colors ${COLORS[experience.type]} ${isOngoing ? "border-r-4 border-white/40" : ""}`}
-                          style={`left: ${(startOffset / TOTAL_YEARS) * 100}%; width: ${(duration / TOTAL_YEARS) * 100}%;`}
-                        >
-                          <div class="absolute -top-5 left-2 text-xs whitespace-nowrap flex items-center gap-1">
-                            {experience.title}
-                            {isOngoing && (
-                              <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
-                                Current
-                              </span>
-                            )}
-                          </div>
+            // Calculate the total span of experience at this company
+            const earliestStart =
+              sortedExperiences[sortedExperiences.length - 1].startDate;
+            const latestEnd = sortedExperiences[0].endDate;
+            const startOffset = getYearOffset(earliestStart);
+            const duration = getDuration(earliestStart, latestEnd);
 
-                          <!-- Hover Card -->
-                          <div class="hover-card">
-                            <div class="flex items-start gap-3 mb-3">
-                              <Image
-                                src={experience.organization.logo}
-                                alt={`${experience.organization.name} Logo`}
-                                class="w-12 h-12 rounded-lg"
-                                width={48}
-                                height={48}
-                                onload="this.classList.add('loaded')"
-                              />
-                              <div>
-                                <h3 class="font-medium text-white">{experience.title}</h3>
-                                <a 
-                                  href={experience.organization.url}
-                                  target="_blank"
-                                  class="text-sm text-gray-400 hover:text-gray-300 flex items-center gap-1"
-                                >
-                                  {experience.organization.name}
-                                  <Icon name={icons.Visit} class="w-3 h-3" />
-                                </a>
-                              </div>
-                            </div>
-                            <p class="text-sm text-gray-300 mb-2">{experience.description}</p>
-                            <p class="text-xs text-gray-400">
-                              {experience.startDate} - {experience.endDate ?? "Present"}
-                            </p>
-                          </div>
+            return (
+              <div class="grid grid-cols-[60px_1fr] gap-4">
+                <a href={organization.url} target="_blank">
+                  <div class="flex items-center justify-center">
+                    <Image
+                      src={organization.logo}
+                      alt={`${organization.name} Logo`}
+                      class="w-8 h-8 rounded-full"
+                      width={32}
+                      height={32}
+                    />
+                  </div>
+                </a>
+                <div class="relative h-8">
+                  <div
+                    class={`experience-bar absolute h-6 rounded-full transition-colors ${COLORS[experiences[0].type]}`}
+                    style={`left: ${(startOffset / TOTAL_YEARS) * 100}%; width: ${(duration / TOTAL_YEARS) * 100}%;`}
+                  >
+                    <div class="absolute -top-5 left-2 text-xs whitespace-nowrap flex items-center gap-1">
+                      {organization.name}
+                      {!latestEnd && (
+                        <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
+                          Present
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Role progression bars */}
+                    <div class="absolute inset-0 rounded-full overflow-hidden">
+                      {sortedExperiences.map((exp, index) => {
+                        const roleStart = getYearOffset(exp.startDate);
+                        const roleDuration = getDuration(
+                          exp.startDate,
+                          exp.endDate
+                        );
+                        const opacity = 0.35 + index * 0.35; // Much more prominent opacity steps
+
+                        return (
+                          <div
+                            class={`absolute h-full transition-colors ${COLORS[exp.type]}`}
+                            style={`left: ${((roleStart - startOffset) / duration) * 100}%; width: ${(roleDuration / duration) * 100}%; opacity: ${opacity}; backdrop-filter: brightness(${110 - index * 8}%);`}
+                          />
+                        );
+                      })}
+                    </div>
+
+                    {/* Hover Card with Vertical Timeline */}
+                    <div class="hover-card">
+                      <div class="flex items-start gap-3 mb-3">
+                        <Image
+                          src={organization.logo}
+                          alt={`${organization.name} Logo`}
+                          class="w-12 h-12 rounded-lg"
+                          width={48}
+                          height={48}
+                          onload="this.classList.add('loaded')"
+                        />
+                        <div>
+                          <h3 class="font-medium text-white">
+                            {organization.name}
+                          </h3>
+                          <a
+                            href={organization.url}
+                            target="_blank"
+                            class="text-sm text-gray-400 hover:text-gray-300 flex items-center gap-1"
+                          >
+                            Visit Website
+                            <Icon name={icons.Visit} class="w-3 h-3" />
+                          </a>
                         </div>
                       </div>
-                    );
-                  })}
+
+                      {/* Vertical Timeline of Roles */}
+                      <div class="role-timeline">
+                        {sortedExperiences.map((exp) => (
+                          <div class="role-timeline-item">
+                            <h4 class="font-medium text-white">{exp.title}</h4>
+                            <p class="text-sm text-gray-300 mb-1">
+                              {exp.description}
+                            </p>
+                            <p class="text-xs text-gray-400">
+                              {exp.startDate} - {exp.endDate ?? "Present"}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          )
+            );
+          }
         )
       }
     </div>
@@ -249,65 +364,113 @@ const hoverCardStyles = `
     </div>
     <div class="space-y-6">
       {
-        communityExperiences.map((experience) => (
-          <div class="grid grid-cols-[60px_1fr] gap-4">
-            <a href={experience.organization.url} target="_blank">
-              <div class="flex items-center justify-center">
-                <Image
-                  src={experience.organization.logo}
-                  alt={`${experience.organization.name} Logo`}
-                  class="w-8 h-8 rounded-full"
-                  width={32}
-                  height={32}
-                />
-              </div>
-            </a>
-            <div class="relative h-8">
-              <div
-                class={`experience-bar absolute h-6 rounded-full transition-colors ${COLORS[experience.type]} ${!experience.endDate ? "border-r-4 border-white/40" : ""}`}
-                style={`left: ${(getYearOffset(experience.startDate) / TOTAL_YEARS) * 100}%; width: ${(getDuration(experience.startDate, experience.endDate) / TOTAL_YEARS) * 100}%;`}
-              >
-                <div class="absolute -top-5 left-2 text-xs whitespace-nowrap flex items-center gap-1">
-                  {experience.title}
-                  {!experience.endDate && (
-                    <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
-                      Current
-                    </span>
-                  )}
-                </div>
+        Object.values(communityExperiencesByOrg).map(
+          ({ organization, experiences }) => {
+            const sortedExperiences = experiences.sort(
+              (a, b) =>
+                new Date(b.startDate).getTime() -
+                new Date(a.startDate).getTime()
+            );
 
-                <!-- Hover Card -->
-                <div class="hover-card">
-                  <div class="flex items-start gap-3 mb-3">
+            const earliestStart =
+              sortedExperiences[sortedExperiences.length - 1].startDate;
+            const latestEnd = sortedExperiences[0].endDate;
+            const startOffset = getYearOffset(earliestStart);
+            const duration = getDuration(earliestStart, latestEnd);
+
+            return (
+              <div class="grid grid-cols-[60px_1fr] gap-4">
+                <a href={organization.url} target="_blank">
+                  <div class="flex items-center justify-center">
                     <Image
-                      src={experience.organization.logo}
-                      alt={`${experience.organization.name} Logo`}
-                      class="w-12 h-12 rounded-lg"
-                      width={48}
-                      height={48}
-                      onload="this.classList.add('loaded')"
+                      src={organization.logo}
+                      alt={`${organization.name} Logo`}
+                      class="w-8 h-8 rounded-full"
+                      width={32}
+                      height={32}
                     />
-                    <div>
-                      <h3 class="font-medium text-white">{experience.title}</h3>
-                      <a 
-                        href={experience.organization.url}
-                        target="_blank"
-                        class="text-sm text-gray-400 hover:text-gray-300 flex items-center gap-1"
-                      >
-                        {experience.organization.name}
-                        <Icon name={icons.Visit} class="w-3 h-3" />
-                      </a>
+                  </div>
+                </a>
+                <div class="relative h-8">
+                  <div
+                    class={`experience-bar absolute h-6 rounded-full transition-colors ${COLORS[experiences[0].type]}`}
+                    style={`left: ${(startOffset / TOTAL_YEARS) * 100}%; width: ${(duration / TOTAL_YEARS) * 100}%;`}
+                  >
+                    <div class="absolute -top-5 left-2 text-xs whitespace-nowrap flex items-center gap-1">
+                      {organization.name}
+                      {!latestEnd && (
+                        <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
+                          Present
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Role progression bars */}
+                    <div class="absolute inset-0 rounded-full overflow-hidden">
+                      {sortedExperiences.map((exp, index) => {
+                        const roleStart = getYearOffset(exp.startDate);
+                        const roleDuration = getDuration(
+                          exp.startDate,
+                          exp.endDate
+                        );
+                        const opacity = 0.35 + index * 0.35;
+
+                        return (
+                          <div
+                            class={`absolute h-full transition-colors ${COLORS[exp.type]}`}
+                            style={`left: ${((roleStart - startOffset) / duration) * 100}%; width: ${(roleDuration / duration) * 100}%; opacity: ${opacity}; backdrop-filter: brightness(${110 - index * 8}%);`}
+                          />
+                        );
+                      })}
+                    </div>
+
+                    {/* Hover Card */}
+                    <div class="hover-card">
+                      <div class="flex items-start gap-3 mb-3">
+                        <Image
+                          src={organization.logo}
+                          alt={`${organization.name} Logo`}
+                          class="w-12 h-12 rounded-lg"
+                          width={48}
+                          height={48}
+                          onload="this.classList.add('loaded')"
+                        />
+                        <div>
+                          <h3 class="font-medium text-white">
+                            {organization.name}
+                          </h3>
+                          <a
+                            href={organization.url}
+                            target="_blank"
+                            class="text-sm text-gray-400 hover:text-gray-300 flex items-center gap-1"
+                          >
+                            Visit Website
+                            <Icon name={icons.Visit} class="w-3 h-3" />
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Vertical Timeline of Roles */}
+                      <div class="role-timeline">
+                        {sortedExperiences.map((exp) => (
+                          <div class="role-timeline-item">
+                            <h4 class="font-medium text-white">{exp.title}</h4>
+                            <p class="text-sm text-gray-300 mb-1">
+                              {exp.description}
+                            </p>
+                            <p class="text-xs text-gray-400">
+                              {exp.startDate} - {exp.endDate ?? "Present"}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <p class="text-sm text-gray-300 mb-2">{experience.description}</p>
-                  <p class="text-xs text-gray-400">
-                    {experience.startDate} - {experience.endDate ?? "Present"}
-                  </p>
                 </div>
               </div>
-            </div>
-          </div>
-        ))
+            );
+          }
+        )
       }
     </div>
   </div>
@@ -319,65 +482,113 @@ const hoverCardStyles = `
     </div>
     <div class="space-y-6">
       {
-        educationExperiences.map((experience) => (
-          <div class="grid grid-cols-[60px_1fr] gap-4">
-            <a href={experience.organization.url} target="_blank">
-              <div class="flex items-center justify-center">
-                <Image
-                  src={experience.organization.logo}
-                  alt={`${experience.organization.name} Logo`}
-                  class="w-8 h-8 rounded-full"
-                  width={32}
-                  height={32}
-                />
-              </div>
-            </a>
-            <div class="relative h-8">
-              <div
-                class={`experience-bar absolute h-6 rounded-full transition-colors ${COLORS[experience.type]} ${!experience.endDate ? "border-r-4 border-white/40" : ""}`}
-                style={`left: ${(getYearOffset(experience.startDate) / TOTAL_YEARS) * 100}%; width: ${(getDuration(experience.startDate, experience.endDate) / TOTAL_YEARS) * 100}%;`}
-              >
-                <div class="absolute -top-5 left-2 text-xs whitespace-nowrap flex items-center gap-1">
-                  {experience.title}
-                  {!experience.endDate && (
-                    <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
-                      Current
-                    </span>
-                  )}
-                </div>
+        Object.values(educationExperiencesByOrg).map(
+          ({ organization, experiences }) => {
+            const sortedExperiences = experiences.sort(
+              (a, b) =>
+                new Date(b.startDate).getTime() -
+                new Date(a.startDate).getTime()
+            );
 
-                <!-- Hover Card -->
-                <div class="hover-card">
-                  <div class="flex items-start gap-3 mb-3">
+            const earliestStart =
+              sortedExperiences[sortedExperiences.length - 1].startDate;
+            const latestEnd = sortedExperiences[0].endDate;
+            const startOffset = getYearOffset(earliestStart);
+            const duration = getDuration(earliestStart, latestEnd);
+
+            return (
+              <div class="grid grid-cols-[60px_1fr] gap-4">
+                <a href={organization.url} target="_blank">
+                  <div class="flex items-center justify-center">
                     <Image
-                      src={experience.organization.logo}
-                      alt={`${experience.organization.name} Logo`}
-                      class="w-12 h-12 rounded-lg"
-                      width={48}
-                      height={48}
-                      onload="this.classList.add('loaded')"
+                      src={organization.logo}
+                      alt={`${organization.name} Logo`}
+                      class="w-8 h-8 rounded-full"
+                      width={32}
+                      height={32}
                     />
-                    <div>
-                      <h3 class="font-medium text-white">{experience.title}</h3>
-                      <a 
-                        href={experience.organization.url}
-                        target="_blank"
-                        class="text-sm text-gray-400 hover:text-gray-300 flex items-center gap-1"
-                      >
-                        {experience.organization.name}
-                        <Icon name={icons.Visit} class="w-3 h-3" />
-                      </a>
+                  </div>
+                </a>
+                <div class="relative h-8">
+                  <div
+                    class={`experience-bar absolute h-6 rounded-full transition-colors ${COLORS[experiences[0].type]}`}
+                    style={`left: ${(startOffset / TOTAL_YEARS) * 100}%; width: ${(duration / TOTAL_YEARS) * 100}%;`}
+                  >
+                    <div class="absolute -top-5 left-2 text-xs whitespace-nowrap flex items-center gap-1">
+                      {organization.name}
+                      {!latestEnd && (
+                        <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
+                          Present
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Role progression bars */}
+                    <div class="absolute inset-0 rounded-full overflow-hidden">
+                      {sortedExperiences.map((exp, index) => {
+                        const roleStart = getYearOffset(exp.startDate);
+                        const roleDuration = getDuration(
+                          exp.startDate,
+                          exp.endDate
+                        );
+                        const opacity = 0.35 + index * 0.35;
+
+                        return (
+                          <div
+                            class={`absolute h-full transition-colors ${COLORS[exp.type]}`}
+                            style={`left: ${((roleStart - startOffset) / duration) * 100}%; width: ${(roleDuration / duration) * 100}%; opacity: ${opacity}; backdrop-filter: brightness(${110 - index * 8}%);`}
+                          />
+                        );
+                      })}
+                    </div>
+
+                    {/* Hover Card */}
+                    <div class="hover-card">
+                      <div class="flex items-start gap-3 mb-3">
+                        <Image
+                          src={organization.logo}
+                          alt={`${organization.name} Logo`}
+                          class="w-12 h-12 rounded-lg"
+                          width={48}
+                          height={48}
+                          onload="this.classList.add('loaded')"
+                        />
+                        <div>
+                          <h3 class="font-medium text-white">
+                            {organization.name}
+                          </h3>
+                          <a
+                            href={organization.url}
+                            target="_blank"
+                            class="text-sm text-gray-400 hover:text-gray-300 flex items-center gap-1"
+                          >
+                            Visit Website
+                            <Icon name={icons.Visit} class="w-3 h-3" />
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* Vertical Timeline of Roles */}
+                      <div class="role-timeline">
+                        {sortedExperiences.map((exp) => (
+                          <div class="role-timeline-item">
+                            <h4 class="font-medium text-white">{exp.title}</h4>
+                            <p class="text-sm text-gray-300 mb-1">
+                              {exp.description}
+                            </p>
+                            <p class="text-xs text-gray-400">
+                              {exp.startDate} - {exp.endDate ?? "Present"}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <p class="text-sm text-gray-300 mb-2">{experience.description}</p>
-                  <p class="text-xs text-gray-400">
-                    {experience.startDate} - {experience.endDate ?? "Present"}
-                  </p>
                 </div>
               </div>
-            </div>
-          </div>
-        ))
+            );
+          }
+        )
       }
     </div>
   </div>
@@ -406,49 +617,60 @@ const hoverCardStyles = `
     <H2>Work Experience</H2>
     <div class="space-y-6 mt-6">
       {
-        workExperiences.map((experience) => (
-          <div class="grid grid-cols-[1fr_3fr] items-start gap-4">
-            <div class="flex items-center justify-center relative w-full aspect-square">
-              <Image
-                src={experience.organization.logo}
-                alt={`${experience.organization.name} Logo`}
-                class="block rounded-lg"
-                width={80}
-                height={80}
-              />
-            </div>
-            <Card className="pt-0">
-              <Fragment slot="title">
-                <div class="flex items-center gap-2">
-                  {experience.title}
-                  {!experience.endDate && (
-                    <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
-                      Present
-                    </span>
-                  )}
-                </div>
-              </Fragment>
-              <Fragment slot="description">
-                <div class="space-y-2">
+        Object.values(workExperiencesByCompany).map(
+          ({ organization, experiences }) => (
+            <div class="grid grid-cols-[1fr_3fr] items-start gap-4">
+              <div class="flex items-center justify-center relative w-full aspect-square">
+                <Image
+                  src={organization.logo}
+                  alt={`${organization.name} Logo`}
+                  class="block rounded-lg"
+                  width={80}
+                  height={80}
+                />
+              </div>
+              <Card className="pt-0">
+                <Fragment slot="title">
+                  <div class="text-lg font-medium text-white mb-2">
+                    {organization.name}
+                  </div>
+                </Fragment>
+                <Fragment slot="description">
+                  <div class="space-y-4">
+                    {experiences.map((exp) => (
+                      <div>
+                        <h4 class="font-medium text-white flex items-center gap-2">
+                          {exp.title}
+                          {!exp.endDate && (
+                            <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
+                              Present
+                            </span>
+                          )}
+                        </h4>
+                        <p class="text-gray-400 text-sm">{exp.description}</p>
+                        <p class="text-xs text-gray-500 mt-1">
+                          {exp.startDate} - {exp.endDate ?? "Present"}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </Fragment>
+                <Fragment slot="location">
                   <a
-                    href={experience.organization.url}
+                    href={organization.url}
                     target="_blank"
                     class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
                   >
                     <span class="flex items-center gap-1">
-                      {experience.organization.name}
+                      Visit Website
                       <Icon name={icons.Visit} class="inline" />
                     </span>
                   </a>
-                  <p class="text-gray-400 text-sm">{experience.description}</p>
-                </div>
-              </Fragment>
-              <Fragment slot="location">
-                {experience.startDate} - {experience.endDate ?? "Present"}
-              </Fragment>
-            </Card>
-          </div>
-        ))
+                </Fragment>
+              </Card>
+            </div>
+          )
+        )
       }
     </div>
   </div>
@@ -458,49 +680,79 @@ const hoverCardStyles = `
     <H2>Community Involvement</H2>
     <div class="space-y-6 mt-6">
       {
-        communityExperiences.map((experience) => (
-          <div class="grid grid-cols-[1fr_3fr] items-start gap-4">
-            <div class="flex items-center justify-center relative w-full aspect-square">
-              <Image
-                src={experience.organization.logo}
-                alt={`${experience.organization.name} Logo`}
-                class="block rounded-lg"
-                width={80}
-                height={80}
-              />
-            </div>
-            <Card className="pt-0">
-              <Fragment slot="title">
-                <div class="flex items-center gap-2">
-                  {experience.title}
-                  {!experience.endDate && (
-                    <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
-                      Current
-                    </span>
-                  )}
+        Object.values(communityExperiencesByOrg).map(
+          ({ organization, experiences }) => {
+            const sortedExperiences = experiences.sort(
+              (a, b) =>
+                new Date(b.startDate).getTime() -
+                new Date(a.startDate).getTime()
+            );
+
+            const earliestStart =
+              sortedExperiences[sortedExperiences.length - 1].startDate;
+            const latestEnd = sortedExperiences[0].endDate;
+            const startOffset = getYearOffset(earliestStart);
+            const duration = getDuration(earliestStart, latestEnd);
+
+            return (
+              <div class="grid grid-cols-[1fr_3fr] items-start gap-4">
+                <div class="flex items-center justify-center relative w-full aspect-square">
+                  <Image
+                    src={organization.logo}
+                    alt={`${organization.name} Logo`}
+                    class="block rounded-lg"
+                    width={80}
+                    height={80}
+                  />
                 </div>
-              </Fragment>
-              <Fragment slot="description">
-                <div class="space-y-2">
-                  <a
-                    href={experience.organization.url}
-                    target="_blank"
-                    class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
-                  >
-                    <span class="flex items-center gap-1">
-                      {experience.organization.name}
-                      <Icon name={icons.Visit} class="inline" />
-                    </span>
-                  </a>
-                  <p class="text-gray-400 text-sm">{experience.description}</p>
-                </div>
-              </Fragment>
-              <Fragment slot="location">
-                {experience.startDate} - {experience.endDate ?? "Present"}
-              </Fragment>
-            </Card>
-          </div>
-        ))
+                <Card className="pt-0">
+                  <Fragment slot="title">
+                    <div class="flex items-center gap-2">
+                      {organization.name}
+                      {!latestEnd && (
+                        <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
+                          Present
+                        </span>
+                      )}
+                    </div>
+                  </Fragment>
+                  <Fragment slot="description">
+                    <div class="space-y-4">
+                      {experiences.map((exp) => (
+                        <div>
+                          <h4 class="font-medium text-white flex items-center gap-2">
+                            {exp.title}
+                            {!exp.endDate && (
+                              <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
+                                Present
+                              </span>
+                            )}
+                          </h4>
+                          <p class="text-gray-400 text-sm">{exp.description}</p>
+                          <p class="text-xs text-gray-500 mt-1">
+                            {exp.startDate} - {exp.endDate ?? "Present"}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </Fragment>
+                  <Fragment slot="location">
+                    <a
+                      href={organization.url}
+                      target="_blank"
+                      class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
+                    >
+                      <span class="flex items-center gap-1">
+                        Visit Website
+                        <Icon name={icons.Visit} class="inline" />
+                      </span>
+                    </a>
+                  </Fragment>
+                </Card>
+              </div>
+            );
+          }
+        )
       }
     </div>
   </div>
@@ -510,49 +762,79 @@ const hoverCardStyles = `
     <H2>Education</H2>
     <div class="space-y-6 mt-6">
       {
-        educationExperiences.map((experience) => (
-          <div class="grid grid-cols-[1fr_3fr] items-start gap-4">
-            <div class="flex items-center justify-center relative w-full aspect-square">
-              <Image
-                src={experience.organization.logo}
-                alt={`${experience.organization.name} Logo`}
-                class="block rounded-lg"
-                width={80}
-                height={80}
-              />
-            </div>
-            <Card className="pt-0">
-              <Fragment slot="title">
-                <div class="flex items-center gap-2">
-                  {experience.title}
-                  {!experience.endDate && (
-                    <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
-                      Current
-                    </span>
-                  )}
+        Object.values(educationExperiencesByOrg).map(
+          ({ organization, experiences }) => {
+            const sortedExperiences = experiences.sort(
+              (a, b) =>
+                new Date(b.startDate).getTime() -
+                new Date(a.startDate).getTime()
+            );
+
+            const earliestStart =
+              sortedExperiences[sortedExperiences.length - 1].startDate;
+            const latestEnd = sortedExperiences[0].endDate;
+            const startOffset = getYearOffset(earliestStart);
+            const duration = getDuration(earliestStart, latestEnd);
+
+            return (
+              <div class="grid grid-cols-[1fr_3fr] items-start gap-4">
+                <div class="flex items-center justify-center relative w-full aspect-square">
+                  <Image
+                    src={organization.logo}
+                    alt={`${organization.name} Logo`}
+                    class="block rounded-lg"
+                    width={80}
+                    height={80}
+                  />
                 </div>
-              </Fragment>
-              <Fragment slot="description">
-                <div class="space-y-2">
-                  <a
-                    href={experience.organization.url}
-                    target="_blank"
-                    class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
-                  >
-                    <span class="flex items-center gap-1">
-                      {experience.organization.name}
-                      <Icon name={icons.Visit} class="inline" />
-                    </span>
-                  </a>
-                  <p class="text-gray-400 text-sm">{experience.description}</p>
-                </div>
-              </Fragment>
-              <Fragment slot="location">
-                {experience.startDate} - {experience.endDate ?? "Present"}
-              </Fragment>
-            </Card>
-          </div>
-        ))
+                <Card className="pt-0">
+                  <Fragment slot="title">
+                    <div class="flex items-center gap-2">
+                      {organization.name}
+                      {!latestEnd && (
+                        <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
+                          Present
+                        </span>
+                      )}
+                    </div>
+                  </Fragment>
+                  <Fragment slot="description">
+                    <div class="space-y-4">
+                      {experiences.map((exp) => (
+                        <div>
+                          <h4 class="font-medium text-white flex items-center gap-2">
+                            {exp.title}
+                            {!exp.endDate && (
+                              <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
+                                Present
+                              </span>
+                            )}
+                          </h4>
+                          <p class="text-gray-400 text-sm">{exp.description}</p>
+                          <p class="text-xs text-gray-500 mt-1">
+                            {exp.startDate} - {exp.endDate ?? "Present"}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </Fragment>
+                  <Fragment slot="location">
+                    <a
+                      href={organization.url}
+                      target="_blank"
+                      class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
+                    >
+                      <span class="flex items-center gap-1">
+                        Visit Website
+                        <Icon name={icons.Visit} class="inline" />
+                      </span>
+                    </a>
+                  </Fragment>
+                </Card>
+              </div>
+            );
+          }
+        )
       }
     </div>
   </div>
