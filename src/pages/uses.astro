@@ -1,0 +1,64 @@
+---
+import MainLayout from "@/layouts/main-layout.astro";
+import H1 from "@/components/ui/typography/H1.astro";
+import H2 from "@/components/ui/typography/H2.astro";
+import { CATEGORIES, tools } from "@/lib/uses";
+
+const title = "Uses | Deveesh Shetty";
+const description = "Software and hardware I use daily";
+
+const toolsByCategory = CATEGORIES.map((category) => ({
+  category,
+  items: tools.filter((tool) => tool.category === category),
+})).filter((category) => category.items.length > 0);
+---
+
+<MainLayout title={title} description={description}>
+  <main class="container mx-auto lg:px-48 md:px-24 px-8 my-16">
+    <div class="flex flex-col pb-4 mb-8">
+      <H1 className="border-b-0">My setup</H1>
+      <p class="text-gray-400 text-lg">
+        Here's what I use on a daily basis for development and productivity.
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      {
+        toolsByCategory.map(({ category, items }) => (
+          <section>
+            <H2>{category}</H2>
+            <ul class="space-y-4">
+              {items.map((tool) => (
+                <li class="text-gray-300">
+                  <div class="flex items-baseline gap-x-2">
+                    <span class="font-medium">
+                      {tool.link ? (
+                        <a
+                          href={tool.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="hover:text-blue-400 transition-colors"
+                        >
+                          {tool.name}
+                        </a>
+                      ) : (
+                        tool.name
+                      )}
+                      : <span class="text-gray-400">{tool.description}</span>
+                      {tool.cost && (
+                        <span class="text-sm text-gray-500">({tool.cost})</span>
+                      )}
+                    </span>
+                  </div>
+                  {tool.comments && (
+                    <p class="text-sm text-gray-500 mt-1">{tool.comments}</p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+</MainLayout>
