@@ -1,0 +1,159 @@
+---
+import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
+import { icons } from "@/lib/icons";
+import HoverCard from "./hover-card.astro";
+
+interface Experience {
+  id: string;
+  type: "work" | "education" | "community";
+  title: string;
+  description?: string;
+  startDate: string;
+  endDate: string | null;
+}
+
+interface Organization {
+  name: string;
+  url: string;
+  logo: string;
+}
+
+interface ExperienceGroup {
+  organization: Organization;
+  experiences: Experience[];
+}
+
+interface Props {
+  experiences: ExperienceGroup[];
+  type: "work" | "education" | "community";
+  totalYears: number;
+  startDate: Date;
+  presentDate: Date;
+  presentOffset: number;
+}
+
+const {
+  experiences,
+  type,
+  totalYears,
+  startDate: START_DATE,
+  presentDate: PRESENT_DATE,
+  presentOffset,
+} = Astro.props;
+
+const COLORS = {
+  work: "bg-orange-400/40",
+  education: "bg-teal-400/40",
+  community: "bg-green-400/40",
+} as const;
+
+function getYearOffset(start: string) {
+  const startDate = new Date(start);
+  return (
+    startDate.getFullYear() -
+    START_DATE.getFullYear() +
+    startDate.getMonth() / 12
+  );
+}
+
+function getDuration(start: string, end: string | null) {
+  const startDate = new Date(start);
+  const endDate = end ? new Date(end) : PRESENT_DATE;
+  return (
+    endDate.getFullYear() -
+    startDate.getFullYear() +
+    (endDate.getMonth() - startDate.getMonth()) / 12
+  );
+}
+
+const experienceBarStyles = `
+  .experience-bar {
+    position: relative;
+  }
+  
+  .experience-bar:hover .hover-card,
+  .hover-card:hover {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Add a small delay when mouse leaves to prevent flickering */
+  .experience-bar:not(:hover) .hover-card:not(:hover) {
+    transition-delay: 50ms;
+  }
+`;
+---
+
+<style set:html={experienceBarStyles}></style>
+
+<div class="space-y-6">
+  {
+    experiences.map(({ organization, experiences }) => {
+      const sortedExperiences = experiences.sort(
+        (a: Experience, b: Experience) =>
+          new Date(b.startDate).getTime() - new Date(a.startDate).getTime()
+      );
+
+      const earliestStart =
+        sortedExperiences[sortedExperiences.length - 1].startDate;
+      const latestEnd = sortedExperiences[0].endDate;
+      const startOffset = getYearOffset(earliestStart);
+      const duration = getDuration(earliestStart, latestEnd);
+
+      return (
+        <div class="grid grid-cols-[60px_1fr] gap-4">
+          <a href={organization.url} target="_blank">
+            <div class="flex items-center justify-center">
+              <Image
+                src={organization.logo}
+                alt={`${organization.name} Logo`}
+                class="w-8 h-8 rounded-full"
+                width={32}
+                height={32}
+              />
+            </div>
+          </a>
+          <div class="relative h-8">
+            <div
+              class={`experience-bar absolute h-6 rounded-full transition-colors ${COLORS[type]}`}
+              style={`left: ${(startOffset / totalYears) * 100}%; width: ${(duration / totalYears) * 100}%;`}
+            >
+              <div class="absolute -top-5 left-2 text-xs whitespace-nowrap flex items-center gap-1">
+                {organization.name}
+                {!latestEnd && (
+                  <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
+                    Present
+                  </span>
+                )}
+              </div>
+
+              {/* Role progression bars */}
+              <div class="absolute inset-0 rounded-full overflow-hidden">
+                {sortedExperiences.map((exp: Experience, index: number) => {
+                  const roleStart = getYearOffset(exp.startDate);
+                  const roleDuration = getDuration(exp.startDate, exp.endDate);
+                  const opacity = 0.35 + index * 0.35;
+
+                  return (
+                    <div
+                      class={`absolute h-full transition-colors ${COLORS[type]}`}
+                      style={`left: ${((roleStart - startOffset) / duration) * 100}%; width: ${(roleDuration / duration) * 100}%; opacity: ${opacity}; backdrop-filter: brightness(${110 - index * 8}%);`}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* Hover Card */}
+              <HoverCard
+                organization={organization}
+                experiences={sortedExperiences}
+              />
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>

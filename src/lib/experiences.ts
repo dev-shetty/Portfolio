@@ -117,6 +117,47 @@ const experiences: Experience[] = [
   },
   {
     id: uuid(),
+    title: "Core Team - FOSS Mangalore",
+    type: "community" as const,
+    description:
+      "Organizing and conducting events to promote Free and Open Source Software in Mangalore.",
+    organization: {
+      name: "FOSS United",
+      url: "https://fossunited.org/",
+      logo: "/experiences/foss.svg",
+    },
+    startDate: "Apr 2024",
+    endDate: null,
+  },
+  {
+    id: uuid(),
+    title: "Associate Member - TiE Mangaluru",
+    type: "community" as const,
+    description:
+      "Associate member of TiE Mangaluru, a non-profit organization that promotes entrepreneurship and innovation.",
+    organization: {
+      name: "TiE Mangaluru",
+      url: "https://tie.org/mangaluru/",
+      logo: "/experiences/tie-mangaluru.png",
+    },
+    startDate: "Mar 2025",
+    endDate: null,
+  },
+  {
+    id: uuid(),
+    title: "Member",
+    type: "community" as const,
+    description: "Member of the IEEE Mangalore Subsection.",
+    organization: {
+      name: "IEEE Mangalore Subsection",
+      url: "https://ieee.org/mangalore/",
+      logo: "/experiences/ieee.png",
+    },
+    startDate: "Jan 2022",
+    endDate: "Mar 2024",
+  },
+  {
+    id: uuid(),
     title: "Technical Team Lead",
     type: "community" as const,
     description:
@@ -131,16 +172,15 @@ const experiences: Experience[] = [
   },
   {
     id: uuid(),
-    title: "Core Team - FOSS Mangalore",
+    title: "Member",
     type: "community" as const,
-    description:
-      "Organizing and conducting events to promote Free and Open Source Software in Mangalore.",
+    description: "Member of the IEEE Mangalore Subsection.",
     organization: {
-      name: "FOSS United",
-      url: "https://fossunited.org/",
-      logo: "/experiences/foss.svg",
+      name: "IEEE Mangalore Subsection",
+      url: "https://ieee.org/mangalore/",
+      logo: "/experiences/ieee.png",
     },
-    startDate: "Apr 2024",
+    startDate: "Dec 2024",
     endDate: null,
   },
   {

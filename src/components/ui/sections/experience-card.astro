@@ -1,0 +1,86 @@
+---
+import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
+import { icons } from "@/lib/icons";
+import Card from "./card.astro";
+
+interface Experience {
+  id: string;
+  type: "work" | "education" | "community";
+  title: string;
+  description?: string;
+  startDate: string;
+  endDate: string | null;
+}
+
+interface Organization {
+  name: string;
+  url: string;
+  logo: string;
+}
+
+interface Props {
+  organization: Organization;
+  experiences: Experience[];
+  showLargeTitle?: boolean;
+}
+
+const { organization, experiences, showLargeTitle = false } = Astro.props;
+---
+
+<div class="grid grid-cols-[1fr_3fr] items-start gap-4">
+  <div
+    class="flex items-start pt-4 justify-center relative w-full aspect-square"
+  >
+    <Image
+      src={organization.logo}
+      alt={`${organization.name} Logo`}
+      class="block rounded-lg"
+      width={80}
+      height={80}
+    />
+  </div>
+  <Card className="pt-0">
+    <Fragment slot="title">
+      <div
+        class={`${showLargeTitle ? "text-lg font-medium text-white mb-2" : "flex items-center gap-2"}`}
+      >
+        {organization.name}
+      </div>
+    </Fragment>
+    <Fragment slot="description">
+      <div class="space-y-4">
+        {
+          experiences.map((exp: Experience) => (
+            <div>
+              <h4 class="font-medium text-white flex items-center gap-2">
+                {exp.title}
+                {!exp.endDate && (
+                  <span class="px-1.5 py-0.5 rounded-full bg-white/10 text-[10px]">
+                    Present
+                  </span>
+                )}
+              </h4>
+              <p class="text-gray-400 text-sm">{exp.description}</p>
+              <p class="text-xs text-gray-500 mt-1">
+                {exp.startDate} - {exp.endDate ?? "Present"}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </Fragment>
+    <Fragment slot="location">
+      <a
+        href={organization.url}
+        target="_blank"
+        class="flex items-center gap-2 hover:underline underline-offset-2 text-gray-300 hover:text-gray-100 transition-colors"
+      >
+        <span class="flex items-center gap-1">
+          Visit Website
+          <Icon name={icons.Visit} class="inline" />
+        </span>
+      </a>
+    </Fragment>
+  </Card>
+</div>
