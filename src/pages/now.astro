@@ -1,0 +1,73 @@
+---
+import MainLayout from "@/layouts/main-layout.astro";
+import H1 from "@/components/ui/typography/H1.astro";
+import H2 from "@/components/ui/typography/H2.astro";
+
+const title = "Now | Deveesh Shetty";
+const description = "What I'm currently up to";
+---
+
+<MainLayout title={title} description={description}>
+  <main class="container mx-auto lg:px-48 md:px-24 px-8 my-16">
+    <div class="flex flex-col pb-4 mb-8">
+      <H1 className="border-b-0">What I'm up to now</H1>
+      <p class="text-gray-400 text-sm">
+        Inspired by <a
+          href="https://nownownow.com/about"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-blue-400 transition-colors underline"
+          >nownownow.com</a
+        >
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      <section>
+        <H2>Currently Working On</H2>
+        <ul class="list-disc list-inside space-y-2 text-gray-300">
+          <li>
+            <span class="font-medium text-gray-400">Work: </span>Building
+            Interactive Offers at Levels.fyi
+          </li>
+          <li>
+            <span class="font-medium text-gray-400"
+              >Side Project:
+            </span>Building The Commitment App, an app which helps you build
+            habits.
+          </li>
+          <li>Hitting the gym 5 days a week, and eating healthy.</li>
+          <li>
+            Growing <a
+              href="https://dk24.netlify.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-blue-400 transition-colors underline"
+              >DK24 community</a
+            >, connecting college communities in Mangalore to grow and build in
+            public.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <H2>Current Focus</H2>
+        <ul class="list-disc list-inside space-y-2 text-gray-300">
+          <li>Level up my Frontend Development skills</li>
+          <li>Be a consistent reader, and writer</li>
+        </ul>
+      </section>
+
+      <p class="text-gray-400 text-sm">
+        Last updated:{" "}
+        {
+          new Date().toLocaleDateString("en-IN", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })
+        }
+      </p>
+    </div>
+  </main>
+</MainLayout>

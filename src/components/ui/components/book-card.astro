@@ -1,0 +1,85 @@
+---
+import type { Book } from "@/lib/books";
+import { icons } from "@/lib/icons";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  book: Book;
+}
+
+const { book } = Astro.props;
+
+const hasThoughts = !!book.notionLink;
+const slug = hasThoughts ? book.name.toLowerCase().replace(/\s+/g, "-") : null;
+---
+
+<div class="bg-white/5 p-3 rounded-lg relative group">
+  {
+    hasThoughts ? (
+      <a
+        href={book.notionLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="block"
+      >
+        <div class="book-content">
+          <h3 class="font-medium leading-snug line-clamp-2">{book.name}</h3>
+          {book.author && (
+            <p class="text-gray-400 text-xs mt-1">{book.author}</p>
+          )}
+        </div>
+      </a>
+    ) : (
+      <div class="book-content">
+        <h3 class="font-medium leading-snug line-clamp-2">{book.name}</h3>
+        {book.author && <p class="text-gray-400 text-xs mt-1">{book.author}</p>}
+      </div>
+    )
+  }
+  <div class="absolute bottom-2 right-2 flex gap-1.5">
+    <span title={book.isRecommendedComments || "Recommended"}>
+      <Icon
+        name={icons.Star}
+        class={`w-3.5 h-3.5 ${book.isRecommended ? "text-yellow-400" : "text-gray-600"}`}
+      />
+    </span>
+    <span title={book.willReReadComments || "Will re-read"}>
+      <Icon
+        name={icons.Refresh}
+        class={`w-3.5 h-3.5 ${book.willReRead ? "text-blue-400" : "text-gray-600"}`}
+      />
+    </span>
+    <span title="Notes available">
+      <Icon
+        name={icons.Blog}
+        class={`w-3.5 h-3.5 ${hasThoughts ? "text-green-400" : "text-gray-600"}`}
+      />
+    </span>
+  </div>
+</div>
+
+<template id="book-content">
+  <h3 class="text-lg font-medium mb-1">{book.name}</h3>
+  <p class="text-gray-400 text-sm">{book.author}</p>
+  {
+    hasThoughts && (
+      <div class="mt-2 text-gray-300 text-sm line-clamp-2 group-hover:text-blue-400 transition-colors">
+        {book.thoughts}
+      </div>
+    )
+  }
+</template>
+
+<script>
+  class BookContent extends HTMLElement {
+    constructor() {
+      super();
+      const template = document.getElementById(
+        "book-content"
+      ) as HTMLTemplateElement;
+      const content = template.content.cloneNode(true);
+      this.appendChild(content);
+    }
+  }
+  customElements.define("book-content", BookContent);
+</script>

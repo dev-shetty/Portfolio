@@ -19,6 +19,21 @@ import { siteConfig } from "@/config/site";
     </div>
     <ul class="flex items-center gap-4 justify-end text-lg">
       <Button client:load asChild>
+        <a href="/now" class="flex items-center gap-2">
+          <Icon name={icons.Now} />
+        </a>
+      </Button>
+      <Button client:load asChild>
+        <a href="/books" class="flex items-center gap-2">
+          <Icon name={icons.Books} />
+        </a>
+      </Button>
+      <Button client:load asChild>
+        <a href="/uses" class="flex items-center gap-2">
+          <Icon name={icons.Uses} />
+        </a>
+      </Button>
+      <Button client:load asChild>
         <a href="/blog" class="flex items-center gap-2">
           <Icon name={icons.Blog} />
         </a>

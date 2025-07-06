@@ -1,0 +1,80 @@
+---
+import MainLayout from "@/layouts/main-layout.astro";
+import H1 from "@/components/ui/typography/H1.astro";
+import H2 from "@/components/ui/typography/H2.astro";
+import BookCard from "@/components/ui/components/book-card.astro";
+import { books } from "@/lib/books";
+import { Icon } from "astro-icon/components";
+import { icons } from "@/lib/icons";
+
+const title = "Books | Deveesh Shetty";
+const description = "Books I've read and my thoughts on them";
+
+const currentlyReading = books.filter((book) => book.status === "reading");
+const completedBooks = books.filter((book) => book.status === "completed");
+
+const booksByYear = completedBooks.reduce(
+  (acc, book) => {
+    const year = book.completedYear || new Date().getFullYear();
+    if (!acc[year]) acc[year] = [];
+    acc[year].push(book);
+    return acc;
+  },
+  {} as Record<number, typeof books>
+);
+
+const years = Object.keys(booksByYear).sort((a, b) => Number(b) - Number(a));
+---
+
+<MainLayout title={title} description={description}>
+  <main class="container mx-auto lg:px-48 md:px-24 px-8 my-16">
+    <div class="flex flex-col pb-4 mb-8">
+      <H1 className="border-b-0">My Reads</H1>
+      <p class="text-gray-400 text-lg">
+        A collection of books I've read and my thoughts on them.
+      </p>
+      <div class="flex gap-4 mt-4 text-sm text-gray-400">
+        <div class="flex items-center gap-1.5">
+          <Icon name={icons.Star} class="w-3.5 h-3.5 text-yellow-400" />
+          <span>Recommended</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <Icon name={icons.Refresh} class="w-3.5 h-3.5 text-blue-400" />
+          <span>Will Re-read</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <Icon name={icons.Blog} class="w-3.5 h-3.5 text-green-400" />
+          <span>Notes Available</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-12">
+      {
+        currentlyReading.length > 0 && (
+          <section>
+            <H2>Currently Reading</H2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-4">
+              {currentlyReading.map((book) => (
+                <BookCard book={book} />
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      {
+        years.map((year) => (
+          <section>
+            <H2>{year}</H2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-4">
+              {booksByYear[Number(year)].map((book) => (
+                <BookCard book={book} />
+              ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+</MainLayout>
