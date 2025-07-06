@@ -67,49 +67,55 @@ function ContactForm() {
 
   return (
     <form
-      className="flex flex-col w-full gap-4 justify-between"
+      className="flex flex-col w-full gap-4"
       method="post"
       ref={formRef}
       onSubmit={handleFormSubmit}
     >
-      <div className="flex flex-col gap-1 justify-between">
-        <label htmlFor="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          className="bg-gray-800 rounded-md p-2 outline-gray-700"
-          placeholder="developer@domain.com"
-        />
+      <div className="grid grid-cols-2 gap-4">
+        <div className="flex flex-col gap-1">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            className="bg-gray-800 rounded-md p-2 outline-gray-700"
+            placeholder="developer@domain.com"
+          />
+        </div>
+        <div className="flex flex-col gap-1">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            className="bg-gray-800 rounded-md p-2 outline-gray-700"
+            placeholder="Developer X"
+          />
+        </div>
       </div>
-      <div className="flex flex-col gap-1 justify-between">
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          className="bg-gray-800 rounded-md p-2 outline-gray-700"
-          placeholder="Developer X"
-        />
-      </div>
-      <div className="flex flex-col gap-1 justify-between">
-        <label htmlFor="message">Message</label>
-        <textarea
-          name="message"
-          id="message"
-          placeholder="What's up?"
-          className="bg-gray-800 rounded-md p-2 outline-gray-700 resize-none"
-          rows={6}
-        ></textarea>
-      </div>
-      <div className="mx-auto mt-2">
-        <Button
-          type="submit"
-          disabled={loading}
-          className="relative w-fit h-10"
-        >
-          <span>{loading ? <Loading /> : "Send"}</span>
-        </Button>
+      <div className="flex gap-4">
+        <div className="w-[80%]">
+          <label htmlFor="message" className="block mb-1">
+            Message
+          </label>
+          <textarea
+            name="message"
+            id="message"
+            placeholder="What's up?"
+            className="w-full bg-gray-800 rounded-md p-2 outline-gray-700 resize-none"
+            rows={3}
+          ></textarea>
+        </div>
+        <div className="w-[20%] mt-auto mb-2">
+          <Button
+            type="submit"
+            disabled={loading}
+            className="md:w-full w-full h-21 cursor-pointer"
+          >
+            <span>{loading ? <Loading /> : "Send"}</span>
+          </Button>
+        </div>
       </div>
     </form>
   );
