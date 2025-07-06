@@ -168,4 +168,17 @@ export const tools: Tool[] = [
     category: "Notable Mentions",
     link: "https://www.flipkart.com/stanley-sdh600kp-in-diy-13-mm-hammer-drill-machine-power-hand-tool-kit/p/itmc35e3b0cf1fd7",
   },
+  {
+    name: "Japanese Santoku Knife",
+    description:
+      "Multi purpose knife, comfortable and sharp, bought from my local Reliance mart, I cut vegetables just to use that knife.",
+    category: "Notable Mentions",
+  },
+  {
+    name: "Philips Airfryer NA231",
+    description:
+      "Swiss Army Knife for my kitchen, works for baking, microwave, deep fry, stir fry, everything.",
+    category: "Notable Mentions",
+    link: "https://www.flipkart.com/philips-na231-00-touch-panel-cooking-window-uses-up-90-less-fat-1700w-rapid-air-technology-fryer/p/itm219580008b7d6",
+  },
 ];
