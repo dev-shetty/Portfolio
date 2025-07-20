@@ -12,10 +12,9 @@ export interface Book {
 }
 
 export const books: Book[] = [
-  // Currently Reading
   {
-    name: "Never Split the Difference",
-    author: "Chris Voss",
+    name: "The Hard Thing About Hard Things",
+    author: "Ben Horowitz",
     status: "reading",
   },
   {
@@ -23,8 +22,14 @@ export const books: Book[] = [
     author: "S Jaishankar",
     status: "reading",
   },
-
-  // Completed Books
+  {
+    name: "Never Split the Difference",
+    author: "Chris Voss",
+    status: "completed",
+    completedYear: 2025,
+    isRecommended: true,
+    willReRead: true,
+  },
   {
     name: "The Art of Thinking Clearly",
     author: "Rolf Dobelli",
