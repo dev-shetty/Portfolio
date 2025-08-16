@@ -13,14 +13,25 @@ export interface Book {
 
 export const books: Book[] = [
   {
-    name: "The Hard Thing About Hard Things",
-    author: "Ben Horowitz",
-    status: "reading",
-  },
-  {
     name: "Why Bharat Matters",
     author: "S Jaishankar",
     status: "reading",
+  },
+  {
+    name: "Merlin's Tour of The Universe",
+    author: "Neil deGrasse Tyson",
+    status: "completed",
+    completedYear: 2025,
+    willReRead: false,
+    isRecommended: true,
+  },
+  {
+    name: "The Hard Thing About Hard Things",
+    author: "Ben Horowitz",
+    status: "completed",
+    completedYear: 2025,
+    willReRead: false,
+    isRecommended: true,
   },
   {
     name: "Never Split the Difference",

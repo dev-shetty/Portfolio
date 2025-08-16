@@ -39,6 +39,12 @@ export const tools: Tool[] = [
     link: "https://www.apple.com/ipad-air/",
   },
   {
+    name: "Raspberry Pi 3 B",
+    description: "Experimenting with it. Currently using it as NAS",
+    category: "Desk",
+    link: "https://www.raspberrypi.com/products/",
+  },
+  {
     name: "Redmi Note 9",
     description: "My daily driver phone, been 6 years, going strong.",
     category: "Desk",
@@ -79,6 +85,14 @@ export const tools: Tool[] = [
     description: "Fast, modern, and minimal terminal emulator.",
     category: "Development",
     link: "https://ghostty.org",
+  },
+  {
+    name: "VPS (IONOS)",
+    description:
+      "Got it for cheap, use it as reverse proxy to host my personal projects, and self host a few things. Might switch to my Pi in future.",
+    category: "Development",
+    cost: "$5/month",
+    link: "https://www.ionos.com/servers/vps",
   },
   {
     name: "Zen Browser",
