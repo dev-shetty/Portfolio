@@ -20,7 +20,7 @@ export default function CodeRenderer({
   };
 
   return (
-    <div className="relative my-8 group">
+    <div className="relative mb-4 mt-0 group">
       {title && (
         <div className="absolute top-0 right-0 px-4 py-2 rounded-tr bg-[#23262f] text-sm text-gray-400">
           {title}
@@ -37,11 +37,12 @@ export default function CodeRenderer({
             msOverflowStyle: "none", // Hide scrollbar in IE/Edge
             scrollbarWidth: "thin", // Firefox
             scrollbarColor: "rgb(107 114 128 / 0.5) rgb(31 41 55 / 0.3)", // For Firefox
+            marginBlock: "0 1rem",
           }}
         >
           <button
             onClick={copyToClipboard}
-            className="absolute top-1/2 -translate-y-1/2 right-3 p-2 rounded-lg opacity-80 hover:opacity-100 bg-gray-800 hover:bg-gray-700 active:bg-gray-600 transition-all duration-200 ease-in-out cursor-pointer border border-gray-600 shadow-md"
+            className="absolute top-2 right-3 p-2 rounded-lg opacity-80 hover:opacity-100 bg-gray-800 hover:bg-gray-700 active:bg-gray-600 transition-all duration-200 ease-in-out cursor-pointer border border-gray-600 shadow-md"
             aria-label="Copy code"
           >
             {copied ? (
