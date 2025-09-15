@@ -12,11 +12,11 @@ series:
   order: 1
 ---
 
-import CodeBlock from "@/components/blog/code-block.astro";
+import CodeBlock from "@/components/blog/code-block.astro"
 
 You may have only used `console.log()` in JavaScript, but you can do many more things with the **console** object.
 
-## console.table()
+## 1. console.table()
 
 If you have an object and want a clear view of it instead of having those ugly braces in the console you can use `console.table()`
 
@@ -33,7 +33,7 @@ console.table(obj);`}
 
 ![console.table output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2f45zqqoytph781kyak4.png)
 
-## console.error()
+## 2. console.error()
 
 You will get a cool-looking (yeah 🙂) red color message for the instances where you want to make the stress on the bug more realistic.
 
@@ -44,7 +44,7 @@ You will get a cool-looking (yeah 🙂) red color message for the instances wher
 
 ![console.error output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kc0wuhxl6gvkq0ds3pba.png)
 
-## console.warn()
+## 3. console.warn()
 
 Similar to error but a little less stressful, you can mostly use this as a warning to yourself.
 
@@ -55,7 +55,7 @@ Similar to error but a little less stressful, you can mostly use this as a warni
 
 ![console.warn output](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1c9en7hutb2nulv0j3ta.png)
 
-## console.time()
+## 4. console.time()
 
 You can get the computation time easily by using `console.time()`, which starts the timer, and `console.timeEnd()` which ends it to compute the time taken by your code.
 You can pass a label inside the `time()` function which makes the timer unique, so you can have as many number of timers in your program.
