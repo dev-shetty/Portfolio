@@ -24,7 +24,7 @@
     "@vercel/analytics": "^1.5.0",
     "astro": "^5.7.5",
     "astro-icon": "^1.1.5",
-    "axios": "^1.9.0",
+    "axios": "^1.12.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "eslint": "9.25.1",
