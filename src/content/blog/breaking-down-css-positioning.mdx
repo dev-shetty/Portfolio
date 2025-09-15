@@ -1,0 +1,59 @@
+---
+title: "Breaking down CSS positioning"
+description: "Simplifying CSS positions using illustrations"
+date: 2025-09-15
+tags: ["CSS", "Web Dev"]
+coverImage: ""
+originalPost:
+  url: "https://x.com/ShettyDeveesh/status/1967616343860990233"
+  platform: "X"
+series:
+  name: "CSS is Fun"
+  order: 1
+---
+
+Whomever i talk to about CSS, says they struggle with positions and how they actually work
+
+Made a few illustrations to make it little less random when you use them for the next time.
+
+By default all the elements in the page are `position: static`, it means they will follow the usual sequential approach of HTML page
+
+![Elements are static by default](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/u8hgh7qj6hpg3aj0r7ci.png)
+
+But sometimes you need to position elements at a different place, or in a different manner. 99% of the times you can get away by using layout properties like `flex` or `grid`, but sometimes you need to take matter into your own hands and use `position` property
+
+This is the simplest of them all, when you add this to your css, for your surprise. it does nothing, absolutely nothing by itself
+
+![Change all elements to relative position](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rcm5ueyyfui4i59fggfk.png)
+
+But this position value allows you to add properties like top, right, bottom, left and also z-index. This gives you more control on where to keep the element
+
+![Adding top and left properties to relative element](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/z2uo4da9pa52a7wb41si.png)
+
+### position: absolute
+
+This is little scarier than relative, and sometimes haunts me in my dreams, absolute positioning makes your element fly in the DOM. basically the element exits the sequential flow of the HTML document.
+
+![Absolute positioning an element](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/f1j06t3d86bb36yo1yvi.png)
+
+Absolute element will always be positioned relative to the nearest relative parent.
+
+अर्थात् (meaning): If you position an element as absolute it will take the top, right, bottom, left (TRBL) properties based on the nearest parent which is set to position relative.
+
+If no parent has position relative, it will fallback to the HTML root, ie the window. That's why you can see it is stuck on the top left of the page.
+
+![Adding top and left properties to absolute element](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kskim9cevqkbrxddvt8z.png)
+
+Notice it now it changes relative to the window
+
+Now let's enclose it in a parent which has position relative, then it will be positioned with respect to the parents TRBL properties
+
+![Absolute positioning an element inside a relative parent](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/yup6g5xfyjppzvjrk90i.png)
+
+Adding some TRBL properties to the absolute element
+
+![Adding top and left properties to absolute element inside a relative parent](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/e42ceo0yjfmd0ie5fcnb.png)
+
+That's it, it ain't no rocket science. Mess around a little with it and you will be more confident in writing them
+
+Also as a side note, try to avoid absolute positioning as much as you can, since it will create more problems then it might solve, ranging from pixel manipulation till responsiveness.
