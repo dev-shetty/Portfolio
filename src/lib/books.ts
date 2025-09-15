@@ -1,21 +1,58 @@
 export interface Book {
-  name: string;
-  author: string;
-  thoughts?: string;
-  isRecommended?: boolean;
-  isRecommendedComments?: string;
-  willReRead?: boolean;
-  willReReadComments?: string;
-  status: "reading" | "completed";
-  completedYear?: number;
-  notionLink?: string;
+  name: string
+  author: string
+  thoughts?: string
+  isRecommended?: boolean
+  isRecommendedComments?: string
+  willReRead?: boolean
+  willReReadComments?: string
+  status: "reading" | "completed"
+  completedYear?: number
+  notionLink?: string
 }
 
 export const books: Book[] = [
   {
+    name: "The Compound Effect",
+    author: "Darren Hardy",
+    status: "reading",
+  },
+  {
     name: "Why Bharat Matters",
     author: "S Jaishankar",
     status: "reading",
+  },
+  {
+    name: "Shiva Trilogy: Part 1 - The Immortals of Meluha",
+    author: "Amish",
+    status: "completed",
+    completedYear: 2025,
+    willReRead: false,
+    isRecommended: true,
+  },
+  {
+    name: "Shiva Trilogy: Part 2 - The Secret of the Nagas",
+    author: "Amish",
+    status: "completed",
+    completedYear: 2025,
+    willReRead: false,
+    isRecommended: true,
+  },
+  {
+    name: "Shiva Trilogy: Part 3 - The Oath of the Vayuputras",
+    author: "Amish",
+    status: "completed",
+    completedYear: 2025,
+    willReRead: false,
+    isRecommended: true,
+  },
+  {
+    name: "21 career hacks for developers: A career guide for Software Engineers",
+    author: "Pradeep Sharma",
+    status: "completed",
+    completedYear: 2025,
+    willReRead: false,
+    isRecommended: true,
   },
   {
     name: "Merlin's Tour of The Universe",
@@ -300,4 +337,4 @@ export const books: Book[] = [
     willReRead: false,
     completedYear: 2025,
   },
-];
+]
