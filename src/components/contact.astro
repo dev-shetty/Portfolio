@@ -7,7 +7,7 @@ import ContactForm from "@/components/contact/contact-form";
 ---
 
 <section
-  class="mt-16 py-16 bg-gradient-to-br from-gray-900/80 to-gray-900/40 rounded-2xl border border-gray-800/50"
+  class="mt-16 py-16 bg-gradient-to-br from-gray-900/80 to-gray-900/40 rounded-2xl border border-gray-700"
 >
   <div class="max-w-4xl mx-auto px-6">
     <div class="text-center mb-12">
@@ -21,7 +21,7 @@ import ContactForm from "@/components/contact/contact-form";
     </div>
     <div class="flex flex-col gap-8">
       <div class="flex flex-wrap lg:justify-around gap-4">
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-4">
           <div class="p-3 bg-gray-800 rounded-lg">
             <Icon name={icons.Envelope} size={24} class="text-gray-200" />
           </div>
@@ -30,11 +30,12 @@ import ContactForm from "@/components/contact/contact-form";
             <p class="text-gray-400">deveeshshetty@gmail.com</p>
           </div>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-4">
           <a
             href={siteConfig.socials.github}
             target="_blank"
-            class="p-3 bg-gray-800 rounded-lg hover:bg-gray-700"
+            aria-label="Visit GitHub profile"
+            class="p-3 bg-gray-800 rounded-lg hover:bg-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           >
             <Icon name={icons.GitHub} size={24} class="text-gray-200" />
           </a>
@@ -43,11 +44,12 @@ import ContactForm from "@/components/contact/contact-form";
             <p class="text-gray-400">{siteConfig.handles.github}</p>
           </div>
         </div>
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-4">
           <a
             href={siteConfig.socials.linkedin}
             target="_blank"
-            class="p-3 bg-gray-800 rounded-lg hover:bg-gray-700"
+            aria-label="Visit LinkedIn profile"
+            class="p-3 bg-gray-800 rounded-lg hover:bg-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           >
             <Icon name={icons.LinkedIn} size={24} class="text-gray-200" />
           </a>

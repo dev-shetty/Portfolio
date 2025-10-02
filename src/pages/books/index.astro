@@ -56,7 +56,7 @@ const years = Object.keys(booksByYear).sort((a, b) => Number(b) - Number(a));
         currentlyReading.length > 0 && (
           <section>
             <H2>Currently Reading</H2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
               {currentlyReading.map((book) => (
                 <BookCard book={book} />
               ))}
@@ -69,7 +69,7 @@ const years = Object.keys(booksByYear).sort((a, b) => Number(b) - Number(a));
         years.map((year) => (
           <section>
             <H2>{year}</H2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 mt-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
               {booksByYear[Number(year)].map((book) => (
                 <BookCard book={book} />
               ))}

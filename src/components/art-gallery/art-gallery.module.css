@@ -13,7 +13,7 @@
   content: attr(data-content);
   position: absolute;
   inset: 0;
-  background-color: var(--clr-primary-900-4);
+  background-color: rgba(19, 19, 19, 0.4);
   opacity: 0;
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@
   padding-inline: 5%;
   text-align: center;
   font-size: 1.25rem;
-  color: var(--clr-primary-100);
+  color: rgb(255, 255, 255);
   transition: opacity 500ms ease-in-out;
 }
 

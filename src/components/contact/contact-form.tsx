@@ -1,8 +1,4 @@
-import {
-  type FormEvent,
-  useState,
-  type ChangeEvent, useRef
-} from "react"
+import { type FormEvent, useState, type ChangeEvent, useRef } from "react"
 import axios from "axios"
 import { useToast } from "@/hooks/use-toast"
 import Button from "@/components/ui/button"
@@ -33,14 +29,15 @@ function ContactForm() {
         break
       case "message":
         if (!value) return "Message is required"
-        if (value.length < 10)
-          return "Message must be at least 10 characters"
+        if (value.length < 10) return "Message must be at least 10 characters"
         break
     }
     return undefined
   }
 
-  const handleBlur = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleBlur = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target
     setTouched({ ...touched, [name]: true })
     const error = validateField(name, value)
@@ -131,12 +128,14 @@ function ContactForm() {
             required
             aria-required="true"
             aria-invalid={touched.email && errors.email ? "true" : "false"}
-            aria-describedby={touched.email && errors.email ? "email-error" : undefined}
+            aria-describedby={
+              touched.email && errors.email ? "email-error" : undefined
+            }
             className={`bg-gray-800 rounded-md p-2 outline-none transition-all ${
               touched.email && errors.email
-                ? "border-2 border-red-500 focus:ring-2 focus:ring-red-500"
-                : "border-2 border-gray-700 focus:ring-2 focus:ring-blue-500"
-            } focus:border-transparent`}
+                ? "border-2 border-red-500 focus-visible:ring-2 focus-visible:ring-red-500"
+                : "border-2 border-gray-700 focus-visible:ring-2 focus-visible:ring-blue-500"
+            } focus-visible:border-transparent`}
             placeholder="developer@domain.com"
             onBlur={handleBlur}
           />
@@ -157,12 +156,14 @@ function ContactForm() {
             required
             aria-required="true"
             aria-invalid={touched.name && errors.name ? "true" : "false"}
-            aria-describedby={touched.name && errors.name ? "name-error" : undefined}
+            aria-describedby={
+              touched.name && errors.name ? "name-error" : undefined
+            }
             className={`bg-gray-800 rounded-md p-2 outline-none transition-all ${
               touched.name && errors.name
-                ? "border-2 border-red-500 focus:ring-2 focus:ring-red-500"
-                : "border-2 border-gray-700 focus:ring-2 focus:ring-blue-500"
-            } focus:border-transparent`}
+                ? "border-2 border-red-500 focus-visible:ring-2 focus-visible:ring-red-500"
+                : "border-2 border-gray-700 focus-visible:ring-2 focus-visible:ring-blue-500"
+            } focus-visible:border-transparent`}
             placeholder="Developer X"
             onBlur={handleBlur}
           />
@@ -184,18 +185,23 @@ function ContactForm() {
             required
             aria-required="true"
             aria-invalid={touched.message && errors.message ? "true" : "false"}
-            aria-describedby={touched.message && errors.message ? "message-error" : undefined}
+            aria-describedby={
+              touched.message && errors.message ? "message-error" : undefined
+            }
             placeholder="What's up?"
             className={`w-full bg-gray-800 rounded-md p-2 outline-none transition-all resize-none ${
               touched.message && errors.message
-                ? "border-2 border-red-500 focus:ring-2 focus:ring-red-500"
-                : "border-2 border-gray-700 focus:ring-2 focus:ring-blue-500"
-            } focus:border-transparent`}
+                ? "border-2 border-red-500 focus-visible:ring-2 focus-visible:ring-red-500"
+                : "border-2 border-gray-700 focus-visible:ring-2 focus-visible:ring-blue-500"
+            } focus-visible:border-transparent`}
             rows={3}
             onBlur={handleBlur}
           ></textarea>
           {touched.message && errors.message && (
-            <span id="message-error" className="text-red-400 text-sm mt-1 block">
+            <span
+              id="message-error"
+              className="text-red-400 text-sm mt-1 block"
+            >
               {errors.message}
             </span>
           )}

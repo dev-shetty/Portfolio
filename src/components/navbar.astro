@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
 ---
 
 <nav
-  class="fixed backdrop-blur-sm flex w-full items-center py-4 border-b border-b-gray-800 shadow-[0_0_120px_80px_rgba(0,0,0,0.1)] shadow-gray-700/10"
+  class="fixed backdrop-blur-sm flex w-full items-center py-4 border-b border-b-gray-700 shadow-[0_0_120px_80px_rgba(0,0,0,0.1)] shadow-gray-700/10"
   style="z-index: var(--z-nav);"
 >
   <div
@@ -15,7 +15,7 @@ import { siteConfig } from "@/config/site";
   >
     <div>
       <a href="/" class="text-xl hover:text-gray-200">
-        <Image src={siteConfig.logo} alt="" width={36} height={36} />
+        <Image src={siteConfig.logo} loading="eager" aria-label="Deveesh Shetty's Logo" alt="Deveesh Shetty's Logo" width={36} height={36} />
       </a>
     </div>
     <ul class="flex items-center gap-4 justify-end text-lg">

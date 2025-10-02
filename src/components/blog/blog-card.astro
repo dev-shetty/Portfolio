@@ -51,9 +51,9 @@ const target = redirect ? "_blank" : "_self";
   href={href}
   target={target}
   class={cn(
-    "flex flex-col md:flex-row transition-all hover:bg-gray-900/20 border-t border-gray-700 pt-4",
+    "flex flex-col md:flex-row transition-all hover:bg-gray-900/20 border-t border-gray-700 pt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
     isFeatured
-      ? "md:grid md:grid-cols-2 md:gap-8 bg-gradient-to-br from-gray-900/80 to-gray-900/40 p-6 rounded-xl mb-8 relative border border-gray-800/50 hover:border-gray-700/80"
+      ? "md:grid md:grid-cols-2 md:gap-8 bg-gradient-to-br from-gray-900/80 to-gray-900/40 p-6 rounded-xl mb-8 relative border border-gray-700 hover:border-gray-600"
       : "md:flex md:gap-6 items-center first:border-t-0 flex-col-reverse"
   )}
 >
@@ -90,7 +90,7 @@ const target = redirect ? "_blank" : "_self";
     <div slot="title">
       <h2
         class={cn(
-          "font-bold line-clamp-2 mb-2",
+          "font-semibold line-clamp-2 mb-2",
           isFeatured
             ? "text-xl md:text-2xl bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-300"
             : "text-xl"

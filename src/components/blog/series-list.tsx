@@ -23,7 +23,7 @@ export default function SeriesList({ posts, currentSlug }: SeriesListProps) {
                 : "hover:bg-gray-800"
             }`}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               <span className="flex-none w-6 h-6 grid place-items-center rounded-full bg-gray-800 text-sm">
                 {post.data.series?.order}
               </span>
@@ -93,7 +93,7 @@ export default function SeriesList({ posts, currentSlug }: SeriesListProps) {
                       : "hover:bg-gray-800"
                   }`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-4">
                     <span className="flex-none w-6 h-6 grid place-items-center rounded-full bg-gray-800 text-sm">
                       {post.data.series?.order}
                     </span>
