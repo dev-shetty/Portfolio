@@ -42,6 +42,5 @@ export const icons: Record<string, string> = {
   Now: "tabler:clock",
   Books: "tabler:books",
   Uses: "tabler:settings",
-  Star: "tabler:star",
   Refresh: "tabler:refresh",
-};
+}

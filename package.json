@@ -11,8 +11,8 @@
   "dependencies": {
     "@astrojs/markdoc": "^0.15.0",
     "@astrojs/mdx": "^4.3.0",
-    "@astrojs/react": "^4.2.5",
-    "@astrojs/vercel": "^8.1.4",
+    "@astrojs/react": "^4.4.0",
+    "@astrojs/vercel": "^8.2.8",
     "@iconify-json/fa": "^1.2.1",
     "@iconify-json/fa6-brands": "^1.2.5",
     "@iconify-json/lineicons": "^1.2.4",
@@ -23,19 +23,19 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/vite": "^4.1.4",
     "@vercel/analytics": "^1.5.0",
-    "astro": "^5.7.5",
+    "astro": "^5.14.1",
     "astro-icon": "^1.1.5",
     "axios": "^1.12.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "eslint": "9.25.1",
+    "eslint": "9.36.0",
     "nodemailer": "^6.10.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwind-merge": "^3.2.0",
     "tailwindcss": "^4.1.4",
     "uuid": "11.1.0",
-    "vercel": "^41.6.2"
+    "vercel": "^48.1.6"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.2.55",
