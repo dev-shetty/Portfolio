@@ -1,0 +1,28 @@
+---
+import Button from "@/components/ui/button";
+
+interface Props {
+  href: string;
+  label: string;
+  ariaLabel: string;
+}
+
+const { href, label, ariaLabel } = Astro.props;
+---
+
+<div class="relative group">
+  <Button client:load asChild>
+    <a href={href} class="flex items-center gap-2" aria-label={ariaLabel}>
+      <slot />
+      <span class="sr-only">{label}</span>
+    </a>
+  </Button>
+  <span
+    class="absolute bottom-[-40px] left-1/2 -translate-x-1/2 bg-gray-900 text-gray-50 px-3 py-1.5 rounded-md text-sm whitespace-nowrap opacity-0 pointer-events-none transition-opacity duration-200 group-hover:opacity-100 border border-gray-700 z-[100]"
+  >
+    {label}
+    <span
+      class="absolute top-[-4px] left-1/2 -translate-x-1/2 rotate-45 w-2 h-2 bg-gray-900 border-l border-t border-gray-700"
+    ></span>
+  </span>
+</div>

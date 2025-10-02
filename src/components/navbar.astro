@@ -1,7 +1,7 @@
 ---
 import { icons } from "@/lib/icons";
 import { Icon } from "astro-icon/components";
-import Button from "@/components/ui/button";
+import ButtonWithTooltip from "@/components/ui/button-with-tooltip.astro";
 import { Image } from "astro:assets";
 import { siteConfig } from "@/config/site";
 ---
@@ -19,36 +19,31 @@ import { siteConfig } from "@/config/site";
       </a>
     </div>
     <ul class="flex items-center gap-4 justify-end text-lg">
-      <Button client:load asChild>
-        <a href="/now" class="flex items-center gap-2" aria-label="View what I'm doing now">
+      <li>
+        <ButtonWithTooltip href="/now" label="Now" ariaLabel="View what I'm doing now">
           <Icon name={icons.Now} />
-          <span class="sr-only">Now</span>
-        </a>
-      </Button>
-      <Button client:load asChild>
-        <a href="/books" class="flex items-center gap-2" aria-label="View my book collection">
+        </ButtonWithTooltip>
+      </li>
+      <li>
+        <ButtonWithTooltip href="/books" label="Books" ariaLabel="View my book collection">
           <Icon name={icons.Books} />
-          <span class="sr-only">Books</span>
-        </a>
-      </Button>
-      <Button client:load asChild>
-        <a href="/uses" class="flex items-center gap-2" aria-label="View my tech stack">
+        </ButtonWithTooltip>
+      </li>
+      <li>
+        <ButtonWithTooltip href="/uses" label="Uses" ariaLabel="View my tech stack">
           <Icon name={icons.Uses} />
-          <span class="sr-only">Uses</span>
-        </a>
-      </Button>
-      <Button client:load asChild>
-        <a href="/blog" class="flex items-center gap-2" aria-label="View my blog posts">
+        </ButtonWithTooltip>
+      </li>
+      <li>
+        <ButtonWithTooltip href="/blog" label="Blog" ariaLabel="View my blog posts">
           <Icon name={icons.Blog} />
-          <span class="sr-only">Blog</span>
-        </a>
-      </Button>
-      <Button client:load asChild>
-        <a href="/art-gallery" class="flex items-center gap-2" aria-label="View my art gallery">
+        </ButtonWithTooltip>
+      </li>
+      <li>
+        <ButtonWithTooltip href="/art-gallery" label="Art Gallery" ariaLabel="View my art gallery">
           <Icon name={icons.Palette} />
-          <span class="sr-only">Art</span>
-        </a>
-      </Button>
+        </ButtonWithTooltip>
+      </li>
     </ul>
   </div>
 </nav>
