@@ -1,7 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
 import Image from "astro/components/Image.astro";
-import { icons } from "@/lib/icons";
 import HoverCard from "./hover-card.astro";
 
 interface Experience {
@@ -71,16 +69,18 @@ const experienceBarStyles = `
   .experience-bar {
     position: relative;
   }
-  
+
   .experience-bar:hover .hover-card,
-  .hover-card:hover {
+  .experience-bar:focus-within .hover-card,
+  .hover-card:hover,
+  .hover-card:focus-within {
     visibility: visible;
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
 
   /* Add a small delay when mouse leaves to prevent flickering */
-  .experience-bar:not(:hover) .hover-card:not(:hover) {
+  .experience-bar:not(:hover):not(:focus-within) .hover-card:not(:hover):not(:focus-within) {
     transition-delay: 50ms;
   }
 `;
@@ -119,6 +119,9 @@ const experienceBarStyles = `
             <div
               class={`experience-bar absolute h-6 rounded-full transition-colors ${COLORS[type]}`}
               style={`left: ${(startOffset / totalYears) * 100}%; width: ${(duration / totalYears) * 100}%;`}
+              tabindex="0"
+              role="button"
+              aria-label={`${organization.name} experience details`}
             >
               <div class="absolute -top-5 left-2 text-xs whitespace-nowrap flex items-center gap-1">
                 {organization.name}

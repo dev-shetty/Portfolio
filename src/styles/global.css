@@ -1,18 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  /* Colors */
-  /* Opacity Colors */
-  /* --clr-primary-yyy-x here x is the opacity, 5 -> 50% */
+  /* Standardized Gray Scale */
+  --gray-50: #f9fafb;    /* Brightest text / primary text */
+  --gray-200: #e5e7eb;   /* Secondary text */
+  --gray-300: #d1d5db;   /* Tertiary text */
+  --gray-400: #9ca3af;   /* Muted text / timestamps */
+  --gray-600: #4b5563;   /* Borders (hover) */
+  --gray-700: #374151;   /* Borders / dividers */
+  --gray-800: #1f2937;   /* Subtle backgrounds / inputs */
+  --gray-900: #111827;   /* Primary backgrounds / cards */
+
+  /* Opacity Colors (Legacy - consider migrating) */
   --clr-primary-100-2: rgba(255, 255, 255, 0.2);
   --clr-primary-100-5: rgba(255, 255, 255, 0.5);
   --clr-primary-100-9: rgba(255, 255, 255, 0.9);
-
   --clr-primary-900-4: rgba(19, 19, 19, 0.4);
 
-  /* Normal Colors */
+  /* Legacy Colors */
   --clr-primary-100: rgb(255, 255, 255);
   --clr-primary-900: rgb(19, 19, 19);
+
+  /* Z-Index Scale */
+  --z-base: 0;
+  --z-sticky: 10;
+  --z-nav: 50;
+  --z-dropdown: 100;
+  --z-modal: 200;
+  --z-toast: 300;
 }
 
 @font-face {
@@ -35,6 +50,8 @@ body {
   font-weight: 400;
   background-color: hsl(221.4 30% 8%);
   scrollbar-gutter: stable;
+  color: var(--gray-50);
+  line-height: 1.625;
 }
 
 body::-webkit-scrollbar {

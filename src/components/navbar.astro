@@ -7,10 +7,11 @@ import { siteConfig } from "@/config/site";
 ---
 
 <nav
-  class="fixed backdrop-blur-sm z-50 flex w-full items-center py-4 border-b border-b-gray-800 shadow-[0_0_120px_80px_rgba(0,0,0,0.1)] shadow-gray-700/10"
+  class="fixed backdrop-blur-sm flex w-full items-center py-4 border-b border-b-gray-800 shadow-[0_0_120px_80px_rgba(0,0,0,0.1)] shadow-gray-700/10"
+  style="z-index: var(--z-nav);"
 >
   <div
-    class="container mx-auto lg:px-48 md:px-24 px-8 flex items-center justify-between"
+    class="container mx-auto max-w-7xl px-4 sm:px-8 md:px-16 lg:px-24 flex items-center justify-between"
   >
     <div>
       <a href="/" class="text-xl hover:text-gray-200">
@@ -19,28 +20,33 @@ import { siteConfig } from "@/config/site";
     </div>
     <ul class="flex items-center gap-4 justify-end text-lg">
       <Button client:load asChild>
-        <a href="/now" class="flex items-center gap-2">
+        <a href="/now" class="flex items-center gap-2" aria-label="View what I'm doing now">
           <Icon name={icons.Now} />
+          <span class="sr-only">Now</span>
         </a>
       </Button>
       <Button client:load asChild>
-        <a href="/books" class="flex items-center gap-2">
+        <a href="/books" class="flex items-center gap-2" aria-label="View my book collection">
           <Icon name={icons.Books} />
+          <span class="sr-only">Books</span>
         </a>
       </Button>
       <Button client:load asChild>
-        <a href="/uses" class="flex items-center gap-2">
+        <a href="/uses" class="flex items-center gap-2" aria-label="View my tech stack">
           <Icon name={icons.Uses} />
+          <span class="sr-only">Uses</span>
         </a>
       </Button>
       <Button client:load asChild>
-        <a href="/blog" class="flex items-center gap-2">
+        <a href="/blog" class="flex items-center gap-2" aria-label="View my blog posts">
           <Icon name={icons.Blog} />
+          <span class="sr-only">Blog</span>
         </a>
       </Button>
       <Button client:load asChild>
-        <a href="/art-gallery" class="flex items-center gap-2">
+        <a href="/art-gallery" class="flex items-center gap-2" aria-label="View my art gallery">
           <Icon name={icons.Palette} />
+          <span class="sr-only">Art</span>
         </a>
       </Button>
     </ul>

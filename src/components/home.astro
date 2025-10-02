@@ -28,21 +28,24 @@ import Image from "astro/components/Image.astro";
         <a
           href={siteConfig.socials.github}
           target="_blank"
-          class="hover:text-gray-300 transition-colors"
+          aria-label="Visit Deveesh's GitHub profile"
+          class="p-3 -m-3 hover:text-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-md"
         >
           <Icon name={icons.GitHub} size={20} />
         </a>
         <a
           href={siteConfig.socials.linkedin}
           target="_blank"
-          class="hover:text-gray-300 transition-colors"
+          aria-label="Visit Deveesh's LinkedIn profile"
+          class="p-3 -m-3 hover:text-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-md"
         >
           <Icon name={icons.LinkedIn} size={20} />
         </a>
         <a
           href={siteConfig.socials.twitter}
           target="_blank"
-          class="hover:text-gray-300 transition-colors"
+          aria-label="Visit Deveesh's Twitter profile"
+          class="p-3 -m-3 hover:text-gray-300 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900 rounded-md"
         >
           <Icon name={icons.Twitter} size={20} />
         </a>
@@ -62,7 +65,7 @@ import Image from "astro/components/Image.astro";
   <div class="rounded-full">
     <Image
       src="/profile.png"
-      alt="Deveesh Profile"
+      alt=""
       class="rounded-lg outline-1 outline-gray-700"
       inferSize
       width={1000}

@@ -1,31 +1,76 @@
 import {
   type FormEvent,
   useState,
-  type ChangeEvent,
-  useEffect,
-  useRef,
+  type ChangeEvent, useRef
 } from "react"
 import axios from "axios"
 import { useToast } from "@/hooks/use-toast"
-import Loading from "@/components/ui/loading/loading"
 import Button from "@/components/ui/button"
+
+interface FormErrors {
+  email?: string
+  name?: string
+  message?: string
+}
 
 function ContactForm() {
   const [loading, setLoading] = useState(false)
+  const [errors, setErrors] = useState<FormErrors>({})
+  const [touched, setTouched] = useState<{ [key: string]: boolean }>({})
   const formRef = useRef<HTMLFormElement>(null)
   const { toast } = useToast()
+
+  const validateField = (name: string, value: string): string | undefined => {
+    switch (name) {
+      case "email":
+        if (!value) return "Email is required"
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+          return "Please enter a valid email address"
+        break
+      case "name":
+        if (!value) return "Name is required"
+        if (value.length < 2) return "Name must be at least 2 characters"
+        break
+      case "message":
+        if (!value) return "Message is required"
+        if (value.length < 10)
+          return "Message must be at least 10 characters"
+        break
+    }
+    return undefined
+  }
+
+  const handleBlur = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setTouched({ ...touched, [name]: true })
+    const error = validateField(name, value)
+    setErrors({ ...errors, [name]: error })
+  }
 
   async function handleFormSubmit(e: FormEvent) {
     e.preventDefault()
     const formData = new FormData(e.target as HTMLFormElement)
-    const email = formData.get("email")
-    const name = formData.get("name")
-    const message = formData.get("message")
+    const email = formData.get("email") as string
+    const name = formData.get("name") as string
+    const message = formData.get("message") as string
 
-    if (!email || !name || !message) {
+    // Mark all fields as touched
+    setTouched({ email: true, name: true, message: true })
+
+    // Validate all fields
+    const newErrors: FormErrors = {
+      email: validateField("email", email),
+      name: validateField("name", name),
+      message: validateField("message", message),
+    }
+
+    setErrors(newErrors)
+
+    // Check if there are any errors
+    if (Object.values(newErrors).some((error) => error)) {
       return toast({
         variant: "destructive",
-        title: "Please fill the fields",
+        title: "Please fix the errors in the form",
         duration: 5000,
       })
     }
@@ -45,6 +90,8 @@ function ContactForm() {
         })
         console.log("[SUCCESS] Mail sent by: ", email)
         formRef.current?.reset()
+        setErrors({})
+        setTouched({})
       } else {
         console.log("[ERROR] Send Mail API Response: ", response.data)
         return toast({
@@ -74,46 +121,92 @@ function ContactForm() {
     >
       <div className="grid grid-cols-2 gap-4">
         <div className="flex flex-col gap-1">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="text-gray-200">
+            Email <span className="text-red-400">*</span>
+          </label>
           <input
             type="email"
             name="email"
             id="email"
-            className="bg-gray-800 rounded-md p-2 outline-gray-700"
+            required
+            aria-required="true"
+            aria-invalid={touched.email && errors.email ? "true" : "false"}
+            aria-describedby={touched.email && errors.email ? "email-error" : undefined}
+            className={`bg-gray-800 rounded-md p-2 outline-none transition-all ${
+              touched.email && errors.email
+                ? "border-2 border-red-500 focus:ring-2 focus:ring-red-500"
+                : "border-2 border-gray-700 focus:ring-2 focus:ring-blue-500"
+            } focus:border-transparent`}
             placeholder="developer@domain.com"
+            onBlur={handleBlur}
           />
+          {touched.email && errors.email && (
+            <span id="email-error" className="text-red-400 text-sm mt-1">
+              {errors.email}
+            </span>
+          )}
         </div>
         <div className="flex flex-col gap-1">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name" className="text-gray-200">
+            Name <span className="text-red-400">*</span>
+          </label>
           <input
             type="text"
             name="name"
             id="name"
-            className="bg-gray-800 rounded-md p-2 outline-gray-700"
+            required
+            aria-required="true"
+            aria-invalid={touched.name && errors.name ? "true" : "false"}
+            aria-describedby={touched.name && errors.name ? "name-error" : undefined}
+            className={`bg-gray-800 rounded-md p-2 outline-none transition-all ${
+              touched.name && errors.name
+                ? "border-2 border-red-500 focus:ring-2 focus:ring-red-500"
+                : "border-2 border-gray-700 focus:ring-2 focus:ring-blue-500"
+            } focus:border-transparent`}
             placeholder="Developer X"
+            onBlur={handleBlur}
           />
+          {touched.name && errors.name && (
+            <span id="name-error" className="text-red-400 text-sm mt-1">
+              {errors.name}
+            </span>
+          )}
         </div>
       </div>
-      <div className="flex gap-4">
-        <div className="w-[80%]">
-          <label htmlFor="message" className="block mb-1">
-            Message
+      <div className="flex flex-col gap-4">
+        <div>
+          <label htmlFor="message" className="block mb-1 text-gray-200">
+            Message <span className="text-red-400">*</span>
           </label>
           <textarea
             name="message"
             id="message"
+            required
+            aria-required="true"
+            aria-invalid={touched.message && errors.message ? "true" : "false"}
+            aria-describedby={touched.message && errors.message ? "message-error" : undefined}
             placeholder="What's up?"
-            className="w-full bg-gray-800 rounded-md p-2 outline-gray-700 resize-none"
+            className={`w-full bg-gray-800 rounded-md p-2 outline-none transition-all resize-none ${
+              touched.message && errors.message
+                ? "border-2 border-red-500 focus:ring-2 focus:ring-red-500"
+                : "border-2 border-gray-700 focus:ring-2 focus:ring-blue-500"
+            } focus:border-transparent`}
             rows={3}
+            onBlur={handleBlur}
           ></textarea>
+          {touched.message && errors.message && (
+            <span id="message-error" className="text-red-400 text-sm mt-1 block">
+              {errors.message}
+            </span>
+          )}
         </div>
-        <div className="w-[20%] mt-auto mb-2">
+        <div className="flex justify-end">
           <Button
             type="submit"
             disabled={loading}
-            className="md:w-full w-full h-21 cursor-pointer"
+            className="w-32 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <span>{loading ? <Loading /> : "Send"}</span>
+            {loading ? "Sending..." : "Send"}
           </Button>
         </div>
       </div>
