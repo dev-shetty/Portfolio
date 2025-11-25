@@ -3,9 +3,8 @@ import BlogPost from "@/layouts/blog-post.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => {
-    return import.meta.env.DEV || !data.draft;
-  });
+  // Allow all posts (including drafts) to be accessible via direct link
+  const posts = await getCollection("blog");
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -29,6 +28,7 @@ const { Content } = await post.render();
   slug={post.slug}
   originalPost={post.data.originalPost}
   series={post.data.series}
+  draft={post.data.draft}
 >
   <Content />
 </BlogPost>

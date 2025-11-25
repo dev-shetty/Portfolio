@@ -11,6 +11,7 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  draft?: boolean;
   article?: {
     publishedTime: string;
     tags: string[];
@@ -18,7 +19,7 @@ interface Props {
   };
 }
 
-const { title, description, ogImage, article } = Astro.props;
+const { title, description, ogImage, draft, article } = Astro.props;
 const currentPath = Astro.url.pathname;
 
 import { generateBreadcrumbs } from "@/lib/breadcrumbs";
@@ -59,8 +60,19 @@ const breadcrumbData = generateBreadcrumbs({
     }
     <meta name="creator" content="dev-sheøtty" />
     <meta name="author" content="Deveesh Shetty" />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
+    {
+      draft ? (
+        <>
+          <meta name="robots" content="noindex, nofollow" />
+          <meta name="googlebot" content="noindex, nofollow" />
+        </>
+      ) : (
+        <>
+          <meta name="robots" content="index, follow" />
+          <meta name="googlebot" content="index, follow" />
+        </>
+      )
+    }
 
     <meta property="og:type" content={article ? "article" : "website"} />
     <meta property="og:locale" content="en_US" />

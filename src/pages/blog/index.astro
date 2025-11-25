@@ -4,7 +4,10 @@ import MainLayout from "@/layouts/main-layout.astro";
 import BlogCard from "@/components/blog/blog-card.astro";
 import H1 from "@/components/ui/typography/H1.astro";
 
-const posts = await getCollection("blog");
+const posts = await getCollection("blog", ({ data }) => {
+  // Filter out drafts in production
+  return import.meta.env.DEV || !data.draft;
+});
 
 // Sort by date and featured status
 const sortedPosts = posts.sort((a, b) => {

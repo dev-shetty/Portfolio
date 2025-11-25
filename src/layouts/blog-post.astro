@@ -4,7 +4,7 @@ import { formatDate } from "@/lib/helpers";
 import H1 from "@/components/ui/typography/H1.astro";
 import { Icon } from "astro-icon/components";
 import SeriesList from "../components/blog/series-list";
-import { getCollection } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 const {
   title,
@@ -15,15 +15,19 @@ const {
   slug,
   originalPost,
   series,
+  draft,
 } = Astro.props;
 
-// Get all posts in the same series
-let seriesPosts = [];
+// Get all posts in the same series (excluding drafts in production)
+let seriesPosts: CollectionEntry<"blog">[] = [];
 if (series) {
-  const allPosts = await getCollection("blog");
+  const allPosts = await getCollection("blog", ({ data }) => {
+    // Filter out drafts in production
+    return import.meta.env.DEV || !data.draft;
+  });
   seriesPosts = allPosts
     .filter((post) => post.data.series?.name === series.name)
-    .sort((a, b) => a.data.series.order - b.data.series.order);
+    .sort((a, b) => (a.data.series?.order ?? 0) - (b.data.series?.order ?? 0));
 }
 ---
 
@@ -31,6 +35,7 @@ if (series) {
   title={`${title} | Deveesh Shetty`}
   description={description}
   ogImage={coverImage}
+  draft={draft}
   article={{
     publishedTime: date,
     tags: tags,
