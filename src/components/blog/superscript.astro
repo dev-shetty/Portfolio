@@ -1,0 +1,23 @@
+---
+interface Props {
+  number: string | number;
+  href?: string;
+}
+
+const { number, href } = Astro.props;
+---
+
+{href ? (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="no-underline"
+    title="Reference"
+  >
+    <sup class="text-[#60a5fa] hover:text-[#93c5fd] align-super text-xs leading-none font-normal ml-0.5">[{number}]</sup>
+  </a>
+) : (
+  <sup class="text-[#60a5fa] align-super text-xs leading-none font-normal ml-0.5">[{number}]</sup>
+)}
+
