@@ -1,19 +1,19 @@
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid"
 
-type ExperienceType = "work" | "community" | "education";
+type ExperienceType = "work" | "community" | "education"
 
 interface Experience {
-  id: string;
-  title: string;
-  type: ExperienceType;
-  description?: string;
+  id: string
+  title: string
+  type: ExperienceType
+  description?: string
   organization: {
-    name: string;
-    url: string;
-    logo: string;
-  };
-  startDate: string;
-  endDate: string | null;
+    name: string
+    url: string
+    logo: string
+  }
+  startDate: string
+  endDate: string | null
 }
 
 const experiences: Experience[] = [
@@ -145,6 +145,20 @@ const experiences: Experience[] = [
   },
   {
     id: uuid(),
+    title: "Founding Member",
+    type: "community" as const,
+    description:
+      "Founding member of DK24, a community of students and professionals in Mangalore to learn, grow and build in public.",
+    organization: {
+      name: "DK24",
+      url: "https://dk24.org/",
+      logo: "/experiences/dk24.png",
+    },
+    startDate: "Dec 2024",
+    endDate: null,
+  },
+  {
+    id: uuid(),
     title: "Member",
     type: "community" as const,
     description: "Member of the IEEE Mangalore Subsection.",
@@ -210,14 +224,14 @@ const experiences: Experience[] = [
     startDate: "Jun 2021",
     endDate: "Jun 2025",
   },
-].sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate));
+].sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate))
 
-export const workExperiences = experiences.filter((exp) => exp.type === "work");
+export const workExperiences = experiences.filter((exp) => exp.type === "work")
 export const communityExperiences = experiences.filter(
   (exp) => exp.type === "community"
-);
+)
 export const educationExperiences = experiences.filter(
   (exp) => exp.type === "education"
-);
+)
 
-export { experiences };
+export { experiences }
