@@ -1,14 +1,14 @@
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid"
 
 type Talk = {
-  id: string;
-  title: string;
-  organizer: string;
-  description: string;
-  date: string;
-  blog: string | null;
-  video: string | null;
-};
+  id: string
+  title: string
+  organizer: string
+  description: string
+  date: string
+  blog: string | null
+  video: string | null
+}
 
 export const talks: Talk[] = [
   {
@@ -52,6 +52,16 @@ export const talks: Talk[] = [
   },
   {
     id: uuid(),
+    title: "DevTools tricks you'll wonder how you coded without.",
+    organizer: "Manipal Dot Net, FOSS United Mangalore",
+    description:
+      "Showing how to debug and optimize web applications using browser debugger.",
+    date: "27 October, 2024",
+    blog: null,
+    video: null,
+  },
+  {
+    id: uuid(),
     title: "Inside the Server, Outside the Browser",
     organizer: "TechMang, UniCourt",
     description:
@@ -60,4 +70,53 @@ export const talks: Talk[] = [
     blog: null,
     video: null,
   },
-];
+  {
+    id: uuid(),
+    title: "Breakup with UseEffect, Fetch Like a Pro",
+    organizer: "HackersMang, UniCourt",
+    description:
+      "Demonstrating Tanstack Query (React Query),  a modern, framework-agnostic library that makes managing server-side state on the client side a breeze.",
+    date: "23 August, 2025",
+    blog: null,
+    video: null,
+  },
+  {
+    id: uuid(),
+    title: "DevTools - Building Performant Web Apps",
+    organizer: "DK24",
+    description:
+      "Exploring the power of browser developer tools to analyze, debug, and optimize web applications for maximum performance.",
+    date: "24 August, 2025",
+    blog: null,
+    video: "https://youtu.be/7O3dfNva1xU?si=fGjxYPiM8Pz8idIa",
+  },
+  {
+    id: uuid(),
+    title: "Sharing my learnings from contributing to AstroJS",
+    organizer: "Karmic Design, FOSS United Mangalore",
+    description: "My experience in contributing a feature to AstroJS.",
+    date: "12 October, 2025",
+    blog: null,
+    video: null,
+  },
+  {
+    id: uuid(),
+    title: "Code Forward: AI • Developer • Productivity",
+    organizer: "FOSS Club CE Vadakara",
+    description:
+      "Exploring the integration of AI in developer workflows and its impact on productivity, and building Todo list on steroids using Generative UI.",
+    date: "2 November, 2025",
+    blog: null,
+    video: "https://youtu.be/4kJlW0Cj7z0?si=1-R8x-1yYyT9EIuJ",
+  },
+  {
+    id: uuid(),
+    title: "Building AI First Applications On Web",
+    organizer: "Nexus, Srinivas Institute of Technology",
+    description:
+      "Building Copilot like autocomplete and AI Agents using Vercel AI SDK.",
+    date: "22 November, 2025",
+    blog: null,
+    video: null,
+  },
+].sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
