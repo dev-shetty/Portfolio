@@ -3,8 +3,8 @@ export const siteConfig = {
   logo: "/panda.png",
   description:
     "I'm a Frontend Developer and a geek who loves to code and build things.",
-  url: "https://dev.shetty.dev",
-  ogImage: "https://dev.shetty.dev/og.jpg",
+  url: "https://dev.shetty.me",
+  ogImage: "https://dev.shetty.me/og.png",
   socials: {
     twitter: "https://twitter.com/ShettyDeveesh",
     github: "https://github.com/dev-shetty",
@@ -16,4 +16,4 @@ export const siteConfig = {
     linkedin: "deveesh-shetty",
     devTo: "@devshetty",
   },
-};
+}

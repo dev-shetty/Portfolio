@@ -2,8 +2,8 @@ export const siteConfig = {
   name: "Deveesh Shetty",
   description:
     "Portfolio Site of Deveesh Shetty, a Frontend Developer showcasing his projects and experiences",
-  url: "https://deveesh.vercel.app",
-  ogImage: "https://deveesh.vercel.app/og.jpg",
+  url: "https://dev.shetty.me",
+  ogImage: "https://dev.shetty.me/og.png",
   socials: {
     twitter: "https://twitter.com/ShettyDeveesh",
     github: "https://github.com/dev-shetty",
@@ -16,4 +16,4 @@ export const siteConfig = {
     linkedin: "deveesh-shetty",
     devTo: "@devshetty",
   },
-};
+}
