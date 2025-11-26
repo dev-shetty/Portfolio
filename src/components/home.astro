@@ -7,7 +7,7 @@ import { Icon } from "astro-icon/components";
 import Image from "astro/components/Image.astro";
 ---
 
-<section class="flex flex-col-reverse xl:flex-row items-center gap-16 my-16">
+<section class="flex flex-col-reverse xl:flex-row items-center gap-16 md:my-16 mt-8 mb-16">
   <div class="flex flex-col gap-8">
     <div class="flex flex-col gap-4">
       <H1>Deveesh Shetty</H1>
@@ -62,11 +62,11 @@ import Image from "astro/components/Image.astro";
       </a>
     </div>
   </div>
-  <div class="rounded-full">
+  <div class="rounded-full max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg mx-auto">
     <Image
       src="/profile.png"
       alt=""
-      class="rounded-lg outline-1 outline-gray-700"
+      class="rounded-lg outline-1 outline-gray-700 w-full h-auto"
       inferSize
       width={1000}
       height={1000}
