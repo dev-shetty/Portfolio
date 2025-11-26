@@ -117,10 +117,10 @@ const experiences: Experience[] = [
   },
   {
     id: uuid(),
-    title: "Core Team - FOSS Mangalore",
+    title: "Core Team - Mangalore",
     type: "community" as const,
     description:
-      "Organizing and conducting events to promote Free and Open Source Software in Mangalore.",
+      "Organizing events to promote Free and Open Source Software in Mangalore.",
     organization: {
       name: "FOSS United",
       url: "https://fossunited.org/",
