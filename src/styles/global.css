@@ -2,14 +2,14 @@
 
 :root {
   /* Standardized Gray Scale */
-  --gray-50: #f9fafb;    /* Brightest text / primary text */
-  --gray-200: #e5e7eb;   /* Secondary text */
-  --gray-300: #d1d5db;   /* Tertiary text */
-  --gray-400: #9ca3af;   /* Muted text / timestamps */
-  --gray-600: #4b5563;   /* Borders (hover) */
-  --gray-700: #374151;   /* Borders / dividers */
-  --gray-800: #1f2937;   /* Subtle backgrounds / inputs */
-  --gray-900: #111827;   /* Primary backgrounds / cards */
+  --gray-50: #f9fafb; /* Brightest text / primary text */
+  --gray-200: #e5e7eb; /* Secondary text */
+  --gray-300: #d1d5db; /* Tertiary text */
+  --gray-400: #9ca3af; /* Muted text / timestamps */
+  --gray-600: #4b5563; /* Borders (hover) */
+  --gray-700: #374151; /* Borders / dividers */
+  --gray-800: #1f2937; /* Subtle backgrounds / inputs */
+  --gray-900: #111827; /* Primary backgrounds / cards */
 
   /* Z-Index Scale */
   --z-base: 0;
@@ -56,8 +56,7 @@ body::-webkit-scrollbar-thumb {
   cursor: pointer;
 }
 
-:is(p, q, h1, h2, h3, h4, h5, h6)::selection,
-:is(a, label, input, textarea, button)::selection {
+::selection {
   background-color: rgba(255, 255, 255, 0.9);
   color: rgb(19, 19, 19);
 }
