@@ -35,18 +35,18 @@ const years = Object.keys(booksByYear).sort((a, b) => Number(b) - Number(a));
           books.length
         }*.
       </p>
-      <div class="flex gap-4 mt-4 text-sm text-gray-400">
+      <div class="flex flex-wrap gap-3 md:gap-4 mt-4 text-sm text-gray-400">
         <div class="flex items-center gap-1.5">
           <Icon name={icons.Star} class="w-3.5 h-3.5 text-yellow-400" />
-          <span>Recommended</span>
+          <span class="whitespace-nowrap">Recommended</span>
         </div>
         <div class="flex items-center gap-1.5">
           <Icon name={icons.Refresh} class="w-3.5 h-3.5 text-blue-400" />
-          <span>Will Re-read</span>
+          <span class="whitespace-nowrap">Will Re-read</span>
         </div>
         <div class="flex items-center gap-1.5">
           <Icon name={icons.Blog} class="w-3.5 h-3.5 text-green-400" />
-          <span>Notes Available</span>
+          <span class="whitespace-nowrap">Notes Available</span>
         </div>
       </div>
     </div>

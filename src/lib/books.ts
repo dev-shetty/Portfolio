@@ -9,19 +9,45 @@ export interface Book {
   status: "reading" | "completed"
   completedYear?: number
   notionLink?: string
+  tags?: string[]
 }
 
 export const books: Book[] = [
   {
-    name: "The Compound Effect",
-    author: "Darren Hardy",
+    name: "Thinking Fast and Slow",
+    author: "Daniel Kahneman",
     status: "reading",
+    tags: ["Psychology"],
   },
   {
-    name: "Why Bharat Matters",
-    author: "S Jaishankar",
+    name: "The Recursive Book on Recursion",
+    author: "Al Sweigart",
     status: "reading",
+    tags: ["Tech"],
   },
+  {
+    name: "Investing 101",
+    author: "Michele Cagan",
+    status: "completed",
+    completedYear: 2025,
+    willReRead: false,
+    isRecommended: true,
+    tags: ["Finance"],
+  },
+  {
+    name: "The Compound Effect",
+    author: "Darren Hardy",
+    status: "completed",
+    completedYear: 2025,
+    willReRead: false,
+    isRecommended: true,
+    tags: ["Self-help"],
+  },
+  // {
+  //   name: "Why Bharat Matters",
+  //   author: "S Jaishankar",
+  //   status: "reading",
+  // },
   {
     name: "Shiva Trilogy: Part 1 - The Immortals of Meluha",
     author: "Amish",
@@ -29,6 +55,7 @@ export const books: Book[] = [
     completedYear: 2025,
     willReRead: false,
     isRecommended: true,
+    tags: ["Mythological Fiction"],
   },
   {
     name: "Shiva Trilogy: Part 2 - The Secret of the Nagas",
@@ -37,6 +64,7 @@ export const books: Book[] = [
     completedYear: 2025,
     willReRead: false,
     isRecommended: true,
+    tags: ["Mythological Fiction"],
   },
   {
     name: "Shiva Trilogy: Part 3 - The Oath of the Vayuputras",
@@ -45,6 +73,7 @@ export const books: Book[] = [
     completedYear: 2025,
     willReRead: false,
     isRecommended: true,
+    tags: ["Mythological Fiction"],
   },
   {
     name: "21 career hacks for developers: A career guide for Software Engineers",
@@ -53,6 +82,7 @@ export const books: Book[] = [
     completedYear: 2025,
     willReRead: false,
     isRecommended: true,
+    tags: ["Tech"],
   },
   {
     name: "Merlin's Tour of The Universe",
@@ -61,6 +91,7 @@ export const books: Book[] = [
     completedYear: 2025,
     willReRead: false,
     isRecommended: true,
+    tags: ["Astronomy", "Science"],
   },
   {
     name: "The Hard Thing About Hard Things",
@@ -69,6 +100,7 @@ export const books: Book[] = [
     completedYear: 2025,
     willReRead: false,
     isRecommended: true,
+    tags: ["Business"],
   },
   {
     name: "Never Split the Difference",
@@ -77,6 +109,7 @@ export const books: Book[] = [
     completedYear: 2025,
     isRecommended: true,
     willReRead: true,
+    tags: ["Psychology"],
   },
   {
     name: "The Art of Thinking Clearly",
@@ -85,6 +118,7 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: true,
     completedYear: 2025,
+    tags: ["Self-help", "Psychology"],
   },
   {
     name: "Proof: The uncertain science of certainity",
@@ -95,6 +129,7 @@ export const books: Book[] = [
       "Skim read the last few chapters, worth if you're curious about maths origins, and probability.",
     willReRead: false,
     completedYear: 2025,
+    tags: ["Science"],
   },
   {
     name: "Don't believe everything you think",
@@ -106,6 +141,7 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://www.notion.so/Don-t-believe-everything-you-think-1a35e52c1e1980678745d20f7dfbe991",
+    tags: ["Self-help"],
   },
   {
     name: "Rich Dad Poor Dad",
@@ -117,6 +153,7 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://www.notion.so/Rich-Dad-Poor-Dad-21a5e52c1e1980a889e8e77c8e246fb8",
+    tags: ["Finance"],
   },
   {
     name: "Attitude is Everything",
@@ -128,6 +165,7 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://www.notion.so/Attitude-is-Everything-21a5e52c1e1980eea754cdd32f05cba4",
+    tags: ["Self-help"],
   },
   {
     name: "Drive",
@@ -138,6 +176,7 @@ export const books: Book[] = [
     completedYear: 2024,
     thoughts: "Available on Notion",
     notionLink: "https://www.notion.so/Drive-21a5e52c1e1980418328df1a89134d1a",
+    tags: ["Self-help"],
   },
   {
     name: "Transform your Self Talk",
@@ -149,6 +188,7 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://www.notion.so/Transform-your-Self-Talk-21a5e52c1e198012b09bf9a77f3aa614",
+    tags: ["Self-help"],
   },
   {
     name: "Rework",
@@ -159,6 +199,7 @@ export const books: Book[] = [
     completedYear: 2025,
     thoughts: "Available on Notion",
     notionLink: "https://www.notion.so/Rework-21a5e52c1e1980bb92a2e2c89ce4028a",
+    tags: ["Self-help", "Business"],
   },
   {
     name: "The Art of Laziness",
@@ -167,6 +208,7 @@ export const books: Book[] = [
     isRecommended: false,
     willReRead: false,
     completedYear: 2025,
+    tags: ["Self-help"],
   },
   {
     name: "Eat that Frog",
@@ -178,6 +220,7 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://www.notion.so/Eat-that-Frog-21a5e52c1e198080a866da32fe7305ed",
+    tags: ["Self-help", "Productivity"],
   },
   {
     name: "Daiva",
@@ -186,6 +229,7 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: false,
     completedYear: 2025,
+    tags: ["Indian History"],
   },
   {
     name: "The Almanack of Naval Ravikant",
@@ -194,6 +238,7 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: true,
     completedYear: 2024,
+    tags: ["Self-help"],
   },
   {
     name: "Flirting with Stocks",
@@ -202,6 +247,7 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: false,
     completedYear: 2025,
+    tags: ["Finance"],
   },
   {
     name: "Focus on What Matters",
@@ -210,6 +256,7 @@ export const books: Book[] = [
     isRecommended: false,
     willReRead: false,
     completedYear: 2024,
+    tags: ["Self-help"],
   },
   {
     name: "Do Epic Shit",
@@ -221,6 +268,7 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://www.notion.so/Do-Epic-Shit-21a5e52c1e198088885dcdcb1086f802",
+    tags: ["Self-help"],
   },
   {
     name: "Ikigai",
@@ -231,6 +279,7 @@ export const books: Book[] = [
     completedYear: 2024,
     thoughts: "Available on Notion",
     notionLink: "https://www.notion.so/Ikigai-21a5e52c1e19807791c9cdf3d04978c4",
+    tags: ["Self-help"],
   },
   {
     name: "Mahagatha",
@@ -239,6 +288,7 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: false,
     completedYear: 2025,
+    tags: ["Indian History"],
   },
   {
     name: "The Power of Your Subconscious Mind",
@@ -250,6 +300,7 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://www.notion.so/The-Power-of-Your-Subconscious-Mind-21a5e52c1e198014b887ea60a667b15f",
+    tags: ["Self-help"],
   },
   {
     name: "The Psychology of Money",
@@ -258,6 +309,7 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: true,
     completedYear: 2024,
+    tags: ["Finance"],
   },
   {
     name: "Steve Jobs",
@@ -266,6 +318,7 @@ export const books: Book[] = [
     isRecommended: false,
     willReRead: false,
     completedYear: 2024,
+    tags: ["Biography"],
   },
   {
     name: "The Subtle Art of Not Giving a F*ck",
@@ -274,6 +327,7 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: true,
     completedYear: 2025,
+    tags: ["Self-help"],
   },
   {
     name: "Atomic Habits",
@@ -282,6 +336,7 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: true,
     completedYear: 2023,
+    tags: ["Self-help"],
   },
   {
     name: "Deep Work",
@@ -290,6 +345,7 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: false,
     completedYear: 2025,
+    tags: ["Productivity"],
   },
   {
     name: "Who Moved My Cheese",
@@ -301,6 +357,7 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://www.notion.so/Who-Moved-My-Cheese-21a5e52c1e1980c59de9f115f31f0f18",
+    tags: ["Self-help"],
   },
   {
     name: "Start with Why",
@@ -312,6 +369,7 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://www.notion.so/Start-with-Why-21a5e52c1e1980c9a1c1e0f5469e1f3c",
+    tags: ["Self-help", "Business"],
   },
   {
     name: "Zero to One",
@@ -320,6 +378,7 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: true,
     completedYear: 2025,
+    tags: ["Business"],
   },
   {
     name: "Remote",
@@ -328,6 +387,7 @@ export const books: Book[] = [
     isRecommended: false,
     willReRead: false,
     completedYear: 2025,
+    tags: ["Business"],
   },
   {
     name: "Principles",
@@ -336,5 +396,15 @@ export const books: Book[] = [
     isRecommended: true,
     willReRead: false,
     completedYear: 2025,
+    tags: ["Self-help"],
+  },
+  {
+    name: "Advanced React: Deep dives, Investigations, Performance Patterns and Techniques",
+    author: "Nadia Makarevich",
+    status: "completed",
+    isRecommended: true,
+    willReRead: false,
+    completedYear: 2025,
+    tags: ["Tech"],
   },
 ]

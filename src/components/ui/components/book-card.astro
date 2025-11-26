@@ -1,5 +1,5 @@
 ---
-import type { Book } from "@/lib/books";
+import { books, type Book } from "@/lib/books";
 import { icons } from "@/lib/icons";
 import { Icon } from "astro-icon/components";
 
@@ -11,16 +11,30 @@ const { book } = Astro.props;
 
 const hasThoughts = !!book.notionLink;
 const slug = hasThoughts ? book.name.toLowerCase().replace(/\s+/g, "-") : null;
+
+const tagColors: Record<string, string> = {
+  "Psychology": "bg-purple-500/20 text-purple-300",
+  "Finance": "bg-green-500/20 text-green-300",
+  "Self-help": "bg-blue-500/20 text-blue-300",
+  "Business": "bg-orange-500/20 text-orange-300",
+  "Tech": "bg-cyan-500/20 text-cyan-300",
+  "Productivity": "bg-pink-500/20 text-pink-300",
+  "Science": "bg-indigo-500/20 text-indigo-300",
+  "Biography": "bg-yellow-500/20 text-yellow-300",
+  "Indian History": "bg-red-500/20 text-red-300",
+  "Mythological Fiction": "bg-violet-500/20 text-violet-300",
+  "Astronomy": "bg-blue-600/20 text-blue-300",
+};
 ---
 
-<div class="bg-white/5 p-3 rounded-lg relative group">
+<div class="bg-white/5 p-3 rounded-lg flex flex-col gap-3 min-h-[120px]">
   {
     hasThoughts ? (
       <a
         href={book.notionLink}
         target="_blank"
         rel="noopener noreferrer"
-        class="block"
+        class="block flex-1"
       >
         <div class="book-content">
           <h3 class="font-medium leading-snug line-clamp-2">{book.name}</h3>
@@ -30,31 +44,44 @@ const slug = hasThoughts ? book.name.toLowerCase().replace(/\s+/g, "-") : null;
         </div>
       </a>
     ) : (
-      <div class="book-content">
+      <div class="book-content flex-1">
         <h3 class="font-medium leading-snug line-clamp-2">{book.name}</h3>
         {book.author && <p class="text-gray-400 text-xs mt-1">{book.author}</p>}
       </div>
     )
   }
-  <div class="absolute bottom-2 right-2 flex gap-1.5">
-    <span title={book.isRecommendedComments || "Recommended"}>
-      <Icon
-        name={icons.Star}
-        class={`w-3.5 h-3.5 ${book.isRecommended ? "text-yellow-400" : "text-gray-600"}`}
-      />
-    </span>
-    <span title={book.willReReadComments || "Will re-read"}>
-      <Icon
-        name={icons.Refresh}
-        class={`w-3.5 h-3.5 ${book.willReRead ? "text-blue-400" : "text-gray-600"}`}
-      />
-    </span>
-    <span title="Notes available">
-      <Icon
-        name={icons.Blog}
-        class={`w-3.5 h-3.5 ${hasThoughts ? "text-green-400" : "text-gray-600"}`}
-      />
-    </span>
+  
+  <div class="flex items-start justify-between gap-2 mt-auto">
+    {book.tags && book.tags.length > 0 && (
+      <div class="flex flex-wrap gap-1 flex-1 items-start">
+        {book.tags.map((tag) => (
+          <span class={`text-xs px-1.5 py-0.5 rounded whitespace-nowrap ${tagColors[tag] || "bg-gray-500/20 text-gray-300"}`}>
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+
+    {book.status === "completed" && <div class="flex gap-1.5 shrink-0 pt-0.5">
+      <span title={book.isRecommended ? "Recommended" : "Not recommended"}>
+        <Icon
+          name={icons.Star}
+          class={`w-3.5 h-3.5 ${book.isRecommended ? "text-yellow-400" : "text-gray-600"}`}
+        />
+      </span>
+      <span title={book.willReRead ? "Will re-read" : "Will not re-read"}>
+        <Icon
+          name={icons.Refresh}
+          class={`w-3.5 h-3.5 ${book.willReRead ? "text-blue-400" : "text-gray-600"}`}
+        />
+      </span>
+      <span title={hasThoughts ? "Notes available" : "No notes available"}>
+        <Icon
+          name={icons.Blog}
+          class={`w-3.5 h-3.5 ${hasThoughts ? "text-green-400" : "text-gray-600"}`}
+        />
+      </span>
+    </div>}
   </div>
 </div>
 
