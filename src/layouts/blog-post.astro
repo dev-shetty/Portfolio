@@ -5,6 +5,7 @@ import H1 from "@/components/ui/typography/H1.astro";
 import { Icon } from "astro-icon/components";
 import SeriesList from "../components/blog/series-list";
 import { getCollection, type CollectionEntry } from "astro:content";
+import { siteConfig } from "@/config/site";
 
 const {
   title,
@@ -34,7 +35,7 @@ if (series) {
 <MainLayout
   title={`${title} | Deveesh Shetty`}
   description={description}
-  ogImage={coverImage}
+  ogImage={`${siteConfig.url}/api/og/blog/${slug}`}
   draft={draft}
   article={{
     publishedTime: date,

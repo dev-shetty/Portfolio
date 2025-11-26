@@ -23,6 +23,7 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/vite": "^4.1.4",
     "@vercel/analytics": "^1.5.0",
+    "@vercel/og": "^0.8.5",
     "astro": "^5.14.1",
     "astro-icon": "^1.1.5",
     "axios": "^1.12.0",

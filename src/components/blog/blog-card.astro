@@ -5,6 +5,11 @@ import { cn } from "@/lib/helpers";
 import { Icon } from "astro-icon/components";
 import { icons } from "@/lib/icons";
 
+interface CardLayoutClassProps {
+  coverImage: string;
+  isFeatured: boolean;
+}
+
 export interface Props {
   title: string;
   description: string;
@@ -45,6 +50,25 @@ const truncatedDescription = truncateByWords(
 
 const href = redirect || `/blog/${slug}`;
 const target = redirect ? "_blank" : "_self";
+
+function getCardLayoutClass({ coverImage, isFeatured }: CardLayoutClassProps) {
+  if (isFeatured) {
+    return coverImage
+      ? "md:grid md:grid-cols-2 md:gap-8 bg-gradient-to-br from-gray-900/80 to-gray-900/40 p-6 rounded-xl mb-8 relative border border-gray-700 hover:border-gray-600"
+      : "bg-gradient-to-br from-gray-900/80 to-gray-900/40 p-6 rounded-xl mb-8 relative border border-gray-700 hover:border-gray-600";
+  }
+  return "md:flex md:gap-6 items-center first:border-t-0 flex-col-reverse";
+}
+
+function getCardClass({ coverImage, isFeatured }: CardLayoutClassProps) {
+  if (isFeatured) {
+    return "bg-transparent shadow-none border-none h-full border-b-0";
+  }
+  return cn(
+    "h-full border-b-0",
+    coverImage ? "md:w-2/3" : ""
+  );
+}
 ---
 
 <a
@@ -52,14 +76,12 @@ const target = redirect ? "_blank" : "_self";
   target={target}
   class={cn(
     "flex flex-col md:flex-row transition-all hover:bg-gray-900/20 border-t border-gray-700 pt-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black",
-    isFeatured
-      ? "md:grid md:grid-cols-2 md:gap-8 bg-gradient-to-br from-gray-900/80 to-gray-900/40 p-6 rounded-xl mb-8 relative border border-gray-700 hover:border-gray-600"
-      : "md:flex md:gap-6 items-center first:border-t-0 flex-col-reverse"
+    getCardLayoutClass({ coverImage, isFeatured })
   )}
 >
   {
     isFeatured && (
-      <div class="absolute -top-3 -left-3 bg-gradient-to-br from-amber-400 to-amber-600 p-2 rounded-full shadow-lg">
+      <div class="absolute -top-3 -left-3 bg-linear-to-br from-amber-400 to-amber-600 p-2 rounded-full shadow-lg">
         <Icon name={icons.Star} class="w-4 h-4 text-gray-900" />
       </div>
     )
@@ -82,10 +104,7 @@ const target = redirect ? "_blank" : "_self";
     )
   }
   <Card
-    className={cn(
-      "h-full border-b-0",
-      isFeatured ? "bg-transparent shadow-none border-none" : "md:w-2/3"
-    )}
+    className={getCardClass({ coverImage, isFeatured })}
   >
     <div slot="title">
       <h2
