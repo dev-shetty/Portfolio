@@ -86,7 +86,7 @@ export async function GET({ props }: { props: Props }) {
                   "div",
                   {
                     style: {
-                      fontSize: "64px",
+                      fontSize: "72px",
                       fontWeight: "bold",
                       color: "#ffffff",
                       lineHeight: 1.2,
@@ -99,7 +99,7 @@ export async function GET({ props }: { props: Props }) {
                   "div",
                   {
                     style: {
-                      fontSize: "28px",
+                      fontSize: "36px",
                       color: "#a1a1aa",
                       lineHeight: 1.4,
                       marginTop: "12px",
@@ -107,35 +107,7 @@ export async function GET({ props }: { props: Props }) {
                   },
                   post.data.description
                 ),
-                post.data.tags &&
-                  createElement(
-                    "div",
-                    {
-                      style: {
-                        display: "flex",
-                        gap: "12px",
-                        flexWrap: "wrap",
-                        marginTop: "24px",
-                      },
-                    },
-                    post.data.tags.slice(0, 4).map((tag: string) =>
-                      createElement(
-                        "div",
-                        {
-                          key: tag,
-                          style: {
-                            padding: "8px 20px",
-                            backgroundColor: "#23262f",
-                            borderRadius: "8px",
-                            fontSize: "20px",
-                            color: "#a1a1aa",
-                          },
-                        },
-                        tag
-                      )
-                    )
-                  ),
-              ].filter(Boolean)
+              ]
             ),
             createElement(
               "div",
