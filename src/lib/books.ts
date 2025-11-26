@@ -43,11 +43,6 @@ export const books: Book[] = [
     isRecommended: true,
     tags: ["Self-help"],
   },
-  // {
-  //   name: "Why Bharat Matters",
-  //   author: "S Jaishankar",
-  //   status: "reading",
-  // },
   {
     name: "Shiva Trilogy: Part 1 - The Immortals of Meluha",
     author: "Amish",
@@ -142,6 +137,15 @@ export const books: Book[] = [
     notionLink:
       "https://www.notion.so/Don-t-believe-everything-you-think-1a35e52c1e1980678745d20f7dfbe991",
     tags: ["Self-help"],
+  },
+  {
+    name: "Refactoring UI",
+    author: "Adam Wathan, Steve Schoger",
+    status: "completed",
+    completedYear: 2025,
+    willReRead: true,
+    isRecommended: true,
+    tags: ["Tech"],
   },
   {
     name: "Rich Dad Poor Dad",
