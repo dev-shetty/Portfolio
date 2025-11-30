@@ -1,6 +1,6 @@
 ---
 title: "Self-hosting slides from sli.dev"
-description: "Selfhosting my slides on my VPS using nginx, with a detailed guide on how to setup a subdomain and reverse proxy to your VPS."
+description: "Selfhosting my slides on my VPS using nginx, with a detailed guide on how to setup a subdomain and nginx to serve your static files."
 date: 2025-11-30
 
 tags: ["Self-hosting", "Nginx", "Sli.dev"]
@@ -35,7 +35,7 @@ To host those files
 
 1. You need to build the slides which you just wrote
 2. Send them over to your VPS or any server,
-3. Configure your domain and use nginx as reverse proxy
+3. Configure your domain and use nginx to serve your static files
 
 I am assuming you have nginx setup, if not you can [read this](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04)
 
@@ -47,7 +47,7 @@ It's quite simple, to generate static files for sli.dev
 
 If you want to host the slides in a page inside your domain, then
 
-<CodeBlock language="bash" code={`npx slidev build --base /<path-slug>`} />
+<CodeBlock language="bash" code={`npx slidev build --base /<path-slug>/`} />
 
 `path-slug` is the path where you want your slides to show up, for eg. `https://slides.shetty.me/chrome-ai-apis/` here `chrome-ai-apis` is the `path-slug`
 
@@ -74,7 +74,7 @@ If you are hosting it directly in your domain then you can exclude the `<subdoma
 
 Note: `<subdomain-name>` is `slides` whereas `<subdomain>` is `slides.example.com` ie the full hostname
 
-## Setting up reverse proxy to your subdomain
+## Setting up nginx to serve your static files
 
 If you have already configured the subdomain in nginx config, you can skip this step
 
@@ -124,6 +124,8 @@ sudo systemctl reload nginx`}
 />
 
 Now if you visit your `<subdomain>/<path-slug>`, you can see the slides. 🎉
+
+This all can be automated using CI/CD pipeline, maybe a blog post for future :)
 
 Additionaly, I have added an `index.html` to the root of the folder at [`/var/www/<subdomain-name>`](https://slides.shetty.me) where I link all the slides I have hosted.
 
