@@ -1,0 +1,178 @@
+---
+title: "Self-hosting slides from sli.dev"
+description: "Selfhosting my slides on my VPS using nginx, with a detailed guide on how to setup a subdomain and reverse proxy to your VPS."
+date: 2025-11-30
+
+tags: ["Self-hosting", "Nginx", "Sli.dev"]
+coverImage: ""
+---
+
+import CodeBlock from "@/components/blog/code-block.astro"
+
+Recently while watching, [@Coding Garden](https://youtu.be/g6_e5Mj7Hzw?si=_dJqGIQVwauM2SVS) I came across sli.dev, which he uses to build slides for his presentations.
+
+From then I wanted to try it, recently I got a chance while preparing for my talk at [Hackersmang](https://www.linkedin.com/feed/update/urn:li:activity:7400442590375903232/)
+
+## Why I love sli.dev
+
+It always felt like a hassle to create presentations in GUI editors like slides or figma, I had to manually arrange the elements, move my mouse a lot to do something, struggle picking colors from the picker, manually size the images to align it correct (again moving my mouse), add what not.
+
+[Sli.dev](https://sli.dev/guide/) basically solves all of the above problems, and also gives you ability to annotate, record, present, export, have beautiful code transitions, and what not.
+
+And that too with code. Yes, markdown files. I can use tailwind classes to style the elements, while using markdown for the typography, and using HTML tags for features like videos and images.
+
+Because of this you can **self-host** the slides, for eg. I have my slides at [`slides.shetty.me`](https://slides.shetty.me). This is so neat to share the slides with anyone.
+
+As mentioned, this blog will focus mainly on the hosting part, while I might write a detailed post on sli.dev in future when I have some experience creating more slides.
+
+For now you can see the [slides source code](https://gist.github.com/dev-shetty/60c0c39c4229467b820addea52802808), and the [hosted slides](https://slides.shetty.me/chrome-ai-apis/) of my recent talk on Chrome AI APIs.
+
+## Self-hosting your slides
+
+Sli.dev uses `vite` to build your applications, which means it can generate you static files which you can directly throw anywhere without any need to run a node server.
+
+To host those files
+
+1. You need to build the slides which you just wrote
+2. Send them over to your VPS or any server,
+3. Configure your domain and use nginx as reverse proxy
+
+I am assuming you have nginx setup, if not you can [read this](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04)
+
+## Generating the slides static files
+
+It's quite simple, to generate static files for sli.dev
+
+<CodeBlock language="bash" code={`npx slidev build`} />
+
+If you want to host the slides in a page inside your domain, then
+
+<CodeBlock language="bash" code={`npx slidev build --base /<path-slug>`} />
+
+`path-slug` is the path where you want your slides to show up, for eg. `https://slides.shetty.me/chrome-ai-apis/` here `chrome-ai-apis` is the `path-slug`
+
+Remember the `path-slug` which you used, you will need it later.
+
+The static files will be stored in the `dist/` folder.
+
+## Sending the static files to your server
+
+This step is only needed if you are building the static assets on your personal device.
+
+If you are building your slides on your server you can skip this step, ie by either cloning from GitHub and generating static files
+
+We are using [rsync](https://x.com/ShettyDeveesh/status/1965751860238668130#m) to send the files
+
+<CodeBlock
+  language="bash"
+  code={`rsync -avz --delete dist/ <user>@<server-ip>:/var/www/<subdomain-name>/<path-slug>/`}
+/>
+
+We are copying it to `var/www/` since that's where nginx hosts the static files.
+
+If you are hosting it directly in your domain then you can exclude the `<subdomain-name>` in the path.
+
+Note: `<subdomain-name>` is `slides` whereas `<subdomain>` is `slides.example.com` ie the full hostname
+
+## Setting up reverse proxy to your subdomain
+
+If you have already configured the subdomain in nginx config, you can skip this step
+
+Create a new file in `etc/nginx/sites-available/<subdomain-name>`
+
+Add this configuration inside it
+
+<CodeBlock
+  language="nginx"
+  code={`server {
+    listen 80;
+    server_name <subdomain>;
+
+    root /var/www/<subdomain-name>;
+    index index.html;
+
+    # Serve each deck's own index.html when deep-linked
+    location ~ ^/([^/]+)/ {
+      root /var/www/<subdomain-name>;
+      try_files $uri $uri/ /$1/index.html;
+    }
+
+}`}
+/>
+
+The above regex is used to match the URL params and match it with the nested files, otherwise page reload will fallback to `/`
+
+You can generate SSL certificates using [cert-bot](https://certbot.eff.org/instructions?ws=nginx&os=pip) so your slides will be accessible over `https`.
+
+Make sure you have the DNS configured for your subdomain in your domain registrar.
+
+Now you need to enable this subdomain by [soft linking](https://x.com/ShettyDeveesh/status/1965485368628670637#m) the file
+
+<CodeBlock
+  language="bash"
+  code={`sudo ln -s /etc/nginx/sites-available/<subdomain> /etc/nginx/sites-enabled/`}
+/>
+
+## Final touches
+
+If you followed till without error you should be golden, to make sure nginx serves the recently updated content:
+
+<CodeBlock
+  language="bash"
+  code={`sudo nginx -t
+sudo systemctl reload nginx`}
+/>
+
+Now if you visit your `<subdomain>/<path-slug>`, you can see the slides. 🎉
+
+Additionaly, I have added an `index.html` to the root of the folder at [`/var/www/<subdomain-name>`](https://slides.shetty.me) where I link all the slides I have hosted.
+
+Awesome, thanks for reading till the end, hope this brings new level to your presentations.
+
+## Some helpful notes
+
+<details>
+  <summary>I don't have an VPS, can i still host?</summary>
+  Yes, you can throw those static files to any provider like netlify or vercel, it should work perfectly fine.
+
+Just that it hides all the complexity we just went through above :)
+
+</details>
+
+<details>
+  <summary>If you face permission error while transferring file to your server</summary>
+
+Most likely the case can be because you cant directly write to `/var/www` without `sudo`
+
+As workaround for this, you can copy the files to some temporary folder then move it to `/var/www` by ssh'ing into your vps and using `sudo` to move.
+
+</details>
+
+<details>
+  <summary>If you face error while reloading nginx</summary>
+
+It can happen because of any misconfigurations in your file, make sure you followed the commands above correctly, if the issue still persists, you can run it through you favourite LLM :)
+
+</details>
+
+<details>
+  <summary>If you face 403 error on opening your site</summary>
+
+It might be because nginx doesnt have permissions to read your files, you can either transfer ownership or give explicit permissions
+
+This solved the issue for me
+
+<CodeBlock
+  language="bash"
+  code={`sudo chown -R www-data:www-data /var/www/<subdomain-name>`}
+/>
+
+Alternatively,
+
+<CodeBlock
+  language="bash"
+  code={`sudo chmod -R o+r /var/www/slides
+chmod -R o+X /var/www/slides`}
+/>
+
+</details>

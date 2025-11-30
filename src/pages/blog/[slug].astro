@@ -54,7 +54,6 @@ const { Content } = await post.render();
   }
 
   .prose a {
-    color: #60a5fa;
     text-decoration: underline;
     text-decoration-color: #60a5fa;
     text-underline-offset: 2px;
@@ -122,12 +121,15 @@ const { Content } = await post.render();
 
   .prose code {
     background-color: #23262f;
+    color: #EB5757;
     padding: 0.2rem 0.4rem;
     border-radius: 0.25rem;
     font-weight: 400;
+    font-size: 0.875rem;
   }
 
   .prose pre code {
+    color: #ffffff;
     background-color: transparent;
     padding: 0;
     border-radius: 0;
@@ -163,5 +165,36 @@ const { Content } = await post.render();
 
   .prose li::marker {
     color: #71717a;
+  }
+
+  .prose details {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+  }
+
+  .prose summary {
+    cursor: pointer;
+    font-size: 1.125rem;
+    margin: 0.5rem 0;
+    padding-left: 0.5rem;
+    list-style-position: outside;
+  }
+
+  .prose summary::marker {
+    color: #71717a;
+  }
+
+  .prose details[open] {
+    background-color: #1a1d24;
+    padding: 1rem 1.5rem;
+    padding-top: 0;
+    border-radius: 0.5rem;
+    border-right: 3px solid #3f3f46;
+  }
+
+  .prose details[open] summary {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-weight: 600;
   }
 </style>
