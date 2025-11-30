@@ -78,7 +78,7 @@ Note: `<subdomain-name>` is `slides` whereas `<subdomain>` is `slides.example.co
 
 If you have already configured the subdomain in nginx config, you can skip this step
 
-Create a new file in `etc/nginx/sites-available/<subdomain-name>`
+Create a new file in `/etc/nginx/sites-available/<subdomain-name>`
 
 Add this configuration inside it
 
@@ -104,7 +104,7 @@ The above regex is used to match the URL params and match it with the nested fil
 
 You can generate SSL certificates using [cert-bot](https://certbot.eff.org/instructions?ws=nginx&os=pip) so your slides will be accessible over `https`.
 
-Make sure you have the DNS configured for your subdomain in your domain registrar.
+Make sure your DNS has an **A Record** pointing from `<subdomain>` to your VPS IP.
 
 Now you need to enable this subdomain by [soft linking](https://x.com/ShettyDeveesh/status/1965485368628670637#m) the file
 
