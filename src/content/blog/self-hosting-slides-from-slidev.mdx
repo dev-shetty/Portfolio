@@ -91,6 +91,13 @@ Add this configuration inside it
     root /var/www/<subdomain-name>;
     index index.html;
 
+    # Serve static assets FIRST
+    location ~* \.(png|jpg|jpeg|gif|svg|ico|js|css|woff|woff2|ttf|eot)$ {
+        try_files $uri =404;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
     # Serve each deck's own index.html when deep-linked
     location ~ ^/([^/]+)/ {
       root /var/www/<subdomain-name>;
@@ -132,6 +139,12 @@ Additionaly, I have added an `index.html` to the root of the folder at [`/var/ww
 Awesome, thanks for reading till the end, hope this brings new level to your presentations.
 
 ## Some helpful notes
+
+<details>
+  <summary>How can add SEO to my slides?</summary>
+  Sli.dev has you covered, [SEO Meta Tags](https://sli.dev/features/seo-meta)
+
+</details>
 
 <details>
   <summary>I don't have an VPS, can i still host?</summary>
