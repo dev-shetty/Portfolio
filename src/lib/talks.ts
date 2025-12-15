@@ -107,7 +107,7 @@ export const talks: Talk[] = [
       "Exploring the integration of AI in developer workflows and its impact on productivity, and building Todo list on steroids using Generative UI.",
     date: "2 November, 2025",
     blog: null,
-    video: "https://youtu.be/4kJlW0Cj7z0?si=1-R8x-1yYyT9EIuJ",
+    video: "https://tinyurl.com/Code-forward",
   },
   {
     id: uuid(),
