@@ -13,17 +13,45 @@ export interface Book {
 }
 
 export const books: Book[] = [
+
+  {
+    name: "Building Micro-Frontends: Distributed Systems for the Frontend",
+    author: "Luca Mezzalira",
+    status: "reading",
+    tags: ["Tech"],
+  },
+  {
+    name: "Why Bharat Matters",
+    author: "S Jaishankar",
+    status: "reading",
+    tags: ["Politics"],
+  },
   {
     name: "Thinking Fast and Slow",
     author: "Daniel Kahneman",
-    status: "reading",
+    status: "completed",
     tags: ["Psychology"],
+    completedYear: 2026,
+    isRecommended: true,
+    willReRead: false,
   },
   {
-    name: "The Recursive Book on Recursion",
-    author: "Al Sweigart",
-    status: "reading",
-    tags: ["Tech"],
+    name: "Mahabharata",
+    author: "C Rajagopalachari",
+    status: "completed",
+    tags: ["Indian History"],
+    completedYear: 2026,
+    isRecommended: true,
+    willReRead: false,
+  },
+  {
+    name: "The Art of Public Speaking",
+    author: "Dale Carnegie",
+    status: "completed",
+    tags: ["Self-help"],
+    completedYear: 2026,
+    isRecommended: false,
+    willReRead: false,
   },
   {
     name: "Investing 101",
