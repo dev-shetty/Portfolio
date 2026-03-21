@@ -144,6 +144,14 @@ export const tools: Tool[] = [
     link: "https://arc.net",
   },
   {
+    name: "Opencode",
+    description:
+      "It just gets it right, and the UX is pleasing. Most of my code is written here now.",
+    category: "Productivity",
+    cost: "Free",
+    link: "https://opencode.ai",
+  },
+  {
     name: "Raycast",
     description:
       "Well, life made easier, the first thing I will install if i get a new Mac. Builtin clipboard, file search, calculator, focus mode, and so much more.",
