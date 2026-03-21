@@ -1,5 +1,5 @@
 ---
-import { books, type Book } from "@/lib/books";
+import { type Book, tagColors } from "@/lib/books";
 import { icons } from "@/lib/icons";
 import { Icon } from "astro-icon/components";
 
@@ -10,21 +10,6 @@ interface Props {
 const { book } = Astro.props;
 
 const hasThoughts = !!book.notionLink;
-const slug = hasThoughts ? book.name.toLowerCase().replace(/\s+/g, "-") : null;
-
-const tagColors: Record<string, string> = {
-  "Psychology": "bg-purple-500/20 text-purple-300",
-  "Finance": "bg-green-500/20 text-green-300",
-  "Self-help": "bg-blue-500/20 text-blue-300",
-  "Business": "bg-orange-500/20 text-orange-300",
-  "Tech": "bg-cyan-500/20 text-cyan-300",
-  "Productivity": "bg-pink-500/20 text-pink-300",
-  "Science": "bg-indigo-500/20 text-indigo-300",
-  "Biography": "bg-yellow-500/20 text-yellow-300",
-  "Indian History": "bg-red-500/20 text-red-300",
-  "Mythological Fiction": "bg-violet-500/20 text-violet-300",
-  "Astronomy": "bg-blue-600/20 text-blue-300",
-};
 ---
 
 <div class="bg-white/5 p-3 rounded-lg flex flex-col gap-3 min-h-[120px]">

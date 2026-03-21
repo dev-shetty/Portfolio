@@ -1,3 +1,50 @@
+export const GENRES = [
+  "Psychology",
+  "Finance",
+  "Self-help",
+  "Business",
+  "Tech",
+  "Productivity",
+  "Science",
+  "Biography",
+  "Indian History",
+  "Mythological Fiction",
+  "Astronomy",
+  "Science Fiction",
+] as const;
+
+export type Genre = (typeof GENRES)[number];
+
+export const tagColors: Record<Genre, string> = {
+  "Psychology": "bg-purple-500/20 text-purple-300",
+  "Finance": "bg-green-500/20 text-green-300",
+  "Self-help": "bg-blue-500/20 text-blue-300",
+  "Business": "bg-orange-500/20 text-orange-300",
+  "Tech": "bg-cyan-500/20 text-cyan-300",
+  "Productivity": "bg-pink-500/20 text-pink-300",
+  "Science": "bg-indigo-500/20 text-indigo-300",
+  "Biography": "bg-yellow-500/20 text-yellow-300",
+  "Indian History": "bg-red-500/20 text-red-300",
+  "Mythological Fiction": "bg-violet-500/20 text-violet-300",
+  "Astronomy": "bg-blue-600/20 text-blue-300",
+  "Science Fiction": "bg-emerald-500/20 text-emerald-300",
+};
+
+export const tagSpineColors: Record<Genre, string> = {
+  "Psychology": "#5b3a6e",
+  "Finance": "#3a5f4a",
+  "Self-help": "#3a4f6e",
+  "Business": "#6e4f2a",
+  "Tech": "#2a5560",
+  "Productivity": "#6e3a55",
+  "Science": "#3a3f6e",
+  "Biography": "#5f5530",
+  "Indian History": "#6e3535",
+  "Mythological Fiction": "#4a3a6e",
+  "Astronomy": "#2a3f6e",
+  "Science Fiction": "#2a5e4a",
+};
+
 export interface Book {
   name: string
   author: string
@@ -9,8 +56,17 @@ export interface Book {
   status: "reading" | "completed"
   completedYear?: number
   notionLink?: string
-  tags?: string[]
+  tags?: Genre[]
 }
+
+export const TOP_READS: Book["name"][] = [
+  "Thinking Fast and Slow",
+  "Don't believe everything you think",
+  "Investing 101",
+  "The Power of Your Subconscious Mind",
+  "Shiva Trilogy: Part 1 - The Immortals of Meluha",
+  "The Art of Thinking Clearly",
+];
 
 export const books: Book[] = [
 
@@ -455,3 +511,7 @@ export const books: Book[] = [
     tags: ["Tech"],
   },
 ]
+
+export const topReads = TOP_READS
+  .map((name) => books.find((b) => b.name === name)!)
+  .filter(Boolean);
