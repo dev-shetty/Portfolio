@@ -34,32 +34,39 @@ export const tools: Tool[] = [
   {
     name: "iPad Air M3 + Apple Pencil Pro",
     description:
-      "Love this for reading, jotting down notes, and for watching videos.",
+      "Love this for reading, jotting down notes, and for watching movies.",
     category: "Desk",
     link: "https://www.apple.com/ipad-air/",
   },
   {
     name: "Raspberry Pi 3 B",
-    description: "Experimenting with it. Currently using it as NAS",
+    description: "Experimenting with it.",
     category: "Desk",
     link: "https://www.raspberrypi.com/products/",
   },
   {
-    name: "Redmi Note 9",
-    description: "My daily driver phone, been 6 years, going strong.",
+    name: "Apple iPhone 17 Pro",
+    description: "Finally after 6 years of using my old device, shelled out and bought a good one from my earnings.",
     category: "Desk",
+    link: "https://www.apple.com/iphone-17-pro/",
+  },
+  {
+    name: "JBL Tour One M2",
+    description: "Over the ear headphones, the bluetooth is mediocre, but paired with Hi-Res DAC, pure bliss 🎧",
+    category: "Desk",
+    link: "https://amzn.in/d/00j6c91a",
+  },
+  {
+    name: "Headphone Zone X DDHiFi: Hi-Res DAC",
+    description: "Thanks to Apple for not supporing lossless over bluetooth.",
+    category: "Desk",
+    link: "https://www.headphonezone.in/products/headphone-zone-x-ddhifi-hi-res-dac?variant=43318422372540",
   },
   {
     name: "Realme Buds Air 6 Pro",
-    description: "Daily on the go TWS, like the reflective surface.",
+    description: "When my headphones are not around; like the reflective surface.",
     category: "Desk",
     link: "http://dl.flipkart.com/dl/realme-buds-air-6-pro-50db-anc-360-spatial-audio-upto-40-hours-playback-bluetooth/p/itm94db9ce66b9bf",
-  },
-  {
-    name: "Jabra Evolve2 30",
-    description: "Wired, and literally cancels all background noise on call.",
-    category: "Desk",
-    link: "https://amzn.in/d/7wdKpGS",
   },
   {
     name: "Portonics Extension Board",
@@ -69,16 +76,24 @@ export const tools: Tool[] = [
   },
   {
     name: "Greensoul New York Ergonomic Chair",
-    description: "Long sitting hours, and this chair is a lifesaver.",
+    description: "Long sitting hours, there could be better options out there.",
     category: "Desk",
   },
   {
     name: "Cursor Pro",
     description:
-      "Primary code editor with AI capabilities, autocomplete has become part of my life.",
+      "Primary code editor with AI capabilities, autocomplete has become part of my life. Thanks to Levels",
     category: "Development",
     cost: "$20/month",
     link: "https://cursor.sh",
+  },
+  {
+    name: "Claude Max",
+    description:
+      "My goto AI agent for coding, and general purpose tasks. Thanks to Levels again.",
+    category: "Development",
+    cost: "$100/month",
+    link: "https://claude.com/pricing/max",
   },
   {
     name: "Ghostty",
@@ -87,12 +102,12 @@ export const tools: Tool[] = [
     link: "https://ghostty.org",
   },
   {
-    name: "VPS (IONOS)",
+    name: "VPS (Hetzner)",
     description:
-      "Got it for cheap, use it as reverse proxy to host my personal projects, and self host a few things. Might switch to my Pi in future.",
+      "Used for hosting my personal projects, and self hosting a few things. Homelab is the final goal.",
     category: "Development",
     cost: "$5/month",
-    link: "https://www.ionos.com/servers/vps",
+    link: "https://www.hetzner.com/cloud",
   },
   {
     name: "Zen Browser",
@@ -108,11 +123,11 @@ export const tools: Tool[] = [
     link: "https://zen-browser.app/",
   },
   {
-    name: "Perplexity",
-    description: "My goto search engine at this point.",
+    name: "T3.chat",
+    description: "My default AI for searching things and research.",
     category: "Development",
-    cost: "$20/month",
-    link: "https://www.perplexity.ai",
+    cost: "$8/month",
+    link: "https://t3.chat",
   },
   {
     name: "Notion",
@@ -142,6 +157,12 @@ export const tools: Tool[] = [
     category: "Productivity",
   },
   {
+    name: "Apple Music",
+    description: "Finally made a switch from YT Music, for lossless music, and better recommendations. Songshift is goated.",
+    cost: "₹149/month",
+    category: "Productivity",
+  },
+  {
     name: "Yabai",
     description:
       "Mac window managament sucks, and this is far far better, and it's Open Source.",
@@ -156,13 +177,6 @@ export const tools: Tool[] = [
     link: "https://github.com/sxyazi/yazi",
   },
   {
-    name: "Olauncher",
-    description:
-      "Open source dumb launcher for your phone, using it from past 2 years.",
-    category: "Productivity",
-    link: "https://github.com/tanujnotes/Olauncher",
-  },
-  {
     name: "Nebo",
     description: "A great alternative to Freeform, and a lot more flexible.",
     category: "Productivity",
@@ -175,6 +189,20 @@ export const tools: Tool[] = [
     category: "Productivity",
     cost: "From my employer",
     link: "https://1password.com",
+  },
+  {
+    name: "Macrofactor Workout",
+    description: "Tracking my workouts, and progress.",
+    category: "Productivity",
+    cost: "₹6900/year",
+    link: "https://macrofactor.com/workouts/",
+  },
+  {
+    name: "Spokenly",
+    description: "Free speech to text, runs local models on your machine. Both desktop and mobile.",
+    category: "Productivity",
+    cost: "Free",
+    link: "https://spokenly.app",
   },
   {
     name: "Handtool Kit",

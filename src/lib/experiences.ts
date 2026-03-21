@@ -131,6 +131,20 @@ const experiences: Experience[] = [
   },
   {
     id: uuid(),
+    title: "City Lead - Mangalore",
+    type: "community" as const,
+    description:
+      "City lead of FOSS United Mangalore, organizing events to promote Free and Open Source Software in Mangalore.",
+    organization: {
+      name: "FOSS United",
+      url: "https://fossunited.org/mangalore/",
+      logo: "/experiences/foss.svg",
+    },
+    startDate: "Jan 2026",
+    endDate: null,
+  },
+  {
+    id: uuid(),
     title: "Associate Member - TiE Mangaluru",
     type: "community" as const,
     description:
@@ -195,7 +209,7 @@ const experiences: Experience[] = [
       logo: "/experiences/ieee.png",
     },
     startDate: "Dec 2024",
-    endDate: null,
+    endDate: "Mar 2026",
   },
   {
     id: uuid(),

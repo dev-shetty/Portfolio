@@ -119,4 +119,44 @@ export const talks: Talk[] = [
     blog: null,
     video: null,
   },
+  {
+    id: uuid(),
+    title: "Designing, Deploying, and Scaling Microfrontends on Google Kubernetes Engine (GKE)",
+    organizer: "Devfest, GDG Mangalore",
+    description:
+      "A demo session on designing microfrontends and scaling them on Google Kubernetes Engine (GKE) with Darshan Bhandary.",
+    date: "13 December, 2025",
+    blog: null,
+    video: null,
+  },
+  {
+    id: uuid(),
+    title: "Introduction to Client-Server Architecture, and make your apps communicate",
+    organizer: "GDG on Campus, SCEM",
+    description:
+      "An introductory session on client-server architecture fundamentals, exploring key concepts like requests, responses, protocols, and practical communication patterns to help developers enable seamless connectivity between their apps.",
+    date: "16 December, 2025",
+    blog: null,
+    video: "https://drive.google.com/file/d/1wjdN7KQEhKqgsKZIqYOha3OOUQMaP_M_/view?usp=drive_link",
+  },
+  {
+    id: uuid(),
+    title: "From Logs to Insights: Mastering the ELK Stack",
+    organizer: "MangaloreFOSS, FOSS United Mangalore",
+    description:
+      "A hands-on workshop on how to collect, process, search, and visualize logs from real-world applications to gain meaningful insights for monitoring, debugging, and security analysis, with Darshan Bhandary, and Harshith Poojary.",
+    date: "18 January, 2026",
+    blog: "https://www.linkedin.com/posts/fossunitedmangalore_from-logs-to-insights-mastering-the-elk-ugcPost-7424846492106092547-2DTP",
+    video: null,
+  },
+  {
+    id: uuid(),
+    title: "Event- Driven Backends Made Simple with Motia.js",
+    organizer: "TechMang, Wrkwrk",
+    description:
+      "A session on how to model backend logic as event-triggered flows, replacing tangled async code and fragile cron-based solutions with clean, reliable workflows.",
+    date: "31 January, 2026",
+    blog: "https://www.linkedin.com/posts/hackersmang_techmang26-techmang26-ugcPost-7422915298179092480-s54h",
+    video: null,
+  },
 ].sort((a, b) => Date.parse(b.date) - Date.parse(a.date))

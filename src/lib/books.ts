@@ -21,10 +21,25 @@ export const books: Book[] = [
     tags: ["Tech"],
   },
   {
-    name: "Why Bharat Matters",
-    author: "S Jaishankar",
+    name: "The Martian",
+    author: "Andy Weir",
     status: "reading",
-    tags: ["Politics"],
+    tags: ["Science Fiction"],
+  },
+  {
+    name: "What If?",
+    author: "Randall Munroe",
+    status: "reading",
+    tags: ["Science"],
+  },
+  {
+    name: "Steal Like an Artist",
+    author: "Austin Kleon",
+    status: "completed",
+    tags: ["Self-help"],
+    completedYear: 2026,
+    isRecommended: true,
+    willReRead: true,
   },
   {
     name: "Thinking Fast and Slow",
