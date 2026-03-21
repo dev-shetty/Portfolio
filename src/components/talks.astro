@@ -5,6 +5,8 @@ import Container from "@/components/ui/sections/container.astro";
 import { icons } from "@/lib/icons";
 import { talks } from "@/lib/talks";
 import { Icon } from "astro-icon/components";
+import RetroTVTeaser from "@/components/retro-tv/RetroTVTeaser";
+import "@/components/retro-tv/retro-tv.css";
 
 const INITIAL_LIMIT = 3;
 ---
@@ -25,44 +27,62 @@ const INITIAL_LIMIT = 3;
       />
     </Button>
   </Fragment>
-  <Fragment slot="vertical-grid">
-    {
-      talks.map((talk, index) => (
-        <div class:list={[{ hidden: index >= INITIAL_LIMIT }]} data-talks>
-          <Card>
-            <Fragment slot="title">{talk.title}</Fragment>
-            <Fragment slot="description">
-              {talk.description}{" "}
-              {talk.blog !== null && (
-                <a href={talk.blog} target="_blank" class="underline">
-                  Read more <Icon name={icons.Visit} class="inline" />
-                </a>
-              )}
-            </Fragment>
-            <Fragment slot="custom-footer">
-              <div class="flex gap-2">
-                <p class="font-bold">{talk.organizer}</p>
-                <p>&#8226;</p>
-                <p>{talk.date}</p>
-                {talk.video !== null && (
-                  <>
-                    <p>&#8226;</p>
-                    <a
-                      href={talk.video}
-                      target="_blank"
-                      class="flex items-center gap-1 hover:text-gray-200"
-                    >
-                      <Icon name={icons.YouTube} /> Watch Recording
-                    </a>
-                  </>
-                )}
+  <div slot="vertical-grid">
+    <div class="flex gap-6 lg:gap-10">
+      <!-- Talks list -->
+      <div class="flex-1 min-w-0">
+        <div class="grid gap-8 xl:gap-4">
+          {
+            talks.map((talk, index) => (
+              <div
+                class:list={[{ hidden: index >= INITIAL_LIMIT }]}
+                data-talks
+              >
+                <Card>
+                  <Fragment slot="title">{talk.title}</Fragment>
+                  <Fragment slot="description">
+                    {talk.description}{" "}
+                    {talk.blog !== null && (
+                      <a href={talk.blog} target="_blank" class="underline">
+                        Read more <Icon name={icons.Visit} class="inline" />
+                      </a>
+                    )}
+                  </Fragment>
+                  <Fragment slot="custom-footer">
+                    <div class="flex gap-2">
+                      <p class="font-bold">{talk.organizer}</p>
+                      <p>&#8226;</p>
+                      <p>{talk.date}</p>
+                      {talk.video !== null && (
+                        <>
+                          <p>&#8226;</p>
+                          <a
+                            href={talk.video}
+                            target="_blank"
+                            class="flex items-center gap-1 hover:text-gray-200"
+                          >
+                            <Icon name={icons.YouTube} /> Watch Recording
+                          </a>
+                        </>
+                      )}
+                    </div>
+                  </Fragment>
+                </Card>
               </div>
-            </Fragment>
-          </Card>
+            ))
+          }
         </div>
-      ))
-    }
-  </Fragment>
+      </div>
+
+      <!-- Retro TV (desktop only) -->
+      <div class="hidden lg:flex flex-col items-center justify-center shrink-0" style="width: 220px;" transition:persist>
+        <RetroTVTeaser client:visible talks={talks} transition:persist />
+        <p class="text-center mt-3" style="font-family: 'Press Start 2P', monospace; font-size: 6px; color: #374151; letter-spacing: 1px;">
+          EXPLORE TALKS
+        </p>
+      </div>
+    </div>
+  </div>
 </Container>
 
 <script>

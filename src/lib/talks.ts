@@ -1,5 +1,3 @@
-import { v4 as uuid } from "uuid"
-
 type Talk = {
   id: string
   title: string
@@ -8,29 +6,32 @@ type Talk = {
   date: string
   blog: string | null
   video: string | null
+  image: string | null
 }
 
 export const talks: Talk[] = [
   {
-    id: uuid(),
+    id: "commit-to-success",
     title: "Commit to Success",
     organizer: "SOSC",
     description: "Hands-on session on Introduction to Git and GitHub.",
     date: "14 July, 2023",
     blog: "https://www.sosc.org.in/events/commit-to-success",
     video: null,
+    image: null,
   },
   {
-    id: uuid(),
+    id: "api-101",
     title: "API 101 - Introduction to APIs",
     organizer: "Postman and SOSC",
     description: "Hands-on session on Introduction to API.",
     date: "15 Oct, 2023",
     blog: "https://www.sosc.org.in/events/API_101-Workshop",
     video: "https://www.youtube.com/watch?v=UUGHJh-EgDs",
+    image: null,
   },
   {
-    id: uuid(),
+    id: "promising-with-js",
     title: "Promising with JavaScript",
     organizer: "DevHost by SOSC",
     description:
@@ -39,9 +40,10 @@ export const talks: Talk[] = [
     blog: null,
     video:
       "https://www.youtube.com/live/84TgdSg4bVY?si=T1uLhzBhfqaN_i_t&t=7419",
+    image: null,
   },
   {
-    id: uuid(),
+    id: "branching-with-git",
     title: "Branching with Git",
     organizer: "Department of CSE and SOSC",
     description:
@@ -49,9 +51,10 @@ export const talks: Talk[] = [
     date: "7 June, 2024",
     blog: null,
     video: null,
+    image: null,
   },
   {
-    id: uuid(),
+    id: "devtools-tricks",
     title: "DevTools tricks you'll wonder how you coded without.",
     organizer: "Manipal Dot Net, FOSS United Mangalore",
     description:
@@ -59,9 +62,10 @@ export const talks: Talk[] = [
     date: "27 October, 2024",
     blog: null,
     video: null,
+    image: null,
   },
   {
-    id: uuid(),
+    id: "inside-server-outside-browser",
     title: "Inside the Server, Outside the Browser",
     organizer: "TechMang, UniCourt",
     description:
@@ -69,9 +73,10 @@ export const talks: Talk[] = [
     date: "1 Feb, 2025",
     blog: null,
     video: null,
+    image: "/talks/inside-server-outside-browser.webp",
   },
   {
-    id: uuid(),
+    id: "breakup-with-useeffect",
     title: "Breakup with UseEffect, Fetch Like a Pro",
     organizer: "HackersMang, UniCourt",
     description:
@@ -79,9 +84,10 @@ export const talks: Talk[] = [
     date: "23 August, 2025",
     blog: null,
     video: null,
+    image: "/talks/breakup-with-useeffect.webp",
   },
   {
-    id: uuid(),
+    id: "devtools-performant-web-apps",
     title: "DevTools - Building Performant Web Apps",
     organizer: "DK24",
     description:
@@ -89,18 +95,20 @@ export const talks: Talk[] = [
     date: "24 August, 2025",
     blog: null,
     video: "https://youtu.be/7O3dfNva1xU?si=fGjxYPiM8Pz8idIa",
+    image: "/talks/devtools-performant-web-apps.webp",
   },
   {
-    id: uuid(),
+    id: "contributing-to-astrojs",
     title: "Sharing my learnings from contributing to AstroJS",
     organizer: "Karmic Design, FOSS United Mangalore",
     description: "My experience in contributing a feature to AstroJS.",
     date: "12 October, 2025",
     blog: null,
     video: null,
+    image: "/talks/contributing-to-astrojs.webp",
   },
   {
-    id: uuid(),
+    id: "code-forward-ai",
     title: "Code Forward: AI • Developer • Productivity",
     organizer: "FOSS Club CE Vadakara",
     description:
@@ -108,9 +116,10 @@ export const talks: Talk[] = [
     date: "2 November, 2025",
     blog: null,
     video: "https://tinyurl.com/Code-forward",
+    image: "/talks/code-forward-ai.webp",
   },
   {
-    id: uuid(),
+    id: "building-ai-first-apps",
     title: "Building AI First Applications On Web",
     organizer: "Nexus, Srinivas Institute of Technology",
     description:
@@ -118,9 +127,21 @@ export const talks: Talk[] = [
     date: "22 November, 2025",
     blog: null,
     video: null,
+    image: "/talks/building-ai-first-apps.webp",
   },
   {
-    id: uuid(),
+    id: "browser-can-do-this",
+    title: "Wait, my browser can do this?",
+    organizer: "Hackersmang, UniCourt",
+    description:
+      "Execute powerful AI tasks—translation, summarization, proofreading, prompting, and more—completely on your browser, with no server calls and no cloud dependencies.",
+    date: "29 November, 2025",
+    blog: null,
+    video: null,
+    image: "/talks/browser-can-do-this.webp",
+  },
+  {
+    id: "microfrontends-gke",
     title: "Designing, Deploying, and Scaling Microfrontends on Google Kubernetes Engine (GKE)",
     organizer: "Devfest, GDG Mangalore",
     description:
@@ -128,35 +149,39 @@ export const talks: Talk[] = [
     date: "13 December, 2025",
     blog: null,
     video: null,
+    image: "/talks/microfrontends-gke.webp",
   },
   {
-    id: uuid(),
+    id: "client-server-architecture",
     title: "Introduction to Client-Server Architecture, and make your apps communicate",
     organizer: "GDG on Campus, SCEM",
     description:
-      "An introductory session on client-server architecture fundamentals, exploring key concepts like requests, responses, protocols, and practical communication patterns to help developers enable seamless connectivity between their apps.",
+      "Exploring client-server architecture fundamentals — requests, responses, protocols, and communication patterns.",
     date: "16 December, 2025",
     blog: null,
     video: "https://drive.google.com/file/d/1wjdN7KQEhKqgsKZIqYOha3OOUQMaP_M_/view?usp=drive_link",
+    image: "/talks/client-server-architecture.webp",
   },
   {
-    id: uuid(),
+    id: "elk-stack",
     title: "From Logs to Insights: Mastering the ELK Stack",
     organizer: "MangaloreFOSS, FOSS United Mangalore",
     description:
-      "A hands-on workshop on how to collect, process, search, and visualize logs from real-world applications to gain meaningful insights for monitoring, debugging, and security analysis, with Darshan Bhandary, and Harshith Poojary.",
+      "Hands-on workshop on collecting, processing, and visualizing logs for monitoring and debugging, with Darshan Bhandary and Harshith Poojary.",
     date: "18 January, 2026",
     blog: "https://www.linkedin.com/posts/fossunitedmangalore_from-logs-to-insights-mastering-the-elk-ugcPost-7424846492106092547-2DTP",
     video: null,
+    image: "/talks/elk-stack.webp",
   },
   {
-    id: uuid(),
+    id: "motiajs",
     title: "Event- Driven Backends Made Simple with Motia.js",
     organizer: "TechMang, Wrkwrk",
     description:
-      "A session on how to model backend logic as event-triggered flows, replacing tangled async code and fragile cron-based solutions with clean, reliable workflows.",
+      "Modeling backend logic as event-triggered flows with clean, reliable workflows, with Darshan Bhandary.",
     date: "31 January, 2026",
     blog: "https://www.linkedin.com/posts/hackersmang_techmang26-techmang26-ugcPost-7422915298179092480-s54h",
     video: null,
+    image: "/talks/motiajs.webp",
   },
 ].sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
