@@ -71,6 +71,11 @@ export const TOP_READS: Book["name"][] = [
 export const books: Book[] = [
 
   {
+    name: "Animal Farm",
+    author: "George Orwell",
+    status: "reading",
+  },
+  {
     name: "Building Micro-Frontends: Distributed Systems for the Frontend",
     author: "Luca Mezzalira",
     status: "reading",
