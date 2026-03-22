@@ -1,0 +1,516 @@
+/* ── Backdrop ── */
+.art-book-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal, 200);
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: abFadeIn 0.3s ease;
+}
+
+@keyframes abFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Book Container ── */
+.art-book-container {
+  width: min(88vw, 960px);
+  height: min(70vh, 620px);
+  max-height: calc(100vh - 120px);
+  max-height: calc(100dvh - 120px);
+  position: relative;
+}
+
+/* ── Page Wrapper ── */
+.art-book-page-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.5),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Layering ── */
+.art-book-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.art-book-layer > * {
+  width: 100%;
+  height: 100%;
+}
+
+.art-book-layer.base {
+  z-index: 1;
+}
+
+.art-book-layer.exit {
+  z-index: 2;
+  pointer-events: none;
+  backface-visibility: hidden;
+}
+
+/* ── Page Curl: Next (old page peels from right edge) ── */
+.art-book-layer.exit.curl-next {
+  transform-origin: left center;
+  will-change: transform, opacity;
+  animation: pageCurlNext 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pageCurlNext {
+  0% {
+    transform: perspective(2000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(2000px) rotateY(-90deg);
+  }
+}
+
+/* ── Page Curl: Prev (old page peels from left edge) ── */
+.art-book-layer.exit.curl-prev {
+  transform-origin: right center;
+  will-change: transform, opacity;
+  animation: pageCurlPrev 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes pageCurlPrev {
+  0% {
+    transform: perspective(2000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(2000px) rotateY(90deg);
+  }
+}
+
+/* Curl shadow that slides across during animation */
+.curl-shadow {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.curl-shadow.next {
+  animation: curlShadowSlideNext 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.curl-shadow.prev {
+  animation: curlShadowSlidePrev 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes curlShadowSlideNext {
+  0% {
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.12) 0%,
+      transparent 4%
+    );
+    opacity: 0;
+  }
+  30% {
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.08) 0%,
+      transparent 8%
+    );
+    opacity: 1;
+    transform: translateX(-10%);
+  }
+  70% {
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.15) 0%,
+      transparent 12%
+    );
+    opacity: 0.8;
+    transform: translateX(-50%);
+  }
+  100% {
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0.05) 0%,
+      transparent 6%
+    );
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes curlShadowSlidePrev {
+  0% {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.12) 0%,
+      transparent 4%
+    );
+    opacity: 0;
+  }
+  30% {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.08) 0%,
+      transparent 8%
+    );
+    opacity: 1;
+    transform: translateX(10%);
+  }
+  70% {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.15) 0%,
+      transparent 12%
+    );
+    opacity: 0.8;
+    transform: translateX(50%);
+  }
+  100% {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.05) 0%,
+      transparent 6%
+    );
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* ── Leather Cover ── */
+.leather-cover {
+  width: 100%;
+  height: 100%;
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E"),
+    linear-gradient(
+      145deg,
+      #2c1a0e 0%,
+      #3d2515 25%,
+      #4a2e1a 50%,
+      #3d2515 75%,
+      #2c1a0e 100%
+    );
+  background-size:
+    200px 200px,
+    100% 100%;
+  color: #d4b896;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    inset 0 0 0 10px rgba(44, 26, 14, 0.6),
+    inset 0 0 0 12px rgba(180, 140, 80, 0.25),
+    inset 0 0 60px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  padding: 2rem;
+}
+
+.leather-cover h2 {
+  font-family: "Satoshi", serif;
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: #e8d5b8;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+}
+
+.leather-cover .cover-ornament {
+  width: 60%;
+  max-width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #b48c50, transparent);
+  margin: 1rem auto;
+}
+
+.leather-cover .cover-subtitle {
+  font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+  color: #a08060;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* ── Inner Page (cream paper) ── */
+.paper-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"),
+    linear-gradient(to right, #ede5d8, #f5f0e8 5%, #f5f0e8 95%, #ede5d8);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  color: #3a3028;
+}
+
+/* Left – artwork panel */
+.paper-page .art-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: linear-gradient(to right, #e8e0d0, #f0ead8 8%);
+  position: relative;
+}
+
+.paper-page .art-panel::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 8%;
+  bottom: 8%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #c4b8a4, transparent);
+}
+
+/* img styles moved to .art-tape-container img */
+
+/* Art with tape container */
+.art-tape-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.art-tape-container img {
+  max-width: 92%;
+  max-height: 88%;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+}
+
+/* Tape overlay - positioned via CSS custom properties from JS */
+.tape-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.masking-tape {
+  position: absolute;
+  width: 48px;
+  height: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(235, 225, 200, 0.85) 0%,
+    rgba(225, 215, 185, 0.9) 50%,
+    rgba(215, 205, 175, 0.85) 100%
+  );
+  z-index: 2;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.1),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.3);
+  border-radius: 1px;
+}
+
+.masking-tape::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 3px,
+    rgba(200, 190, 165, 0.2) 3px,
+    rgba(200, 190, 165, 0.2) 4px
+  );
+  border-radius: 1px;
+}
+
+.masking-tape.top-left {
+  top: var(--img-top);
+  left: var(--img-left);
+  transform: translate(-30%, -30%) rotate(-45deg);
+}
+
+.masking-tape.top-right {
+  top: var(--img-top);
+  left: var(--img-right);
+  transform: translate(-70%, -30%) rotate(45deg);
+}
+
+.masking-tape.bottom-left {
+  top: var(--img-bottom);
+  left: var(--img-left);
+  transform: translate(-30%, -70%) rotate(45deg);
+}
+
+.masking-tape.bottom-right {
+  top: var(--img-bottom);
+  left: var(--img-right);
+  transform: translate(-70%, -70%) rotate(-45deg);
+}
+
+/* Right – text panel */
+.paper-page .text-panel {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.25rem, 3vh, 2.5rem) clamp(1.25rem, 2vw, 2rem)
+    clamp(1rem, 2vh, 2rem) clamp(1.5rem, 2.5vw, 2.5rem);
+  overflow-y: auto;
+}
+
+/* Curly quote marks — large decorative */
+.text-panel .quote-mark {
+  font-family: Georgia, "Playfair Display", "Times New Roman", serif;
+  font-size: 4.5rem;
+  line-height: 0.5;
+  color: rgba(180, 152, 112, 0.3);
+  user-select: none;
+  display: block;
+}
+
+.text-panel .quote-mark.open {
+  align-self: flex-start;
+  margin-top: 1rem;
+}
+
+.text-panel .quote-mark.close {
+  align-self: flex-end;
+  margin-top: 0.4rem;
+  line-height: 0.3;
+}
+
+.text-panel .quote-text {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+  line-height: 1.7;
+  color: #4a3f33;
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+.text-panel .divider {
+  width: 48px;
+  height: 1px;
+  background: #c4b8a4;
+  margin: 1.25rem 0;
+}
+
+.text-panel .description {
+  font-size: clamp(0.78rem, 1.1vw, 0.92rem);
+  line-height: 1.7;
+  color: #6b5e50;
+}
+
+.text-panel .art-title {
+  font-size: clamp(0.68rem, 0.9vw, 0.78rem);
+  color: #a09080;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+/* ── End page ── */
+.end-page-content {
+  font-family: "Satoshi", serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+  color: #e8d5b8;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.end-page-emoji {
+  font-size: clamp(2rem, 4vw, 3rem);
+  display: block;
+  margin-top: 1rem;
+}
+
+/* ── Navigation ── */
+.art-book-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  color: #9ca3af;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  transition: all 0.2s;
+  backdrop-filter: blur(4px);
+  z-index: 10;
+}
+
+.art-book-nav:hover {
+  color: #e5e7eb;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.art-book-nav.prev {
+  left: -56px;
+}
+.art-book-nav.next {
+  right: -56px;
+}
+
+.art-book-nav:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* ── Close Button ── */
+.art-book-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 0.8rem;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  font-family: "Satoshi", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.art-book-close:hover {
+  color: #e5e7eb;
+}
+
+/* ── Page Counter ── */
+.art-book-counter {
+  position: absolute;
+  bottom: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #6b7280;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  font-family: "Satoshi", sans-serif;
+}

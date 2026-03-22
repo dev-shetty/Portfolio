@@ -2,6 +2,7 @@
 import { arts } from "@/lib/artgallery"
 import Image from "astro/components/Image.astro"
 import styles from "./art-gallery.module.css"
+import ArtBook from "./ArtBook.tsx"
 ---
 
 <section class="px-4">
@@ -10,6 +11,7 @@ import styles from "./art-gallery.module.css"
       arts.map((art, index) => (
         <div
           data-content={art.alt}
+          data-art-index={index}
           class="relative overflow-hidden cursor-pointer"
         >
           <Image
@@ -28,4 +30,29 @@ import styles from "./art-gallery.module.css"
       ))
     }
   </div>
+
+  {/* Scrapbook modal – hidden on mobile */}
+  <div class="hidden md:block">
+    <ArtBook arts={arts} client:load />
+  </div>
 </section>
+
+<script>
+  // Only wire up click-to-open on md+ screens
+  function initArtBookClicks() {
+    if (!window.matchMedia("(min-width: 768px)").matches) return
+
+    document.querySelectorAll("[data-art-index]").forEach((el) => {
+      el.addEventListener("click", () => {
+        const index = parseInt(el.getAttribute("data-art-index") || "0", 10)
+        window.dispatchEvent(
+          new CustomEvent("open-art-book", { detail: { index } })
+        )
+      })
+    })
+  }
+
+  // Run on initial load and on Astro page transitions
+  initArtBookClicks()
+  document.addEventListener("astro:after-swap", initArtBookClicks)
+</script>
