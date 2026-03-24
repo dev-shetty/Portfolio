@@ -61,7 +61,7 @@ export interface Book {
 
 export const TOP_READS: Book["name"][] = [
   "Thinking Fast and Slow",
-  "Don't believe everything you think",
+  "The Martian",
   "Investing 101",
   "The Power of Your Subconscious Mind",
   "Shiva Trilogy: Part 1 - The Immortals of Meluha",
