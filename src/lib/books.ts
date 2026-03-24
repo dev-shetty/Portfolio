@@ -84,8 +84,11 @@ export const books: Book[] = [
   {
     name: "The Martian",
     author: "Andy Weir",
-    status: "reading",
+    status: "completed",
     tags: ["Science Fiction"],
+    completedYear: 2026,
+    isRecommended: true,
+    willReRead: false,
   },
   {
     name: "What If?",
