@@ -77,6 +77,9 @@ export const books: Book[] = [
     completedYear: 2026,
     isRecommended: true,
     willReRead: false,
+    thoughts: "Available on Notion",
+    notionLink:
+      "https://devshetty.notion.site/Animal-Farm-32c5e52c1e198090a6dce278fe1b5196",
   },
   {
     name: "Building Micro-Frontends: Distributed Systems for the Frontend",
@@ -245,7 +248,7 @@ export const books: Book[] = [
     completedYear: 2025,
     thoughts: "Available on Notion",
     notionLink:
-      "https://www.notion.so/Don-t-believe-everything-you-think-1a35e52c1e1980678745d20f7dfbe991",
+      "https://devshetty.notion.site/Don-t-believe-everything-you-think-1a35e52c1e1980678745d20f7dfbe991",
     tags: ["Self-help"],
   },
   {
@@ -266,7 +269,7 @@ export const books: Book[] = [
     completedYear: 2023,
     thoughts: "Available on Notion",
     notionLink:
-      "https://www.notion.so/Rich-Dad-Poor-Dad-21a5e52c1e1980a889e8e77c8e246fb8",
+      "https://devshetty.notion.site/Rich-Dad-Poor-Dad-21a5e52c1e1980a889e8e77c8e246fb8",
     tags: ["Finance"],
   },
   {
@@ -278,7 +281,7 @@ export const books: Book[] = [
     completedYear: 2025,
     thoughts: "Available on Notion",
     notionLink:
-      "https://www.notion.so/Attitude-is-Everything-21a5e52c1e1980eea754cdd32f05cba4",
+      "https://devshetty.notion.site/Attitude-is-Everything-21a5e52c1e1980eea754cdd32f05cba4",
     tags: ["Self-help"],
   },
   {
@@ -289,7 +292,7 @@ export const books: Book[] = [
     willReRead: false,
     completedYear: 2024,
     thoughts: "Available on Notion",
-    notionLink: "https://www.notion.so/Drive-21a5e52c1e1980418328df1a89134d1a",
+    notionLink: "https://devshetty.notion.site/Drive-21a5e52c1e1980418328df1a89134d1a",
     tags: ["Self-help"],
   },
   {
@@ -301,7 +304,7 @@ export const books: Book[] = [
     completedYear: 2025,
     thoughts: "Available on Notion",
     notionLink:
-      "https://www.notion.so/Transform-your-Self-Talk-21a5e52c1e198012b09bf9a77f3aa614",
+      "https://devshetty.notion.site/Transform-your-Self-Talk-21a5e52c1e198012b09bf9a77f3aa614",
     tags: ["Self-help"],
   },
   {
@@ -312,7 +315,7 @@ export const books: Book[] = [
     willReRead: true,
     completedYear: 2025,
     thoughts: "Available on Notion",
-    notionLink: "https://www.notion.so/Rework-21a5e52c1e1980bb92a2e2c89ce4028a",
+    notionLink: "https://devshetty.notion.site/Rework-21a5e52c1e1980bb92a2e2c89ce4028a",
     tags: ["Self-help", "Business"],
   },
   {
@@ -333,7 +336,7 @@ export const books: Book[] = [
     completedYear: 2024,
     thoughts: "Available on Notion",
     notionLink:
-      "https://www.notion.so/Eat-that-Frog-21a5e52c1e198080a866da32fe7305ed",
+      "https://devshetty.notion.site/Eat-that-Frog-21a5e52c1e198080a866da32fe7305ed",
     tags: ["Self-help", "Productivity"],
   },
   {
@@ -381,7 +384,7 @@ export const books: Book[] = [
     completedYear: 2023,
     thoughts: "Available on Notion",
     notionLink:
-      "https://www.notion.so/Do-Epic-Shit-21a5e52c1e198088885dcdcb1086f802",
+      "https://devshetty.notion.site/Do-Epic-Shit-21a5e52c1e198088885dcdcb1086f802",
     tags: ["Self-help"],
   },
   {
@@ -392,7 +395,7 @@ export const books: Book[] = [
     willReRead: false,
     completedYear: 2024,
     thoughts: "Available on Notion",
-    notionLink: "https://www.notion.so/Ikigai-21a5e52c1e19807791c9cdf3d04978c4",
+    notionLink: "https://devshetty.notion.site/Ikigai-21a5e52c1e19807791c9cdf3d04978c4",
     tags: ["Self-help"],
   },
   {
@@ -413,7 +416,7 @@ export const books: Book[] = [
     completedYear: 2025,
     thoughts: "Available on Notion",
     notionLink:
-      "https://www.notion.so/The-Power-of-Your-Subconscious-Mind-21a5e52c1e198014b887ea60a667b15f",
+      "https://devshetty.notion.site/The-Power-of-Your-Subconscious-Mind-21a5e52c1e198014b887ea60a667b15f",
     tags: ["Self-help"],
   },
   {
@@ -470,7 +473,7 @@ export const books: Book[] = [
     completedYear: 2025,
     thoughts: "Available on Notion",
     notionLink:
-      "https://www.notion.so/Who-Moved-My-Cheese-21a5e52c1e1980c59de9f115f31f0f18",
+      "https://devshetty.notion.site/Who-Moved-My-Cheese-21a5e52c1e1980c59de9f115f31f0f18",
     tags: ["Self-help"],
   },
   {
@@ -482,7 +485,7 @@ export const books: Book[] = [
     completedYear: 2025,
     thoughts: "Available on Notion",
     notionLink:
-      "https://www.notion.so/Start-with-Why-21a5e52c1e1980c9a1c1e0f5469e1f3c",
+      "https://devshetty.notion.site/Start-with-Why-21a5e52c1e1980c9a1c1e0f5469e1f3c",
     tags: ["Self-help", "Business"],
   },
   {
