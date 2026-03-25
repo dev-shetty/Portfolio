@@ -73,7 +73,10 @@ export const books: Book[] = [
   {
     name: "Animal Farm",
     author: "George Orwell",
-    status: "reading",
+    status: "completed",
+    completedYear: 2026,
+    isRecommended: true,
+    willReRead: false,
   },
   {
     name: "Building Micro-Frontends: Distributed Systems for the Frontend",
