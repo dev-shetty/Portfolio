@@ -11,6 +11,7 @@ export const GENRES = [
   "Mythological Fiction",
   "Astronomy",
   "Science Fiction",
+  "Political Satire",
 ] as const;
 
 export type Genre = (typeof GENRES)[number];
@@ -28,6 +29,7 @@ export const tagColors: Record<Genre, string> = {
   "Mythological Fiction": "bg-violet-500/20 text-violet-300",
   "Astronomy": "bg-blue-600/20 text-blue-300",
   "Science Fiction": "bg-emerald-500/20 text-emerald-300",
+  "Political Satire": "bg-red-600/20 text-red-300",
 };
 
 export const tagSpineColors: Record<Genre, string> = {
@@ -43,6 +45,7 @@ export const tagSpineColors: Record<Genre, string> = {
   "Mythological Fiction": "#4a3a6e",
   "Astronomy": "#2a3f6e",
   "Science Fiction": "#2a5e4a",
+  "Political Satire": "#6e1515",
 };
 
 export interface Book {
@@ -80,6 +83,7 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://devshetty.notion.site/Animal-Farm-32c5e52c1e198090a6dce278fe1b5196",
+    tags: ["Political Satire"],
   },
   {
     name: "Building Micro-Frontends: Distributed Systems for the Frontend",
