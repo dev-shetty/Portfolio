@@ -86,6 +86,12 @@ export const books: Book[] = [
     tags: ["Political Satire"],
   },
   {
+    name: "Phantoms in the Brain",
+    author: "V.S. Ramachandran, Sandra Blakeslee",
+    status: "reading",
+    tags: ["Psychology"],
+  },
+  {
     name: "Building Micro-Frontends: Distributed Systems for the Frontend",
     author: "Luca Mezzalira",
     status: "reading",
