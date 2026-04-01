@@ -184,4 +184,15 @@ export const talks: Talk[] = [
     video: null,
     image: "/talks/motiajs.webp",
   },
+  {
+    id: "serverless-cloud-run",
+    title: "Breaking Down Serverless in Cloud Run",
+    organizer: "GDG Cloud Mangalore, Build with AI",
+    description:
+      "Exploring serverless computing with Google Cloud Run - from containerized apps to fully managed deployments, covering scaling, billing, and real-world use cases, with a live demo deploying a Next.js application.",
+    date: "28 March, 2026",
+    blog: null,
+    video: null,
+    image: "/talks/serverless-cloud-run.jpg",
+  },
 ].sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
