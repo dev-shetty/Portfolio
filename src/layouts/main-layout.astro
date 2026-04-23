@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import Footer from "@/components/ui/sections/footer.astro";
+import SpeedInsights from "@vercel/speed-insights/astro"
 
 interface Props {
   title: string;
@@ -156,11 +157,13 @@ const breadcrumbData = generateBreadcrumbs({
     >
       Skip to main content
     </a>
+    
     <Navbar />
     <main id="main-content" class="py-24">
       <slot />
     </main>
     <Footer />
     <Toaster client:load />
+    <SpeedInsights />
   </body>
 </html>

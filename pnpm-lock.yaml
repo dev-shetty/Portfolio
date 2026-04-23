@@ -53,6 +53,9 @@ importers:
       '@vercel/og':
         specifier: ^0.8.5
         version: 0.8.5
+      '@vercel/speed-insights':
+        specifier: ^2.0.0
+        version: 2.0.0(react@19.2.0)
       astro:
         specifier: ^5.14.1
         version: 5.16.1(@types/node@20.19.25)(@vercel/blob@1.0.2)(@vercel/functions@2.2.13(@aws-sdk/credential-provider-web-identity@3.940.0))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.53.3)(tsx@4.19.2)(typescript@5.8.3)
@@ -2018,6 +2021,32 @@ packages:
 
   '@vercel/rust@1.0.3':
     resolution: {integrity: sha512-u0kh2ZafuxTelXPRbv2/tR6cC9MBjgRhrzVuKxOZk7GyLnFwNTDuNwoP4iJ03yF1k5GqGYB0v+0Zvty67isAAQ==}
+
+  '@vercel/speed-insights@2.0.0':
+    resolution: {integrity: sha512-jwkNcrTeafWxjmWq4AHBaptSqZiJkYU5adLC9QBSqeim0GcqDMgN5Ievh8OG1rJ6W3A4l1oiP7qr9CWxGuzu3w==}
+    peerDependencies:
+      '@sveltejs/kit': ^1 || ^2
+      next: '>= 13'
+      nuxt: '>= 3'
+      react: ^18 || ^19 || ^19.0.0-rc
+      svelte: '>= 4'
+      vue: ^3
+      vue-router: ^4
+    peerDependenciesMeta:
+      '@sveltejs/kit':
+        optional: true
+      next:
+        optional: true
+      nuxt:
+        optional: true
+      react:
+        optional: true
+      svelte:
+        optional: true
+      vue:
+        optional: true
+      vue-router:
+        optional: true
 
   '@vercel/static-build@2.8.11':
     resolution: {integrity: sha512-iR287qgXdN4cSzQxvJsYaZqfEZteLx/OsS32fwMhkjGthqqoHVyKwidKaeNyA7LS+bTWwdRRzETDW/PZHl/6uQ==}
@@ -6956,6 +6985,10 @@ snapshots:
     dependencies:
       '@iarna/toml': 2.2.5
       execa: 5.1.1
+
+  '@vercel/speed-insights@2.0.0(react@19.2.0)':
+    optionalDependencies:
+      react: 19.2.0
 
   '@vercel/static-build@2.8.11':
     dependencies:
