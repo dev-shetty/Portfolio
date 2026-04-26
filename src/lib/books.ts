@@ -109,8 +109,11 @@ export const books: Book[] = [
   {
     name: "What If?",
     author: "Randall Munroe",
-    status: "reading",
+    status: "completed",
     tags: ["Science"],
+    completedYear: 2026,
+    isRecommended: true,
+    willReRead: true,
   },
   {
     name: "Steal Like an Artist",
