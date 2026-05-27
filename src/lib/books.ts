@@ -125,6 +125,15 @@ export const books: Book[] = [
     willReRead: true,
   },
   {
+    name: "The Flavor Bible",
+    author: "Karen Page, Andrew Dornenburg",
+    status: "completed",
+    completedYear: 2026,
+    thoughts: "Available on Notion",
+    notionLink:
+      "https://devshetty.notion.site/The-Flavor-Bible-36d5e52c1e19807a8a0ec4d1c7d99632",
+  },
+  {
     name: "Thinking Fast and Slow",
     author: "Daniel Kahneman",
     status: "completed",
