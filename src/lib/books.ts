@@ -86,10 +86,20 @@ export const books: Book[] = [
     tags: ["Political Satire"],
   },
   {
+    name: "Surely You're Joking, Mr. Feynman!",
+    author: "Richard Feynman, Ralph Leighton",
+    status: "reading",
+    tags: ["Biography", "Science"],
+  },
+  {
     name: "Phantoms in the Brain",
     author: "V.S. Ramachandran, Sandra Blakeslee",
-    status: "reading",
-    tags: ["Psychology"],
+    status: "completed",
+    tags: ["Psychology", "Science"],
+    completedYear: 2026,
+    thoughts: "Available on Notion",
+    notionLink:
+      "https://devshetty.notion.site/Phantoms-in-the-brain-2d15e52c1e1980b09036dccd9947c48c",
   },
   {
     name: "Building Micro-Frontends: Distributed Systems for the Frontend",
