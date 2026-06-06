@@ -88,8 +88,10 @@ export const books: Book[] = [
   {
     name: "Surely You're Joking, Mr. Feynman!",
     author: "Richard Feynman, Ralph Leighton",
-    status: "reading",
+    status: "completed",
     tags: ["Biography", "Science"],
+    completedYear: 2026,
+    isRecommended: true,
   },
   {
     name: "Phantoms in the Brain",
