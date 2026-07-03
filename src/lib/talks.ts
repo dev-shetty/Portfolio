@@ -195,4 +195,15 @@ export const talks: Talk[] = [
     video: null,
     image: "/talks/serverless-cloud-run.jpg",
   },
+  {
+    id: "frontend-dev-dsa",
+    title: "I'm a Frontend Dev, I don't need DSA",
+    organizer: "Hackersmang, UniCourt",
+    description:
+      "Exploring React's internals - how it tracks state changes, prioritizes updates, and renders content using fundamental data structures.",
+    date: "27 June, 2026",
+    blog: "https://lnkd.in/p/dRP7biCq",
+    video: null,
+    image: "/talks/frontend-dev-dsa.webp",
+  },
 ].sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
