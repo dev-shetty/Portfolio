@@ -7,6 +7,8 @@ export const GENRES = [
   "Productivity",
   "Science",
   "Biography",
+  "Fiction",
+  "Dystopian",
   "Indian History",
   "Mythological Fiction",
   "Astronomy",
@@ -25,6 +27,8 @@ export const tagColors: Record<Genre, string> = {
   "Productivity": "bg-pink-500/20 text-pink-300",
   "Science": "bg-indigo-500/20 text-indigo-300",
   "Biography": "bg-yellow-500/20 text-yellow-300",
+  "Fiction": "bg-teal-500/20 text-teal-300",
+  "Dystopian": "bg-gray-600/20 text-gray-300",
   "Indian History": "bg-red-500/20 text-red-300",
   "Mythological Fiction": "bg-violet-500/20 text-violet-300",
   "Astronomy": "bg-blue-600/20 text-blue-300",
@@ -41,6 +45,8 @@ export const tagSpineColors: Record<Genre, string> = {
   "Productivity": "#6e3a55",
   "Science": "#3a3f6e",
   "Biography": "#5f5530",
+  "Fiction": "#2a6e5a",
+  "Dystopian": "#3a3a3a",
   "Indian History": "#6e3535",
   "Mythological Fiction": "#4a3a6e",
   "Astronomy": "#2a3f6e",
@@ -83,7 +89,22 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://devshetty.notion.site/Animal-Farm-32c5e52c1e198090a6dce278fe1b5196",
-    tags: ["Political Satire"],
+    tags: ["Political Satire", "Dystopian"],
+  },
+  {
+    name: "Project Hail Mary",
+    author: "Andy Weir",
+    status: "reading",
+    tags: ["Science Fiction"],
+  },
+  {
+    name: "1984",
+    author: "George Orwell",
+    status: "completed",
+    tags: ["Dystopian", "Fiction", "Political Satire"],
+    completedYear: 2026,
+    isRecommended: true,
+    willReRead: false,
   },
   {
     name: "Surely You're Joking, Mr. Feynman!",
@@ -102,12 +123,6 @@ export const books: Book[] = [
     thoughts: "Available on Notion",
     notionLink:
       "https://devshetty.notion.site/Phantoms-in-the-brain-2d15e52c1e1980b09036dccd9947c48c",
-  },
-  {
-    name: "Building Micro-Frontends: Distributed Systems for the Frontend",
-    author: "Luca Mezzalira",
-    status: "reading",
-    tags: ["Tech"],
   },
   {
     name: "The Martian",
