@@ -92,10 +92,22 @@ export const books: Book[] = [
     tags: ["Political Satire", "Dystopian"],
   },
   {
+    name: "Buildit: Building Blinkit in An Evolving India",
+    author: "Albinder Dhindsa",
+    status: "reading",
+    tags: ["Business"],
+  },
+  {
     name: "Project Hail Mary",
     author: "Andy Weir",
-    status: "reading",
+    status: "completed",
     tags: ["Science Fiction"],
+    completedYear: 2026,
+    isRecommended: true,
+    willReRead: false,
+    thoughts: "Available on Notion",
+    notionLink:
+      "https://devshetty.notion.site/Project-Hail-Mary-37a5e52c1e19807e8d4cf2c5a7dee9d2",
   },
   {
     name: "1984",
