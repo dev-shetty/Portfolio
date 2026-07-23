@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # Built files
 .vercel/
+
+# mockups
+mockups/
+.playwright-mcp/

@@ -1,0 +1,55 @@
+---
+import Analytics from "@vercel/analytics/astro";
+import { siteConfig } from "../config/site";
+import Navbar from "@/components/navbar.astro";
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+import { TravelMap } from "@/components/travels/TravelMap";
+import SpeedInsights from "@vercel/speed-insights/astro";
+
+const title = "Travels | Deveesh Shetty";
+const description = "Places I've explored around the world";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href={siteConfig.logo} />
+    <meta name="viewport" content="width=device-width" />
+    <ClientRouter />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <Analytics />
+  </head>
+  <body class="text-gray-50 overflow-hidden h-screen">
+    <Navbar />
+    <main class="fixed inset-0 top-16">
+      <TravelMap client:only="react" />
+    </main>
+    <SpeedInsights />
+  </body>
+</html>
+
+<style is:global>
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out;
+  }
+  .maplibregl-canvas-container:focus {
+    outline: none;
+  }
+  .maplibregl-canvas:focus {
+    outline: none;
+  }
+</style>

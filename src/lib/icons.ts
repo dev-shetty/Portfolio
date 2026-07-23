@@ -43,4 +43,5 @@ export const icons: Record<string, string> = {
   Books: "tabler:books",
   Uses: "tabler:settings",
   Refresh: "tabler:refresh",
+  Travels: "tabler:map-pin",
 }
