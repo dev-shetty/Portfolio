@@ -101,6 +101,12 @@ export const books: Book[] = [
     tags: ["Business"],
   },
   {
+    name: "Angels & Demons",
+    author: "Dan Brown",
+    status: "reading",
+    tags: ["Fiction"],
+  },
+  {
     name: "Project Hail Mary",
     author: "Andy Weir",
     status: "completed",
