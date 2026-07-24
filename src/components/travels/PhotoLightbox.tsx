@@ -313,7 +313,7 @@ export function PhotoLightbox({ photos, currentIndex, cityName, visitDate, onClo
           {isEnd ? "" : photos[current]?.caption}
         </div>
         <div className="film-caption-meta">
-          {isEnd ? "" : `${cityName} · ${visitDate}`}
+          {isEnd ? "" : `${cityName} · ${photos[current]?.visitDate || visitDate}`}
         </div>
       </div>
 

@@ -4,6 +4,7 @@ export type TravelPhoto = {
   url: string
   caption: string
   isCover?: boolean
+  visitDate?: string
 }
 
 export type TravelEntry = {
@@ -36,7 +37,7 @@ export const travels: TravelEntry[] = [
       { url: "delhi/humayaun-tomb.webp", caption: "Humayun's Tomb" },
       { url: "delhi/chandni-chown-gurudwara.webp", caption: "Chandni Chowk Gurudwara" },
       { url: "delhi/night-skyline.webp", caption: "Delhi Night Skyline" },
-      { url: "delhi/india-gate-tricolor-night.webp", caption: "India Gate Tricolor at Night" },
+      { url: "delhi/india-gate-tricolor-night.webp", caption: "India Gate Tricolor at Night", visitDate: "March 2024" },
     ],
     tags: ["architecture", "history"],
   },
