@@ -273,6 +273,8 @@ export function TravelMap() {
         <PhotoLightbox
           photos={selectedCity.photos}
           currentIndex={lightboxIndex}
+          cityName={selectedCity.city}
+          visitDate={selectedCity.visitDate}
           onClose={handleCloseLightbox}
           onNavigate={setLightboxIndex}
         />

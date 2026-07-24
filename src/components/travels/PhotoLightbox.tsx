@@ -6,6 +6,8 @@ import "./film-reel.css"
 type Props = {
   photos: TravelPhoto[]
   currentIndex: number
+  cityName: string
+  visitDate: string
   onClose: () => void
   onNavigate: (index: number) => void
 }
@@ -104,7 +106,7 @@ function FilmFrame({ photo, index }: { photo: TravelPhoto | null; index: number 
   )
 }
 
-export function PhotoLightbox({ photos, currentIndex, onClose, onNavigate }: Props) {
+export function PhotoLightbox({ photos, currentIndex, cityName, visitDate, onClose, onNavigate }: Props) {
   const trackRef = useRef<HTMLDivElement>(null)
   const windowRef = useRef<HTMLDivElement>(null)
   const [animating, setAnimating] = useState(false)
@@ -310,8 +312,8 @@ export function PhotoLightbox({ photos, currentIndex, onClose, onNavigate }: Pro
         <div className="film-caption-text" style={{ opacity: isEnd ? 0 : 1 }}>
           {isEnd ? "" : photos[current]?.caption}
         </div>
-        <div className="film-caption-counter">
-          {isEnd ? "END OF REEL" : `FRAME ${pad(current + 1)} OF ${pad(photos.length)}`}
+        <div className="film-caption-meta">
+          {isEnd ? "" : `${cityName} · ${visitDate}`}
         </div>
       </div>
 
@@ -351,6 +353,10 @@ export function PhotoLightbox({ photos, currentIndex, onClose, onNavigate }: Pro
             <div className="strip-roll-indicator" />
           </button>
         )}
+      </div>
+
+      <div className="film-caption-counter">
+        {isEnd ? "END OF REEL" : `FRAME ${pad(current + 1)} OF ${pad(photos.length)}`}
       </div>
 
       <button className="film-close-btn" onClick={onClose} aria-label="Close">✕</button>

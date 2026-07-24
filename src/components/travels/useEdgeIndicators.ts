@@ -4,7 +4,7 @@ import type { TravelEntry } from "@/lib/travels"
 import type { MapRef } from "react-map-gl/maplibre"
 
 const MOBILE_BREAKPOINT = 768
-const MOBILE_MAX_INDICATORS = 1
+const MOBILE_MAX_INDICATORS = 2
 const POSITION_CLAMP_MIN = 0
 const POSITION_CLAMP_MAX = 1
 const MIN_FLY_ZOOM = 6

@@ -48,6 +48,7 @@ export const travels: TravelEntry[] = [
     visitDate: "June 2026",
     description: "The city that never sleeps — explored CSMT, Gateway of India, Elephanta Caves, Marine Drive, and much more.",
     photos: [
+      { url: "mumbai/marine-drive-sunset-skyline.webp", caption: "Marine Drive Sunset Skyline" },
       { url: "mumbai/csmt.webp", caption: "CSMT Building" },
       { url: "mumbai/csmt-building.webp", caption: "CSMT Building Front" },
       { url: "mumbai/csmt-facade-low-angle.webp", caption: "BMC Facade" },
@@ -63,7 +64,6 @@ export const travels: TravelEntry[] = [
       { url: "mumbai/bombay-high-court-night.webp", caption: "Bombay High Court at Night" },
       { url: "mumbai/csmvs-museum-sculpture.webp", caption: "Sleeping Buddha at CSMVS Museum" },
       { url: "mumbai/csmvs-museum-sculpture-2.webp", caption: "Sleeping Buddha" },
-      { url: "mumbai/marine-drive-sunset-skyline.webp", caption: "Marine Drive Sunset Skyline" },
       { url: "mumbai/marine-drive-tetrapods.webp", caption: "Marine Drive Tetrapods" },
       { url: "mumbai/siddhivinayak-temple.webp", caption: "Siddhivinayak Temple" },
       { url: "mumbai/ferry-arabian-sea.webp", caption: "Ferry on Arabian Sea" },
@@ -177,6 +177,7 @@ export const travels: TravelEntry[] = [
     coordinates: [77.0595, 10.0889],
     coverPhoto: "munnar/tea-plantations-valley.webp",
     visitDate: "July 2023",
+
     description: "The tea plantations of Munnar — lush green valleys stretching endlessly.",
     photos: [
       { url: "munnar/tea-plantations-valley.webp", caption: "Tea Plantations Valley" },
@@ -192,7 +193,7 @@ export const travels: TravelEntry[] = [
     country: "India",
     coordinates: [76.2673, 9.9312],
     coverPhoto: "kochi/port-night-view.webp",
-    visitDate: "2026",
+    visitDate: "June 2023",
     description: "Kochi port lit up at night — cargo ships and cranes reflecting on the water.",
     photos: [
       { url: "kochi/port-night-view.webp", caption: "Kochi Port at Night" },
@@ -256,7 +257,7 @@ export const travels: TravelEntry[] = [
     country: "India",
     coordinates: [75.0963, 13.5027],
     coverPhoto: "agumbe/misty-valley-panorama.webp",
-    visitDate: "2025",
+    visitDate: "April 2022",
     description: "The Cherrapunji of the South — misty valleys and lush rainforests of the Western Ghats.",
     photos: [
       { url: "agumbe/misty-valley-panorama.webp", caption: "Misty Valley Panorama" },
@@ -269,7 +270,7 @@ export const travels: TravelEntry[] = [
     country: "India",
     coordinates: [77.5946, 12.9716],
     coverPhoto: "bengaluru/india-foss-2025-group-photo.webp",
-    visitDate: "2025",
+    visitDate: "September 2025",
     description: "Attended India FOSS 2025 in Bengaluru.",
     photos: [
       { url: "bengaluru/india-foss-2025-group-photo.webp", caption: "India FOSS 2025 Group Photo" },
@@ -281,7 +282,7 @@ export const travels: TravelEntry[] = [
     country: "India",
     coordinates: [76.4601, 15.3350],
     coverPhoto: "hampi/virupaksha-temple-gopuram.webp",
-    visitDate: "2025",
+    visitDate: "April 2022",
     description: "The ruins of Vijayanagara — the iconic Virupaksha Temple gopuram against the evening sky.",
     photos: [
       { url: "hampi/virupaksha-temple-gopuram.webp", caption: "Virupaksha Temple Gopuram" },
@@ -293,7 +294,7 @@ export const travels: TravelEntry[] = [
     country: "India",
     coordinates: [78.4867, 17.3850],
     coverPhoto: "hyderabad/wikimedia-technology-summit.webp",
-    visitDate: "2025",
+    visitDate: "October 2024",
     description: "Attended the Wikimedia Technology Summit in Hyderabad.",
     photos: [
       { url: "hyderabad/wikimedia-technology-summit.webp", caption: "Wikimedia Technology Summit" },
@@ -305,7 +306,7 @@ export const travels: TravelEntry[] = [
     country: "India",
     coordinates: [75.0000, 12.4996],
     coverPhoto: "kasaragod/madhur-temple.webp",
-    visitDate: "2025",
+    visitDate: "November 2025",
     description: "Visited the ancient Madhur Temple with its traditional Kerala architecture.",
     photos: [
       { url: "kasaragod/madhur-temple.webp", caption: "Elephant Back Architecture of Madhur Temple" },
@@ -317,7 +318,7 @@ export const travels: TravelEntry[] = [
     country: "India",
     coordinates: [77.3776, 15.6789],
     coverPhoto: "mantralaya/raghavendra-swamy-math-front.webp",
-    visitDate: "2025",
+    visitDate: "April 2022",
     description: "Pilgrimage to Sri Raghavendra Swamy Math on the banks of the Tungabhadra.",
     photos: [
       { url: "mantralaya/raghavendra-swamy-math-front.webp", caption: "Raghavendra Swamy Math" },
@@ -330,7 +331,7 @@ export const travels: TravelEntry[] = [
     country: "India",
     coordinates: [76.6394, 12.2958],
     coverPhoto: "mysore/mysore-palace-entrance-gate.webp",
-    visitDate: "2025",
+    visitDate: "May 2023",
     description: "The grand entrance of the Amba Vilas Palace — Mysore's crown jewel.",
     photos: [
       { url: "mysore/mysore-palace-entrance-gate.webp", caption: "Mysore Palace Entrance Gate" },

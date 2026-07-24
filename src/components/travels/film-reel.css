@@ -223,6 +223,15 @@
   transition: opacity 0.3s;
 }
 
+.film-caption-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: rgba(70, 90, 150, 0.35);
+  margin-top: 6px;
+  letter-spacing: 2px;
+  transition: opacity 0.3s;
+}
+
 .film-caption-counter {
   font-family: 'IBM Plex Mono', monospace;
   font-size: 10px;
@@ -479,6 +488,7 @@
   .film-nav-btn.next { right: 4px; }
 
   .film-caption-text { font-size: 11px; }
+  .film-caption-meta { font-size: 9px; }
   .film-caption-counter { font-size: 9px; }
 
   .film-strip-container { max-width: 95vw; }
