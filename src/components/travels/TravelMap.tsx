@@ -3,7 +3,7 @@ import Map, { Marker, NavigationControl } from "react-map-gl/maplibre"
 import type { MapRef } from "react-map-gl/maplibre"
 import "maplibre-gl/dist/maplibre-gl.css"
 import Supercluster from "supercluster"
-import { travels, getPhotoUrl } from "@/lib/travels"
+import { travels, getThumbUrl } from "@/lib/travels"
 import type { TravelEntry } from "@/lib/travels"
 import { PhotoLightbox } from "./PhotoLightbox"
 
@@ -139,7 +139,7 @@ export function TravelMap() {
                       .map((leaf, i) => (
                         <img
                           key={i}
-                          src={getPhotoUrl(travels[leaf.properties.index].coverPhoto)}
+                          src={getThumbUrl(travels[leaf.properties.index].coverPhoto)}
                           alt={travels[leaf.properties.index].city}
                           className="w-full h-full object-cover"
                           loading="lazy"
@@ -178,7 +178,7 @@ export function TravelMap() {
                   style={{ width: markerSize, height: markerSize }}
                 >
                   <img
-                    src={getPhotoUrl(entry.coverPhoto)}
+                    src={getThumbUrl(entry.coverPhoto)}
                     alt={entry.city}
                     className="w-full h-full object-cover"
                     loading="lazy"
