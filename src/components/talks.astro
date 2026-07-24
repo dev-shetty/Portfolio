@@ -49,23 +49,22 @@ const INITIAL_LIMIT = 3;
                     )}
                   </Fragment>
                   <Fragment slot="custom-footer">
-                    <div class="flex gap-2">
-                      <p class="font-bold">{talk.organizer}</p>
-                      <p>&#8226;</p>
-                      <p>{talk.date}</p>
+                    <p>
+                      <span class="font-bold">{talk.organizer}</span>
+                      {" "}&bull;{" "}{talk.date}
                       {talk.video !== null && (
                         <>
-                          <p>&#8226;</p>
+                          {" "}&bull;{" "}
                           <a
                             href={talk.video}
                             target="_blank"
-                            class="flex items-center gap-1 hover:text-gray-200"
+                            class="inline-flex items-center gap-1 hover:text-gray-200"
                           >
                             <Icon name={icons.YouTube} /> Watch Recording
                           </a>
                         </>
                       )}
-                    </div>
+                    </p>
                   </Fragment>
                 </Card>
               </div>
@@ -75,7 +74,7 @@ const INITIAL_LIMIT = 3;
       </div>
 
       <!-- Retro TV (desktop only) -->
-      <div class="hidden lg:flex flex-col items-center justify-center shrink-0" style="width: 220px;" transition:persist>
+      <div class="hidden lg:flex flex-col items-center justify-start shrink-0 sticky top-24 self-start" style="width: 220px;" transition:persist>
         <RetroTVTeaser client:visible talks={talks} transition:persist />
         <p class="text-center mt-3" style="font-family: 'Press Start 2P', monospace; font-size: 6px; color: #374151; letter-spacing: 1px;">
           EXPLORE TALKS
