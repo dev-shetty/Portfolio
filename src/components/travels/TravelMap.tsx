@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, useRef } from "react"
+import { useState, useCallback, useMemo, useRef, useEffect } from "react"
 import Map, { Marker, NavigationControl } from "react-map-gl/maplibre"
 import type { MapRef } from "react-map-gl/maplibre"
 import "maplibre-gl/dist/maplibre-gl.css"
@@ -6,8 +6,28 @@ import Supercluster from "supercluster"
 import { travels, getThumbUrl } from "@/lib/travels"
 import type { TravelEntry } from "@/lib/travels"
 import { PhotoLightbox } from "./PhotoLightbox"
+import { useEdgeIndicators } from "./useEdgeIndicators"
 
 const MAPTILER_KEY = import.meta.env.PUBLIC_MAPTILER_KEY
+
+const INITIAL_ZOOM = 4
+const MIN_ZOOM = 4
+const MAX_ZOOM = 10
+const INITIAL_CENTER = { lng: 78.9629, lat: 20.5937 }
+const MARKER_BASE_SIZE = 48
+const MARKER_SCALE_MIN = 0.8
+const MARKER_SCALE_MAX = 2.5
+const CLUSTER_SIZE_MULTIPLIER = 1.2
+const CLUSTER_RADIUS = 60
+const CLUSTER_PREVIEW_COUNT = 4
+const CLUSTER_LABEL_MAX_CITIES = 3
+const MOVE_DEBOUNCE_MS = 60
+const CLUSTER_FLY_DURATION_MS = 300
+const MARKER_FLY_DURATION_MS = 600
+const EDGE_INDICATOR_VISIBLE_THRESHOLD = 3
+const EDGE_POSITION_MIN = 0.15
+const EDGE_POSITION_MAX = 0.85
+const EDGE_OFFSET_PX = 12
 
 type TravelProps = { index: number }
 type TravelFeature = GeoJSON.Feature<GeoJSON.Point, TravelProps>
@@ -20,9 +40,8 @@ export function TravelMap() {
   const [bounds, setBounds] = useState<[number, number, number, number] | null>(null)
 
   const markerSize = useMemo(() => {
-    const base = 48
-    const scale = Math.max(0.8, Math.min(2.5, zoom / 4))
-    return Math.round(base * scale)
+    const scale = Math.max(MARKER_SCALE_MIN, Math.min(MARKER_SCALE_MAX, zoom / INITIAL_ZOOM))
+    return Math.round(MARKER_BASE_SIZE * scale)
   }, [zoom])
 
   const points: TravelFeature[] = useMemo(() =>
@@ -38,8 +57,8 @@ export function TravelMap() {
 
   const cluster = useMemo(() => {
     const sc = new Supercluster<TravelProps>({
-      radius: 60,
-      maxZoom: 10,
+      radius: CLUSTER_RADIUS,
+      maxZoom: MAX_ZOOM,
     })
     sc.load(points)
     return sc
@@ -56,7 +75,9 @@ export function TravelMap() {
 
   const totalPlaces = travels.length
 
-  const handleMove = useCallback(() => {
+  const moveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const syncMapState = useCallback(() => {
     const map = mapRef.current
     if (!map) return
     const b = map.getMap().getBounds()
@@ -64,9 +85,16 @@ export function TravelMap() {
     setZoom(map.getMap().getZoom())
   }, [])
 
+  const handleMove = useCallback(() => {
+    if (moveTimer.current) clearTimeout(moveTimer.current)
+    moveTimer.current = setTimeout(syncMapState, MOVE_DEBOUNCE_MS)
+  }, [syncMapState])
+
+  useEffect(() => () => { if (moveTimer.current) clearTimeout(moveTimer.current) }, [])
+
   const handleClusterClick = useCallback((clusterId: number, lng: number, lat: number) => {
-    const expansionZoom = Math.min(cluster.getClusterExpansionZoom(clusterId), 10)
-    mapRef.current?.flyTo({ center: [lng, lat], zoom: expansionZoom, duration: 500 })
+    const expansionZoom = Math.min(cluster.getClusterExpansionZoom(clusterId), MAX_ZOOM)
+    mapRef.current?.flyTo({ center: [lng, lat], zoom: expansionZoom, duration: CLUSTER_FLY_DURATION_MS })
   }, [cluster])
 
   const handleMarkerClick = useCallback((entry: TravelEntry) => {
@@ -74,7 +102,7 @@ export function TravelMap() {
     setLightboxIndex(0)
     mapRef.current?.flyTo({
       center: [entry.coordinates[0], entry.coordinates[1]],
-      duration: 600,
+      duration: MARKER_FLY_DURATION_MS,
     })
   }, [])
 
@@ -83,23 +111,26 @@ export function TravelMap() {
     setLightboxIndex(null)
   }, [])
 
+  const { indicators: edgeIndicators, handleEdgeClick } = useEdgeIndicators(bounds, zoom, mapRef)
+
   return (
     <div className="relative w-full h-full">
       <Map
         ref={mapRef}
         initialViewState={{
-          longitude: 78.9629,
-          latitude: 20.5937,
-          zoom: 4,
+          longitude: INITIAL_CENTER.lng,
+          latitude: INITIAL_CENTER.lat,
+          zoom: INITIAL_ZOOM,
           pitch: 0,
         }}
         style={{ width: "100%", height: "100%" }}
         mapStyle={`https://api.maptiler.com/maps/dataviz-dark/style.json?key=${MAPTILER_KEY}`}
         attributionControl={false}
-        maxZoom={10}
-        minZoom={4}
+        maxZoom={MAX_ZOOM}
+        minZoom={MIN_ZOOM}
         onMove={handleMove}
-        onLoad={handleMove}
+        onMoveEnd={syncMapState}
+        onLoad={syncMapState}
       >
         <NavigationControl position="bottom-right" />
 
@@ -112,7 +143,7 @@ export function TravelMap() {
             const totalClusterPhotos = leaves.reduce(
               (sum, leaf) => sum + travels[leaf.properties.index].photos.length, 0
             )
-            const clusterSize = markerSize * 1.2
+            const clusterSize = markerSize * CLUSTER_SIZE_MULTIPLIER
             const cityNames = leaves.map((leaf) => travels[leaf.properties.index].city)
 
             return (
@@ -135,7 +166,7 @@ export function TravelMap() {
                     style={{ width: clusterSize, height: clusterSize }}
                   >
                     {cluster
-                      .getLeaves(props.cluster_id, 4)
+                      .getLeaves(props.cluster_id, CLUSTER_PREVIEW_COUNT)
                       .map((leaf, i) => (
                         <img
                           key={i}
@@ -150,7 +181,7 @@ export function TravelMap() {
                     </span>
                   </div>
                   <span className="mt-1.5 block text-center text-[11px] font-medium text-gray-300/90 drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] group-hover:text-white max-w-36 truncate">
-                    {cityNames.length <= 3 ? cityNames.join(", ") : `${cityNames.slice(0, 2).join(", ")} +${cityNames.length - 2}`}
+                    {cityNames.length <= CLUSTER_LABEL_MAX_CITIES ? cityNames.join(", ") : `${cityNames.slice(0, 2).join(", ")} +${cityNames.length - 2}`}
                   </span>
                 </button>
               </Marker>
@@ -208,6 +239,35 @@ export function TravelMap() {
           <span className="font-semibold text-gray-200">{totalPhotos}</span> photos
         </span>
       </div>
+
+      {/* Edge indicators for off-screen locations — hide when enough content is already visible */}
+      {clusters.length <= EDGE_INDICATOR_VISIBLE_THRESHOLD && edgeIndicators.map(({ edge, entry, position }) => {
+        const arrows = { top: "↑", bottom: "↓", left: "←", right: "→" }
+        const clamp = (v: number) => Math.max(EDGE_POSITION_MIN, Math.min(EDGE_POSITION_MAX, v))
+        const pos = clamp(edge === "top" || edge === "bottom" ? position : 1 - position)
+
+        const style: React.CSSProperties = (() => {
+          switch (edge) {
+            case "top": return { top: EDGE_OFFSET_PX, left: `${pos * 100}%`, transform: "translateX(-50%)" }
+            case "bottom": return { bottom: EDGE_OFFSET_PX, left: `${pos * 100}%`, transform: "translateX(-50%)" }
+            case "left": return { left: EDGE_OFFSET_PX, top: `${pos * 100}%`, transform: "translateY(-50%)" }
+            case "right": return { right: EDGE_OFFSET_PX, top: `${pos * 100}%`, transform: "translateY(-50%)" }
+          }
+        })()
+
+        return (
+          <button
+            key={edge}
+            className="absolute z-10 flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-[11px] font-medium text-gray-300 backdrop-blur-md ring-1 ring-white/10 transition-all hover:bg-black/80 hover:text-white hover:ring-white/30 cursor-pointer"
+            style={style}
+            onClick={() => handleEdgeClick(entry)}
+          >
+            {edge === "left" && <span>{arrows[edge]}</span>}
+            {entry.city}
+            {edge !== "left" && <span>{arrows[edge]}</span>}
+          </button>
+        )
+      })}
 
       {selectedCity && lightboxIndex !== null && (
         <PhotoLightbox
