@@ -103,6 +103,13 @@ export const books: Book[] = [
   {
     name: "Angels & Demons",
     author: "Dan Brown",
+    status: "completed",
+    tags: ["Fiction"],
+    completedYear: 2026,
+  },
+  {
+    name: "The Alchemist",
+    author: "Paulo Coelho",
     status: "reading",
     tags: ["Fiction"],
   },
