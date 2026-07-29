@@ -110,8 +110,15 @@ export const books: Book[] = [
   {
     name: "The Alchemist",
     author: "Paulo Coelho",
-    status: "reading",
+    status: "completed",
     tags: ["Fiction"],
+    completedYear: 2026,
+  },
+  {
+    name: "Artemis",
+    author: "Andy Weir",
+    status: "reading",
+    tags: ["Science Fiction"],
   },
   {
     name: "Project Hail Mary",
