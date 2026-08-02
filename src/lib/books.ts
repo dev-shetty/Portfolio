@@ -115,10 +115,18 @@ export const books: Book[] = [
     completedYear: 2026,
   },
   {
+    name: "Bullshit Jobs",
+    author: "David Graeber",
+    status: "reading",
+    tags: ["Business"],
+  },
+  {
     name: "Artemis",
     author: "Andy Weir",
-    status: "reading",
+    status: "completed",
     tags: ["Science Fiction"],
+    completedYear: 2026,
+    isRecommended: true,
   },
   {
     name: "Project Hail Mary",
