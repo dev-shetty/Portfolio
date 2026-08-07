@@ -95,6 +95,15 @@ export const books: Book[] = [
     tags: ["Political Satire", "Dystopian"],
   },
   {
+    name: "Show Your Work",
+    author: "Austin Kleon",
+    status: "completed",
+    tags: ["Self-help"],
+    completedYear: 2026,
+    isRecommended: true,
+    willReRead: true,
+  },
+  {
     name: "Buildit: Building Blinkit in An Evolving India",
     author: "Albinder Dhindsa",
     status: "reading",
